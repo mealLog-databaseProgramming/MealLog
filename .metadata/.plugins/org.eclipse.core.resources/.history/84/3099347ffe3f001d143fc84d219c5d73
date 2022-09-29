@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>meal:log</title>
+<link rel="stylesheet" href="/resources/css/index.css"/>
+<script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+</head>
+<body>
+	<div class='Header'>
+		<div class='title'>
+			<iconify-icon icon="fluent:food-egg-24-regular"><div class='yolk'></div></iconify-icon>
+			Meal:<span>Log</span>
+		</div>
+		<div class='greet'>
+			<iconify-icon icon="healthicons:ui-user-profile"></iconify-icon>
+			박솜솜님, 식사 맛있게 하셨나요? 식단을 그룹원들에게 공유해보세요
+		</div>
+		<div class='logout'>
+			<iconify-icon icon="icon-park:logout"></iconify-icon>
+			로그아웃
+		</div>
+	</div>
+	<div class='Body'>
+		<div class='nav'>
+			<ul>
+				<li>피드</li>
+				<li>식단 추천</li>
+				<li>그룹 매칭</li>
+				<li><span>마이페이지</span></li>
+			</ul>
+		<div class='Content'>
+			<jsp:include page="/WEB-INF/mypage/mypage.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
+		</div>
+	</div>
+</body>
+</html>

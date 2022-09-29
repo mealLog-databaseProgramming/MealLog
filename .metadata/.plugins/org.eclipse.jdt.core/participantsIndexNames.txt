@@ -1,0 +1,9 @@
+INDEX VERSION 1.131
+C:\work\meal-log\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1161052747.index
+\meal-log\src\main\java
+C:\work\meal-log\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2648506456.index
+\meal-log\src\main\java
+C:\work\meal-log\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2864726347.index
+\meal-log\src\main\java
+C:\work\meal-log\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\579505914.index
+\meal-log\src\main\java
