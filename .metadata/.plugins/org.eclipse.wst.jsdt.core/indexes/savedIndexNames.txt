@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\work\meal-log\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2864726347.index
+3184424833.index
+1564733539.index
+1916863543.index
+4155211890.index
+2444422736.index
+2635417819.index
