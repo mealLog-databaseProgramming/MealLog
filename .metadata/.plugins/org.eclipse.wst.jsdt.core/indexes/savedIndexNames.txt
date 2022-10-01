@@ -1,6 +1,0 @@
-INDEX VERSION 1.4+C:\work\MealLog\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1198611488.index
-3370442453.index
-1250032525.index
-3154979750.index
-1564733539.index
