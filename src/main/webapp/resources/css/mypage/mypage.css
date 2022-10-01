@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+.wrap {
+	width: 950px;
+	height: 1000px;
+}
+
+.wrap .profile {
+	display: flex;
+	
+	margin-top: 20px;
+}
+.wrap .profile .img {
+	width: 200px; height: 200px;
+	background: #D9D9D9;
+	
+	border-radius: 50%;
+	
+	margin-left: 30px;
+	margin-right: 60px;
+}
+.wrap .profile .info {
+	line-height: 50px;
+}
+.wrap .profile .info .name{
+	font-size: 32px;
+	font-weight: bold;
+	
+	margin-top: 10px;
+}
+.wrap .profile .info .goal{
+	font-size: 24px;
+}
+.wrap .profile .info .goal span{
+	font-weight: bold;
+}
+.wrap .profile .info .comment{
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.wrap .stat {
+	width: 950px; height: 400px;
+	border-radius: 20px;
+	
+	background: #FBFBFB;
+	box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+	
+	display: flex;
+	justify-content: center; align-items: center;
+	flex-wrap: wrap;
+	
+	margin-top: 30px;
+	margin-left: -25px;
+}
+.wrap .stat .info {
+	margin-right: 50px;
+	margin-bottom: 50px;
+}
+.wrap .stat .info .title{
+	font-size: 24px;
+	font-weight: bold;
+}
+.wrap .stat .info .edit {
+	color: #00000080;
+	text-decoration : underline;
+	margin-top: 5px;
+}
+.wrap .stat .info .detail {
+	font-size: 20px;
+	line-height: 40px;
+	
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.wrap .stat .info .detail b, .wrap .stat .info .detail span {
+	font-weight: bold;
+	text-decoration : underline;
+}
+.wrap .stat .info .detail .nonsel {
+	color: #96CC39;
+}
+.wrap .stat .info .detail .select {
+	color: #547A1D;
+}
+
+.wrap .stat .notice {
+	color: #00000080;
+	
+	display: flex;
+	justify-content: space-between;
+	
+	width: 850px;
+	margin-top: -80px;
+	
+	font-size: 15px;
+}
+
+.wrap .polar {
+	display: none;
+	flex-wrap: wrap;
+	
+	width: 950px;
+}
