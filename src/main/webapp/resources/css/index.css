@@ -105,7 +105,7 @@ body {
 .Nav {
 	list-style: inside;
 	
-	font-size: 36px;
+	font-size: 32px;
 	color: #175023;	
 	
 	position: fixed;
@@ -129,12 +129,15 @@ body {
 	
 	color: #ECF0E8;
 	
-	background: rgba(59, 92, 10, 0.5);
+	background: rgba(59, 92, 10);
 	box-shadow: 0px 4px 4px 0px #00000040;
 	width: 200px; height: 75px;
 	
 	border-top-left-radius: 50px;
 	border-bottom-left-radius: 50px;
+}
+.Nav .nonsel:hover {
+	font-weight: bold;
 }
 
 .Content {
