@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.wrap .polra {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+	width: 900px;
+	
+	margin-top: 30px;
+}
+
+.flip { 
+  width: 210px; height: 280px;
+  perspective: 1100px;
+  
+  margin: 7.5px;
+}
+
+.polaroid {
+	width: 210px; height: 280px;
+	
+	transition: .4s;
+ 	transform-style: preserve-3d;
+}
+
+.polaroid .front {
+	width: 210px; height: 280px;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 5px 3px 1px rgba(0, 0, 0, 0.25);
+	
+	backface-visibility: hidden;
+}
+
+.polaroid .front .top {
+	width: 210px; height: 215px;
+	background: rgba(0, 0, 0, 0.03);
+}
+.polaroid .front .top img {
+	width: 180px; height: 180px;
+	margin: 15px;
+	margin-top: 25px;
+	
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+.polaroid .front .date{
+	font-family: 'Caveat', cursive;
+	font-size: 22px;
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+.polaroid .front .reaction {
+	font-family: 'Caveat', cursive;
+	font-size: 15px;
+	margin-top: 5px;
+	margin-left: 125px;
+}
+
+.polaroid .back {
+	position: absolute;
+	width: 210px; height: 280px;
+	top:0; left:0;
+	
+	background: #504949;
+	box-shadow: inset 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+	
+	backface-visibility: hidden;
+	
+	font-family: 'Jua';
+	font-size: 38px;
+	color: rgba(255, 255, 255, 0.2);
+}
+
+.polaroid .back .top {
+	width: 210px;
+	height: 140px;
+	
+	background: #1D1717;
+	box-shadow: inset 0px 5px 2px rgba(0, 0, 0, 0.25);
+	
+	margin-top: 25px;
+	
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	font-size: 15px;
+	
+	padding-top: 40px;
+}
+
+.polaroid .back {
+	transform: rotateY(180deg);
+}
+
+.flip:hover .polaroid {
+	transform: rotateY(180deg);
+}

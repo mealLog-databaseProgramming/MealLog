@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>meal:log</title>
+<title>Meal:Log</title>
 	<jsp:include page="/setting.jsp"/>
 	
 	<link rel="stylesheet" href="/resources/css/index.css"/>
