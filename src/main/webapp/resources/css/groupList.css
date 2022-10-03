@@ -1,0 +1,280 @@
+@charset "utf-8";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+.span{ display: block;}
+
+/*Header*/
+.groupHeader{
+	display: flex;
+	justify-content: center;
+	float: left;
+}
+.groupSearch {
+	width: 420px;
+	height: 60px;
+	padding: 5px;
+	margin: 0 180px 119px 195px;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 179px;
+	background-color: #eaf1e4;
+	border:none;
+	position: relative;
+}
+.searchImage {
+	position: absolute;
+	top: 67px;
+	left: 620px;
+	width: 35px;
+}
+.searchImage:hover{cursor: pointer;}
+
+.newGroup{ width: 100px; margin: 30px 0px 0px 0px;}
+.newGroup:hover{ cursor: pointer; }
+
+/*Body*/
+.groupList {
+	width: 362px;
+	height: 139px;
+	margin: 13px;
+	padding: 26px 30px;
+	border-radius: 25px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25), 4px 4px 4px 0
+		rgba(0, 0, 0, 0.25);
+	background-color: #fff;
+
+	position: relative;
+	cursor: pointer;
+}
+
+.groupList_f {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	float: left;
+	align-items: center;
+}
+
+.Line {
+	width: 4px;
+	height: 70%;
+	top: 10%;
+	left: 59%;
+	background-color: #e9e9e9;
+	position: absolute;
+}
+
+.groupTitle {
+	width: 100px;
+	height: 29px;
+	margin: 20px 50px 20px 0;
+	font-size: 24px;
+	font-weight: 800;
+	text-align: left;
+	color: #666060;
+	border:none;
+}
+
+.groupText {
+	width: 250px;
+	height: 16px;
+	margin: 10px 50px 10px 0;
+	font-size: 13px;
+	font-weight: 800;
+	text-align: left;
+	color: #929191;
+	border:none;
+	
+}
+
+.groupGoal_content {
+	width: 236px;
+	height: 24px;
+	margin: 10px 50px 10px 0;
+	font-size: 17px;
+	font-weight: 800;
+	text-align: left;
+	color: #797474;
+	outline: none;
+}
+
+.groupInfo{
+	width: 300px;
+	height: 160px;
+	margin: 10px 50px 10px 0;
+}
+.groupHashtag {
+	width:300px;
+	height: 24px;
+	margin: 10px 50px 10px 0;
+	font-size: 20px;
+	font-weight: 800;
+	text-align: left;
+	color: #175023;
+}
+
+.groupNum {
+	width: 70px;
+	height: 19px;
+	margin: 15px 23.7px 14px 45px;
+	font-size: 16px;
+	font-weight: 800;
+	text-align: center;
+	color: #797474;
+	position: absolute;
+	top: 5px;
+	left: 60%;
+
+}
+
+.groupCount {
+	width: 70px;
+	height: 19px;
+	margin: 15px 23.7px 14px 45px;
+	font-size: 16px;
+	font-weight: 800;
+	color: #797474;
+	position: absolute;
+	top: 120px;
+	left: 65%;
+}
+
+.groupImage {
+	position: absolute;
+	top: 50px;
+	left: 70%;
+	width: 80px;
+}
+
+.groupLeader {
+	width: 70px;
+	height: 19px;
+	margin: 15px 23.7px 14px 45px;
+	font-size: 16px;
+	font-weight: 800;
+	text-align: center;
+	color: #797474;
+	position: absolute;
+	top: 175px;
+	left: 60%;
+}
+.profilePicture{
+	position: absolute;
+	top: 222px;
+	left: 69%;
+	width: 80px;
+}
+.userName{
+	width: 70px;
+	height: 19px;
+	margin: 15px 23.7px 14px 45px;
+	font-size: 16px;
+	font-weight: 800;
+	text-align: center;
+	color: #797474;
+	position: absolute;
+	top: 297px;
+	left: 60%;
+}
+
+
+/*PopUp*/
+.button {
+	background: #ffffff;
+	padding: 1em 2em;
+	color: #ccc;
+	border: 0;
+	cursor: pointer;
+	width:362pt;
+	font-size: 16px;
+	font-weight: 800;
+	text-align: center;
+	color: #797474;
+}
+
+.button:hover{
+	color: #000;
+	cursor: pointer;
+	
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 20;
+	left: 0;
+	top: 0;
+	height: 120%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.modal2 {
+	display: none;
+	position: fixed;
+	z-index: 20;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal-content {
+
+	background-color: #ffffff;
+	margin: 266px 180px 266px 750px;
+	padding: 20px;
+	width:500px;
+	height:450px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25), 4px 4px 4px 0
+		rgba(0, 0, 0, 0.25);
+	border-radius: 25px;
+	animation-name: modalopen;
+	animation-duration: 0.5s;
+}
+
+
+.modal-header {
+	width:500px;
+	height:25px;
+	background: #ffffff;
+}
+.modal-body{
+	padding: 5px;
+	width:500px;
+	height:350px;
+	position: relative;
+}
+.modal-footer {
+	padding: 5px;
+}
+
+.closeBtn  {
+	color: #ccc;
+	float: right;
+	font-size: 30px;
+}
+.closeBtn2  {
+	color: #ccc;
+	float: right;
+	font-size: 30px;
+}
+
+.closeBtn:hover {
+	color: #000;
+	cursor: pointer;
+}
+.closeBtn2:hover {
+	color: #000;
+	cursor: pointer;
+}
+
+@keyframes modalopen {
+	from { opacity: 0 }
+	to { opacity: 1 }
+}
