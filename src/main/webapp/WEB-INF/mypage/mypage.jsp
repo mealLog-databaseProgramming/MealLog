@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/resources/css/mypage/mypage.css"/>
+<script type="text/javascript" src="/resources/js/mypage/mypage.js"></script> 
+<link rel="stylesheet" href="/resources/css/mypage/polaroid.css"/>
 
 <div class="wrap">
 	<div class="profile">
@@ -18,10 +20,10 @@
 			<div class="title">최근 인바디 통계</div>
 			<div class="edit">인바디 기록하기</div>
 			<div class="detail">
-				키는 <b>180cm</b>, <span class="select">몸무게</span>는<b>60kg</b><br>
-				<span class='nonsel'>골격근량</span>는<b>15kg</b><br>
-				<span class='nonsel'>체지방량</span>는<b>15kg</b><br>
-				<span class='nonsel'>체지방률</span>는<b>25%</b>입니다.
+				키는 <b>180cm</b>, <span class="select">몸무게</span>는 <b>60kg</b><br>
+				<span class='nonsel'>골격근량</span>은 <b>15kg</b><br>
+				<span class='nonsel'>체지방량</span>은 <b>15kg</b><br>
+				<span class='nonsel'>체지방률</span>은 <b>25%</b>입니다.
 			</div>
 		</div>
 		<jsp:include page="chart.jsp"/>
@@ -30,9 +32,9 @@
 			<div>키워드를 클릭하면 통계 그래프를 확인할 수 있습니다.</div>
 		</div>
 	</div>
-	<!--  <div class="polra">
-		<c:forEach begin="0" end="40" varStatus="loop">
+	<div class="polra">
+		<c:forEach begin="1" end="40" varStatus="loop">
 			<jsp:include page="polaroid.jsp"/>
 		</c:forEach>
-	</div>-->
+	</div>
 </div>
