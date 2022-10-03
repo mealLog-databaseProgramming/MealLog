@@ -1,0 +1,231 @@
+@charset "EUC-KR";
+
+@charset "UTF-8";
+	.topDiv {
+		display: grid;
+		grid-template-columns: 600px 100px 400px;
+		margin-bottom: 100px;
+	}
+	
+	.percentContainer {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.cardTitle {
+		font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 40px;
+		
+		color: #3B5C0A;
+		
+		margin-bottom: 46px;
+	}
+	
+	.cardContainer {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 1rem;
+		width: 100%;
+		justify-content: start;
+	}
+	
+	.card {
+		box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+		overflow:hidden;
+		width: 210px;
+		height: 280px;
+		text-align: center;
+	}
+	
+	.card-img {
+		/*width: 13rem;
+		height: 9rem;*/
+		width: 190px;
+		height: 190px;
+		object-fit:cover;
+		margin: 17px 0px 10px 0px;
+		vertical-align: middle;
+	}
+	
+	.card-text {
+		margin: 0px 21px 10px 21px;
+		font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 25px;
+		text-align: left;
+	}
+	
+	.kcal {
+		font-family: 'Jua';
+		font-size: 16px;
+	}
+	
+	.graphTitle span {
+		color: #3B5C0A;
+		font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 30px;
+	}
+	
+	.graphTitle {
+		margin-bottom: 28px;
+		
+		font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 30px;
+	}
+	
+    .zt-skill-bar {
+        color: #fff;
+        font-size: 11px;
+        line-height: 25px;
+        height: 25px;
+        margin-bottom: 2rem;
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+                border-radius: 2px;
+                
+        
+
+    }
+
+    .zt-skill-bar * {
+        webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+           -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+               transition: all 0.5s ease;
+    }
+
+    .zt-skill-bar div {
+        background: #A7E074;
+        position: relative;
+        padding-left: 25px;
+
+        width: 0;
+        height: 42px;
+
+        -webkit-border-radius: 20px;
+           -moz-border-radius: 20px;
+           /*-ms- border-radius: 2px;
+                border-radius: 2px;*/
+        
+        font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 45px;
+		
+		color: #1E6C02;
+    }
+
+    .zt-skill-bar span {
+        /*display: block;*/
+        position: relative;
+        /*left: 30rem;*/
+        top: 0px;
+        height: 100%;
+        padding: 0 5px 0 10px;
+
+        -webkit-border-radius: 0 2px 2px 0;
+           -moz-border-radius: 0 2px 2px 0;
+            -ms-border-radius: 0 2px 2px 0;
+                border-radius: 0 2px 2px 0;
+    }
+
+    /*.zt-skill-bar span:before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: -3px;
+        margin-top: -3px;
+
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+    }*/
+    
+    .recommContainer > span {
+	    font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 30px;
+		
+		margin-left: 15px;
+	}
+    
+	.recommCard {
+        width: 205px;
+        height: 276px;
+        perspective: 300px;
+        
+        margin-top: 8px;
+    }
+
+    .recommCard .item {
+        width: 205px;
+        height: 276px;
+        border: 1px solid #828282;
+        font-size: 35px;
+        backface-visibility: hidden;
+        transition: 1s;
+        border-radius: 50px;
+        
+        background: #A7E074;
+        border: 1px solid #A7E074;
+        
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .recommCard .item.front {
+        position: absolute;
+        transform: rotateY(0deg);
+    }
+
+    .recommCard:hover .item.front {
+        transform: rotateY(180deg);
+    }
+
+    .recommCard .item.back {
+
+        transform: rotateY(-180deg);
+    }
+    
+    .item.back .title {
+        font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 30px;
+		
+		margin-bottom: 33px;
+    }
+    .item.back .content {
+    	font-family: 'Jua';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+    }
+
+    .recommCard:hover .item.back {
+        transform: rotateY(0deg);
+    }
