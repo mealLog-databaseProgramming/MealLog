@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="/resources/css/login.css"/>
 	</head>
 	<body>
-		<img src="/resources/png/tmp/login.png"/>
-		<!--  <img src="/resources/png/tmp/signup1.png"/> -->
+		<!-- <img src="/resources/png/tmp/login.png"/> -->
+		<img src="/resources/png/tmp/signup3.png"/>
 		<!--  <img src="/resources/png/tmp/signup2.png"/> -->
 		<!--  <img src="/resources/png/tmp/signup3.png"/> -->
 	</body>
