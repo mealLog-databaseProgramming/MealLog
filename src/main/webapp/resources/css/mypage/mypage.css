@@ -1,45 +1,47 @@
 @charset "UTF-8";
 
 .wrap {
-	width: 1000px;
+	width: 1200px; height: 4550px;
+	text-align: -webkit-center;
 }
 
 .wrap .profile {
 	display: flex;
 	
 	margin-top: 20px;
+	width: 950px;
 }
 .wrap .profile .img {
-	width: 200px; height: 200px;
+	width: 250px; height: 250px;
 	background: #D9D9D9;
 	
 	border-radius: 50%;
-	
-	margin-left: 30px;
-	margin-right: 60px;
+
+	margin-right: 100px;
 }
 .wrap .profile .info {
-	line-height: 50px;
+	line-height: 60px;
+	text-align: left;
 }
 .wrap .profile .info .name{
-	font-size: 32px;
+	font-size: 36px;
 	font-weight: bold;
 	
-	margin-top: 10px;
+	margin-top: 25px;
 }
 .wrap .profile .info .goal{
-	font-size: 24px;
+	font-size: 26px;
 }
 .wrap .profile .info .goal span{
 	font-weight: bold;
 }
 .wrap .profile .info .comment{
-	font-size: 20px;
+	font-size: 24px;
 	line-height: 30px;
 }
 
 .wrap .stat {
-	width: 900px; height: 400px;
+	width: 1100px; height: 600px;
 	border-radius: 20px;
 	
 	background: #FBFBFB;
@@ -49,25 +51,33 @@
 	justify-content: space-around;
 	flex-wrap: wrap;
 	
-	margin-top: 30px;
-}
-.wrap .stat .info {
 	margin-top: 50px;
 }
+.wrap .stat .info {
+	margin-top: 60px;
+	text-align: left;
+	
+	margin-left: 15px;
+}
 .wrap .stat .info .title{
-	font-size: 24px;
+	font-size: 36px;
 	font-weight: bold;
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 10px;
 }
 .wrap .stat .info .edit {
+	font-size: 24px;
 	color: #00000080;
 	text-decoration : underline;
-	margin-top: 5px;
+	margin-top: 10px;
+	display: inline-block;
 }
 .wrap .stat .info .detail {
-	font-size: 20px;
-	line-height: 40px;
+	font-size: 26px;
+	line-height: 65px;
 	
-	margin-top: 20px;
+	margin-top: 80px;
 	margin-left: 20px;
 }
 .wrap .stat .info .detail b, .wrap .stat .info .detail span {
@@ -84,7 +94,8 @@
 }
 
 .wrap .stat canvas {
-	margin-top: 50px;
+	margin-top: 150px;
+	margin-left: -150px;
 }
 
 .wrap .stat .notice {
@@ -93,7 +104,8 @@
 	display: flex;
 	justify-content: space-between;
 	
-	width: 800px;
+	width: 980px;
+	margin-left: 50px;
 	
-	font-size: 15px;
+	font-size: 22px;
 }
