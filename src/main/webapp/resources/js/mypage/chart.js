@@ -27,8 +27,8 @@ function chart_set() {
 		//}
 	});
 	
-	document.getElementById("line-chart").style.width="450px";
-	document.getElementById("line-chart").style.height="250px";	
+	document.getElementById("line-chart").style.width="600px";
+	document.getElementById("line-chart").style.height="350px";	
 }
 
 chart_set();

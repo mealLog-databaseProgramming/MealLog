@@ -5,4 +5,4 @@
 </script>
 <script defer type="text/javascript" src="/resources/js/mypage/chart.js"></script> 
 
-<canvas id="line-chart" style="height:250px; width:500px"></canvas>
+<canvas id="line-chart" style="height:350px; width:500px"></canvas>
