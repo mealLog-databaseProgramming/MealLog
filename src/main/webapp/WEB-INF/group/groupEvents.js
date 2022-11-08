@@ -1,6 +1,4 @@
-
-
- var modal = document.getElementById('simpleModal');
+var modal = document.getElementById('simpleModal');
  var modal2 = document.getElementById('simpleModal2');
   
  var groupInfo = document.getElementById('groupInfo');
