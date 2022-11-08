@@ -1,66 +1,63 @@
 package UserDAO;
-//3. Stat - create, update
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-//import UserDAO;//써야하는건가?
 
-public class StatDAO {
-
-private JDBCUtil jdbcUtil = null;
+public class StatDTO {
 	
-	public StatDAO() {			
-		jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
+	private float weight;
+	private float kcal;
+	private float carb;
+	private float protein;
+	private float fat;
+	
+	public StatDTO() {} //기본 생성자
+	
+	public StatDTO(float weight, float kcal, float carb, float protein, float fat) {
+		this.weight = weight;
+		this.kcal = kcal;
+		this.carb = carb;
+		this.protein = protein;
+		this.fat = fat;
+	}
+	
+	//update
+	public void update(StatDTO updateStat) {
+		this.weight = updateStat.weight;
+		this.kcal = updateStat.kcal;
+		this.carb = updateStat.carb;
+		this.protein = updateStat.protein;
+		this.fat = updateStat.fat;
 	}
 		
-	/**
-	 * stat정보 입력(하루 단위로 새로 생성)
-	 */
-	public int create(StatDTO stat) throws SQLException {
-		String sql = "Insert Into Stat(kcal, carb, protein, fat) "
-					+ "Values (?, ?, ?, ?, ?) ";		
-		Object[] param = new Object[] {stat.getKcal(), 
-				stat.getCarb(), stat.getProtein(), stat.getFat()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
-		try {				
-			int result = jdbcUtil.executeUpdate();	// insert 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {		
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;			
+	//getter & setter
+	public float getWeight() {
+		return weight;
+	}
+	public void setWeight(float weight) {
+		this.weight = weight;
+	}
+	public float getKcal() {
+		return kcal;
+	}
+	public void setKcal(float kcal) {
+		this.kcal = kcal;
+	}
+	public float getCarb() {
+		return carb;
+	}
+	public void setCarb(float carb) {
+		this.carb = carb;
+	}
+	public float getProtein() {
+		return protein;
+	}
+	public void setProtein(float protein) {
+		this.protein = protein;
+	}
+	public float getFat() {
+		return fat;
+	}
+	public void setFat(float fat) {
+		this.fat = fat;
 	}
 	
-	/**
-	 * 기존의 stat 정보를 수정=식사 추가
-	 */
-	public int update(StatDTO stat) throws SQLException {
-		String sql = "Update Stat "
-					+ "SET kcal=?, carb=?. protein=?, fat=? "
-					+ "WHERE userid=? ";
-		Object[] param = new Object[] {stat.getKcal(), stat.getCarb(), 
-				stat.getProtein(), stat.getFat()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
-			
-		try {				
-			int result = jdbcUtil.executeUpdate();	// update 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	}
-
 	
 }
