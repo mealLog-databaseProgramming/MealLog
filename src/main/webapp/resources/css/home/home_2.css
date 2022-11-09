@@ -122,6 +122,10 @@
 	margin-bottom: 15px;
 }
 
+.modal-body .foodContainer .food:hover {
+	background-color: #81B44F;
+}
+
 #formFileSm {
 	width: 40%;
 }

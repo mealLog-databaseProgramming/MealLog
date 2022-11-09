@@ -203,10 +203,11 @@
 					  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
 			      	<div class="foodContainer">
-				      <div class="food">토마토</div>
-					  <div class="food">샐러리</div>
+				      <div class="food" onclick="deleteFood()">토마토</div>
+					  <div class="food" onclick="deleteFood()">샐러리</div>
 					</div>
-					<input type="button" value="음식 추가하기">
+					<input type="button" value="음식 추가하기" onclick="addFood()">
+					<hr>
 					<div class="mb-3">
 					  <label for="formFileSm" class="form-label">사진 첨부</label>
 					  <input class="form-control form-control-sm" id="formFileSm" type="file">
