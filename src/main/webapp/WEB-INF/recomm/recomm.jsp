@@ -3,25 +3,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/recomm.css"/>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!--<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">-->
+		
+	<link rel="stylesheet" href="resources/css/recomm/recomm.css"/>
 </head>
 <body>
 <div class="contents">
 	<div class="topDiv">
-		<div class="graphContainer col-9">
-		<div class="graphTitle">전유영 님<br><span>단백질</span>이 부족하네요</div>
-			<div class="zt-skill-bar"><div data-width="75" style="">kcal<span>75%</span></div></div>
-			<div class="zt-skill-bar"><div data-width="100" style="">탄수화물<span>100%</span></div></div>
-			<div class="zt-skill-bar"><div data-width="30" style=";">단백질<span>30%</span></div></div>
-			<div class="zt-skill-bar"><div data-width="45" style=";">지방<span>45%</span></div></div>
+		<div class="graphContainer">
+			<div class="graphComment">
+				사용자 님, <br>
+				단백질이 부족하네요
+			</div>
+			<canvas id="graph" width="600" height="200"></canvas>
 		</div>
 		
+		<!-- 공백div -->
 		<div></div>
 		
 		<div class="recommContainer">
-			<span>오늘의 추천메뉴</span>
+			<span class="recommTitle">오늘의 추천메뉴</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
 			  	<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
 			  	<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
@@ -43,40 +48,107 @@
 	
 	<p class="cardTitle">오늘의 음식기록</p>
 	<div class="cardContainer">
-		 <div class="card">
-			<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-		  	<div class="card-body">
-		    	<div class="card-text">닭가슴살 샐러드<br><div class="kcal">261kcal</div></div>
-		  	</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-		<div class="card">
-			<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-		  	<div class="card-body">
-		    	<div class="card-text">닭가슴살 샐러드<div class="kcal">261kcal</div></div>
-		  	</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-		<div class="card">
-			<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-		  	<div class="card-body">
-		    	<div class="card-text">닭가슴살 샐러드<br><div class="kcal">261kcal</div></div>
-		  	</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-		<div class="card">
-			<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-		  	<div class="card-body">
-		    	<div class="card-text">닭가슴살 샐러드<br><div class="kcal">261kcal</div></div>
-		  	</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-		<div class="card">
-			<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-		  	<div class="card-body">
-		    	<div class="card-text">닭가슴살 샐러드<br><div class="kcal">261kcal</div></div>
-		  	</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-
 	</div>
 </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="resources/js/recomm.js"></script>
+	<script src="resources/js/recomm/recomm.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script src="resources/js/recomm/chart.js"></script>
 </body>
 </html>

@@ -7,8 +7,8 @@
 <title>Meal:Log</title>
 	<jsp:include page="/setting.jsp"/>
 	
-	<link rel="stylesheet" href="/resources/css/index.css"/>
-	<script type="text/javascript" src="/resources/js/index.js"></script> 
+	<link rel="stylesheet" href="resources/css/index.css"/>
+	<script type="text/javascript" src="resources/js/index.js"></script> 
 </head>
 <body onload='init()'>
 	<div class='Header'>
@@ -36,7 +36,7 @@
 		</ul>
 	</div>
 	<div class='Content'>
-		<jsp:include page="/WEB-INF/mypage/mypage.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
+		<jsp:include page="/WEB-INF/home/home_2.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
 	</div>
 </body>
 </html>
