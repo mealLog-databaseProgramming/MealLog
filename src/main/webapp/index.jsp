@@ -36,7 +36,7 @@
 		</ul>
 	</div>
 	<div class='Content'>
-		<jsp:include page="/WEB-INF/mypage/mypage.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
+		<jsp:include page="/WEB-INF/home/home.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
 	</div>
 </body>
 </html>

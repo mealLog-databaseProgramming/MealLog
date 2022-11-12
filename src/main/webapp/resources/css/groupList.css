@@ -19,9 +19,12 @@
 	margin: 0 180px 58px 170px;
 	box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 179px;
-	background-color: #eaf1e4;
+	background-color: rgba(245, 245, 245);
 	border:none;
 	position: relative;
+	padding-left: 20px;
+	
+/* 	transform: translate(-20px, 0); */
 	
 	font-size: 20px;
 }
@@ -235,7 +238,7 @@
 .modal-content {
 
 	background-color: #ffffff;
-	margin: 266px 180px 266px 750px;
+	margin: 266px 180px 266px 860px;
 	padding: 20px;
 	width:500px;
 	height:450px;
