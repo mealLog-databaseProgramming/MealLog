@@ -15,8 +15,8 @@ public class StatDTO {
 	public StatDTO() {} //기본 생성자
 	
 	public StatDTO(float userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
-		this.setUserId(userId);
-		this.setDate(date);
+		this.userId = userId;
+		this.date = date;
 		this.weight = weight;
 		this.kcal = kcal;
 		this.carb = carb;
