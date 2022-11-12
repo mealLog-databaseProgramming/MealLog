@@ -1,0 +1,131 @@
+@charset "EUC-KR";
+
+.topDiv {
+	width: 100%;
+}
+
+.postContainer {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	
+	margin-top: 20px;
+}
+
+.posting {
+	margin-left: 15px;
+	width: 100%;
+}
+
+.content_line {
+	width: 100%;
+	margin-top : 5px;
+	margin-bottom: 10px;
+}
+
+.writer {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 15px;
+}
+
+.time {
+	float: right;
+	font-size: 24px;
+}
+
+.content {
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
+/*foodContainer*/
+.foodContainer {
+	display: flex;
+	flex-direction: row;
+	
+	gap: 20px;
+	margin-bottom: 15px;
+}
+
+.food {
+	box-sizing: content-box;
+
+	width: 150px;
+	height: 50px;
+	
+	border: 1px solid #81B44F;
+	border-radius: 90px;
+	
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 28px;
+	
+	text-align: center;
+	vertical-align: middle;
+	line-height: 45px;
+}
+
+.photo img {
+	width: 100%;
+}
+
+.photo {
+	margin-bottom: 20px;
+}
+
+.updownContainer {
+	margin-bottom: 20px;
+}
+
+.commentContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.commentText {
+	margin-left: 20px;
+}
+
+.commentWriter {
+	font-size: 20px;
+}
+
+.commentTime {
+	color: #939393;
+}
+
+.inputComment input {
+  width: 500px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid;
+  padding-left: 10px;
+}
+
+/*modal*/
+
+
+.modal-body {
+	padding: 50px !important;
+}
+
+.modalMessage {
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+
+.modal-body .foodContainer .food:hover {
+	background-color: #81B44F;
+}
+
+#formFileSm {
+	width: 40%;
+}
