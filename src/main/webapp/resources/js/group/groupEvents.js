@@ -1,15 +1,16 @@
+
 var modal = document.getElementById('simpleModal');
- var modal2 = document.getElementById('simpleModal2');
+var modal2 = document.getElementById('simpleModal2');
   
- var groupInfo = document.getElementById('groupInfo');
- var newGroup = document.getElementById('makeNewGroup');
+var groupInfo = document.getElementById('groupInfo');
+var newGroup = document.getElementById('makeNewGroup');
  
- var closeBtn = document.getElementsByClassName('closeBtn')[0];
-  var closeBtn2 = document.getElementsByClassName('closeBtn2')[0];
+var closeBtn = document.getElementsByClassName('closeBtn')[0];
+var closeBtn2 = document.getElementsByClassName('closeBtn2')[0];
   
- var joinGroup = document.getElementById('joinGroup');
+var joinGroup = document.getElementById('joinGroup');
   
- var createGroup = document.getElementById('createGroup');
+var createGroup = document.getElementById('createGroup');
   
  groupInfo.addEventListener('click', openModal);
  newGroup.addEventListener('click', openModal2);
@@ -27,7 +28,7 @@ createGroup.addEventListener("submit", newGroupCreated);
  function openModal2(){ modal2.style.display = 'block'; } 
 
  function closeModal(){ modal.style.display = 'none'; }
- function closeModal2(){ modal2.style.display = 'none'; }
+ function closeModal2(){ modal2.style.display = 'none'; }	
 
 
  function clickOutside(e){
@@ -54,4 +55,4 @@ function inputValueChange(){
  		
  		groupHashtag.innerHTML = hashtagList + "#" + hashtag;
 		document.getElementById('hashtag').value = null;
-    }
+}

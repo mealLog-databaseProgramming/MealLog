@@ -1,18 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 
-.wrap .polra {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	
-	width: 900px;
-	height: 3000px;
-	
-	margin-top: 350px;
-	
-	transform:scale(1.2, 1.2);
-}
+
 
 .flip { 
   width: 210px; height: 280px;

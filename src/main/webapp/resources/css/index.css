@@ -140,7 +140,22 @@ body {
 	border-bottom-left-radius: 50px;
 	
 	transform: translate(-30px, 0);
+	
+	
+	animation: selectNav 1s;
 }
+@keyframes selectNav {
+	from {
+		transform: translate(250px, 0);
+	}
+	to {
+		transform: translate(-30px, 0);
+		background: rgba(59, 92, 10);
+		box-shadow: 0px 4px 4px 0px #00000040;
+	}
+}
+
+
 .Nav .nonsel:hover {
 	font-weight: bold;
 }
