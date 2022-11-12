@@ -18,9 +18,9 @@ private JDBCUtil jdbcUtil = null;
 	 * stat정보 입력(하루 단위로 새로 생성)
 	 */
 	public int create(StatDTO stat) throws SQLException {
-		String sql = "Insert Into Stat(kcal, carb, protein, fat) "
-					+ "Values (?, ?, ?, ?, ?) ";		
-		Object[] param = new Object[] {stat.getKcal(), 
+		String sql = "Insert Into Stat(userId, date, weight, kcal, carb, protein, fat) "
+					+ "Values (?, ?, ?, ?, ?, ?, ?, ?) ";		
+		Object[] param = new Object[] {stat.getUserId(), stat.getDate(), stat.getWeight(), stat.getKcal(), 
 				stat.getCarb(), stat.getProtein(), stat.getFat()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 						
@@ -42,9 +42,9 @@ private JDBCUtil jdbcUtil = null;
 	 */
 	public int update(StatDTO stat) throws SQLException {
 		String sql = "Update Stat "
-					+ "SET kcal=?, carb=?. protein=?, fat=? "
+					+ "SET weight=?, kcal=?, carb=?. protein=?, fat=? "
 					+ "WHERE userid=? ";
-		Object[] param = new Object[] {stat.getKcal(), stat.getCarb(), 
+		Object[] param = new Object[] {stat.getWeight(), stat.getKcal(), stat.getCarb(), 
 				stat.getProtein(), stat.getFat()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			

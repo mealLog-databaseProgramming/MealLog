@@ -1,7 +1,11 @@
 package UserDAO;
+import java.sql.Date;
 
 public class StatDTO {
 	
+	private float userId;
+	
+	private Date date;
 	private float weight;
 	private float kcal;
 	private float carb;
@@ -10,7 +14,9 @@ public class StatDTO {
 	
 	public StatDTO() {} //기본 생성자
 	
-	public StatDTO(float weight, float kcal, float carb, float protein, float fat) {
+	public StatDTO(float userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
+		this.setUserId(userId);
+		this.setDate(date);
 		this.weight = weight;
 		this.kcal = kcal;
 		this.carb = carb;
@@ -28,6 +34,20 @@ public class StatDTO {
 	}
 		
 	//getter & setter
+
+	public float getUserId() {
+		return userId;
+	}
+	public void setUserId(float userId) {
+		this.userId = userId;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public float getWeight() {
 		return weight;
 	}
@@ -58,6 +78,8 @@ public class StatDTO {
 	public void setFat(float fat) {
 		this.fat = fat;
 	}
+
+
 	
 	
 }

@@ -30,11 +30,13 @@ public class UserDTO {
 		this.emailAddress = emailAddress;
 	}
 	//아이디 찾기용
-	public UserDTO(String loginId) {
+	public UserDTO(String name, String loginId) {
+		this.name = name;
 		this.loginId = loginId;
 	}
 	//비번 찾기용
-	public UserDTO(String loginId, String password) {
+	public UserDTO(String name, String loginId, String password) {
+		this.name = name;
 		this.loginId = loginId;
 		this.password = password;
 	}
