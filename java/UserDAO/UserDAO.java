@@ -75,8 +75,10 @@ public class UserDAO {
 		 * 사용자 ID에 해당하는 사용자를 삭제.
 		 */
 		public int delete(String userId) throws SQLException {
-			String sql = "Delete From UserInfo " + "Where userId=? ";		
-			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 delete문과 매개 변수 설정
+			String sql = "Delete From UserInfo " 
+						+ "Where userId=? ";	
+			Object[] param = new Object[] { userId };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 delete문과 매개 변수 설정
 
 			try {				
 				int result = jdbcUtil.executeUpdate();	// delete 문 실행
@@ -99,8 +101,9 @@ public class UserDAO {
 		public UserDTO findLoginId(String name, String email) throws SQLException {
 	        String sql = "Select loginId "
 		        		+ "From UserInfo "
-		        		+ "where name=?, emailAddress=? ";              
-			jdbcUtil.setSqlAndParameters(sql, new Object[] {name, email});	// JDBCUtil에 query문과 매개 변수 설정
+		        		+ "where name=?, emailAddress=? ";    
+	        Object[] param = new Object[] { name, email };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
@@ -119,9 +122,11 @@ public class UserDAO {
 		public UserDTO findPassword(String loginId, String name, String email) throws SQLException {
 			String sql = "Select password "
 		        		+ "From UserInfo "
-				        + "where name=?, emailAddress=?, loginId=? ";              
-			jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId, name, email});	// JDBCUtil에 query문과 매개 변수 설정???????????????????????????????
-
+				        + "where name=?, emailAddress=?, loginId=? ";   
+			
+			Object[] param = new Object[] {loginId, name, email};
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+			
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {						// 비밀번호 정보 발견
@@ -142,8 +147,10 @@ public class UserDAO {
 		public boolean existingLoginId(String loginId) throws SQLException {
 			String sql = "SELECT count(Loginid) "
 						+ "FROM UserInfo "
-						+ "WHERE loginId=? ";      
-			jdbcUtil.setSqlAndParameters(sql, new Object[] {loginId});	// JDBCUtil에 query문과 매개 변수 설정
+						+ "WHERE loginId=? ";    
+			
+			Object[] param = new Object[] {loginId};
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
@@ -165,7 +172,8 @@ public class UserDAO {
 			String sql = "SELECT count(emailAddress) "
 						+ "FROM UserInfo "
 						+ "WHERE emailAddress=? ";      
-			jdbcUtil.setSqlAndParameters(sql, new Object[] {emailAddress});	// JDBCUtil에 query문과 매개 변수 설정
+			Object[] param = new Object[] {emailAddress};
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
