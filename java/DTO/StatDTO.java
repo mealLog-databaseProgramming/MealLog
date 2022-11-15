@@ -1,4 +1,4 @@
-package UserDAO;
+package DTO;
 import java.sql.Date;
 
 public class StatDTO {

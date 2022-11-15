@@ -1,12 +1,8 @@
-package UserDAO;
+package DAO;
 //1. User - create, update, remove
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-//import UserDAO;//써야하는건가?
-
-import java.util.List;
+import DTO.UserDTO;
 
 public class UserDAO {
 
@@ -25,6 +21,7 @@ public class UserDAO {
 		public int insert(UserDTO user) throws SQLException {
 			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
 					+ "Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
 					,user.getWeight(), user.getActiveRank()
@@ -51,6 +48,7 @@ public class UserDAO {
 			String sql = "UPDATE UserInfo "
 						+ "SET name=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? "
 						+ "WHERE userid=? ";
+			
 			Object[] param = new Object[] {user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
 					,user.getWeight(), user.getActiveRank()
@@ -109,7 +107,7 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {						// 아이디 정보 발견
 					UserDTO user = new UserDTO(rs.getString("name"), rs.getString("loginId"));
-					return user;
+					return user;//test에서는 user객체 받아서 출력
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -124,7 +122,7 @@ public class UserDAO {
 		        		+ "From UserInfo "
 				        + "where name=?, emailAddress=?, loginId=? ";   
 			
-			Object[] param = new Object[] {loginId, name, email};
+			Object[] param = new Object[] {name, email, loginId};
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 			
 			try {
@@ -141,6 +139,31 @@ public class UserDAO {
 			return null;
 		}
 //중복검사
+		/**
+		 * 닉네임(Uname) 중복인지 확인
+		 */
+		public boolean existingUname(String name) throws SQLException {
+			String sql = "SELECT count(uname) "
+						+ "FROM UserInfo "
+						+ "WHERE uname = ? ";    
+			
+			Object[] param = new Object[] {name};
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {
+					int count = rs.getInt("count");
+					return (count == 1 ? true : false);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return false;
+		}
+		
 		/**
 		 * 로그인 아이디 중복인지 확인
 		 */

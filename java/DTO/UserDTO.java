@@ -1,4 +1,4 @@
-package UserDAO;
+package DTO;
 //eer산출법으로 계산된 값을 따로 저장하지 않아도 되는가?
 public class UserDTO {
 	
@@ -35,22 +35,22 @@ public class UserDTO {
 		this.loginId = loginId;
 	}
 	//비번 찾기용
-	public UserDTO(String name, String loginId, String password) {
+	public UserDTO(String name, String password, String loginId) {
 		this.name = name;
-		this.loginId = loginId;
 		this.password = password;
-	}
-	//update
-	public void update(UserDTO updateUser) {
-		this.name = name;
-		this.introduce = introduce;
-		this.age = age;
-		this.gender = gender;
-		this.height = height;
-		this.weight = weight;
-		this.activeRank = activeRank;
 		this.loginId = loginId;
-		this.emailAddress = emailAddress;
+	}
+	//update//수정확인
+	public void update(UserDTO updateUser) {
+		this.name = updateUser.name;
+		this.introduce = updateUser.introduce;
+		this.age = updateUser.age;
+		this.gender = updateUser.gender;
+		this.height = updateUser.height;
+		this.weight = updateUser.weight;
+		this.activeRank = updateUser.activeRank;
+		this.loginId = updateUser.loginId;
+		this.emailAddress = updateUser.emailAddress;
 	}
 	
 	//getter & setter
