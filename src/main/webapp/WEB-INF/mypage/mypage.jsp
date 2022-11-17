@@ -20,5 +20,4 @@
 			<jsp:include page="polaroid.jsp"/>
 		</c:forEach>
 	</div>
-	
 </div>

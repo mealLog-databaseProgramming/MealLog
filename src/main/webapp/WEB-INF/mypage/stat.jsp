@@ -25,6 +25,7 @@
 	<div class="s_box">
 		<div class="s_header">
 			체중 변화
+			<div class="edit">✏ 기록하기</div>
 		</div>
 	</div>
 </div>
