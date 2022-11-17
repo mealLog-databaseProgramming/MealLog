@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Meal:Log</title>
-	<jsp:include page="/setting.jsp"/>
+	<jsp:include page="setting.jsp"/>
 	
 	<link rel="stylesheet" href="resources/css/index.css"/>
 	<script type="text/javascript" src="resources/js/index.js"></script> 
@@ -32,11 +33,13 @@
 			<li class='nonsel'>피드</li>
 			<li class='nonsel'>식단 추천</li>
 			<li class='nonsel'>그룹 매칭</li>
-			<li class='select'>마이페이지</li>
+			<li class='nonsel'>마이페이지</li>
 		</ul>
 	</div>
 	<div class='Content'>
-		<jsp:include page="/WEB-INF/home/home_2.jsp"/> <!-- 알갱이 만든걸 여기 경로 넣어서 적용 -->
+		<c:if test="${page ne null}">
+			<jsp:include page="${page}" />
+		</c:if>
 	</div>
 </body>
 </html>
