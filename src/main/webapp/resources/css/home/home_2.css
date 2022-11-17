@@ -1,15 +1,17 @@
 @charset "EUC-KR";
 
 .topDiv {
-	width: 100%;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 .postContainer {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
 	
 	margin-top: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 .posting {
@@ -17,10 +19,12 @@
 	width: 100%;
 }
 
-.content_line {
+.info_line {
 	width: 100%;
 	margin-top : 5px;
 	margin-bottom: 10px;
+	
+	vertical-align: middle;
 }
 
 .writer {
@@ -36,8 +40,14 @@
 	font-size: 24px;
 }
 
+.react {
+	display: flex;
+	flex-direction: row;
+	
+	justify-content: space-between;
+}
+
 .content {
-	margin-bottom: 30px;
 	font-size: 24px;
 }
 
@@ -45,28 +55,44 @@
 .foodContainer {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	
 	gap: 20px;
 	margin-bottom: 15px;
 }
 
 .food {
-	box-sizing: content-box;
-
 	width: 150px;
 	height: 50px;
 	
 	border: 1px solid #81B44F;
 	border-radius: 90px;
 	
-	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
-	font-size: 28px;
+	font-size: 24px;
+	font-family: 'Noto Sans KR', sans-serif;
 	
 	text-align: center;
 	vertical-align: middle;
-	line-height: 45px;
+	line-height: 50px;
+}
+
+.contentWrap {
+	display: flex;
+	flex-direction: row;
+	
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.leftContainer {
+	width: 50%;
+	margin-right: 50px;
+}
+
+.rightContainer {
+	width: 50%;
 }
 
 .photo img {
@@ -77,8 +103,13 @@
 	margin-bottom: 20px;
 }
 
-.updownContainer {
-	margin-bottom: 20px;
+div .bi-chat-dots {
+	display: flex;
+  	justify-content: right;	
+}
+
+svg .bi-chat-dots {
+	cursor: pointer;
 }
 
 .commentContainer {
@@ -101,7 +132,7 @@
 }
 
 .inputComment input {
-  width: 500px;
+  width: 80%;
   height: 32px;
   font-size: 15px;
   border: 0;
@@ -111,8 +142,6 @@
 }
 
 /*modal*/
-
-
 .modal-body {
 	padding: 50px !important;
 }
@@ -128,4 +157,14 @@
 
 #formFileSm {
 	width: 40%;
+}
+
+.modal .food {
+	width: 150;
+	height: 1000;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }

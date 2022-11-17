@@ -85,7 +85,7 @@ public class ClubDAO {
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						
-				ClubDTO club = new ClubDTO(	
+				ClubDTO club = new ClubDTO(
 					rs.getInt("clubId"),
 					rs.getString("cname"),
 					rs.getString("goal"),

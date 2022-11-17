@@ -16,7 +16,7 @@ body {
 
 	overflow-x: hidden;
 	
-	background: #ECF0E8;
+	background: #ECF0E8 !important;
 }
 
 .Header {
