@@ -19,13 +19,13 @@ public class UserDAO {
 		 * 새로운 사용자 추가
 		 */
 		public int insert(UserDTO user) throws SQLException {
-			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
+			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress, profile) "
 					+ "Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
 					,user.getWeight(), user.getActiveRank()
-					, user.getLoginId(), user.getPassword(), user.getEmailAddress()};				
+					, user.getLoginId(), user.getPassword(), user.getEmailAddress(), user.getProfile()};				
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 							
 			try {				
@@ -46,13 +46,13 @@ public class UserDAO {
 		 */
 		public int update(UserDTO user) throws SQLException {
 			String sql = "UPDATE UserInfo "
-						+ "SET name=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? "
+						+ "SET name=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
 						+ "WHERE userid=? ";
 			
 			Object[] param = new Object[] {user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
 					,user.getWeight(), user.getActiveRank()
-					, user.getLoginId(), user.getPassword(), user.getEmailAddress()};				
+					, user.getLoginId(), user.getPassword(), user.getEmailAddress(), user.getProfile()};				
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 				
 			try {				
@@ -70,7 +70,7 @@ public class UserDAO {
 		}
 
 		/**
-		 * 사용자 ID에 해당하는 사용자를 삭제.
+		 * 사용자 ID에 해당하는 사용자를 삭제.??
 		 */
 		public int delete(String userId) throws SQLException {
 			String sql = "Delete From UserInfo " 

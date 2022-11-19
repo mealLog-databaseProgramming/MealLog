@@ -13,11 +13,12 @@ public class UserDTO {
 	private String loginId;
 	private String password;
 	private String emailAddress;
+	private String profile;
 	
 	public UserDTO() {} //기본 생성자	
 	
 	public UserDTO(int userId, String name, String introduce, int age, int gender, float height
-			, float weight, float activeRank, String loginId, String password, String emailAddress) {
+			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile) {
 		this.userId = userId;
 		this.name = name;
 		this.introduce = introduce;
@@ -28,6 +29,7 @@ public class UserDTO {
 		this.activeRank = activeRank;
 		this.loginId = loginId;
 		this.emailAddress = emailAddress;
+		this.profile = profile;
 	}
 	//아이디 찾기용
 	public UserDTO(String name, String loginId) {
@@ -51,6 +53,7 @@ public class UserDTO {
 		this.activeRank = updateUser.activeRank;
 		this.loginId = updateUser.loginId;
 		this.emailAddress = updateUser.emailAddress;
+		this.profile = updateUser.profile;
 	}
 	
 	//getter & setter
@@ -119,6 +122,12 @@ public class UserDTO {
 	}
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	

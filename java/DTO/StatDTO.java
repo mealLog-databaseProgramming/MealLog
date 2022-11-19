@@ -3,8 +3,7 @@ import java.sql.Date;
 
 public class StatDTO {
 	
-	private float userId;
-	
+	private int userId;
 	private Date date;
 	private float weight;
 	private float kcal;
