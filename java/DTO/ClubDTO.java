@@ -68,4 +68,6 @@ public class ClubDTO {
 	public void setLeader(int leader) {
 		this.leader = leader;
 	}
+
+	
 }

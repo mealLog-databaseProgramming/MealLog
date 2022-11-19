@@ -14,5 +14,7 @@ function addFood() {
 }
 
 function deleteFood(){
-	event.target.remove();
+	console.log(event.target.parentNode)
+	event.target.parentNode.remove();
+	//event target이 svg, path 2가지 나올 수 있
 }

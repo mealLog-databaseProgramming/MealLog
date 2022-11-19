@@ -15,8 +15,13 @@ public class UserDTO {
 	private String emailAddress;
 	private String profile;
 	
-	public UserDTO() {} //기본 생성자	
 	
+	// uid로 이름 찾기
+	public UserDTO(int userId) {
+		this.userId = userId;
+	} 
+	
+	//기본 생성자	
 	public UserDTO(int userId, String name, String introduce, int age, int gender, float height
 			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile) {
 		this.userId = userId;

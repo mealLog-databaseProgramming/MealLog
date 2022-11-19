@@ -11,6 +11,7 @@ import DTO.FeedDTO;
 import DTO.FoodDTO;
 import DTO.ReactDTO;
 import DTO.ReplyDTO;
+import DTO.UserDTO;
 
 public class FeedDAO {
 	
@@ -22,7 +23,7 @@ public class FeedDAO {
 
 
 	/* CREATE feed table record */
-	public int feed_create(FeedDTO feed) throws SQLException {
+	public int createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, userId, publishDate, content, photo) " 
 			+ "VALUE(?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {feed.getFeedId(), feed.getUserId(), feed.getPublishDate(), feed.getContent(), feed.getPhoto()};
@@ -42,7 +43,7 @@ public class FeedDAO {
 	}
 
 	/* CREATE react table record */
-	public int react_create(ReactDTO react) throws SQLException {
+	public int createReact(ReactDTO react) throws SQLException {
 		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUE(?, ?, ?)";
 		Object[] param = new Object[] {react.getFeedId(), react.getUserId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
@@ -61,7 +62,7 @@ public class FeedDAO {
 	}
 
 		/* CREATE food table record */
-	public int food_create(FoodDTO food) throws SQLException {
+	public int createFood(FoodDTO food) throws SQLException {
 		String sql = "INSERT INTO Food(foodId, fname, kcal, carb, protein, fat, feedId) " 
 		+ "VALUE(?, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {food.getFoodId(), food.getFname(), food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId()};
@@ -81,7 +82,7 @@ public class FeedDAO {
 	}
 
 		/* CREATE comment table record */
-	public int comment_create(ReplyDTO reply) throws SQLException {
+	public int createComment(ReplyDTO reply) throws SQLException {
 		String sql = "INSERT INTO Reply(replyId, content, getPublishDate, feedId, userId )" 
 		+ "VALUE(?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {reply.getReplyId(), reply.getContent(), reply.getPublishDate(), reply.getFeedId(), reply.getUserId()};
@@ -101,7 +102,7 @@ public class FeedDAO {
 	}
 
 	/* DELETE feed table record */
-	public int remove_feed(String feedId) throws SQLException {
+	public int removeFeed(String feedId) throws SQLException {
 		// 글이 삭제되면 댓글도 함께 삭제? 아니면 데이터는 냅두고 글만 삭제?
 		String sql = "DELETE FROM FEED WHERE feedid = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
@@ -121,7 +122,7 @@ public class FeedDAO {
 	}
 
 	/* DELETE react table record */
-	public int remove_react(String feedId, String userId) throws SQLException {
+	public int removeReact(String feedId, String userId) throws SQLException {
 		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
 
@@ -140,7 +141,7 @@ public class FeedDAO {
 	}
 
 	/* DELETE comment table record */
-	public int remove_reply(String replyId) throws SQLException {
+	public int removeReply(String replyId) throws SQLException {
 		String sql = "DELETE FROM REPLY WHERE replyId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
 
@@ -160,7 +161,7 @@ public class FeedDAO {
 
 	
 	/* DELETE food table record */
-	public int remove_food(String foodId) throws SQLException {
+	public int removeFood(String foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {foodId});
 
@@ -270,39 +271,58 @@ public class FeedDAO {
 		return null;
 	}
 
-	public int count_positive_react(ReactDTO react) throws SQLException {
-		int count = 0;
+	public int countPositiveReact(ReactDTO react) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'P\'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next())
-				count = rs.getInt(1);
+			int result = jdbcUtil.executeUpdate();	
+			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// resource 반환
 		}
-		return count;
+		return 0;
 	}
 
-	public int count_negative_react(ReactDTO react) throws SQLException {
-		int count = 0;
+	public int countNegativeReact(ReactDTO react) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'N\'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next())
-				count = rs.getInt(1);
+			int result = jdbcUtil.executeUpdate();	
+			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// resource 반환
 		}
-		return count;
+		
+		return 0;
 	}
-
+	
+	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
+	public UserDTO findUname(int userId) throws SQLException {
+		String sql = "SELECT uname "
+	        		+ "FROM UserInfo "
+			        + "WHERE userId=? ";   
+		
+		Object[] param = new Object[] {userId};
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						// 비밀번호 정보 발견
+				UserDTO user = new UserDTO(rs.getInt("userID"));
+				return user; 
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		} 
+		return null;
+	}
 }
 
