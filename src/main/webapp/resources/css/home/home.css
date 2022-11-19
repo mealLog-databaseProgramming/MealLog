@@ -106,6 +106,8 @@
 div .bi-chat-dots {
 	display: flex;
   	justify-content: right;	
+  	
+  	cursor: pointer;
 }
 
 svg .bi-chat-dots {
@@ -119,8 +121,13 @@ svg .bi-chat-dots {
 	margin-bottom: 15px;
 }
 
+.commentList {
+	margin-top: 10px;
+}
+
 .commentText {
 	margin-left: 20px;
+	width: 100%;
 }
 
 .commentWriter {
@@ -129,6 +136,7 @@ svg .bi-chat-dots {
 
 .commentTime {
 	color: #939393;
+	float: right;
 }
 
 .inputComment input {
@@ -147,7 +155,7 @@ svg .bi-chat-dots {
 }
 
 .modal-body {
-	padding: 50px !important;
+	padding: 30px 50px !important;
 }
 
 .modal-content {
@@ -185,18 +193,13 @@ svg .bi-chat-dots {
 
 .modal-content-wrap textarea{
 	width: 100%;
-	border: 0px;
-	border-bottom: 1px solid #CACACA;
+	border: 2px solid #81B44F;
 	
 	margin-bottom: 20px;
 }
 
 .modal-body .foodContainer .food:hover {
 	background-color: #81B44F;
-}
-
-#formFileSm {
-	width: 40%;
 }
 
 .modal .food {	
@@ -206,8 +209,27 @@ svg .bi-chat-dots {
 	align-items: center;
 }
 
+.btn-upload{
+  cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.addFoodBtn svg, .addFoodBtn span {
+	cursor: pointer;
+}
+
+.fileContainer #file {
+  display: none;
+}
+
+#fileName {
+	border: 0px;
+}
+
 .btn-primary {
 	background-color:#81B44F !important;
+	border-color: #81B44F !important;
 }
 
 .modal-footer .btn-primary {
@@ -216,4 +238,10 @@ svg .bi-chat-dots {
 	
 	margin-right: 50px;
 	margin-bottom: 50px;
+}
+
+/*commentModal*/
+#commentModal .modal-title {
+	margin-top: 25px;
+	margin-left: 30px;
 }
