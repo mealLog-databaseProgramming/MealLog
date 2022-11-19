@@ -28,7 +28,7 @@ public class HashtagDTO {
 	public void setClubId(int clubId) {
 		this.clubId = clubId;
 	}
-	
+	 
 	
 }
 
