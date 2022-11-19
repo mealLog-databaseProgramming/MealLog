@@ -9,6 +9,11 @@
 	justify-content: center;
 }
 
+.edit:hover {
+	font-weight: 600; 
+}
+
+
 .mypage .profile { 
 	display: flex;
 	flex-wrap: wrap;

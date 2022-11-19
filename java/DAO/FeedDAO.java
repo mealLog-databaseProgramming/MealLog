@@ -321,7 +321,7 @@ public class FeedDAO {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// resource 반환
-		}
+		} 
 		return null;
 	}
 }
