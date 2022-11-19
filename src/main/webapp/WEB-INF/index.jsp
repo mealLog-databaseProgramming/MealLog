@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="resources/css/index.css"/>
 	<script type="text/javascript" src="resources/js/index.js"></script> 
 </head>
+
 <body onload='init()'>
 	<div class='Header'>
 		<div class='title'>
@@ -41,6 +42,7 @@
 			<jsp:include page="${page}" />
 		</c:if>
 	</div>
+	<jsp:include page="warnning.jsp"/>
 </body>
 </html>
 
