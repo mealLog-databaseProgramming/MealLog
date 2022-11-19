@@ -13,7 +13,7 @@ public class StatDTO {
 	
 	public StatDTO() {} //기본 생성자
 	
-	public StatDTO(float userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
+	public StatDTO(int userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
 		this.userId = userId;
 		this.date = date;
 		this.weight = weight;
@@ -37,7 +37,7 @@ public class StatDTO {
 	public float getUserId() {
 		return userId;
 	}
-	public void setUserId(float userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public Date getDate() {
