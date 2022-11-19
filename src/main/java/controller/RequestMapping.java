@@ -12,6 +12,9 @@ public class RequestMapping {
     	mappings.put("/recomm", new RecommController());
     	mappings.put("/group", new GroupController());
     	mappings.put("/mypage", new MypageController());
+    	
+    	mappings.put("/login", new LoginController());
+    	mappings.put("/signup", new SignupController());
     }
 
     public Controller findController(String uri) {
