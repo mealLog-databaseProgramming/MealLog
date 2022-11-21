@@ -6,7 +6,7 @@ import DTO.UserDTO;
 
 public class UserDAO {
 
-	/**
+	/*
 	 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
 	 */
 		private JDBCUtil jdbcUtil = null;
