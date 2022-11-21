@@ -1,33 +1,33 @@
 package DTO;
 
 public class ReactDTO {
-	private int userId;
-	private int feedId;
+	private long userId;
+	private long feedId;
 	private String type;
 	
 	public ReactDTO() {
 		super();
 	}
 	
-	public ReactDTO(int userId, int feedId, String type) {
+	public ReactDTO(long userId, long feedId, String type) {
 		this.userId = userId;
 		this.feedId = feedId;
 		this.type = type;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
-	public int getFeedId() {
+	public long getFeedId() {
 		return feedId;
 	}
 
-	public void setFeedId(int feedId) {
+	public void setFeedId(long feedId) {
 		this.feedId = feedId;
 	}
 

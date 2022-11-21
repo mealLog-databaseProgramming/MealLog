@@ -1,7 +1,7 @@
 package DTO;
 
 public class ClubDTO {
-	private int clubId;
+	private long clubId;
 	private String cname;
 	private String goal;
 	private String info;
@@ -12,7 +12,7 @@ public class ClubDTO {
 		super();
 	}
 	
-	public ClubDTO(int clubId, String cname, String goal, String info, int max_member, int leader) {
+	public ClubDTO(long clubId, String cname, String goal, String info, int max_member, int leader) {
 		this.clubId = clubId;
 		this.cname = cname;
 		this.goal = goal;
@@ -21,11 +21,11 @@ public class ClubDTO {
 		this.leader = leader;
 	}
 	
-	public int getClubId() {
+	public long getClubId() {
 		return clubId;
 	}
 
-	public void setClubId(int clubId) {
+	public void setClubId(long clubId) {
 		this.clubId = clubId;
 	}
 
