@@ -20,7 +20,7 @@ public class UserDAO {
 		 */
 		public int insert(UserDTO user) throws SQLException {
 			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress, profile) "
-					+ "Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
