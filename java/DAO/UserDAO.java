@@ -15,7 +15,7 @@ public class UserDAO {
 			jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
 		}
 			
-		/**
+		/*
 		 * 새로운 사용자 추가
 		 */
 		public int insert(UserDTO user) throws SQLException {
