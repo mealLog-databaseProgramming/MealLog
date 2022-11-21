@@ -10,6 +10,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
+<div class='Content'>
 	<div class="topDiv">
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">
 			글 작성하기
@@ -223,7 +224,7 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 		<!-- modal -->
 		<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
