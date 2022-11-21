@@ -14,7 +14,7 @@ public class UserDAO {
 		public UserDAO() {			
 			jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
 		}
-			
+		
 		/*
 		 * 새로운 사용자 추가
 		 */
