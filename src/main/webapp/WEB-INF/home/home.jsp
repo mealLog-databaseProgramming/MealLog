@@ -237,8 +237,11 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
+<jsp:include page="/WEB-INF/home/commentModal.jsp"/>
+<jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
 		<!-- modal -->
-		<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<!--<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -294,10 +297,10 @@
 			      </div>
 			    </div>
 			</div>
-		</div>
+		</div>-->
 		
 		<!-- 댓글 세부 -->
-		<div class="modal fade" id="commentModal" tabindex="-1">
+		<!--<div class="modal fade" id="commentModal" tabindex="-1">
 		  <div class="modal-dialog modal-dialog-scrollable">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -365,10 +368,10 @@
 		      </div>
 		    </div>
 		  </div>
-		</div>
+		</div>-->
 		
 		<!-- 음식추가 모달 -->
-		<div class="modal fade" id="addFoodModal" tabindex="-1">
+		<!-- <div class="modal fade" id="addFoodModal" tabindex="-1">
 		  <div class="modal-dialog modal-xl">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -384,7 +387,7 @@
 		      </div>
 		    </div>
 		  </div>
-		</div>
+		</div> -->
 	<!-- bootstrap -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
