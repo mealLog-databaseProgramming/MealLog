@@ -3,33 +3,33 @@ package DTO;
 import java.sql.Date;
 
 public class BelongDTO {
-	private int userId;
-	private int clubId;
+	private long userId;
+	private long clubId;
 	private Date joinDate;
 	
 	public BelongDTO() {
 		super();
 	}
 	
-	public BelongDTO(int userId, int clubId, Date joinDate) {
+	public BelongDTO(long userId, long clubId, Date joinDate) {
 		this.userId = userId;
 		this.clubId = clubId;
 		this.joinDate = joinDate;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
-	public int getClubId() {
+	public long getClubId() {
 		return clubId;
 	}
 
-	public void setClubId(int clubId) {
+	public void setClubId(long clubId) {
 		this.clubId = clubId;
 	}
 

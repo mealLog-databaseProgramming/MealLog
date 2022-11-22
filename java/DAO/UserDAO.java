@@ -6,7 +6,7 @@ import DTO.UserDTO;
 
 public class UserDAO {
 
-	/**
+	/*
 	 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
 	 */
 		private JDBCUtil jdbcUtil = null;
@@ -14,13 +14,13 @@ public class UserDAO {
 		public UserDAO() {			
 			jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
 		}
-			
-		/**
+		
+		/*
 		 * 새로운 사용자 추가
 		 */
 		public int insert(UserDTO user) throws SQLException {
 			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress, profile) "
-					+ "Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
 					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()

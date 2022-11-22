@@ -3,17 +3,17 @@ package DTO;
 import java.sql.Date;
 
 public class ReplyDTO {
-	private int replyId;
+	private long replyId;
 	private String content;
 	private Date publishDate;
-	private int feedId;
-	private int userId;
+	private long feedId;
+	private long userId;
 
 	public ReplyDTO() {
 		super();
 	}
 
-	public ReplyDTO(int replyId, String content, Date publishDate, int feedId, int userId) {
+	public ReplyDTO(long replyId, String content, Date publishDate, long feedId, long userId) {
 		super();
 		this.replyId = replyId;
 		this.content = content;
@@ -22,11 +22,11 @@ public class ReplyDTO {
 		this.userId = userId;
 	}
 
-	public int getReplyId() {
+	public long getReplyId() {
 		return replyId;
 	}
 
-	public void setReplyId(int replyId) {
+	public void setReplyId(long replyId) {
 		this.replyId = replyId;
 	}
 
@@ -46,19 +46,19 @@ public class ReplyDTO {
 		this.publishDate = publishDate;
 	}
 
-	public int getFeedId() {
+	public long getFeedId() {
 		return feedId;
 	}
 
-	public void setFeedId(int feedId) {
+	public void setFeedId(long feedId) {
 		this.feedId = feedId;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 	
