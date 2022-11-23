@@ -40,7 +40,6 @@
 	<c:if test="${page ne null}">
 		<jsp:include page="${page}" />
 	</c:if>
-	<jsp:include page="warnning.jsp"/>
 </body>
 </html>
 

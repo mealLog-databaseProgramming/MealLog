@@ -21,9 +21,3 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/resources/favicon//ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-
-<!-- 캐시 사용 x (호스팅 시에는 없애기) -->
-<meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT" />
-<meta http-equiv="Expires" content="-1" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Cache-Control" content="no-cache" />
