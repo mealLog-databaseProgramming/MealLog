@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/resources/css/mypage/stat.css"/>
 <link rel="stylesheet" href="/resources/css/mypage/polaroid.css"/>
 
+
+<div class='Content'>
 <div class="mypage">
 	<jsp:include page="profile.jsp"/>
 	<hr/>
@@ -20,4 +22,5 @@
 			<jsp:include page="polaroid.jsp"/>
 		</c:forEach>
 	</div>
+</div>
 </div>
