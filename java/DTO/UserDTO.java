@@ -2,7 +2,7 @@ package DTO;
 //eer산출법으로 계산된 값을 따로 저장하지 않아도 되는가?
 public class UserDTO {
 	
-	private int userId;
+	private long userId;
 	private String name;
 	private String introduce;
 	private int age;
@@ -17,12 +17,12 @@ public class UserDTO {
 	
 	
 	// uid로 이름 찾기
-	public UserDTO(int userId) {
+	public UserDTO(long userId) {
 		this.userId = userId;
 	} 
 	
 	//기본 생성자	
-	public UserDTO(int userId, String name, String introduce, int age, int gender, float height
+	public UserDTO(long userId, String name, String introduce, int age, int gender, float height
 			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile) {
 		this.userId = userId;
 		this.name = name;
@@ -62,10 +62,10 @@ public class UserDTO {
 	}
 	
 	//getter & setter
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 	public String getName() {

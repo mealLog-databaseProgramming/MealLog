@@ -1,8 +1,8 @@
 package DTO;
 
 public class FoodDTO {
-	private int foodId;
-	private int feedId;
+	private long foodId;
+	private long feedId;
 	private String fname;
 	private float kcal;
 	private float carb;
@@ -13,7 +13,7 @@ public class FoodDTO {
 		super();
 	}
 	
-	public FoodDTO(int foodId, int feedId, String fname, float kcal, float carb, float protein, float fat) {
+	public FoodDTO(long foodId, long feedId, String fname, float kcal, float carb, float protein, float fat) {
 		this.foodId = foodId;
 		this.feedId = feedId;
 		this.fname = fname;
@@ -23,19 +23,19 @@ public class FoodDTO {
 		this.fat = fat;
 	}
 
-	public int getFoodId() {
+	public long getFoodId() {
 		return foodId;
 	}
 
-	public void setFoodId(int foodId) {
+	public void setFoodId(long foodId) {
 		this.foodId = foodId;
 	}
 
-	public int getFeedId() {
+	public long getFeedId() {
 		return feedId;
 	}
 
-	public void setFeedId(int feedId) {
+	public void setFeedId(long feedId) {
 		this.feedId = feedId;
 	}
 

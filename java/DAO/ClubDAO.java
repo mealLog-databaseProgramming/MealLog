@@ -19,7 +19,7 @@ public class ClubDAO {
 	/* 그룹 레코드 생성 */
 	public int createClub(ClubDTO club) throws SQLException {
 		String sql = "INSERT INTO CLUB (clubId, cname, goal, info, max_member, leader) " 
-			+ "VALUE(?, ?, ?, ?, ?, ?, ?)";
+			+ "VALUE(SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {club.getClubId(), club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), club.getLeader()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -57,7 +57,7 @@ public class ClubDAO {
 	}
 
 	/* 그룹 삭제 */
-	public int removeClub(String clubId) throws SQLException {
+	public int removeClub(long clubId) throws SQLException {
 		String sql = "DELETE FROM CLUB WHERE clubId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
 
@@ -78,7 +78,7 @@ public class ClubDAO {
 	/**
 	 * 특정 group 찾기
 	 */
-	public ClubDTO findClub(String clubId) throws SQLException {
+	public ClubDTO findClub(long clubId) throws SQLException {
         String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE clubId = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});	// JDBCUtil에 query문과 매개 변수 설정
 
@@ -86,7 +86,7 @@ public class ClubDAO {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						
 				ClubDTO club = new ClubDTO(
-					rs.getInt("clubId"),
+					rs.getLong("clubId"),
 					rs.getString("cname"),
 					rs.getString("goal"),
 					rs.getString("info"),
@@ -114,7 +114,7 @@ public class ClubDAO {
 			List<ClubDTO> clubList = new ArrayList<ClubDTO>();	
 			while (rs.next()) {
 				ClubDTO club = new ClubDTO(		
-					rs.getInt("clubId"),
+					rs.getLong("clubId"),
 					rs.getString("cname"),
 					rs.getString("goal"),
 					rs.getString("info"),
@@ -177,7 +177,7 @@ public class ClubDAO {
 	/* hashtag 추가 */
 	public int createHashtag(HashtagDTO hashtag) throws SQLException {
 		String sql = "INSERT INTO HASHTAG (clubId, hname) " 
-			+ "VALUE(?, ?, ?, ?, ?, ?, ?)";
+			+ "VALUE(?, ?)";
 		Object[] param = new Object[] {hashtag.getClubId(), hashtag.getHname()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -194,7 +194,7 @@ public class ClubDAO {
 		return 0;
 	}
 	
-	/* 그룹 삭제 */
+	/* hashtag 삭제 */
 	public int removeHashtag(String clubId, String hname) throws SQLException {
 		String sql = "DELETE FROM CLUB WHERE clubId = ? AND hname = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
@@ -222,7 +222,7 @@ public class ClubDAO {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						
 				HashtagDTO hashtag = new HashtagDTO(	
-					rs.getInt("clubId"),
+					rs.getLong("clubId"), 
 					rs.getString("hname"));
 				return hashtag;
 			}

@@ -38,7 +38,7 @@ body::-webkit-scrollbar-track {
 	background: #FFFFFF;
 	
 	font-size: 18px;
-	background: #ECF0E8;
+	background: #ECF0E8 !important;
 	
 	display: flex;
 	align-items: center;

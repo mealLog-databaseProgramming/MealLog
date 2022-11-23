@@ -3,36 +3,31 @@ package DTO;
 import java.sql.Date;
 
 public class FeedDTO {
-	private int userId;
-	private int feedId;
+	private long userId;
+	private long feedId;
 	private Date publishDate;
 	private String content;
 	private String photo;	// 경로로 저장
 
-	public FeedDTO() {
-		super();
-	}
-
-	public FeedDTO(int userId, int feedId, Date publishDate, String content, String photo) {
-		super();
+	
+	public FeedDTO(long userId, long feedId, Date publishDate, String content, String photo) {
 		this.userId = userId;
 		this.feedId = feedId;
 		this.publishDate = publishDate;
-		this.content = content;
 		this.photo = photo;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
-	public int getFeedId() {
+	public long getFeedId() {
 		return feedId;
 	}
-	public void setFeedId(int feedId) {
+	public void setFeedId(long feedId) {
 		this.feedId = feedId;
 	}
 

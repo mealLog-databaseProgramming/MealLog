@@ -3,7 +3,7 @@ import java.sql.Date;
 
 public class StatDTO {
 	
-	private int userId;
+	private long userId;
 	private Date date;
 	private float weight;
 	private float kcal;
@@ -13,7 +13,7 @@ public class StatDTO {
 	
 	public StatDTO() {} //기본 생성자
 	
-	public StatDTO(int userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
+	public StatDTO(long userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
 		this.userId = userId;
 		this.date = date;
 		this.weight = weight;
@@ -34,10 +34,10 @@ public class StatDTO {
 		
 	//getter & setter
 
-	public float getUserId() {
+	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 	public Date getDate() {
