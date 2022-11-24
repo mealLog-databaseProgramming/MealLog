@@ -93,6 +93,29 @@ public class UserDAO {
 		}
 		
 		
+	/**
+	 * 로그인 타입 검사
+	 */
+		public UserDTO findLoginId(String userId) throws SQLException {
+	        String sql = "Select loginType "
+		        		+ "From UserInfo "
+		        		+ "where userId=?";    
+	        Object[] param = new Object[] { userId };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						// 아이디 정보 발견
+					UserDTO user = new UserDTO();
+					return user;//test에서는 user객체 받아서 출력
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
 		/**
 		 * 이름과 이메일로 아이디 찾기
 		 */
