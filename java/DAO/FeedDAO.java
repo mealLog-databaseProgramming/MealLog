@@ -25,7 +25,7 @@ public class FeedDAO {
 	/* CREATE feed table record */
 	public int createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, userId, publishDate, content, photo) " 
-			+ "VALUE(?, ?, ?, ?, ?, ?)";
+			+ "VALUE(SEQUENCE_FEEDID.nextval, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {feed.getFeedId(), feed.getUserId(), feed.getPublishDate(), feed.getContent(), feed.getPhoto()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -64,7 +64,7 @@ public class FeedDAO {
 		/* CREATE food table record */
 	public int createFood(FoodDTO food) throws SQLException {
 		String sql = "INSERT INTO Food(foodId, fname, kcal, carb, protein, fat, feedId) " 
-		+ "VALUE(?, ?, ?, ?, ?, ?, ?)";
+		+ "VALUE(SEQUENCE_FOODID.nextval, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {food.getFoodId(), food.getFname(), food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -84,7 +84,7 @@ public class FeedDAO {
 		/* CREATE comment table record */
 	public int createComment(ReplyDTO reply) throws SQLException {
 		String sql = "INSERT INTO Reply(replyId, content, getPublishDate, feedId, userId )" 
-		+ "VALUE(?, ?, ?, ?, ?)";
+		+ "VALUE(SEQUENCE_REPLYID.nextval, ?, ?, ?, ?)";
 		Object[] param = new Object[] {reply.getReplyId(), reply.getContent(), reply.getPublishDate(), reply.getFeedId(), reply.getUserId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -104,7 +104,7 @@ public class FeedDAO {
 	/* DELETE feed table record */
 	public int removeFeed(String feedId) throws SQLException {
 		// 글이 삭제되면 댓글도 함께 삭제? 아니면 데이터는 냅두고 글만 삭제?
-		String sql = "DELETE FROM FEED WHERE feedid = ?";
+		String sql = "DELETE FROM FEED WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
 
 		try {				
@@ -192,8 +192,8 @@ public class FeedDAO {
 			ResultSet rs = jdbcUtil.executeQuery();	
 			if (rs.next()) {						
 				FeedDTO feed = new FeedDTO(
-						rs.getInt("userId"),
-						rs.getInt("feedId"),
+						rs.getLong("userId"),
+						rs.getLong("feedId"),
 						rs.getDate("publishDate"),
 						rs.getString("content"),
 						rs.getString("photo"));
@@ -219,8 +219,8 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
 			while (rs.next()) {
 				FeedDTO feed = new FeedDTO(	
-					rs.getInt("userId"),		
-					rs.getInt("feedId"),
+					rs.getLong("userId"),		
+					rs.getLong("feedId"),
 					rs.getDate("publishDate"),
 					rs.getString("content"),
 					rs.getString("photo"));	
@@ -244,7 +244,7 @@ public class FeedDAO {
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
         		   + "FROM FEED "
-        		   + "ORDER BY publishDate"
+        		   + "ORDER BY publishDate" 
         		   + "WHERE ROWNUM < 101";
 		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
 				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
@@ -255,8 +255,8 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 			while (rs.next()) {						
 				FeedDTO feed = new FeedDTO(		
-					rs.getInt("userId"),
-					rs.getInt("feedId"),
+					rs.getLong("userId"),
+					rs.getLong("feedId"),
 					rs.getDate("publishDate"),
 					rs.getString("content"),
 					rs.getString("photo"));

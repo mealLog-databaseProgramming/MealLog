@@ -38,7 +38,7 @@ body::-webkit-scrollbar-track {
 	background: #FFFFFF;
 	
 	font-size: 18px;
-	background: #ECF0E8;
+	background: #ECF0E8 !important;
 	
 	display: flex;
 	align-items: center;
@@ -200,7 +200,6 @@ body::-webkit-scrollbar-track {
 }
 @media screen and (max-width: 1000px) { 
 	body { zoom: 60%; }
-	#warnning { display: block; }
 }
 
 @media screen and (max-width: 800px) { 

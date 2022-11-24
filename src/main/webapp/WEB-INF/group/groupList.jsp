@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="resources/css/groupList.css"/>
 
+
+<div class='Content'>
 <div class="groupHeader">
 	<input type="text" placeholder="원하는 그룹을 찾아보세요" class="groupSearch">
 	<img src="resources/img/searchIcon.png" class="searchImage"alt="searchIcon">
@@ -119,6 +121,7 @@
 		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
 		<div class="groupCount">3/10</div>
 	</div>
+</div>
 </div>
 
 <jsp:include page="groupInfo.jsp"/>

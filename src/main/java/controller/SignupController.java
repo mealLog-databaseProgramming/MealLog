@@ -8,7 +8,7 @@ public class SignupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		request.setAttribute("page", "signup1.jsp");
+		request.setAttribute("page", "signup.jsp");
 		return "/main.jsp";
 	}
 

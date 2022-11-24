@@ -1,16 +1,16 @@
 package DTO;
 
 public class HashtagDTO {
-	private int clubId;
+	private long clubId;
 	private String hname;
 	
 	public HashtagDTO() {
 		super();
 	}
 	
-	public HashtagDTO(int clubId, String hname) {
-		this.setClubId(clubId);
-		this.setHname(hname);
+	public HashtagDTO(long clubId, String hname) {
+		this.clubId = clubId;
+		this.hname = hname;
 	}
 
 	public String getHname() {
@@ -21,11 +21,11 @@ public class HashtagDTO {
 		this.hname = hname;
 	}
 
-	public int getClubId() {
+	public long getClubId() {
 		return clubId;
 	}
 
-	public void setClubId(int clubId) {
+	public void setClubId(long clubId) {
 		this.clubId = clubId;
 	}
 	 

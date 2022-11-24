@@ -37,12 +37,9 @@
 			<li class='nonsel'>마이페이지</li>
 		</ul>
 	</div>
-	<div class='Content'>
-		<c:if test="${page ne null}">
-			<jsp:include page="${page}" />
-		</c:if>
-	</div>
-	<jsp:include page="warnning.jsp"/>
+	<c:if test="${page ne null}">
+		<jsp:include page="${page}" />
+	</c:if>
 </body>
 </html>
 
