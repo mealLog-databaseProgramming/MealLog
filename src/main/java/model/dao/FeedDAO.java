@@ -1,17 +1,17 @@
 // FeedDAO
 
-package DAO;
+package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.FeedDTO;
-import DTO.FoodDTO;
-import DTO.ReactDTO;
-import DTO.ReplyDTO;
-import DTO.UserDTO;
+import model.dto.FeedDTO;
+import model.dto.FoodDTO;
+import model.dto.ReactDTO;
+import model.dto.ReplyDTO;
+import model.dto.UserDTO;
 
 public class FeedDAO {
 	
@@ -102,7 +102,7 @@ public class FeedDAO {
 	}
 
 	/* DELETE feed table record */
-	public int removeFeed(String feedId) throws SQLException {
+	public int removeFeed(long feedId) throws SQLException {
 		// 글이 삭제되면 댓글도 함께 삭제? 아니면 데이터는 냅두고 글만 삭제?
 		String sql = "DELETE FROM FEED WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
@@ -141,7 +141,7 @@ public class FeedDAO {
 	}
 
 	/* DELETE comment table record */
-	public int removeReply(String replyId) throws SQLException {
+	public int removeReply(long replyId) throws SQLException {
 		String sql = "DELETE FROM REPLY WHERE replyId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
 

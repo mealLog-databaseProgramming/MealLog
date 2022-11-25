@@ -1,13 +1,13 @@
-package DAO;
+package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.BelongDTO;
-import DTO.ClubDTO;
-import DTO.HashtagDTO;
+import model.dto.BelongDTO;
+import model.dto.ClubDTO;
+import model.dto.HashtagDTO;
 
 public class ClubDAO {
 	private JDBCUtil jdbcUtil = null;

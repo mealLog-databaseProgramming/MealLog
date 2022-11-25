@@ -1,4 +1,4 @@
-package DTO;
+package model.dto;
 //eer산출법으로 계산된 값을 따로 저장하지 않아도 되는가?
 public class UserDTO {
 	
