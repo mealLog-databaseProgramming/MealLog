@@ -1,8 +1,8 @@
-package DAO;
+package model.dao;
 //1. User - create, update, remove
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import DTO.UserDTO;
+import model.dto.UserDTO;
 
 public class UserDAO {
 
@@ -72,7 +72,7 @@ public class UserDAO {
 		/**
 		 * 사용자 ID에 해당하는 사용자를 삭제.??
 		 */
-		public int delete(String userId) throws SQLException {
+		public int delete(long userId) throws SQLException {	//userId String형 -> long형으로 변경
 			String sql = "Delete From UserInfo " 
 						+ "Where userId=? ";	
 			Object[] param = new Object[] { userId };

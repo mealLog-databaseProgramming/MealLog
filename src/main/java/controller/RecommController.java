@@ -17,29 +17,29 @@ public class RecommController implements Controller {
 		request.setAttribute("page", "recomm/recomm.jsp");
 		
 		//eer 받아오기
-		UserManager userManager = UserManager.getInstance();
-		String userId = request.getParameter("userId");
-		
-		float EER = userManager.getUserEER(userId);
-		
-		if(request.getMethod().equals("GET")){
-			//아직 manager 없음
-			StatManager manager = StatManager.getInstance();
-			
-			StatDTO stat = manager.getStatToday();
-			
-			//(받은 값 / 하루 필요량) 해서 퍼센트를 구한다
-			float carbPer = stat.getCarb() / EER;
-			float proteinPer = stat.getProtein() / EER;
-			float fatPer = stat.getFat() / EER;
-			float kcal = stat.getKcal();
-			
-			//setAttribute(변수명, 퍼센트값)
-			request.setAttribute("carb", carbPer);
-			request.setAttribute("protein", proteinPer);
-			request.setAttribute("fat", fatPer);
-			request.setAttribute("kcal", kcal);
-		}
+//		UserManager userManager = UserManager.getInstance();
+//		String userId = request.getParameter("userId");
+//		
+//		float EER = userManager.getUserEER(userId);
+//		
+//		if(request.getMethod().equals("GET")){
+//			//아직 manager 없음
+//			StatManager manager = StatManager.getInstance();
+//			
+//			StatDTO stat = manager.getStatToday();
+//			
+//			//(받은 값 / 하루 필요량) 해서 퍼센트를 구한다
+//			float carbPer = stat.getCarb() / EER;
+//			float proteinPer = stat.getProtein() / EER;
+//			float fatPer = stat.getFat() / EER;
+//			float kcal = stat.getKcal();
+//			
+//			//setAttribute(변수명, 퍼센트값)
+//			request.setAttribute("carb", carbPer);
+//			request.setAttribute("protein", proteinPer);
+//			request.setAttribute("fat", fatPer);
+//			request.setAttribute("kcal", kcal);
+//		}
 		return "/index.jsp";
 	}
 	
