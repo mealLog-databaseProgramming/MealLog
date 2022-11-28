@@ -1,9 +1,9 @@
-package DAO;
+package model.dao;
 import java.sql.Date;
 //3. Stat - create, update
 import java.sql.ResultSet;//결과값 확인이 필요할 수도 있으니까
 import java.sql.SQLException;
-import DTO.StatDTO;
+import model.dto.StatDTO;
 
 public class StatDAO {
 
