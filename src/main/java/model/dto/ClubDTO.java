@@ -6,7 +6,7 @@ public class ClubDTO {
 	private String goal;
 	private String info;
 	private int max_member;
-	private int leader;
+	private int leader;//tnwjd
 	
 	public ClubDTO() {
 		super();

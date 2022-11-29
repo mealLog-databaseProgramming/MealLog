@@ -35,7 +35,7 @@ public class ClubDAO {
 		}
 		return 0;
 	}
-
+	
 	/* 그룹 가입 */
 		public int joinClup(BelongDTO belong) throws SQLException {
 		String sql = "INSERT INTO BELONG (userId, clubId, joinDate) " 
@@ -101,7 +101,28 @@ public class ClubDAO {
 		}
 		return null;
 	}
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * 그룹 이름 중복인지 검사
+	 */
+	public boolean findClub(String cname) throws SQLException {
+        String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE cname = ?";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {cname});	// JDBCUtil에 query문과 매개 변수 설정
 
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						
+				int count = rs.getInt("count");
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
+	}
+	//////////////////////////////////////////////////
 	/**
 	 * 전체 group 정보를 검색하여 List에 저장 및 반환 
 	 */
