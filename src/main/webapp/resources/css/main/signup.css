@@ -41,7 +41,7 @@
 
 }
 
-.text_input {
+#signup_form input[type="text"], #signup_form input[type="password"] {
 	width: 200px;  height: 25px;
 	transform: translate(0, -5px);
 	
@@ -50,6 +50,31 @@
 	
 	font-size: 18px;
 }
+
+#signup_form input[type="number"] {
+	height: 25px;
+	
+	border: none;
+	border-bottom: 1px solid black;	
+	
+	font-size: 18px;
+}
+
+#signup_form input[type="radio"] { 
+	font-size: 18px;
+}
+#signup_form input[type="radio"] + label{  
+
+}
+#signup_form input[type="radio"] + label:before{ 
+	content:'안녕'; 
+
+}
+#signup_form input[type="radio"]:checked + label:after{ 
+	content: '바이'; 
+}
+
+
 
 #signup_form #submit {
 	width: 380px; height: 55px;

@@ -4,21 +4,44 @@ body.setAttribute('onLoad', 'init_mypage()');
 
 function init_mypage() {
 	init();
-	var keywords = document.querySelectorAll('.wrap .stat .info .detail span');
 	
-	for(var i = 0; i < keywords.length; i++) {
-		keywords[i].setAttribute('onClick', 'keywords_select(this)');
+	var weight_update = document.querySelector('.stat .edit');
+	
+	var modal = document.querySelector('#modal');
+	weight_update.onclick = () => {
+		modal.style.display = "block";
+		body.style.overflowY = "hidden";
 	}
-}
-
-function keywords_select(e) {
-	var before = document.querySelector('.wrap .stat .info .detail .select');
 	
-	if(e != before) {
-		before.className = 'nonsel';
+	var cancel = document.querySelector('#modal .cancel');
+	cancel.onclick = () => {
+		modal.style.display = "none";
+		body.style.overflowY = "auto";
+	}
 	
-		e.className = 'select';
+	var records = document.querySelectorAll('#modal .record');
+	
+	records.forEach((item) => {
+		item.onmouseover = (e) => {
+			if(e.target.className === "record") {
+				var deleteIcon = e.target.querySelector('iconify-icon');
+				deleteIcon.style.opacity = "1";
+			}
+			
+		};
+		item.onmouseleave = (e) => {
+			if(e.target.className === "record") {
+				var deleteIcon = e.target.querySelector('iconify-icon');
+				deleteIcon.style.opacity = "0";
+			}
+		};
 		
-		chart_set();
-	}
+		var deleteIcon = item.querySelector('iconify-icon');
+		deleteIcon.onclick = (e) => {
+			if(e.target.tagName === "ICONIFY-ICON" && e.target.style.opacity === "1") {
+				var record = e.target.parentNode;
+				record.style.display = "none";
+			}
+		};
+	});
 }
