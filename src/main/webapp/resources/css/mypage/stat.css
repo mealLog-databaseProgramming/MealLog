@@ -65,6 +65,8 @@
 	
 	border: 1px solid #81B44F;
 	border-radius: 15px;
+	
+	margin: 20px;
 }
 .stat .s_box .s_header {
 	width: 100%-40px;

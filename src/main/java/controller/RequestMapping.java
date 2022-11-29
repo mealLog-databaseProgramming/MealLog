@@ -13,6 +13,9 @@ public class RequestMapping {
     	mappings.put("/group", new GroupController());
     	mappings.put("/mypage", new MypageController());
     	
+    	mappings.put("/infoupdate", new UserInfoUpdateController());
+    	mappings.put("/statupdate", new UserStatUpdateController());
+    	
     	mappings.put("/login", new LoginController());
     	mappings.put("/signup", new SignupController());
     }

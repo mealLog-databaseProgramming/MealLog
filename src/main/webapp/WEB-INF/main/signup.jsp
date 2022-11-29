@@ -2,26 +2,31 @@
 
 <link rel="stylesheet" href="/resources/css/main/signup.css"/>
 
+<!-- 
+1. 이메일 추가
+2. 중복 확인 버튼 추가 ..? 이건 어떻게 할지?? -> 알아봐야 힘
+ -->
+
 <div id="move_login" onclick="location.href='/login'">${ "< 로그인" }</div>
 <div class="signup" align="center">
 	<div class="title">회원 가입</div>
 	<form id="signup_form" method="post">
 		<div class="input">
 			<div class="label">아이디</div>
-			<input class="text_input" type="text" name="id" placeholder="입력하세요"></input>
+			<input type="text" name="id" placeholder="입력"></input>
 		</div>
 		<div class="input">
 			<div class="label">비밀번호</div>
-			<input class="text_input" type="password" name="password" placeholder="입력하세요"></input>
+			<input type="password" name="password" placeholder="입력"></input>
 		</div>
 		<div class="input">
 			<div class="label">비밀번호 확인</div>
-			<input class="text_input" type="password" name="password_confirm" placeholder="입력하세요"></input>
+			<input type="password" name="password_confirm" placeholder="입력"></input>
 		</div>
 		<hr/>
 		<div class="input">
 			<div class="label">닉네임</div>
-			<input class="text_input" type="text" name="nickname" placeholder="입력하세요"></input>
+			<input type="text" name="nickname" placeholder="입력"></input>
 		</div>
 		<div class="input">
 			<div class="label">성별</div>
@@ -30,14 +35,17 @@
 		</div>
 		<div class="input">
 			<div class="label">몸무게</div>
-			<input type="text" name="weight"  placeholder="입력하세요"></input>
+			<input type="number" min='0' max="300" name="weight"  placeholder="입력"></input>
 		</div>
 		<div class="input">
 			<div class="label">활동량</div>
+			<div class="pa_input">
 			<input type="radio" name="activeRank" value="1"></input>
 			<input type="radio" name="activeRank" value="2"></input>
+			<br>
 			<input type="radio" name="activeRank" value="3"></input>
 			<input type="radio" name="activeRank" value="4"></input>
+			</div>
 		</div>
 		<input id="submit" type="submit" value="회원 가입"></input>
 	</form>
