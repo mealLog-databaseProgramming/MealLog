@@ -6,11 +6,11 @@ const stat = new Chart(chart, {
         datasets: [{
 			axis: 'y',
             label: '하루 섭취량',
-            data: [75, 100, 30, 45],
+            data: [25, 100, 30, 45],
             backgroundColor: '#A7E074',
-            borderColor: '#000000',
-            borderWidth: 1,
-		    borderRadius: 50,
+            borderColor: '#A7E074',
+            borderWidth: 0,
+		   
 		    borderSkipped: false,
         }]
     },
@@ -26,7 +26,8 @@ const stat = new Chart(chart, {
 					beginAtZero : true, // 0부터 시작하게 합니다.
 				}
 			} ]
-		}
+		},
+		barRadius: 4,
     }
 });
 

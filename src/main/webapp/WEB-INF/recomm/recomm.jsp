@@ -20,11 +20,11 @@
 	<div class="topDiv">
 		<div class="graphContainer">
 			<div class="graphComment">
-				사용자 님, <%=userId%>
+				사용자 님,
 				<br>
-				단백질이 부족하네요, EER은 <%=EER %>
+				단백질이 부족하네요
 			</div>
-			<canvas id="graph" width="600" height="200"></canvas>
+			<canvas id="graph" width="600" height="200"></canvas> 
 		</div>
 		
 		
@@ -33,7 +33,6 @@
 		<div></div>
 		
 		<div class="recommContainer">
-			<input type="text"><input type="button" value="ok" id="submitBtn">
 			<span class="recommTitle">오늘의 추천메뉴</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
 			  	<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -56,6 +55,44 @@
 	
 	<p class="cardTitle">오늘의 음식기록</p>
 	<div class="cardContainer">
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
+		</div>
+		<div class="flip">  
+		  <div class="card">
+		    <!-- 앞면 -->
+		    <div class="front">
+		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+			  	<div class="date">
+			    	2022-12-12 pm 6:50
+			  	</div>
+		    </div>
+		    <!-- 뒷면 -->
+		    <div class="back">
+		    	<div class="backContainer">
+			    	<ul>
+			    		<li>닭가슴살 샐러드 261kcal</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		  </div>
+		</div>
 		<div class="flip">  
 		  <div class="card">
 		    <!-- 앞면 -->

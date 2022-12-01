@@ -71,9 +71,9 @@
 								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 							</svg>
 							<div class="commentText">
-								<span class="commentWriter">류승연</span>
-								<span class="commentTime">10초전</span>
-								<div class="comment">나도 먹고싶다</div>
+								<span class="commentWriter">김민정</span>
+								<span class="commentTime">10분전</span>
+								<div class="comment">사진 예쁘다</div>
 							</div>
 						</div>
 						<div class="commentContainer">
@@ -82,20 +82,20 @@
 								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 							</svg>
 							<div class="commentText">
-								<span class="commentWriter">류승연</span>
-								<span class="commentTime">1분전</span>
-								<div class="comment">나도 먹고싶다</div>
-							</div>
-						</div>
-						<div class="commentContainer">
-							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-							</svg>
-							<div class="commentText">
-								<span class="commentWriter">류승연</span>
+								<span class="commentWriter">허지예</span>
 								<span class="commentTime">1시간전</span>
-								<div class="comment">나도 먹고싶다</div>
+								<div class="comment">오 샐러드</div>
+							</div>
+						</div>
+						<div class="commentContainer">
+							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+							</svg>
+							<div class="commentText">
+								<span class="commentWriter">전유영</span>
+								<span class="commentTime">5시간전</span>
+								<div class="comment">와 나도 줘라</div>
 							</div>
 						</div>
 					</div>
