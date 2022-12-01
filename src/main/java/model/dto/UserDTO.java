@@ -2,7 +2,7 @@ package model.dto;
 //eer산출법으로 계산된 값을 따로 저장하지 않아도 되는가?
 public class UserDTO {
 	
-	private long userId;
+	private long userId; //pk
 	private String name;
 	private String introduce;
 	private int age;
@@ -10,20 +10,27 @@ public class UserDTO {
 	private float height;
 	private float weight;
 	private float activeRank;//신체활동수준(권장 칼로리 계산용)
-	private String loginId;
+	private String loginId;//본인 지정 아이디 or 카카오 아이디
 	private String password;
 	private String emailAddress;
 	private String profile;
+	private String loginType; //카카오인지 일반인지를 구분
+	//프로필이랑 소개빼고 당 립력
 	
 	
 	// uid로 이름 찾기
-	public UserDTO(long userId) {
+	public UserDTO(int userId) {
 		this.userId = userId;
 	} 
 	
 	//기본 생성자	
+	public UserDTO() {
+	
+	} 
+	
 	public UserDTO(long userId, String name, String introduce, int age, int gender, float height
-			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile) {
+			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile
+			, String loginType) {
 		this.userId = userId;
 		this.name = name;
 		this.introduce = introduce;
@@ -35,6 +42,7 @@ public class UserDTO {
 		this.loginId = loginId;
 		this.emailAddress = emailAddress;
 		this.profile = profile;
+		this.loginType = loginType;
 	}
 	//아이디 찾기용
 	public UserDTO(String name, String loginId) {
@@ -133,6 +141,14 @@ public class UserDTO {
 	}
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public String getLoginType() {
+		return loginType;
+	}
+
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
 	}
 	
 	

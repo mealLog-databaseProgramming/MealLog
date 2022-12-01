@@ -16,16 +16,16 @@ public class UserDAO {
 		}
 		
 		/*
-		 * 새로운 사용자 추가
+		 * 새로운 사용자 추가-프로필/정보 제외
 		 */
 		public int insert(UserDTO user) throws SQLException {
-			String sql = "Insert Into UserInfo(userId, name, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress, profile) "
-					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+			String sql = "Insert Into UserInfo(userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
+					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";		
 			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
-					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
+					user.getAge(), user.getGender(), user.getHeight()
 					,user.getWeight(), user.getActiveRank()
-					, user.getLoginId(), user.getPassword(), user.getEmailAddress(), user.getProfile()};				
+					, user.getLoginId(), user.getPassword(), user.getEmailAddress()};				
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 							
 			try {				
@@ -93,6 +93,79 @@ public class UserDAO {
 		}
 		
 		
+	/**
+	 * 로그인 타입 검사->굳이 반환 타입을 할 필요가 있을까?
+	 */
+		public UserDTO findLoginId(String userId) throws SQLException {
+	        String sql = "Select loginType "
+		        		+ "From UserInfo "
+		        		+ "where userId=?";    
+	        Object[] param = new Object[] { userId };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						// 아이디 정보 발견
+					UserDTO user = new UserDTO();
+					return user;//test에서는 user객체 받아서 출력
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+		//지예
+		/**
+		 * userId로 유저 찾기
+		 */
+		public UserDTO findUser(long userId) {
+			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+		        		+ "From UserInfo "
+		        		+ "where loginId = ? ";    
+	        Object[] param = new Object[] { userId };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+	
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						// 아이디 정보 발견
+					UserDTO user = new UserDTO();//생성자 매개변수 물어보기
+					return user;//test에서는 user객체 받아서 출력
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+		
+		/**
+		 * loginId로 유저 찾기 	
+		 */
+		public UserDTO findUser(String loginId) {
+			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+	        		+ "From UserInfo "
+	        		+ "where loginId = ? ";    
+	        Object[] param = new Object[] { loginId };
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
+	
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						// 아이디 정보 발견
+					UserDTO user = new UserDTO();//생성자 매개변수 물어보기
+					return user;//test에서는 user객체 받아서 출력
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+			}
+
+
 		/**
 		 * 이름과 이메일로 아이디 찾기
 		 */

@@ -6,13 +6,13 @@ public class ClubDTO {
 	private String goal;
 	private String info;
 	private int max_member;
-	private int leader;
+	private long leader;//tnwjd
 	
 	public ClubDTO() {
 		super();
 	}
 	
-	public ClubDTO(long clubId, String cname, String goal, String info, int max_member, int leader) {
+	public ClubDTO(long clubId, String cname, String goal, String info, int max_member, long leader) {
 		this.clubId = clubId;
 		this.cname = cname;
 		this.goal = goal;
@@ -61,11 +61,11 @@ public class ClubDTO {
 		this.max_member = max_member;
 	}
 
-	public int getLeader() {
+	public long getLeader() {
 		return leader;
 	}
 
-	public void setLeader(int leader) {
+	public void setLeader(long leader) {
 		this.leader = leader;
 	}
 
