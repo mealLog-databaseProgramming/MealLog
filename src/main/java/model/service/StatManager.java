@@ -1,6 +1,8 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import model.dao.StatDAO;
@@ -9,6 +11,7 @@ import model.dto.StatDTO;
 public class StatManager {
 	private static StatManager statMan = new StatManager();
 	private StatDAO statDAO;
+	LocalDate today = LocalDate.now();
 	
 	private StatManager() {
 		try {
@@ -18,7 +21,7 @@ public class StatManager {
 		}			
 	}
 
-	public StatManager getInstance() {
+	public static StatManager getInstance() {
 		return statMan;
 	}
 
@@ -43,5 +46,20 @@ public class StatManager {
 		
 //		return StatDAO.read();	//메소드 없음
 //	}
-
+	
+	/* mypageController */
+	public List<StatDTO> readNutri(long userId) {
+		// Nutri 정보가 있는 stat만 모아서 return
+		return statDAO.nutriStatList(userId);
+	}
+	public List<StatDTO> readWeight(long userId) {
+		// weight 정보가 있는 stat만 모아서 return
+		return statDAO.weightStatList(userId);
+	}
+	
+	/* UserStatUpdateController */
+	public void addWeightStat(long userId, Date date, float weight) {
+		// (userID, date)가 기본 키인 레코드가 있으면 해당 레코드에 업데이트
+		// 없으면 새로 만듦
+	} 
 }

@@ -34,7 +34,7 @@ public class FeedDTO {
 	public Date getPublishDate() {
 		return publishDate;
 	}
-	public void setPulishDate(Date publishDate) {
+	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
 

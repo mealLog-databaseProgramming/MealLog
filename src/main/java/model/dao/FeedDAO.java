@@ -182,7 +182,7 @@ public class FeedDAO {
 	/* 주어진 feedId에 해당하는 feed 정보를 DB에서 찾아 feed 도메인 클래스에 저장하여 반환
 	 * -> 상세 페이지 출력 때 이용
 	 */
-	public FeedDTO findFeed(String feedId) throws SQLException {
+	public FeedDTO findFeed(long feedId) throws SQLException {
         String sql = "SELECT userId, publishDate, content, photo "
         			+ "FROM feed "
         			+ "WHERE feedId = ?";
