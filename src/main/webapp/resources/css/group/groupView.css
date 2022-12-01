@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+#groupView {
+	width: 530px; height: 240px;
+	background: #FFFFFF;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	
+	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 15px;
+    color: rgba(0,0,0,.75);
+    zoom: 95%;
+}
+#groupView > div {
+	margin: 7px 10px;
+}
+#groupView .title {
+	font-size: 28px;
+	font-weight: 600;
+}
+#groupView .goal {
+	font-size: 20px;
+	font-weight: 500;
+}
+#groupView .hashtags {
+	display: flex;
+	flex-wrap: wrap;
+}
+#groupView .hashtags > div {
+	background: #81B44F;
+	border-radius: 50px;
+	padding: 5px 15px;
+	margin: 3px;
+
+	font-weight: 300;
+	font-size: 16px;
+	
+	color: #FFFFFF;
+}
+#groupView .hashtags > div:hover {
+	scale: 1.1;
+}
+#groupView .hashtags .more_hastags {
+	color: #81B44F;
+	font-size: 32px;
+	margin: 2px;
+	
+	transform: translate(0, 4px);
+}
+#groupView .line {
+	width: 2px;
+	height: 180px;
+	background-color: #e9e9e9;
+	margin: 10px;
+}
+#groupView .groupImage {
+	color: #547A1D;
+	font-size: 100px;
+	
+	margin: 0px 20px;
+}
+#groupView .groupCount {
+	background: rgba(0, 0, 0, .05);
+	border-radius: 50px;
+	padding: 5px 10px;
+	margin: 3px;
+
+	font-weight: 400;
+	font-size: 18px;
+	text-align: center;
+}
+
+#groupView:hover {
+	scale: 1.05;
+}

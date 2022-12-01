@@ -14,7 +14,7 @@
 
 <body onload='init()'>
 	<div class='Header'>
-		<div class='title'>
+		<div class='title' onclick="location.href='/'">
 			<div class='yolk'></div>
 			<iconify-icon icon="fluent:food-egg-24-regular"></iconify-icon>
 			Meal:<span>Log</span>
@@ -22,12 +22,11 @@
 		<div class='greet'>
 			<iconify-icon icon="healthicons:ui-user-profile"></iconify-icon>
 			박솜솜님, 식사 맛있게 하셨나요? 식단을 그룹원들에게 공유해보세요
-			<div class='logout'>
+			<div class='logout' onclick="location.href='/login'">
 				<iconify-icon icon="icon-park:logout"></iconify-icon>
 				로그아웃
 			</div>
 		</div>
-		
 	</div>
 	<div class='Nav'>
 		<ul>
