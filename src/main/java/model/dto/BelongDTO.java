@@ -10,7 +10,10 @@ public class BelongDTO {
 	public BelongDTO() {
 		super();
 	}
-	
+	public BelongDTO(long userId, long clubId) {
+		this.userId = userId;
+		this.clubId = clubId;
+	}//아 이거 생성자 메소드 조건 있었는데
 	public BelongDTO(long userId, long clubId, Date joinDate) {
 		this.userId = userId;
 		this.clubId = clubId;

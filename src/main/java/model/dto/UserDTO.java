@@ -15,7 +15,7 @@ public class UserDTO {
 	private String emailAddress;
 	private String profile;
 	private String loginType; //카카오인지 일반인지를 구분
-	
+	//프로필이랑 소개빼고 당 립력
 	
 	
 	// uid로 이름 찾기

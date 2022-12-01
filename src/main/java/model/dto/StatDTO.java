@@ -13,6 +13,18 @@ public class StatDTO {
 	
 	public StatDTO() {} //기본 생성자
 	
+	//weightStatList용
+	public StatDTO(float weight) {
+		this.weight = weight;
+	}
+	//nutriStatList용
+	public StatDTO(float kcal, float carb, float protein, float fat) {
+		this.kcal = kcal;
+		this.carb = carb;
+		this.protein = protein;
+		this.fat = fat;
+	}
+	
 	public StatDTO(long userId, Date date, float weight, float kcal, float carb, float protein, float fat) {
 		this.userId = userId;
 		this.date = date;
