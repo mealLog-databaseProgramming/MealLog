@@ -14,6 +14,7 @@ public class FeedDTO {
 		this.userId = userId;
 		this.feedId = feedId;
 		this.publishDate = publishDate;
+		this.content = content;
 		this.photo = photo;
 	}
 

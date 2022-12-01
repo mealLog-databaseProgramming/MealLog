@@ -17,23 +17,13 @@
 		</button>
 		<hr>
 	</div>
-	<!-- test -->
-	<!--<c:forEach var="feed" items="${feedList}">
-		<tr>
-			<td class="commCell">			
-				<a href="<c:url value='/community/view'>
-							<c:param name='commId' value='${feed.userid}'/>
-						</c:url>">
-				  ${feed.feedid}</a>
-			  </td>
-			  <td class="commCell">
-				  ${feed.content}
-			  </td>
-			  <td class="commCell">
-				  ${feed.photo}
-			</td>
-		</tr>
-	</c:forEach>-->
+	<!-- test! -->
+	<c:forEach var="feed" items="${feedList}">
+
+		<span>${feed.feedId}</span>
+		<div>${feed.content}</div>
+		<div>${feed.photo}</div>
+	</c:forEach>
 	<div class="postContainer">
 		<div class="profileIcon">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
