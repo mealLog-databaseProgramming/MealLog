@@ -209,10 +209,13 @@ public class FeedDAO {
 	}
 
 	/*
-	 * 전체 feed 정보를 검색하여 List에 저장 및 반환 -> Home 에서 이용
+	 * 최신 100개의 피드
 	 */
 	public List<FeedDTO> findFeedList() throws SQLException {
-        String sql = "SELECT feedId, userId, publishDate, content, photo, FROM FEED ORDER BY publishDate";
+        String sql = "SELECT feedId, userId, publishDate, content, photo " 
+     		   + "FROM FEED "
+     		   + "ORDER BY publishDate" 
+     		   + "WHERE ROWNUM < 101";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
 		try {
@@ -238,9 +241,7 @@ public class FeedDAO {
 	}
 	
 	/*
-	 * 전체 사용자 정보를 검색한 후 현재 페이지와 페이지당 출력할 사용자 수를 이용하여
-	 * 해당하는 사용자 정보만을 List에 저장하여 반환. -> 이용하여 홈에서 100개의 피드만 출력
-	 * 교수님은 페이지를 하셨는데 우리는 정확한 페이지가 없으므로 상위 100개..?
+	 * 일단 교수님거 복붙, 페이지 이용
 	 */
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
