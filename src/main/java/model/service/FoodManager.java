@@ -36,6 +36,6 @@ public class FoodManager {
 	}
 
 	public List<FoodDTO> findFoodList(long feedId) throws SQLException {
-		return feedDAO.findFoodList(feedId);
+		return feedDAO.findFoodList(feedId); 
 	}
 }

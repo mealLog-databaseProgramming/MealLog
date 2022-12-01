@@ -178,7 +178,7 @@ public class FeedDAO {
 			jdbcUtil.close();	// resource 반환
 		}		
 		return 0;
-	}
+	} 
 
 	/* 주어진 feedId에 해당하는 feed 정보를 DB에서 찾아 feed 도메인 클래스에 저장하여 반환
 	 * -> 상세 페이지 출력 때 이용

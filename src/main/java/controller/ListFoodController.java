@@ -18,5 +18,5 @@ public class ListFoodController implements Controller {
 		request.setAttribute("foodList", foodList);
 		return "/home.jsp";
 	}
-
+ 
 }

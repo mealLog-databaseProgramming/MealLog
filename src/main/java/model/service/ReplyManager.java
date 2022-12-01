@@ -24,7 +24,7 @@ public class ReplyManager {
 			e.printStackTrace();
 		}			
 	}
-
+  
 	public ReplyManager getInstance() {
 		return replyMan;
 	}
