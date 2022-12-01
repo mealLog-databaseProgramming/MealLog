@@ -2,6 +2,7 @@
 
 package model.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class FeedDAO {
 
 	
 	/* DELETE food table record */
-	public int removeFood(String foodId) throws SQLException {
+	public int removeFood(long foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {foodId});
 
@@ -182,7 +183,7 @@ public class FeedDAO {
 	/* 주어진 feedId에 해당하는 feed 정보를 DB에서 찾아 feed 도메인 클래스에 저장하여 반환
 	 * -> 상세 페이지 출력 때 이용
 	 */
-	public FeedDTO findFeed(String feedId) throws SQLException {
+	public FeedDTO findFeed(long feedId) throws SQLException {
         String sql = "SELECT userId, publishDate, content, photo "
         			+ "FROM feed "
         			+ "WHERE feedId = ?";
@@ -324,5 +325,87 @@ public class FeedDAO {
 		} 
 		return null;
 	}
+	
+	// uid로 개인 피드 보여주기
+	public List<FeedDTO> findFeedListbyUser(long userId) throws SQLException {
+        String sql = "SELECT feedId, userId, publishDate, content, photo FROM FEED WHERE userid = ? ORDER BY publishDate";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();	
+			List<FeedDTO> feedList = new ArrayList<FeedDTO>();
+			while (rs.next()) {						
+				FeedDTO feed = new FeedDTO(		
+					rs.getLong("userId"),
+					rs.getLong("feedId"),
+					rs.getDate("publishDate"),
+					rs.getString("content"),
+					rs.getString("photo"));
+				feedList.add(feed);
+			}
+			return feedList;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+	
+	// reply list
+	public List<ReplyDTO> replyList(long feedId) throws SQLException {
+        String sql = "SELECT content, feedId, publishDate, replyId, userId FROM Reply WHERE feedId = ? ORDER BY publishDate";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});		// JDBCUtil에 query문 설정
+					
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();				
+			List<ReplyDTO> replyList = new ArrayList<ReplyDTO>();	
+			while (rs.next()) {
+				ReplyDTO reply = new ReplyDTO(	
+					rs.getLong("replyId"),		
+					rs.getString("content"),
+					rs.getDate("publishDate"),
+					rs.getLong("feedId"),
+					rs.getLong("userId"));	
+				replyList.add(reply);				
+			}		
+			return replyList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+
+	// findFoodList 추가
+	public List<FoodDTO> findFoodList(long feedId) throws SQLException {
+        String sql = "SELECT foodId, feedId, fname, kcal, carb, protein, fat FROM FOOD WHERE feedid = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();	
+			List<FoodDTO> foodList = new ArrayList<FoodDTO>();
+			while (rs.next()) {						
+				FoodDTO food = new FoodDTO(		
+					rs.getLong("foodId"),
+					rs.getLong("feedId"),
+					rs.getString("fname"),
+					rs.getFloat("kcal"),
+					rs.getFloat("carb"),
+					rs.getFloat("protein"),
+					rs.getFloat("fat"));
+				foodList.add(food);
+			}
+			return foodList;
+		} catch (Exception ex) { 
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+	
 }
 

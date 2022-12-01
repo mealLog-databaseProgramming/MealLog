@@ -3,8 +3,8 @@ package controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.StatDTO;
-import DTO.UserDTO;
+import model.dto.StatDTO;
+import model.dto.UserDTO;
 
 public class RecommController implements Controller {
 
