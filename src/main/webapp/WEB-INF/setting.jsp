@@ -21,3 +21,9 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/resources/favicon//ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+
+<!-- tagify -->
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+
+<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />

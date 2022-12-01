@@ -1,130 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="resources/css/groupList.css"/>
+<script defer type="text/javascript" src="/resources/js/group/groupEvents.js"></script> 
+<link rel="stylesheet" href="resources/css/group/groupList.css"/>
+
 
 
 <div class='Content'>
-<div class="groupHeader">
-	<input type="text" placeholder="¿øÇÏ´Â ±×·ìÀ» Ã£¾Æº¸¼¼¿ä" class="groupSearch">
-	<img src="resources/img/searchIcon.png" class="searchImage"alt="searchIcon">
-	
-	<div id="makeNewGroup" class="newGroup" >»õ±×·ì ¸¸µé±â</div>
-</div>
-
-<div class="groupList_f">
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
+	<div class="groupHeader">
+		<input type="text" placeholder="ì›í•˜ëŠ” ê·¸ë£¹ì„ ì°¾ì•„ë³´ì„¸ìš”" class="groupSearch">
+		<iconify-icon class="searchIcon" icon="mingcute:search-line"></iconify-icon>
+		<div id="newGroup_button">ìƒˆê·¸ë£¹ ë§Œë“¤ê¸°</div>
 	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
-	</div>
-	<div id="groupInfo" class="groupList">
-		<div class="groupTitle">ÀÛ½É 3´Þ</div><p>
-		<span class="groupText">±×·ì ¸ñÇ¥</span><p>
-		<div class="">½Ä´Ü ÃÊº¸ÀÇ 3´Þ µµÀü±â</div><p>
-		<div class="groupHashtag">#½Ä´Ü #´Ü±â #´ÙÀÌ¾îÆ®</div>
-		
-		<span class="Line"></span>
-
-		<span class="groupNum">ÀÎ¿ø</span>
-		<img src="resources/img/groupIcon.png" class="groupImage"alt="GroupIcon">
-		<div class="groupCount">3/10</div>
+	<span class="line"></span>
+	<div class="groupList_f">
+		<c:forEach begin="1" end="10" varStatus="loop">
+			<jsp:include page="groupView.jsp"/>
+		</c:forEach>
 	</div>
 </div>
-</div>
 
-<jsp:include page="groupInfo.jsp"/>
-<jsp:include page="newGroup.jsp"/>
-
-<script defer type="text/javascript" src="/resources/js/group/groupEvents.js"></script> 
+<jsp:include page="modal/groupInfo.jsp"></jsp:include>
+<jsp:include page="modal/groupCreate.jsp"></jsp:include>
+<jsp:include page="modal/groupUpdate.jsp"></jsp:include>
