@@ -23,7 +23,7 @@ public class FeedDAO {
 	}
 
 
-	/* CREATE feed table record */
+	// 피드 추가
 	public int createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, userId, publishDate, content, photo) " 
 			+ "VALUE(SEQUENCE_FEEDID.nextval, ?, ?, ?, ?, ?)";
@@ -43,7 +43,7 @@ public class FeedDAO {
 		return 0;
 	}
 
-	/* CREATE react table record */
+	// 반응 추가
 	public int createReact(ReactDTO react) throws SQLException {
 		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUE(?, ?, ?)";
 		Object[] param = new Object[] {react.getFeedId(), react.getUserId()};
@@ -62,7 +62,7 @@ public class FeedDAO {
 		return 0;
 	}
 
-		/* CREATE food table record */
+	// 피드 음식 추가
 	public int createFood(FoodDTO food) throws SQLException {
 		String sql = "INSERT INTO Food(foodId, fname, kcal, carb, protein, fat, feedId) " 
 		+ "VALUE(SEQUENCE_FOODID.nextval, ?, ?, ?, ?, ?, ?)";
@@ -82,7 +82,7 @@ public class FeedDAO {
 		return 0;
 	}
 
-		/* CREATE comment table record */
+	// 댓글 추가
 	public int createComment(ReplyDTO reply) throws SQLException {
 		String sql = "INSERT INTO Reply(replyId, content, getPublishDate, feedId, userId )" 
 		+ "VALUE(SEQUENCE_REPLYID.nextval, ?, ?, ?, ?)";
@@ -102,9 +102,8 @@ public class FeedDAO {
 		return 0;
 	}
 
-	/* DELETE feed table record */
+	// 피드 삭제 (+댓글도 삭제되도록 추가 수정 필요)
 	public int removeFeed(long feedId) throws SQLException {
-		// 글이 삭제되면 댓글도 함께 삭제? 아니면 데이터는 냅두고 글만 삭제?
 		String sql = "DELETE FROM FEED WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
 
@@ -122,7 +121,7 @@ public class FeedDAO {
 		return 0;
 	}
 
-	/* DELETE react table record */
+	// 반응 삭제
 	public int removeReact(String feedId, String userId) throws SQLException {
 		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
@@ -141,7 +140,7 @@ public class FeedDAO {
 		return 0;
 	}
 
-	/* DELETE comment table record */
+	// 댓글 삭제
 	public int removeReply(long replyId) throws SQLException {
 		String sql = "DELETE FROM REPLY WHERE replyId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
@@ -161,7 +160,7 @@ public class FeedDAO {
 	}
 
 	
-	/* DELETE food table record */
+	// 피드 음식 삭제
 	public int removeFood(long foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {foodId});
@@ -180,9 +179,7 @@ public class FeedDAO {
 		return 0;
 	} 
 
-	/* 주어진 feedId에 해당하는 feed 정보를 DB에서 찾아 feed 도메인 클래스에 저장하여 반환
-	 * -> 상세 페이지 출력 때 이용
-	 */
+	// 특정 피드 출력
 	public FeedDTO findFeed(long feedId) throws SQLException {
         String sql = "SELECT userId, publishDate, content, photo "
         			+ "FROM feed "
@@ -208,9 +205,7 @@ public class FeedDAO {
 		return null;
 	}
 
-	/*
-	 * 최신 100개의 피드
-	 */
+	// 최신 100개의 피드 리스트
 	public List<FeedDTO> findFeedList() throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
      		   + "FROM FEED "
@@ -240,9 +235,7 @@ public class FeedDAO {
 		return null;
 	}
 	
-	/*
-	 * 일단 교수님거 복붙, 페이지 이용
-	 */
+	// 페이지를 이용해 최신 100개의 피드(일단 교수님거 복붙)
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
         		   + "FROM FEED "
@@ -273,6 +266,7 @@ public class FeedDAO {
 		return null;
 	}
 
+	// 긍정적 반응 수
 	public int countPositiveReact(ReactDTO react) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'P\'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
@@ -288,6 +282,7 @@ public class FeedDAO {
 		return 0;
 	}
 
+	// 부정적 반응 수
 	public int countNegativeReact(ReactDTO react) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'N\'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
@@ -327,7 +322,7 @@ public class FeedDAO {
 		return null;
 	}
 	
-	// uid로 개인 피드 보여주기
+	// 유저의 피드 리스트
 	public List<FeedDTO> findFeedListbyUser(long userId) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo FROM FEED WHERE userid = ? ORDER BY publishDate";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -353,7 +348,7 @@ public class FeedDAO {
 		return null;
 	}
 	
-	// reply list
+	// 피드 별 전체 댓글
 	public List<ReplyDTO> replyList(long feedId) throws SQLException {
         String sql = "SELECT content, feedId, publishDate, replyId, userId FROM Reply WHERE feedId = ? ORDER BY publishDate";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});		// JDBCUtil에 query문 설정
@@ -380,7 +375,7 @@ public class FeedDAO {
 		return null;
 	}
 
-	// findFoodList 추가
+	// 피드별 전체 푸드 리스트
 	public List<FoodDTO> findFoodList(long feedId) throws SQLException {
         String sql = "SELECT foodId, feedId, fname, kcal, carb, protein, fat FROM FOOD WHERE feedid = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
