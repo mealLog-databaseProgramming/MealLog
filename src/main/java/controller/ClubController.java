@@ -23,6 +23,8 @@ public class ClubController implements Controller {
 //	leaveClub
 //	findClubByName
 //	findClubByHashtag
+	
+	//관리자
 	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
 			
 	Date time = new Date();
@@ -37,9 +39,9 @@ public class ClubController implements Controller {
 		List<ClubDTO> clubList = manager.findClubList();
         
 		request.setAttribute(("clubList"), clubList);
-			
-		return "group/groupList.jsp";
-	        
+		
+		request.setAttribute("page", "group/groupList.jsp");
+		return "/index.jsp";
 	}//완
 
 
