@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 			    <div class="modal-content">
 			      <div class="modal-header">

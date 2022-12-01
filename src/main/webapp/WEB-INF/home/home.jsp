@@ -12,18 +12,18 @@
 <body>
 <div class='Content'>
 	<div class="topDiv">
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
 			글 작성하기
 		</button>
 		<hr>
 	</div>
 	<!-- test! -->
-	<c:forEach var="feed" items="${feedList}">
+	<!--<c:forEach var="feed" items="${feedList}">
 
 		<span>${feed.feedId}</span>
 		<div>${feed.content}</div>
 		<div>${feed.photo}</div>
-	</c:forEach>
+	</c:forEach>-->
 	<div class="postContainer">
 		<div class="profileIcon">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -244,6 +244,8 @@
 		</div>
 	</div>
 </div>
+
+<
 <jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
 <jsp:include page="/WEB-INF/home/commentModal.jsp"/>
 <jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
