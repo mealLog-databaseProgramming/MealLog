@@ -96,7 +96,7 @@ private JDBCUtil jdbcUtil = null;
 	// weight 정보가 있는 stat만 모아서 return
 	public List<StatDTO> weightStatList(long userId) throws SQLException {
 		String sql = "SELECT weight "
-        		+ " FROM stat"
+        		+ " FROM stat "
         		+ "WHERE userId = ?";
         Object[] param = new Object[] {userId};
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
