@@ -20,3 +20,9 @@
         }
     });
 }(jQuery));
+
+const submitBtn = document.getElementById('submitBtn');
+//여기 이어서
+function submitIngredient() {
+	console.log("sdds");
+}
