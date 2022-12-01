@@ -1,6 +1,13 @@
+/*
+ * 네이버지도api -> 주소가입, qr 결제, 구글 api 이용하여 이미지 텍스트 인식
+ * 
+ * */
+
 package model.service;
 
 import java.sql.SQLException;
+
+import java.util.List;
 
 import model.dao.FeedDAO;
 import model.dto.FeedDTO;
@@ -23,7 +30,6 @@ public class ReplyManager {
 	}
 
 	public int create(ReplyDTO reply) throws SQLException {
-
 		return FeedDAO.createComment(reply);
 	}
 
@@ -34,9 +40,9 @@ public class ReplyManager {
 		return FeedDAO.removeReply(reply.getReplyId());
 	}
 	
-	public int display(FeedDTO feed) throws SQLException {
-		
-//		return FeedDAO.모든 댓글 리스트 반환하는 dao 메소드 필요
-		return 0;//임시 리턴값, 나중에는 List형 리턴으로 수정 필요
+	public List<ReplyDTO> display(long feedId) throws SQLException {
+		return FeedDAO.replyList(feedId);
 	}
+	
+	
 }
