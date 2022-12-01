@@ -6,11 +6,9 @@ import java.time.LocalDate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dto.FoodDTO;
 import model.dto.StatDTO;
 import model.dto.UserDTO;
 
-//import model.service.UserManager;
 import model.service.RecommandManager;
 import model.service.StatManager;
 
