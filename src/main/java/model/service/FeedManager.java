@@ -3,7 +3,6 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.dao.JDBCUtil;
 import model.dao.FeedDAO;
 import model.dto.FeedDTO;
 
@@ -11,7 +10,7 @@ public class FeedManager {
 	private static FeedManager FeedMan = new FeedManager();
 	private FeedDAO feedDAO;
 	
-	private FeedManager() {
+	public FeedManager() {
 		try {
 			feedDAO = new FeedDAO();
 		} catch (Exception e) {
@@ -54,11 +53,6 @@ public class FeedManager {
 
 	public List<FeedDTO> read() throws SQLException {
 		List<FeedDTO> feedList = feedDAO.findFeedList();
-		
-		//여기서 100개 자르기
-		if (feedList.size() > 101) {
-			feedList.subList(0, 101);
-		}
 		 
 		return feedList;
 	}
