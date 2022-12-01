@@ -48,11 +48,11 @@ public class StatManager {
 //	}
 	
 	/* mypageController */
-	public List<StatDTO> readNutri(long userId) {
+	public List<StatDTO> readNutri(long userId) throws SQLException {
 		// Nutri 정보가 있는 stat만 모아서 return
 		return statDAO.nutriStatList(userId);
 	}
-	public List<StatDTO> readWeight(long userId) {
+	public List<StatDTO> readWeight(long userId) throws SQLException {
 		// weight 정보가 있는 stat만 모아서 return
 		return statDAO.weightStatList(userId);
 	}
