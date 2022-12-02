@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dto.BelongDTO;
 import model.dto.ClubDTO;
+import model.dto.FeedDTO;
 import model.dto.HashtagDTO;
 
 public class ClubDAO {
@@ -37,7 +38,7 @@ public class ClubDAO {
 	}
 	
 	/* 그룹 가입 */
-		public int joinClub(BelongDTO belong) throws SQLException {
+	public int joinClub(BelongDTO belong) throws SQLException {
 		String sql = "INSERT INTO BELONG (userId, clubId, joinDate) " 
 			+ "VALUE(?, ?, ?)";
 		Object[] param = new Object[] {belong.getClubId(), belong.getUserId(), belong.getJoinDate()};
@@ -74,12 +75,11 @@ public class ClubDAO {
 		}		
 		return 0;
 	}
-	///
+	
 	/* 그룹 멤버 삭제 */
-	public int removeClubMember(long userId) throws SQLException {
-		String sql = "DELETE FROM BELONG WHERE userId = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
-
+	public int removeClubMember(long userId, long clubId) throws SQLException {
+		String sql = "DELETE FROM BELONG WHERE userId = ?, clubId =?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete 문 실행
 			return result;
@@ -94,9 +94,8 @@ public class ClubDAO {
 		return 0;
 	}
 
-	/**
-	 * 특정 group 찾기
-	 */
+	
+	//특정 group 찾기
 	public ClubDTO findClub(long clubId) throws SQLException {
         String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE clubId = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -121,10 +120,7 @@ public class ClubDAO {
 		return null;
 	}
 
-	///
-	/**
-	 * 그룹 이름 중복인지 검사
-	 */
+	//그룹 이름 중복인지 검사
 	public boolean existClub(String cname) throws SQLException {
         String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE cname = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {cname});	// JDBCUtil에 query문과 매개 변수 설정
@@ -142,10 +138,28 @@ public class ClubDAO {
 		}
 		return false;
 	}
-	///
-	/**
-	 * 그룹에 이미 가입했는지 검사 && 이름 검색시
-	 */
+	
+	public boolean isLeader(long userId, long clubId) {
+		String sql = "SELECT leader "
+	    			+ "FROM club "
+	    			+ "WHERE userId = ? and clubId = ?";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});	// JDBCUtil에 query문과 매개 변수 설정
+	
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						
+				int count = rs.getInt("count");
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
+	}
+	
+	//그룹에 이미 가입했는지 검사 && 이름 검색시
 	public boolean alreadyJoin(long userId, long clubId) throws SQLException {
         String sql = "SELECT clubId "
         			+ "FROM belong "
@@ -165,9 +179,8 @@ public class ClubDAO {
 		}
 		return false;
 	}
-	/**
-	 * 전체 group 정보를 검색하여 List에 저장 및 반환 
-	 */
+	
+	//전체 group 정보를 검색하여 List에 저장 및 반환 
 	public List<ClubDTO> findClubList() throws SQLException {
         String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM group";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
@@ -195,7 +208,7 @@ public class ClubDAO {
 		return null;
 	}
 
-	// 그룹 정보 수정
+	//그룹 정보 수정
 	public int updateClub(ClubDTO club) throws SQLException {
 		String sql = "UPDATE club " +
 					"SET cname = ?, goal = ?, info = ?" +
@@ -215,7 +228,7 @@ public class ClubDAO {
 		return 0;
 	}
 
-	// 현재 그룹 인원 수 출력(max를 초과하면 안 되니까)
+	//현재 그룹 인원 수 출력(max를 초과하면 안 되니까)
 	public int countClubMember(ClubDTO club) throws SQLException {
 		int count_mem = 0;
 		String sql = "SELECT COUNT(userId) FROM BELONGS WHERE clubId = ?";
@@ -276,19 +289,22 @@ public class ClubDAO {
 		return 0;
 	}
 	
-	/* hashtag로 그룹 찾기 (일단 ID로만 했는데 상세정보도 select로?) */
-	public HashtagDTO findClubbyHashtag(String hname) throws SQLException {
+	/* 해시태그에 해당하는 그룹 아이디 리스트*/
+	public List<HashtagDTO> findClubbyHashtag(String hname) throws SQLException {
         String sql = "SELECT clubId FROM hashtag WHERE hname = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {hname});	// JDBCUtil에 query문과 매개 변수 설정
-
+		
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {						
+			ResultSet rs = jdbcUtil.executeQuery();				
+			List<HashtagDTO> hashtagList = new ArrayList<HashtagDTO>();	
+			while (rs.next()) {
 				HashtagDTO hashtag = new HashtagDTO(	
-					rs.getLong("clubId"), 
+					rs.getLong("clubId"),		
 					rs.getString("hname"));
-				return hashtag;
-			}
+				hashtagList.add(hashtag);				
+			}		
+			return hashtagList;					
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -296,6 +312,33 @@ public class ClubDAO {
 		}
 		return null;
 	}
+
+	/* 그룹 아이디로 해시태그 찾기 */
+	public List<HashtagDTO> findHashtagbyClub(long clubId) throws SQLException {
+		String sql = "SELECT hname FROM hashtag WHERE clubId = ?";        
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();				
+			List<HashtagDTO> hashtagList = new ArrayList<HashtagDTO>();	
+			while (rs.next()) {
+				HashtagDTO hashtag = new HashtagDTO(	
+					rs.getLong("clubId"),		
+					rs.getString("hname"));
+				hashtagList.add(hashtag);				
+			}		
+			return hashtagList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+
+	}
+
+	// 그룹 isMember, isLeader 필요
 
 }
 

@@ -6,18 +6,13 @@ import model.dto.UserDTO;
 
 public class UserDAO {
 
-	/*
-	 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
-	 */
 		private JDBCUtil jdbcUtil = null;
 		
 		public UserDAO() {			
 			jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
 		}
 		
-		/*
-		 * 새로운 사용자 추가-프로필/정보 제외
-		 */
+		//새로운 사용자 추가-프로필/정보 제외
 		public int insert(UserDTO user) throws SQLException {
 			String sql = "Insert Into UserInfo(userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
 					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";		
@@ -41,9 +36,7 @@ public class UserDAO {
 			return 0;			
 		}
 
-		/**
-		 * 기존의 사용자 정보를 수정.
-		 */
+		//기존 사용자 정보를 수정.
 		public int update(UserDTO user) throws SQLException {
 			String sql = "UPDATE UserInfo "
 						+ "SET name=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
@@ -69,11 +62,10 @@ public class UserDAO {
 			return 0;
 		}
 
-		/**
-		 * 사용자 ID에 해당하는 사용자를 삭제.??
-		 */
+		//사용자 ID에 해당하는 사용자를 삭제.
 		public int delete(long userId) throws SQLException {	//userId String형 -> long형으로 변경
-			String sql = "Delete From UserInfo " 
+			// 회원 탈퇴할 때 피드도 삭제? 아니면 정보만 dummy값으로 넣고 이름을 탈퇴한 회원으로ㅎㅎ;
+		String sql = "Delete From UserInfo " 
 						+ "Where userId=? ";	
 			Object[] param = new Object[] { userId };
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 delete문과 매개 변수 설정
@@ -93,9 +85,7 @@ public class UserDAO {
 		}
 		
 		
-	/**
-	 * 로그인 타입 검사->굳이 반환 타입을 할 필요가 있을까?
-	 */
+		//로그인 타입 검사
 		public UserDTO findLoginId(String userId) throws SQLException {
 	        String sql = "Select loginType "
 		        		+ "From UserInfo "
@@ -116,10 +106,8 @@ public class UserDAO {
 			}
 			return null;
 		}
-		//지예
-		/**
-		 * userId로 유저 찾기
-		 */
+		
+		//userId로 유저 찾기
 		public UserDTO findUser(long userId) {
 			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
 		        		+ "From UserInfo "
@@ -141,9 +129,7 @@ public class UserDAO {
 			return null;
 		}
 		
-		/**
-		 * loginId로 유저 찾기 	
-		 */
+		//loginId로 유저 찾기
 		public UserDTO findUser(String loginId) {
 			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
 	        		+ "From UserInfo "
@@ -163,12 +149,9 @@ public class UserDAO {
 				jdbcUtil.close();		// resource 반환
 			}
 			return null;
-			}
+		}
 
-
-		/**
-		 * 이름과 이메일로 아이디 찾기
-		 */
+		//이름과 이메일로 아이디 찾기
 		public UserDTO findLoginId(String name, String email) throws SQLException {
 	        String sql = "Select loginId "
 		        		+ "From UserInfo "
@@ -189,7 +172,7 @@ public class UserDAO {
 			}
 			return null;
 		}
-		//--이름과 이메일과 아이디로 비밀번호 찾기
+		//이름과 이메일과 아이디로 비밀번호 찾기
 		public UserDTO findPassword(String loginId, String name, String email) throws SQLException {
 			String sql = "Select password "
 		        		+ "From UserInfo "
@@ -211,10 +194,9 @@ public class UserDAO {
 			}
 			return null;
 		}
-//중복검사
-		/**
-		 * 닉네임(Uname) 중복인지 확인
-		 */
+		
+		//중복검사
+		//닉네임(Uname) 중복인지 확인
 		public boolean existingUname(String name) throws SQLException {
 			String sql = "SELECT count(uname) "
 						+ "FROM UserInfo "
@@ -237,9 +219,7 @@ public class UserDAO {
 			return false;
 		}
 		
-		/**
-		 * 로그인 아이디 중복인지 확인
-		 */
+		//로그인 아이디 중복인지 확인
 		public boolean existingLoginId(String loginId) throws SQLException {
 			String sql = "SELECT count(Loginid) "
 						+ "FROM UserInfo "
@@ -261,9 +241,7 @@ public class UserDAO {
 			}
 			return false;
 		}
-		/**
-		 * 이메일 중복인지 확인
-		 */
+		//이메일 중복인지 확인
 		public boolean existingEmail(String emailAddress) throws SQLException {
 			String sql = "SELECT count(emailAddress) "
 						+ "FROM UserInfo "

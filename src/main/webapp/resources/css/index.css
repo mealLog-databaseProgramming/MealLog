@@ -174,7 +174,6 @@ body::-webkit-scrollbar-track {
 	transform: translate(60%, 0);
 }
 
-
 @media screen and (max-width: 1800px) { 
 	body { zoom: 80%; }
 }
