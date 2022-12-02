@@ -55,9 +55,9 @@
 	{"fname":"새우젓두부찌개","kcal":166,"protein":16.2,"fat":8.1,"carb":7.2},
 	{"fname":"소곱창전골","kcal":529,"protein":41.6,"fat":27.3,"carb":29.2},
 	{"fname":"햄김치찌개","kcal":189,"protein":11.1,"fat":10.4,"carb":12.7},
-	{"fname":"호박찌개","kcal":95,"protein":5.6,"fat":2.6,"carb":12.2}
+	{"fname":"호박찌개","kcal":95,"protein":5.6,"fat":2.6,"carb":12.2},
 	//찜
-	[{"fname":"찐감자","kcal":140.18,"protein":4.32,"fat":0.31,"carb":30.02},
+	{"fname":"찐감자","kcal":140.18,"protein":4.32,"fat":0.31,"carb":30.02},
 	{"fname":"찐고구마","kcal":277.31,"protein":3.34,"fat":0.47,"carb":64.94},
 	{"fname":"찐옥수수","kcal":370.54,"protein":13.36,"fat":4.84,"carb":68.39},
 	{"fname":"가오리찜","kcal":204.63,"protein":43.98,"fat":2.78,"carb":0.92},
@@ -101,7 +101,7 @@
 	{"fname":"참꼬막","kcal":90.79,"protein":12.47,"fat":2.5,"carb":4.59},
 	{"fname":"한방오리백숙","kcal":469.53,"protein":68.79,"fat":20.1,"carb":3.36},
 	{"fname":"해물찜","kcal":400.08,"protein":42.6,"fat":9.8,"carb":35.4},
-	{"fname":"홍어찜","kcal":202.67,"protein":47.12,"fat":1.03,"carb":1.22}
+	{"fname":"홍어찜","kcal":202.67,"protein":47.12,"fat":1.03,"carb":1.22},
 	//볶음
 	{"fname":"애호박볶음","kcal":29.52,"protein":0.66,"fat":1.81,"carb":2.65},
 	{"fname":"감자볶음","kcal":100.18,"protein":1.75,"fat":4.84,"carb":12.41},
@@ -173,7 +173,7 @@
 	{"fname":"오삼불고기","kcal":363,"protein":25.6,"fat":19.9,"carb":20.5},
 	{"fname":"주꾸미볶음","kcal":211.41,"protein":18.33,"fat":5.2,"carb":22.82},
 	{"fname":"표고버섯볶음","kcal":142,"protein":4.5,"fat":6.7,"carb":15.8},
-	{"fname":"해물볶음","kcal":419.06,"protein":38.2,"fat":15.3,"carb":32.2}
+	{"fname":"해물볶음","kcal":419.06,"protein":38.2,"fat":15.3,"carb":32.2},
 	//튀김
 	{"fname":"간장양념닭다리튀김","kcal":646.67,"protein":37.71,"fat":39.2,"carb":35.75},
 	{"fname":"간장양념치킨","kcal":543.73,"protein":20.46,"fat":32.44,"carb":42.48},
@@ -418,5 +418,5 @@
 	//기타
 	{"fname":"월남쌈","kcal":293.84,"protein":14.86,"fat":12.43,"carb":30.63},
 	{"fname":"도토리묵말이","kcal":462.39,"protein":6.8,"fat":8.5,"carb":89.7},
-	{"fname":"도토리묵","kcal":45.6,"protein":0.29,"fat":0.32,"carb":10.38}
+	{"fname":"도토리묵","kcal":45.6,"protein":0.29,"fat":0.32,"carb":10.38},
 ]
