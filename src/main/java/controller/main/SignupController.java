@@ -7,6 +7,7 @@ import controller.Controller;
 import model.dao.*;
 import model.dto.*;
 import model.service.*;
+import model.service.exception.ExistingUserException;
 
 public class SignupController implements Controller {
 
