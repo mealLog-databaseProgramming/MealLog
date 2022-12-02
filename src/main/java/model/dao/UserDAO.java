@@ -14,13 +14,20 @@ public class UserDAO {
 		
 		//새로운 사용자 추가-프로필/정보 제외
 		public int insert(UserDTO user) throws SQLException {
-			String sql = "Insert Into UserInfo(userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
-					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";		
-			
-			Object[] param = new Object[] {user.getUserId(), user.getName(), 
-					user.getAge(), user.getGender(), user.getHeight()
-					,user.getWeight(), user.getActiveRank()
-					, user.getLoginId(), user.getPassword(), user.getEmailAddress()};				
+			String sql = "INSERT INTO USERINFO(USERID, UNAME, AGE, GENDER, HEIGHT, WEIGHT, ACTIVERANK, LOGINID, PASSWORD, EMAILADDRESS) "
+					+ "VALUES (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+//			
+			Object[] param = new Object[] { 
+					user.getUname(), 
+					user.getAge(), 
+					user.getGender(), 
+					user.getHeight(),
+					user.getWeight(), 
+					user.getActiveRank(),
+					user.getLoginId(), 
+					user.getPassword(), 
+					user.getEmailAddress()
+				};
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 							
 			try {				
@@ -42,10 +49,19 @@ public class UserDAO {
 						+ "SET uname=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
 						+ "WHERE userid=? ";
 			
-			Object[] param = new Object[] {user.getName(), 
-					user.getIntroduce(), user.getAge(), user.getGender(), user.getHeight()
-					,user.getWeight(), user.getActiveRank()
-					, user.getLoginId(), user.getPassword(), user.getEmailAddress(), user.getProfile()};				
+			Object[] param = new Object[] {
+					user.getUname(), 
+					user.getIntroduce(), 
+					user.getAge(), 
+					user.getGender(), 
+					user.getHeight(),
+					user.getWeight(), 
+					user.getActiveRank(),
+					user.getPassword(), 
+					user.getEmailAddress(), 
+					user.getProfile(), 
+					user.getUserId()
+				};				
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 				
 			try {				
@@ -109,7 +125,7 @@ public class UserDAO {
 		
 		//userId로 유저 찾기
 		public UserDTO findUser(long userId) {
-			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+			String sql = "Select userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress "
 		        		+ "From UserInfo "
 		        		+ "where loginId = ? ";    
 	        Object[] param = new Object[] { userId };
@@ -131,7 +147,7 @@ public class UserDAO {
 		
 		//loginId로 유저 찾기
 		public UserDTO findUser(String loginId) {
-			String sql = "Select userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+			String sql = "Select userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress "
 	        		+ "From UserInfo "
 	        		+ "where loginId = ? ";    
 	        Object[] param = new Object[] { loginId };
@@ -155,14 +171,14 @@ public class UserDAO {
 		public UserDTO findLoginId(String name, String email) throws SQLException {
 	        String sql = "Select loginId "
 		        		+ "From UserInfo "
-		        		+ "where name=?, emailAddress=? ";    
+		        		+ "where uname=?, emailAddress=? ";    
 	        Object[] param = new Object[] { name, email };
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {						// 아이디 정보 발견
-					UserDTO user = new UserDTO(rs.getString("name"), rs.getString("loginId"));
+					UserDTO user = new UserDTO(rs.getString("uname"), rs.getString("loginId"));
 					return user;//test에서는 user객체 받아서 출력
 				}
 			} catch (Exception ex) {
@@ -173,20 +189,20 @@ public class UserDAO {
 			return null;
 		}
 		//이름과 이메일과 아이디로 비밀번호 찾기
-		public UserDTO findPassword(String loginId, String name, String email) throws SQLException {
+		public UserDTO findPassword(String loginId, String uname, String email) throws SQLException {
 			String sql = "Select password "
 		        		+ "From UserInfo "
-				        + "where name=?, emailAddress=?, loginId=? ";   
+				        + "where uname=?, emailAddress=?, loginId=? ";   
 			
-			Object[] param = new Object[] {name, email, loginId};
+			Object[] param = new Object[] {uname, email, loginId};
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 			
 			try {
-				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-				if (rs.next()) {						// 비밀번호 정보 발견
-					UserDTO user = new UserDTO(rs.getString("name"), rs.getString("loginId"), rs.getString("password"));
-					return user; 
-				}
+//				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+//				if (rs.next()) {						// 비밀번호 정보 발견
+//					UserDTO user = new UserDTO(rs.getString("uname"), rs.getString("loginId"), rs.getString("password"));
+//					return user; 
+//				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -197,12 +213,12 @@ public class UserDAO {
 		
 		//중복검사
 		//닉네임(Uname) 중복인지 확인
-		public boolean existingUname(String name) throws SQLException {
+		public boolean existingUname(String uname) throws SQLException {
 			String sql = "SELECT count(uname) "
 						+ "FROM UserInfo "
 						+ "WHERE uname = ? ";    
 			
-			Object[] param = new Object[] {name};
+			Object[] param = new Object[] {uname};
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 			try {
