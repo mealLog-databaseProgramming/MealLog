@@ -16,11 +16,9 @@
 		</c:if>
 	</head>
 	<body>
-		<div class="Content">
-			<c:if test="${page ne null}">
-				<jsp:include page="main/${page}" />
-			</c:if>
-		</div>
+		<c:if test="${page ne null}">
+			<jsp:include page="main/${page}" />
+		</c:if>
 	</body>
 </html>
 

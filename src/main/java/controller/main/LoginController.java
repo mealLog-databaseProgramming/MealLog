@@ -11,21 +11,14 @@ public class LoginController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String userId = request.getParameter("id"); 
+		String loginId = request.getParameter("loginId"); 
 		String password = request.getParameter("password");
 		
-		// UserManager userManager = UserManager.getInstance();
-		
-		if (userId != null) {
+		if (loginId != null) {
 			try {
-				if (userId == "" || password == "") 
-					throw new Exception("아이디와 비밀번호를 입력하세요.");
-
-				// userManager.login(userId, password);
-				
+				UserManager userManager = UserManager.getInstance();
+				request.getSession().setAttribute("userId", userManager.login(loginId, password));
 				return "redirect:/";
-			} catch(UserNotFoundException e) {
-				request.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			} catch(Exception e) {
 				request.setAttribute("message", e.getMessage());
 			}
