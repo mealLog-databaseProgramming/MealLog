@@ -15,6 +15,6 @@ public class DeleteClubController implements Controller {
 		if(request.getParameter("isLeader") != null) {
 			manager.remove(clubId);
 		}
-		return "redirect:/gourp";
+		return "redirect:/group";
 	}
 }

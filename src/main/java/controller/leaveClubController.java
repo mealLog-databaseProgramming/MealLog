@@ -18,6 +18,6 @@ public class leaveClubController implements Controller{
 		
 			manager.leaveClub(deleteId, clubId);
 				
-			return "redirect:/gourp";
+			return "redirect:/group";
 		}
 }

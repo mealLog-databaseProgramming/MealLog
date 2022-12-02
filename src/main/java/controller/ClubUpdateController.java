@@ -27,6 +27,6 @@ public class ClubUpdateController implements Controller {
 			request.setAttribute("message", e.getMessage());
 		}
 		
-		return "redirect:/gourp";
+		return "redirect:/group";
 	}
 }

@@ -21,11 +21,11 @@ public class CreateClubController implements Controller {
 				userId);	
 		
 		//HashtagDTO hashtag = new HashtagDTO(Long.parseLong(request.getParameter("clubId")),
-				request.getParameter("hname"));
+				//request.getParameter("hname"));
 			try {
 				request.setAttribute("club", club);
 				ClubManager clubManager = ClubManager.getInstance();
-				clubManager.create(club, hashtag);
+				//clubManager.create(club, hashtag);
 			} catch(Exception e) {
 				request.setAttribute("message", e.getMessage());
 			}
