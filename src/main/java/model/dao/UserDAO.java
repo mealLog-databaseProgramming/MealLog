@@ -14,7 +14,7 @@ public class UserDAO {
 		
 		//새로운 사용자 추가-프로필/정보 제외
 		public int insert(UserDTO user) throws SQLException {
-			String sql = "Insert Into UserInfo(userId, name, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
+			String sql = "Insert Into UserInfo(userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress) "
 					+ "Values (SEQUENCE_USERID.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";		
 			
 			Object[] param = new Object[] {user.getUserId(), user.getName(), 
@@ -39,7 +39,7 @@ public class UserDAO {
 		//기존 사용자 정보를 수정.
 		public int update(UserDTO user) throws SQLException {
 			String sql = "UPDATE UserInfo "
-						+ "SET name=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
+						+ "SET uname=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
 						+ "WHERE userid=? ";
 			
 			Object[] param = new Object[] {user.getName(), 
