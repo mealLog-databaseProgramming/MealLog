@@ -3,13 +3,13 @@ package model.dto;
 public class UserDTO {
 	
 	private long userId; //pk
-	private String name;
+	private String uname;
 	private String introduce;
 	private int age;
 	private int gender;
 	private float height;
 	private float weight;
-	private float activeRank;//신체활동수준(권장 칼로리 계산용)
+	private int activeRank;//신체활동수준(권장 칼로리 계산용)
 	private String loginId;//본인 지정 아이디 or 카카오 아이디
 	private String password;
 	private String emailAddress;
@@ -28,11 +28,11 @@ public class UserDTO {
 	
 	} 
 	
-	public UserDTO(long userId, String name, String introduce, int age, int gender, float height
-			, float weight, float activeRank, String loginId, String password, String emailAddress, String profile
+	public UserDTO(long userId, String uname, String introduce, int age, int gender, float height
+			, float weight, int activeRank, String loginId, String password, String emailAddress, String profile
 			, String loginType) {
 		this.userId = userId;
-		this.name = name;
+		this.uname = uname;
 		this.introduce = introduce;
 		this.age = age;
 		this.gender = gender;
@@ -45,19 +45,19 @@ public class UserDTO {
 		this.loginType = loginType;
 	}
 	//아이디 찾기용
-	public UserDTO(String name, String loginId) {
-		this.name = name;
+	public UserDTO(String uname, String loginId) {
+		this.uname = uname;
 		this.loginId = loginId;
 	}
 	//비번 찾기용
-	public UserDTO(String name, String password, String loginId) {
-		this.name = name;
+	public UserDTO(String uname, String password, String loginId) {
+		this.uname = uname;
 		this.password = password;
 		this.loginId = loginId;
 	}
 	//update//수정확인
 	public void update(UserDTO updateUser) {
-		this.name = updateUser.name;
+		this.uname = updateUser.uname;
 		this.introduce = updateUser.introduce;
 		this.age = updateUser.age;
 		this.gender = updateUser.gender;
@@ -76,11 +76,11 @@ public class UserDTO {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public String getName() {
-		return name;
+	public String getUname() {
+		return uname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUname(String name) {
+		this.uname = name;
 	}
 	public String getIntroduce() {
 		return introduce;
@@ -112,10 +112,10 @@ public class UserDTO {
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}
-	public float getActiveRank() {
+	public int getActiveRank() {
 		return activeRank;
 	}
-	public void setActiveRank(float activeRank) {
+	public void setActiveRank(int activeRank) {
 		this.activeRank = activeRank;
 	}
 	public String getLoginId() {
