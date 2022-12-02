@@ -63,28 +63,60 @@ body.setAttribute('onLoad', 'init_group()');
 
 function init_group() {
 	init();
-	groupCreate_set();
+	
+	groupCreate_init();
+	groupUpdate_init();
 }
 
-function groupCreate_set() {
+function groupCreate_init() {
 	var popup = document.querySelector('#groupCreate');
 	
-	var onButton = document.querySelector('#newGroup_button');
-	onButton.onclick = () => {
+	var popup_button = document.querySelector('#newGroup_button');
+	popup_button.onclick = () => {
 		popup.style.display = "block";
 		body.style.overflowY = "hidden";
 	};
 	
-	var offButton = document.querySelector('#groupCreate #cancel');
-	offButton.onclick = () => {
+	var cancel = document.querySelector('#groupCreate #cancel');
+	cancel.onclick = () => {
 		popup.style.display = "none";
 		body.style.overflowY = "auto";
 	};
 	
-	var tagInput = document.querySelector('#hastag');
-	var tagify = new Tagify(tagInput);
+	var form = document.querySelector('#groupCreate form');
+	var submit = document.querySelector('#groupCreate input[type="submit"]');
+	submit.onclick = () => {
+		console.log(form);
+		form.submit();
+	};
 	
+		
+	var tagInput = document.querySelector('#groupCreate #hashtag');
+	
+	var tagify = new Tagify(tagInput);
+
 	tagify.on('add', function() {
 	  console.log(tagify.value); 
-	})
+	});	
 }
+function groupUpdate_init() {
+	var popup = document.querySelector('#groupUpdate');
+	
+	var cancel = document.querySelector('#groupUpdate #cancel');
+	cancel.onclick = () => {
+		var tagInput = document.querySelector('#groupUpdate #hashtag');
+		var tagify = new Tagify(tagInput);
+		tagify.removeAllTags();
+		
+		popup.style.display = "none";
+		body.style.overflowY = "auto";
+	};
+	
+	var form = document.querySelector('#groupUpdate form');
+	var submit = document.querySelector('#groupUpdate input[type="submit"]');
+	submit.onclick = () => {
+		console.log(form);
+		form.submit();
+	};
+}
+
