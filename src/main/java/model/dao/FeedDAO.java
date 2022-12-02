@@ -268,9 +268,9 @@ public class FeedDAO {
 	}
 
 	// 긍정적 반응 수
-	public int countPositiveReact(ReactDTO react) throws SQLException {
+	public int countPositiveReact(long feedId) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'P\'";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate();	
@@ -284,9 +284,9 @@ public class FeedDAO {
 	}
 
 	// 부정적 반응 수
-	public int countNegativeReact(ReactDTO react) throws SQLException {
+	public int countNegativeReact(long feedId) throws SQLException {
 		String sql = "SELECT COUNT(userId) FROM REACT WHERE feedId = ? AND type = \'N\'";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {react.getFeedId()});	// JDBCUtil에 query문과 매개 변수 설정
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate();	
@@ -301,7 +301,7 @@ public class FeedDAO {
 	}
 	
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
-	public UserDTO findUname(int userId) throws SQLException {
+	public UserDTO findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
 	        		+ "FROM UserInfo "
 			        + "WHERE userId=? ";   
