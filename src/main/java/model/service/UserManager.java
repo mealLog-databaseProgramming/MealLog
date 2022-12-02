@@ -3,6 +3,8 @@ package model.service;
 import java.sql.SQLException;
 
 import model.dto.UserDTO;
+import model.service.exception.ExistingUserException;
+import model.service.exception.UserNotFoundException;
 import model.dao.UserDAO;
 
 public class UserManager {
