@@ -32,7 +32,7 @@ public class CreateClubController implements Controller {
 				request.setAttribute("message", e.getMessage());
 			}
 			
-			return "redirect:/mypage";
+			return "redirect:/group";
 		
 	
 			}

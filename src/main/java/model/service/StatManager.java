@@ -36,17 +36,6 @@ public class StatManager {
 		return statDAO.update(stat);
 	}	
 	
-//	public int delete(StatDTO stat) {
-		
-//		return statDAO.delete(stat.getUserId(), stat.getDate());	//DAO에 주석처리된 메소드 사용
-//	}
-	
-//	public int read() throws SQLException {
-//		return 0;
-		
-//		return StatDAO.read();	//메소드 없음
-//	}
-	
 	/* mypageController */
 	public List<StatDTO> readNutri(long userId) throws SQLException {
 		// Nutri 정보가 있는 stat만 모아서 return
@@ -62,4 +51,15 @@ public class StatManager {
 		// (userID, date)가 기본 키인 레코드가 있으면 해당 레코드에 업데이트
 		// 없으면 새로 만듦
 	} 
+	
+//	public int delete(StatDTO stat) {
+	
+//	return statDAO.delete(stat.getUserId(), stat.getDate());	//DAO에 주석처리된 메소드 사용
+//}
+
+//public int read() throws SQLException {
+//	return 0;
+	
+//	return StatDAO.read();	//메소드 없음
+//}
 }

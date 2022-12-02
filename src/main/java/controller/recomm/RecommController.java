@@ -1,4 +1,4 @@
-package controller;
+package controller.recomm;
 
 import java.util.Date;
 import java.time.LocalDate;
@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.dto.StatDTO;
 import model.dto.UserDTO;
 
