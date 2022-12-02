@@ -123,7 +123,7 @@ public class FeedDAO {
 	}
 
 	// 반응 삭제
-	public int removeReact(String feedId, String userId) throws SQLException {
+	public int removeReact(long feedId, long userId) throws SQLException {
 		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
 

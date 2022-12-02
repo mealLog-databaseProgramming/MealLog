@@ -17,7 +17,7 @@ public class ReplyManager {
 	private static ReplyManager replyMan = new ReplyManager();
 	private FeedDAO FeedDAO;
 	
-	private ReplyManager() {
+	public ReplyManager() {
 		try {
 			FeedDAO = new FeedDAO();
 		} catch (Exception e) {

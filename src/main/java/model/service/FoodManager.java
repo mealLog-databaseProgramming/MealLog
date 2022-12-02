@@ -13,7 +13,7 @@ public class FoodManager {
 	//private FoodDTO food;
 	//private FeedDTO feed;
 	
-	private FoodManager() {
+	public FoodManager() {
 		try {
 			feedDAO = new FeedDAO();
 		} catch (Exception e) {
