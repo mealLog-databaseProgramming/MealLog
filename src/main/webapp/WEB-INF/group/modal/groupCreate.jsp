@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="resources/css/group/modal/groupCreate.css"/>
 
 <div id="groupCreate">
-<form method="post">
+<form action="" method="post" onsubmit="return false">
 	<div class="title">
 		<iconify-icon icon="mdi:account-group"></iconify-icon>
 		<h2>그룹 생성</h2>
@@ -25,9 +25,9 @@
 				</select>
 				명
 			</div>
-			<div class="hastagInput">
+			<div class="hashtagInput">
 				<h3>해시태그</h3>
-				<input id="hastag" placeholder="엔터로 태그를 입력하세요"></input>
+				<input id="hashtag" placeholder="엔터로 태그를 입력하세요"></input>
 			</div>
 		</div>
 		<div class="groupInputs-right">
@@ -40,11 +40,11 @@
 				<textarea name="name" placeholder="소개글을 입력하세요"></textarea>
 			</div>
 		</div>
-<!-- 	</div> -->
+	</div>
 	<div class="buttons">
 		<hr>
 		<input type="submit" value="생성"></input>
 		<input id="cancel" type="button" value="취소"></input>
 	</div>
 </form>
-<!-- </div> -->
+</div>

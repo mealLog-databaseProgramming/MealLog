@@ -1,17 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="resources/css/group/groupView.css"/>
+<%
+	
+%>
 
-<div id="groupView">
-	<div class="title">작심 3달</div>
-	<div class="goal">식단 초보의 3달 도전기</div>
-	<div class="hashtags">
-		<div>#식단</div> 
-		<div>#단기</div>
-		<div>#다이어트</div>
-		<iconify-icon class="more_hastags" icon="mdi:more-circle"></iconify-icon>
-	</div>
+<div id="groupView" class="groupView_${param.clubId}">
+	<div class="title">${param.cName}</div>
+	<div class="goal">${param.goal}</div>
+	<input id="hashtag"></input>
 	<span class="line"></span>
 	<iconify-icon class="groupImage" icon="mingcute:group-line"></iconify-icon>
-	<div class="groupCount">3 / 10</div>
+	<div class="groupCount">${param.current_member} / ${param.max_member}</div>
 </div>
+
+<script>
+	var groupView = document.querySelector('.groupView_<%=request.getParameter("clubId")%>');
+	
+	var hashtagInput = groupView.querySelector('#hashtag');
+	var tagify = new Tagify(hashtagInput);
+	
+	tagify.on('add', function() {
+		console.log(tagify.value); 
+	});	
+	tagify.addTags(<%=request.getParameter("tags")%>);
+	tagify.setReadonly(true);
+	
+	groupView.onclick = () => {
+		groupUpdate_set(
+				<%=request.getParameter("clubId")%>, 
+				"<%=request.getParameter("cName")%>", 
+				"<%=request.getParameter("goal")%>", 
+				"<%=request.getParameter("info")%>",
+				<%=request.getParameter("max_member")%>,
+				<%=request.getParameter("tags")%>
+		);
+	};
+</script>

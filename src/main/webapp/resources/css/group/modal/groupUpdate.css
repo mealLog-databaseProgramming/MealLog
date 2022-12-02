@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#groupCreate {
+#groupUpdate {
 	display: none;
  	position: absolute;
   	width: 100%; height: 100%;
@@ -10,7 +10,7 @@
  	top: 0; left: 0;
 }
  
-#groupCreate form {
+#groupUpdate form {
  	position: absolute;
   	width: 1000px; /*height: 550px;*/
  	background: #FFFFFF;
@@ -26,36 +26,36 @@
 /*     justify-content: center; */
 }
  
-#groupCreate form .title {
+#groupUpdate form .title {
  	display: flex;
  	margin: 30px;
  	margin-bottom: 0px;
 }
-#groupCreate form .title iconify-icon {
+#groupUpdate form .title iconify-icon {
 	font-size: 60px;
 	color: #3B5C0A;
 	margin: 10px;
 }
-#groupCreate form .title h2 {
+#groupUpdate form .title h2 {
 	font-size: 42px;
 	font-weight: 600;
 	margin: 10px;
 }
 
-#groupCreate form .groupInputs {
+#groupUpdate form .groupInputs {
 	display: inherit;
 	padding: 10px 50px;
 	
     flex-wrap: wrap;
 }
-#groupCreate form .groupInputs-left > div,  #groupCreate form .groupInputs-right > div{
+#groupUpdate form .groupInputs-left > div,  #groupUpdate form .groupInputs-right > div{
 	margin-bottom: 20px;
 }
-#groupCreate form .groupInputs-right {
+#groupUpdate form .groupInputs-right {
 	margin-left: 30px;
 }
 
-#groupCreate form h3{
+#groupUpdate form h3{
 	font-weight: 600;
 	font-size: 22px;
 	color: #929191;
@@ -63,10 +63,10 @@
 	margin-bottom: 15px;
 }
 
-#groupCreate form input[type="text"],
- #groupCreate .memberInput select, 
- #groupCreate .hastagInput tags,
- #groupCreate .infoInput textarea {
+#groupUpdate form input[type="text"],
+ #groupUpdate .memberInput select, 
+ #groupUpdate .hastagInput tags,
+ #groupUpdate .infoInput textarea {
 	background: rgba(0, 0, 0, 0.05);
 	box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.25);
 	border-radius: 15px;
@@ -75,11 +75,11 @@
 	padding: 5px 20px;
 }
 
-#groupCreate form .nameInput input {
+#groupUpdate form .nameInput input {
 	font-size: 24px;
 }
 
-#groupCreate .memberInput {
+#groupUpdate .memberInput {
 	display: flex;
 	align-items: center;
 	
@@ -88,31 +88,31 @@
 	color: #929191;
 	
 }
-#groupCreate .memberInput iconify-icon{
+#groupUpdate .memberInput iconify-icon{
 	font-size: 42px;
 	color: #3B5C0A;	
 	
 	margin-right: 10px;
 }
-#groupCreate .memberInput h3 {
+#groupUpdate .memberInput h3 {
 	line-height: 42px;
 	transform: translate(0, 5px);
 }
-#groupCreate .memberInput select {
+#groupUpdate .memberInput select {
 	text-align: center;
 	font-size: 18px;
 	margin: 0px 15px;
 }
-#groupCreate form .memberInput select option {
+#groupUpdate form .memberInput select option {
 	zoom: 120%;
 }
 
-#groupCreate .hashtagInput tags {
+#groupUpdate .hashtagInput tags {
 	width: 400px;
 	padding: 5px 10px;
 	font-size: 18px;
 }
-#groupCreate .hashtagInput tags tag {
+#groupUpdate .hashtagInput tags tag {
 	--tag-bg: #81B44F;
 	--tag-remove-bg: #D3E2E2;
 	
@@ -126,36 +126,36 @@
 	
 	--tag-border-radius: 50px;
 }
-#groupCreate .hashtagInput tags tag x{
+#groupUpdate .hashtagInput tags tag x{
 	width: 24px; height: 24px;
 	font-size: 18px;
 }
 
-#groupCreate .goalInput input {
+#groupUpdate .goalInput input {
 	width: 400px;
 	font-size: 18px;
 }
 
-#groupCreate .infoInput textarea {
+#groupUpdate .infoInput textarea {
 	font-size: 18px;
 	width: 400px; height: 130px;
 	resize: none;
 }
 
-#groupCreate hr {
+#groupUpdate hr {
 	width: 80%;
 	
 	position: absolute;
 	left: 50%; transform: translate(-50%, 0%);
 }
 
-#groupCreate .buttons {
+#groupUpdate .buttons {
 	width: 900px;
 	display: flex;
     justify-content: space-evenly;
 }
 
-#groupCreate input[type="submit"], #groupCreate #cancel {
+#groupUpdate input[type="submit"], #groupUpdate #cancel {
 	width: 200px; height: 50px;
 	
 	box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.25);
@@ -168,16 +168,16 @@
 	font-size: 24px;
 	font-weight: 700;
 }
-#groupCreate input[type="submit"]:active, #groupCreate #cancel:active {
+#groupUpdate input[type="submit"]:active, #groupUpdate #cancel:active {
 	transform: translate(0px, 5px);
 	box-shadow: none;
 }
 
-#groupCreate input[type="submit"] {
+#groupUpdate input[type="submit"] {
 	background: #6BA32D;
 	color: #FFFFFF;
 }
-#groupCreate #cancel {
+#groupUpdate #cancel {
 	background: rgba(0, 0, 0, 0.05);
 	color: rgba(0, 0, 0, 0.5);
 }
