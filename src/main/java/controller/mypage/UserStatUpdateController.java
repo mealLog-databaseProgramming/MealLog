@@ -1,10 +1,11 @@
-package controller;
+package controller.mypage;
 
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.service.*;
 
 public class UserStatUpdateController implements Controller {

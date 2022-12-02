@@ -3,6 +3,12 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import controller.home.*;
+import controller.main.*;
+import controller.mypage.*;
+import controller.club.*;
+import controller.recomm.*;
+
 public class RequestMapping {  
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
