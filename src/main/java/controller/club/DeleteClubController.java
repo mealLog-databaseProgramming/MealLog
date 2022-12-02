@@ -1,8 +1,9 @@
-package controller;
+package controller.club;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.service.ClubManager;
 
 public class DeleteClubController implements Controller {

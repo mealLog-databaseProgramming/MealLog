@@ -1,8 +1,9 @@
-package controller;
+package controller.club;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.dto.ClubDTO;
 import model.dto.HashtagDTO;
 import model.service.ClubManager;

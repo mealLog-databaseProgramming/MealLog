@@ -1,4 +1,4 @@
-package controller;
+package controller.club;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Controller;
 import model.dto.BelongDTO;
 import model.service.ClubManager;
 
