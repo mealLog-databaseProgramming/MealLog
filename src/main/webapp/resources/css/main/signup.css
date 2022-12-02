@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+.Content {
+	width: 600px;
+	height: 950px;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;	
+	
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 #move_login {
 	font-weight: 500;
 	font-size: 22px;
@@ -7,6 +22,8 @@
 	color: #8B8B8B;
 	
 	transform: translate(-210px, -25px);
+	
+	margin-top: 20px;
 }
 #move_login:hover {
 	font-weight: 600;
@@ -17,63 +34,119 @@
     font-weight: 700;
 /*     color: #6BA32D;	 */
     
+    margin-top: 20px;
     margin-bottom: 60px;
 }
 
 .input {
-	width: 400px;
 	margin: 20px;
 	
 	display: flex;
 	justify-content: flex-start;
+	
+	font-size: 18px;
 }
 
-.label {
+label {
 	display: inline-block;
 	
-	width: 160px;
+	width: 130px;
 	
 	font-size: 20px;
 	line-height: 25px;
 	
-	border-right: 1px solid grey;
 	margin-right: 20px;
-
 }
 
-#signup_form input[type="text"], #signup_form input[type="password"] {
-	width: 200px;  height: 25px;
+#signup_form input[type="text"], 
+#signup_form input[type="password"],
+#signup_form input[type="email"], 
+#signup_form input[type="number"] {
+	width: 250px;  height: 25px;
 	transform: translate(0, -5px);
 	
 	border: none;
-	border-bottom: 1px solid black;
+	background: rgba(0, 0, 0, .05);
+	box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.25);
+	border-radius: 15px;
+	
+	padding: 5px 15px;
 	
 	font-size: 18px;
 }
 
 #signup_form input[type="number"] {
-	height: 25px;
+	width: 75px;
+	margin-right: 10px;
+}
+#signup_form input[name="weight"] {
+	margin-left: 20px;
+}
+
+#signup_form select {
+	vertical-align: middle;
+	appearance: none;
 	
+	overflow-y: hidden;
+	outline: none;
 	border: none;
-	border-bottom: 1px solid black;	
+	
+	background: transparent;
+	*background: transparent;
+	-webkit-appearance: none;
+	
+	transform: translate(0, -5px);
+}
+
+#signup_form select:focus {
+	outline: none;
+}
+
+#signup_form select option {
+	vertical-align: middle;
+	appearance: none;
+	
+
+	padding: 5px 15px;
 	
 	font-size: 18px;
+	font-weight: 400;
+	color: #8B8B8B;
+}
+#signup_form select option:focus,
+ #signup_form select option:active {
+	background: transparent;
+	*background: transparent;
+	-webkit-appearance: none;
+	box-shadow: none;
+}
+#signup_form select option:checked {
+	color: white;
+	font-weight: 600;
+	background: #6BA32D;
+	border-radius: 50px;
 }
 
-#signup_form input[type="radio"] { 
-	font-size: 18px;
-}
-#signup_form input[type="radio"] + label{  
 
+#signup_form select[name="gender"] {
+	overflow-y: hidden;
+	width: 200px; height: 35px;
 }
-#signup_form input[type="radio"] + label:before{ 
-	content:'안녕'; 
-
-}
-#signup_form input[type="radio"]:checked + label:after{ 
-	content: '바이'; 
+#signup_form select[name="gender"] option {
+	display: inline-block;
 }
 
+#signup_form input[type="radio"] {
+  vertical-align: middle;
+  appearance: none;
+  
+  border: 2px solid gray;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  
+  margin: 5px;
+}
 
 
 #signup_form #submit {
@@ -84,7 +157,7 @@
 	color: #FFFFFF;
 	font-size: 24px;
 	font-weight: 700;
-	margin: 40px;
+	margin: 15px;
 	
 	border: none;
 	border-radius: 50px;

@@ -15,7 +15,6 @@
 	<c:if test="${edit eq false}">
 		<jsp:include page="profile/profile.jsp"/>
 	</c:if>
-	
 	<hr/>
 	<jsp:include page="stat/stat.jsp"/>
 	<div class='seeAlso' onclick="location.href = '#feeds';">
