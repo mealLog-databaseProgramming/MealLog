@@ -9,7 +9,7 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 public class ConnectionManager {
     private static final String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String DB_URL = "jdbc:oracle:thin:@dblab.dongduk.ac.kr:orcl";
+    private static final String DB_URL = "jdbc:oracle:thin:@//dblab.dongduk.ac.kr/orcl";
     private static final String DB_USERNAME = "dbpr0103";
     private static final String DB_PASSWORD = "1015";
     private static DataSource ds = null;

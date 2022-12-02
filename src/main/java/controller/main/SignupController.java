@@ -43,7 +43,7 @@ public class SignupController implements Controller {
 				UserManager userManager = UserManager.getInstance();
 				userManager.create(user);
 				
-				return "/login";
+				return "redirect:/login";
 			} catch(ExistingUserException e) {
 				request.setAttribute("message", e.getMessage());
 			} catch(Exception e) {
