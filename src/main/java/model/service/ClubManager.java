@@ -8,6 +8,7 @@ import model.dto.BelongDTO;
 import model.dto.ClubDTO;
 import model.dto.HashtagDTO;
 import model.dto.UserDTO;
+import model.service.exception.ExistingUserException;
 
 public class ClubManager {
 	private static ClubManager ClubMan = new ClubManager();
