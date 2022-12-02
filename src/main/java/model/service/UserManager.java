@@ -37,13 +37,17 @@ public class UserManager {
 
 	public int update(UserDTO user) throws SQLException, UserNotFoundException {
 
-		
 		return userDAO.update(user);
 	}	
 
 	public int delete(long userId) throws SQLException, UserNotFoundException {
 		
-		
 		return userDAO.delete(userId);
+	}
+	
+	public long login(String userId, String password) throws Exception {
+		UserDTO user = userDAO.findUser(userId);
+		if (user.getPassword().equals(password)) return user.getUserId();
+		throw new Exception();
 	}
 }
