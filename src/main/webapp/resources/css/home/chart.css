@@ -7,7 +7,7 @@
 .stats_graph_box .graph {
   position: relative;
   height: 46px;
-  background: #f0f0f0;
+  /*background: #f0f0f0;*/
   border-radius: 40px;
   font-size: 0;
   white-space: nowrap;
@@ -22,7 +22,7 @@
   position: relative;
   display: inline-block;
   height: 46px;
-  background: #ddd;
+  /*background: #ddd;*/
   border-radius: 4px;
   overflow: hidden;
 }
@@ -34,16 +34,16 @@
 }
 .stats_graph_box .graph .bar.carb {
   z-index: 1;
-  background: #81B44F;
+  background: #6BA32D;
 }
 .stats_graph_box .graph .bar.protein {
-  background: #9CD069;
+  background: #96CC39;
 }
 .stats_graph_box .graph .bar.fat {
-  background: #C2EC98;
+  background: #C0EC83;
 }
 .stats_graph_box .graph .bar.kcal {
-  background: #CACACA;
+  background: #EAF1E4;
 }
 .stats_graph_box .graph .bar.clear .desc {
   color: #000;

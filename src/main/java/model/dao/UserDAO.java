@@ -64,7 +64,8 @@ public class UserDAO {
 
 		//사용자 ID에 해당하는 사용자를 삭제.
 		public int delete(long userId) throws SQLException {	//userId String형 -> long형으로 변경
-			String sql = "Delete From UserInfo " 
+			// 회원 탈퇴할 때 피드도 삭제? 아니면 정보만 dummy값으로 넣고 이름을 탈퇴한 회원으로ㅎㅎ;
+		String sql = "Delete From UserInfo " 
 						+ "Where userId=? ";	
 			Object[] param = new Object[] { userId };
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 delete문과 매개 변수 설정

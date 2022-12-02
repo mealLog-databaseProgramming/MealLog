@@ -20,17 +20,19 @@ public class CreateClubController implements Controller {
 				Integer.parseInt(request.getParameter("max_member")),  
 				userId);	
 		
-		//HashtagDTO hashtag = new HashtagDTO(Long.parseLong(request.getParameter("clubId")),
-				//request.getParameter("hname"));
+		ClubManager clubManager = ClubManager.getInstance();
+
+//		HashtagDTO hashtag = new HashtagDTO(Long.parseLong(request.getParameter("clubId")),
+//				request.getParameter("hname"));
 			try {
 				request.setAttribute("club", club);
-				ClubManager clubManager = ClubManager.getInstance();
-				//clubManager.create(club, hashtag);
+//				clubManager.create(club, hashtag);
 			} catch(Exception e) {
 				request.setAttribute("message", e.getMessage());
 			}
 			
 			return "redirect:/mypage";
 		
+	
+			}
 	}
-}

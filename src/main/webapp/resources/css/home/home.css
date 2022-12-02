@@ -52,6 +52,7 @@
 	font-weight: 700;
 	font-size: 32px;
 	line-height: 15px;
+	color: rgba(0,0,0,.75);
 }
 
 .time {
@@ -68,6 +69,8 @@
 
 .content {
 	font-size: 24px;
+	color: rgba(0,0,0,.75);
+	font-weight: bold;
 }
 
 /*foodContainer*/
@@ -84,7 +87,7 @@
 	width: 130px;
 	height: 40px;
 	
-	border: 1px solid #81B44F;
+	border: 1px solid #6BA32D;
 	border-radius: 90px;
 	
 	font-style: normal;
@@ -147,10 +150,13 @@ svg .bi-chat-dots {
 .commentText {
 	margin-left: 20px;
 	width: 100%;
+	color: rgba(0,0,0,.75);
 }
 
 .commentWriter {
-	font-size: 20px;
+	font-size: 18px;
+	color: rgba(0,0,0,.75);
+	font-weight: bold;
 }
 
 .commentTime {
@@ -164,7 +170,7 @@ svg .bi-chat-dots {
   font-size: 15px;
   border: 0;
   outline: none;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgba(0,0,0,.75);
   padding-left: 10px;
 }
 
@@ -220,13 +226,14 @@ svg .bi-chat-dots {
 
 .modal-content-wrap textarea{
 	width: 100%;
-	border: 2px solid #81B44F;
+	border: 2px solid #3B5C0A;
 	
 	margin-bottom: 20px;
 }
 
 .modal-body .foodContainer .food:hover {
-	background-color: #81B44F;
+	background-color: #3B5C0A;
+	color: white;
 }
 
 .modal .food {	
@@ -255,8 +262,8 @@ svg .bi-chat-dots {
 }
 
 .btn-primary {
-	background-color:#81B44F !important;
-	border-color: #81B44F !important;
+	background-color:#3B5C0A !important;
+	border-color: #3B5C0A !important;
 }
 
 .modal-footer .btn-primary {
@@ -271,4 +278,9 @@ svg .bi-chat-dots {
 #commentModal .modal-title {
 	margin-top: 25px;
 	margin-left: 30px;
+}
+
+.modal-backdrop {
+	width: 100% !important;
+	height: 100% !important;
 }
