@@ -1,8 +1,9 @@
-package controller;
+package controller.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.service.*;
 
 public class UserInfoUpdateController implements Controller {

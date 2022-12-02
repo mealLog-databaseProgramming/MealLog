@@ -1,4 +1,4 @@
-package controller;
+package controller.home;
 
 import java.util.ArrayList;
 import java.sql.Date;
@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Controller;
 import model.dto.FeedDTO;
 import model.service.FeedManager;
 
@@ -20,6 +21,7 @@ public class HomeController implements Controller {
 		
 //		List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 //		feedList = feedManager.read();
+//		
 //		request.setAttribute("feedList", feedList);
 //		request.setAttribute("page", "home/home.jsp");
 //		return "/index.jsp";
@@ -34,8 +36,6 @@ public class HomeController implements Controller {
 		feedList.add(f1);
 		feedList.add(f2);
 		feedList.add(f3);
-		
-		request.setAttribute("feedList", feedList);
 		request.setAttribute("page", "home/home.jsp");
 		return "/index.jsp";
 	}
