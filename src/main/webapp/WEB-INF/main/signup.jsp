@@ -7,24 +7,6 @@
 2. 중복 확인 버튼 추가 ..? 이건 어떻게 할지?? -> 알아봐야 힘
  -->
  
- 
- 
- <script>
-	 var password = document.querySelector("input[name='password']")
-	 , confirm_password = document.querySelector("input[name='confirm_password']");
-	
-	function validatePassword(){
-	 if(password.value != confirm_password.value) {
-	   confirm_password.setCustomValidity("비밀번호가 일치하지않습니다.");
-	 } else {
-	   confirm_password.setCustomValidity('');
-	 }
-	}
-	
-	password.onchange = validatePassword;
-	confirm_password.onkeyup = validatePassword;
- </script>
- 
 <div class="Content">
 	<div id="move_login" onclick="location.href='/login'">${ "< 로그인" }</div>
 	<div class="signup" align="center">
@@ -80,3 +62,20 @@
 		</form>
 	</div>
 </div>
+
+<script defer>
+	 var password = document.querySelector("input[name='password']")
+	 , confirm_password = document.querySelector("input[name='confirm_password']");
+	
+	function validatePassword(){
+	 if(password.value != confirm_password.value) {
+	   confirm_password.setCustomValidity("비밀번호가 일치하지않습니다.");
+	 } else {
+	   confirm_password.setCustomValidity('');
+	 }
+	}
+	
+	password.onchange = validatePassword;
+	confirm_password.onkeyup = validatePassword;
+ </script>
+ 
