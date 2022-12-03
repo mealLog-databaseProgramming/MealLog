@@ -84,8 +84,8 @@ public class RecommandManager {
 			//2. 입력받아온 재료로 검색
 			//3. EER 안쪽으로 열량을 가진 음식이 있다면 그것을 추천
 			//4. 없다면 걍 결과값에서 아무거나 출력
-	public FoodDTO recommendFood(String ingredient, float EER) {	//메소드 삭제, js에서 진행
-		FoodDTO foodDTO = new FoodDTO();
+	//public FoodDTO recommendFood(String ingredient, float EER) {	//메소드 삭제, js에서 진행
+		// FoodDTO foodDTO = new FoodDTO();
 		
 		//예외처리 : 결과값이 없음.(ex)'궯둛' 입력)
 		
@@ -97,8 +97,8 @@ public class RecommandManager {
 		
 		//목표치 안에 드는 음식 없다면 -> 전체 결과값 중 랜덤 돌려서 dto에 저장 후 리턴
 		
-		return foodDTO;
-	}
+		//return foodDTO;
+	//}
 	
 	//그날 필요한 stat의 퍼센트를 구한다.
 	public StatDTO getStatPerToday(Date today, float EER) {
