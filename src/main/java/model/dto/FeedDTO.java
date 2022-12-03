@@ -3,19 +3,18 @@ package model.dto;
 import java.sql.Date;
 
 public class FeedDTO {
-	private long userId;
 	private long feedId;
-	private Date publishDate;
-	private String content;
 	private String photo;	// 경로로 저장
+	private Date publishDate;
+	private long userId;
+	private String content;
 
-	
-	public FeedDTO(long userId, long feedId, Date publishDate, String content, String photo) {
-		this.userId = userId;
+	public FeedDTO(long feedId, String photo, Date publishDate, long userId, String content) {
 		this.feedId = feedId;
-		this.publishDate = publishDate;
-		this.content = content;
 		this.photo = photo;
+		this.publishDate = publishDate;
+		this.userId = userId;
+		this.content = content;
 	}
 
 	public long getUserId() {

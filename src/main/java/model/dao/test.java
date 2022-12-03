@@ -15,9 +15,9 @@ import model.dao.FeedDAO;
 
 public class test {
 
-	private static FeedDAO feed = new FeedDAO();
+	public FeedDAO feed = new FeedDAO();
 	
-	public static void main(String[] args) throws SQLException {
+	public void main(String[] args) throws SQLException {
 	
 		List<FeedDTO> list = feed.findFeedList();
 		System.out.println(list);
