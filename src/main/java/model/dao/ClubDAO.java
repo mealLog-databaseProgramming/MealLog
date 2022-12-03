@@ -138,7 +138,7 @@ public class ClubDAO {
 		}
 		return false;
 	}
-	
+	//리더여부확인
 	public boolean isLeader(long userId, long clubId) {
 		String sql = "SELECT leader "
 	    			+ "FROM club "
@@ -158,28 +158,27 @@ public class ClubDAO {
 		}
 		return false;
 	}
-	
-	//그룹에 이미 가입했는지 검사 && 이름 검색시
-	public boolean alreadyJoin(long userId, long clubId) throws SQLException {
-        String sql = "SELECT clubId "
-        			+ "FROM belong "
-        			+ "WHERE userId = ? and clubId = ?";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});	// JDBCUtil에 query문과 매개 변수 설정
+	//그룹 맴버인지 확인
+		public boolean isMember(long userId, long clubId) throws SQLException {
+	        String sql = "SELECT clubId "
+	        			+ "FROM belong "
+	        			+ "WHERE userId = ? and clubId = ?";              
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});	// JDBCUtil에 query문과 매개 변수 설정
 
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {						
-				int count = rs.getInt("count");
-				return (count == 1 ? true : false);
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						
+					int count = rs.getInt("count");
+					return (count == 1 ? true : false);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
+			return false;
 		}
-		return false;
-	}
-	
+		
 	//전체 group 정보를 검색하여 List에 저장 및 반환 
 	public List<ClubDTO> findClubList() throws SQLException {
         String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM group";
