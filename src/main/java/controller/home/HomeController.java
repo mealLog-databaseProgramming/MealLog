@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
+import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.service.FeedManager;
 import model.service.FoodManager;
@@ -34,32 +35,29 @@ public class HomeController implements Controller {
 		List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 		List<FoodDTO> foodList = new ArrayList<FoodDTO>();
 		List<ReplyDTO> replyList = new ArrayList<ReplyDTO>();
+		List<ReactDTO> reactList = new ArrayList<ReactDTO>();
 		
-		for (int i = 0; i < feedList.size(); i++) {
-			
-			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
-			replyList = replyManager.display(feedList.get(i).getFeedId());
-			
-			
-			Map data = new HashMap();
-			data.put("feed", feedList.get(i));
-			data.put("food", foodList);
-			data.put("reply", replyList);
-		}
-		
-//		List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 		feedList = feedManager.read();
-		
-//		request.setAttribute("feedList", feedList);
-
-		
 		for (int i = 0; i < feedList.size(); i++) {
-			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
+			
+//			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
+//			replyList = replyManager.display(feedList.get(i).getFeedId());
+////			reactList = feedManager.
+//					
+//			Map data = new HashMap();
+//			data.put("feed", feedList.get(i));
+//			data.put("food", foodList);
+//			data.put("reply", replyList);
+//			
+//			list.add(data);
 		}
+//		
+//		request.setAttribute("list", list);
 		
 		request.setAttribute("page", "home/home.jsp");
 		return "/index.jsp";
 		
+		//임시테스트
 //		List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 //		
 //		Date date = new Date(0);

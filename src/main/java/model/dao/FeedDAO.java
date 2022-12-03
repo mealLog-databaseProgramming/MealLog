@@ -26,7 +26,7 @@ public class FeedDAO {
 	// 피드 추가
 	public int createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, userId, publishDate, content, photo) " 
-			+ "VALUE(SEQUENCE_FEEDID.nextval, ?, ?, ?, ?, ?)";
+			+ "VALUE (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] {feed.getUserId(), feed.getPublishDate(), feed.getContent(), feed.getPhoto()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -210,8 +210,8 @@ public class FeedDAO {
 	public List<FeedDTO> findFeedList() throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
      		   + "FROM FEED "
-     		   + "ORDER BY publishDate" 
-     		   + "WHERE ROWNUM < 101";
+     		   + "WHERE ROWNUM < 101" 
+     		   + "ORDER BY publishDate";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
 		try {
