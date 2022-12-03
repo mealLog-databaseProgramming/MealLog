@@ -38,13 +38,16 @@ public class UserManager {
 	}
 
 	public int update(UserDTO user) throws SQLException, UserNotFoundException {
-
 		return userDAO.update(user);
 	}	
 
 	public int delete(long userId) throws SQLException, UserNotFoundException {
 		
 		return userDAO.delete(userId);
+	}
+	
+	public UserDTO findUser(long userId) {
+		return userDAO.findUser(userId);
 	}
 	
 	public long login(String loginId, String password) throws Exception {
@@ -54,4 +57,5 @@ public class UserManager {
 		
 		return userId;
 	}
+	
 }

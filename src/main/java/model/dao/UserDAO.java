@@ -46,7 +46,7 @@ public class UserDAO {
 		//기존 사용자 정보를 수정.
 		public int update(UserDTO user) throws SQLException {
 			String sql = "UPDATE UserInfo "
-						+ "SET uname=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=? profile=?"
+						+ "SET uname=?, introduce=?, age=?, gender=?, height=?, weight=?, activeRank=?, password=?, emailAddress=?, profile=? "
 						+ "WHERE userid=? ";
 			
 			Object[] param = new Object[] {
@@ -62,6 +62,7 @@ public class UserDAO {
 					user.getProfile(), 
 					user.getUserId()
 				};				
+			System.out.println(user.getUname());
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 				
 			try {				
@@ -148,8 +149,9 @@ public class UserDAO {
 							rs.getString("password"),
 							rs.getString("emailAddress"),
 							rs.getString("profile"),
-							"tmp"
+							null
 					);//생성자 매개변수 물어보기
+					user.setPassword(rs.getString("password"));
 					return user;//test에서는 user객체 받아서 출력
 				}
 			} catch (Exception ex) {

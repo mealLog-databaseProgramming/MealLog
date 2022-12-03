@@ -8,6 +8,7 @@ import controller.UserSessionUtils;
 
 import model.dao.UserDAO;
 import model.dto.UserDTO;
+import model.service.UserManager;
 
 public class MypageController implements Controller {
 
@@ -20,8 +21,8 @@ public class MypageController implements Controller {
 		}
 		
 		long uid = Long.valueOf(request.getParameter("uid"));
-		UserDAO userDAO = new UserDAO();
-		UserDTO user = userDAO.findUser(uid);
+		UserManager userManager = UserManager.getInstance();
+		UserDTO user = userManager.findUser(uid);
 	
 		request.setAttribute("profile", user.getProfile());
 		request.setAttribute("uname", user.getUname());
