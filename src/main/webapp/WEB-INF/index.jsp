@@ -22,7 +22,7 @@
 		<div class='greet'>
 			<iconify-icon icon="healthicons:ui-user-profile"></iconify-icon>
 			박솜솜님, 식사 맛있게 하셨나요? 식단을 그룹원들에게 공유해보세요
-			<div class='logout' onclick="location.href='/login'">
+			<div class='logout' onclick="location.href='/logout'">
 				<iconify-icon icon="icon-park:logout"></iconify-icon>
 				로그아웃
 			</div>

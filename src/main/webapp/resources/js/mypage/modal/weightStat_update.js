@@ -30,6 +30,10 @@ var weight_update = document.querySelector('.stat .edit');
 }
 
 function record_create_display() {
+	document.querySelector('#weightStat_update').reset();
+	var dateInput = document.querySelector('#weightStat_update input[name="date"]');
+	dateInput.removeAttribute('readonly');
+	
 	var records = document.querySelectorAll('#modal .record');
 	
 	records.forEach((item) => {
@@ -37,10 +41,12 @@ function record_create_display() {
 		
 		item.onclick = (e) => {
 			var record = e.target;
-			while(record.className != "record") {
-				var record = record.parentNode;
+			if(record.tagName != "ICONIFY-ICON") {
+				while(record.className != "record") {
+					var record = record.parentNode;
+				}
+				record_update_display(record);
 			}
-			record_update_display(record);
 		};
 	});
 	
@@ -58,6 +64,8 @@ function record_create_display() {
 	};
 }
 function record_update_display(record) {
+	document.querySelector('#weightStat_update').reset();
+	
 	var records = document.querySelectorAll('#modal .record');
 	records.forEach((item) => item.onclick = null);
 	
@@ -106,8 +114,8 @@ function record_delete_display() {
 				var record = e.target.parentNode;
 				
 				var date = record.querySelector('.date').innerText;
-				record_delete(date);
 				
+				record_delete(date);
 				record.remove();
 			}
 		};

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.service.*;
 
 public class LoginController implements Controller {
@@ -17,7 +18,8 @@ public class LoginController implements Controller {
 		if (loginId != null) {
 			try {
 				UserManager userManager = UserManager.getInstance();
-				request.getSession().setAttribute("userId", userManager.login(loginId, password));
+				UserSessionUtils.login(userManager.login(loginId, password), request.getSession());
+				
 				return "redirect:/";
 			} catch(Exception e) {
 				request.setAttribute("message", e.getMessage());
