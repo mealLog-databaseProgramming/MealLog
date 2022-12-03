@@ -51,6 +51,7 @@
 	<%for (int i = 0; i < data.size(); i++){ %>
 		<%
 			FeedDTO feed = (FeedDTO)data.get(i).get("feed");
+			List<FoodDTO> foodList = (List<FoodDTO>)data.get(i).get("food");
 		%>
 		<div class="postContainer">
 			<div class="profileIcon">
@@ -154,11 +155,10 @@
 					</div>
 				</div>
 			    <div class="foodContainer">
-					<div class="food">토마토</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
+			    	<%for (int j = 0; j < foodList.size(); j++) {%>
+			    	
+						<div class="food"><%=foodList.get(j).getFname() %></div>
+					<%} %>
 				</div>
 			    <div class='graphContainers'>
 					<jsp:include page="/WEB-INF/home/chart.jsp"/>
