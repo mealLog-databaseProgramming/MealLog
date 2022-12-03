@@ -28,7 +28,7 @@ public class UserManager {
 			throw new ExistingUserException(user.getLoginId() + "는 존재하는 아이디입니다.");
 		}
 		if (userDAO.existingUname(user.getUname()) == true) {
-			throw new ExistingUserException(user.getUserId() + "는 존재하는 닉네임입니다.");
+			throw new ExistingUserException(user.getUname() + "는 존재하는 닉네임입니다.");
 		}
 		if (userDAO.existingEmail(user.getEmailAddress()) == true) {
 			throw new ExistingUserException(user.getEmailAddress() + "는 존재하는 이메일입니다.");
