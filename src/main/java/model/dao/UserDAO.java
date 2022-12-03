@@ -216,7 +216,7 @@ public class UserDAO {
 		public boolean existingUname(String uname) throws SQLException {
 			String sql = "SELECT count(*) as count "
 						+ "FROM UserInfo "
-						+ "WHERE uname = ? ";    
+						+ "WHERE uname=? ";    
 			
 			Object[] param = new Object[] {uname};
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
