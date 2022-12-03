@@ -19,7 +19,7 @@ public class UserStatUpdateController implements Controller {
 		StatManager statManager = StatManager.getInstance();
 		
 		try {
-			//statManager.addWeightStat(userId, date, weight);
+			statManager.addWeightStat(userId, date, weight);
 			
 		} catch(Exception e) {
 			request.setAttribute("message", e.getMessage());
