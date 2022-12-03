@@ -146,25 +146,25 @@ public class UserDAO {
 		}
 		
 		//loginId로 유저 찾기
-		public UserDTO findUser(String loginId) {
-			String sql = "Select userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+		public long findUserId(String loginId, String password) {
+			String sql = "Select userId "
 	        		+ "From UserInfo "
-	        		+ "where loginId = ? ";    
-	        Object[] param = new Object[] { loginId };
+	        		+ "where loginId = ? and password = ?";    
+	        Object[] param = new Object[] { loginId, password };
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 	
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {						// 아이디 정보 발견
-					UserDTO user = new UserDTO();//생성자 매개변수 물어보기
-					return user;//test에서는 user객체 받아서 출력
+					return rs.getLong("userId");//test에서는 user객체 받아서 출력
 				}
+				return -1;
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			} finally {
 				jdbcUtil.close();		// resource 반환
 			}
-			return null;
+			return -1;
 		}
 
 		//이름과 이메일로 아이디 찾기
