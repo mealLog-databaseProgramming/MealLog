@@ -25,8 +25,8 @@ public class MypageController implements Controller {
 		long uid = Long.valueOf(request.getParameter("uid"));
 		UserManager userManager = UserManager.getInstance();
 		UserDTO user = userManager.findUser(uid);
-			
-		request.setAttribute("profile", "/resources/profile/" + user.getProfile());
+		
+		if(user.getProfile() != null) request.setAttribute("profile", "/resources/profile/" + user.getProfile());
 		request.setAttribute("uname", user.getUname());
 		request.setAttribute("introduce", user.getIntroduce());
 		
