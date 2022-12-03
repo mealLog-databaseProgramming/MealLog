@@ -9,12 +9,8 @@
 
 <div class='Content'>
 <div class="mypage">
-	<c:if test="${edit eq true}">
-		<jsp:include page="profile/profile_edit.jsp"/>
-	</c:if>
-	<c:if test="${edit eq false}">
-		<jsp:include page="profile/profile.jsp"/>
-	</c:if>
+	<jsp:include page="profile/profile.jsp"/>
+	<jsp:include page="profile/profile_edit.jsp"/>
 	<hr/>
 	<jsp:include page="stat/stat.jsp"/>
 	<div class='seeAlso' onclick="location.href = '#feeds';">

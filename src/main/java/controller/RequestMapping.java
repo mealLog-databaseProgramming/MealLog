@@ -27,7 +27,7 @@ public class RequestMapping {
     	mappings.put("/mypage", new MypageController());
     	
     	mappings.put("/infoupdate", new UserInfoUpdateController());
-    	mappings.put("/statupdate", new UserStatUpdateController());
+    	mappings.put("/statupdate", new StatUpdateController());
     	
     	mappings.put("/login", new LoginController());
     	mappings.put("/signup", new SignupController());
