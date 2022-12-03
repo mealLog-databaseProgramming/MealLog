@@ -5,7 +5,7 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import model.dto.FeedDTO;
@@ -209,7 +209,7 @@ public class FeedDAO {
 
 	// 최신 100개의 피드 리스트
 	public List<FeedDTO> findFeedList() throws SQLException {
-        String sql = "SELECT feedId, userId, publishDate, content, photo " 
+        String sql = "SELECT feedId, photo, publishDate, userId, content " 
      		   + "FROM FEED "
      		   + "WHERE ROWNUM < 101" 
      		   + "ORDER BY publishDate";
@@ -218,6 +218,7 @@ public class FeedDAO {
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();				
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
+			
 			while (rs.next()) {
 				FeedDTO feed = new FeedDTO(	
 						rs.getLong("feedId"),
@@ -225,8 +226,8 @@ public class FeedDAO {
 						rs.getDate("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
-					feedList.add(feed);		
-			}		
+				feedList.add(feed);	
+			}	
 			return feedList;					
 			
 		} catch (Exception ex) {
