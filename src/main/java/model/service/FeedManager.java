@@ -18,7 +18,7 @@ public class FeedManager {
 		}			
 	}
 
-	public FeedManager getInstance() {
+	public static FeedManager getInstance() {
 		return FeedMan;
 	}
 
@@ -28,9 +28,9 @@ public class FeedManager {
 		return feedDAO.createFeed(feed);
 	}
 
-	public int remove(FeedDTO feed) throws SQLException {
+	public int remove(long feedId) throws SQLException {
 		
-		return feedDAO.removeFeed(feed.getFeedId());
+		return feedDAO.removeFeed(feedId);
 	}		
 
 	public List<FeedDTO> read() throws SQLException {
