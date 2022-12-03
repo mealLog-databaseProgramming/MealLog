@@ -21,7 +21,7 @@ public class ClubDAO {
 	public int createClub(ClubDTO club) throws SQLException {
 		String sql = "INSERT INTO CLUB (clubId, cname, goal, info, max_member, leader) " 
 			+ "VALUE(SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] {club.getClubId(), club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), club.getLeader()};
+		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), club.getLeader()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
