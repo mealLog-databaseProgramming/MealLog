@@ -51,6 +51,8 @@
 	<%for (int i = 0; i < data.size(); i++){ %>
 		<%
 			FeedDTO feed = (FeedDTO)data.get(i).get("feed");
+			List<FoodDTO> foodList = (List<FoodDTO>)data.get(i).get("food");
+			List<ReplyDTO> replyList = (List<ReplyDTO>)data.get(i).get("reply");
 		%>
 		<div class="postContainer">
 			<div class="profileIcon">
@@ -95,50 +97,19 @@
 						</div>
 						<hr>
 						<div class="commentList">
-							<div class="commentContainer">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-									<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-								</svg>
-								<div class="commentText">
-									<span class="commentWriter">류승연</span>
-									<span class="commentTime">10초전</span>
-									<div class="comment">나도 먹고싶다</div>
+							<%for (int k = 0; k < replyList.size(); k++) {%>
+								<div class="commentContainer">
+									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
+										<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+										<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+									</svg>
+									<div class="commentText">
+										<span class="commentWriter"><%=replyList.get(k).getUserId() %></span>
+										<span class="commentTime"><%=replyList.get(k).getPublishDate() %></span>
+										<div class="comment"><%=replyList.get(k).getContent() %></div>
+									</div>
 								</div>
-							</div>
-							<div class="commentContainer">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-									<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-								</svg>
-								<div class="commentText">
-									<span class="commentWriter">김민정</span>
-									<span class="commentTime">10분전</span>
-									<div class="comment">사진 예쁘다</div>
-								</div>
-							</div>
-							<div class="commentContainer">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-									<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-								</svg>
-								<div class="commentText">
-									<span class="commentWriter">허지예</span>
-									<span class="commentTime">1시간전</span>
-									<div class="comment">오 샐러드</div>
-								</div>
-							</div>
-							<div class="commentContainer">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-									<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-								</svg>
-								<div class="commentText">
-									<span class="commentWriter">전유영</span>
-									<span class="commentTime">5시간전</span>
-									<div class="comment">와 나도 줘라</div>
-								</div>
-							</div>
+							<%} %>
 						</div>
 						<div class="inputComment">
 							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -150,15 +121,14 @@
 							  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
 							</svg>
 						</div>
-						<span class="commentModalBtn" data-bs-toggle="modal" data-bs-target="#commentModal">모든 댓글 보기</span>
+						<div class="commentModalBtn" data-bs-toggle="modal" data-bs-target="#commentModal">모든 댓글 보기</div>
 					</div>
 				</div>
 			    <div class="foodContainer">
-					<div class="food">토마토</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
-					<div class="food">샐러리</div>
+			    	<%for (int j = 0; j < foodList.size(); j++) {%>
+			    	
+						<div class="food"><%=foodList.get(j).getFname() %></div>
+					<%} %>
 				</div>
 			    <div class='graphContainers'>
 					<jsp:include page="/WEB-INF/home/chart.jsp"/>
@@ -170,7 +140,7 @@
 		<br>
 	<%} %>
 	
-	<!-- 2번째 게시글 -->
+	<!-- 2번째 게시글(원본) -->
 	<!-- <div class="postContainer">
 		<div class="profileIcon">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -279,28 +249,6 @@
 		</div>
 	</div> -->
 </div>
-
-<!-- test -->
-	<!--<c:forEach var="feed" items="${temp}">
-		<span>${feed.feedId}</span>
-		<div>${feed.content}</div>
-		<div>${feed.photo}</div>
-	</c:forEach>-->
-	<!--<c:forEach var="feed" items="${temp}">
-		<table>
-			<tr>
-			  <td class="commCell">			
-				  ${feed.userId}
-			  </td>
-			  <td class="commCell">
-				  ${feed.content}
-			  </td>
-			  <td class="commCell">
-				  ${feed.photo}
-			  </td>
-			</tr>
-		</table>
-	</c:forEach>-->
 
 <jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
 <jsp:include page="/WEB-INF/home/commentModal.jsp"/>

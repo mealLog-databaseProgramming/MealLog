@@ -35,3 +35,8 @@ function deleteFood(){
 	//event target이 svg, path 2가지 나올 수 있
 }
 
+/*function showAllComment(event) {
+	var feedId = event.target.id
+	console.log(feedId);
+}*/
+
