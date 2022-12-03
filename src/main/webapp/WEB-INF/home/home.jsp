@@ -6,6 +6,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <%@page import="model.dto.FeedDTO"%>
+<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,12 @@
 <% 
 	/*Map data = (HashMap) request.getAttribute("list"); */
 	List<FeedDTO> temp = (List<FeedDTO>)request.getAttribute("temp"); 
+	System.out.println(temp.size());
+	
+	//System.out.println(temp);
+	/*for (int i = 0; i < temp.size(); i++) {
+		System.out.println(temp.get(i).getContent());
+	}*/
 %> 
 
 	<div class="topDiv">
@@ -32,11 +39,26 @@
 	<%//data.get("feed") %>
 	<%//temp %>
 	
-	<!-- test! -->
-	<c:forEach var="feed" items="${temp}">
+	<!-- test -->
+	<!--<c:forEach var="feed" items="${temp}">
 		<span>${feed.feedId}</span>
 		<div>${feed.content}</div>
 		<div>${feed.photo}</div>
+	</c:forEach>-->
+	<c:forEach var="feed" items="${temp}">
+		<table>
+			<tr>
+			  <td class="commCell">			
+				  ${feed.userId}
+			  </td>
+			  <td class="commCell">
+				  ${feed.content}
+			  </td>
+			  <td class="commCell">
+				  ${feed.photo}
+			  </td>
+			</tr>
+		</table>
 	</c:forEach>
 	<div class="postContainer">
 		<div class="profileIcon">
