@@ -32,7 +32,7 @@ public class ClubController implements Controller {
 		if (manager.isLeader(leaderId, clubId)){
 			request.setAttribute("isLeader", true);
 		}
-		else if(manager.alreadyJoin(userId, clubId)) {
+		else if(manager.isMember(userId, clubId)) {
 			request.setAttribute("joined", true);
 		}
 		*/

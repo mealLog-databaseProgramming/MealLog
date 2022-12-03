@@ -63,8 +63,8 @@ public class ClubManager {
 		return clubDAO.removeClubMember(deleteId, clubId);
 	}
 
-	public boolean alreadyJoin(long userId, long clubId) throws SQLException {
-		return clubDAO.alreadyJoin(userId, clubId);
+	public boolean isMember(long userId, long clubId) throws SQLException {
+		return clubDAO.isMember(userId, clubId);
 	}
 	
 	public boolean isLeader(long userId, long clubId) throws SQLException {
