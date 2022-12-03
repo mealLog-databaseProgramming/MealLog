@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +16,17 @@
 </head>
 <body>
 <div class='Content'>
+<% 
+	Map data = (HashMap) request.getAttribute("list"); 
+%> 
+
 	<div class="topDiv">
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
 			글 작성하기
 		</button>
 		<hr>
 	</div>
+	<%//data.get("feed") %>
 	<!-- test! -->
 	<!--<c:forEach var="feed" items="${feedList}">
 
