@@ -11,8 +11,8 @@ public class UserInfoUpdateController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		long userId = (long) request.getAttribute("userId");
-		String name = (String) request.getAttribute("profile");
+
+		String name = (String) request.getAttribute("uname");
 		String profile = (String) request.getAttribute("profile");
 		String introduce = (String) request.getAttribute("introduce");
 		

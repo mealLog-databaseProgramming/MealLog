@@ -26,11 +26,12 @@ public class RequestMapping {
 
     	mappings.put("/mypage", new MypageController());
     	
-    	mappings.put("/infoupdate", new UserInfoUpdateController());
+    	mappings.put("/userinfoupdate", new UserInfoUpdateController());
     	mappings.put("/statupdate", new StatUpdateController());
     	
     	mappings.put("/login", new LoginController());
     	mappings.put("/signup", new SignupController());
+    	mappings.put("/logout", new LogoutController());
     }
 
     public Controller findController(String uri) {

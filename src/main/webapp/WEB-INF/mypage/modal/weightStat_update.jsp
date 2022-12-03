@@ -38,7 +38,7 @@
 				</div>
 			</c:forEach>
 		</div>
-		<form id="weightStat_update" action="/mypage" method="post">
+		<form id="weightStat_update" action="/userinfoUpdate" method="post">
 			<input type="date" name="date"></input>
 			<input type="number" name="weight"></input>
 			<h3>kg</h3>

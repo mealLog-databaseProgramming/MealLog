@@ -125,16 +125,31 @@ public class UserDAO {
 		
 		//userId로 유저 찾기
 		public UserDTO findUser(long userId) {
-			String sql = "Select userId, uname, age, gender, height, weight, activeRank, loginId, password, emailAddress "
+			String sql = "Select userId, uname, introduce, age, gender, height, weight, activeRank, loginId, password, emailAddress, profile "
 		        		+ "From UserInfo "
-		        		+ "where loginId = ? ";    
+		        		+ "where userId = ? ";    
 	        Object[] param = new Object[] { userId };
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
-	
+			
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				
 				if (rs.next()) {						// 아이디 정보 발견
-					UserDTO user = new UserDTO();//생성자 매개변수 물어보기
+					UserDTO user = new UserDTO(
+							rs.getLong("userId"),
+							rs.getString("uname"),
+							rs.getString("introduce"),
+							rs.getInt("age"),
+							rs.getInt("gender"),
+							rs.getFloat("height"),
+							rs.getFloat("weight"),
+							rs.getInt("activeRank"),
+							rs.getString("loginId"),
+							rs.getString("password"),
+							rs.getString("emailAddress"),
+							rs.getString("profile"),
+							"tmp"
+					);//생성자 매개변수 물어보기
 					return user;//test에서는 user객체 받아서 출력
 				}
 			} catch (Exception ex) {
