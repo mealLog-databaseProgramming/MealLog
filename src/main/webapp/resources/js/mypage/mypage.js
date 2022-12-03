@@ -6,6 +6,14 @@ function init_mypage() {
 	init();
 	profile_edit();
 	weightStat_update_modal();
+	
+	const profileImg = document.querySelector(".mypage .profile .img .profileImg");
+    if(profileImg.width > profileImg.height) profileImg.style.height = "200px";
+    else profileImg.style.width = "200px";
+
+	const previewImage = document.querySelector(".preview");
+    if(previewImage.width > previewImage.height) previewImage.style.height = "200px";
+    else previewImage.style.width = "200px";
 }
 
 function profile_edit() {
