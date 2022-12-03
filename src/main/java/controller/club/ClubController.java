@@ -19,10 +19,10 @@ public class ClubController implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		long userId = Long.parseLong(request.getParameter("userId"));
-		long clubId = Long.parseLong(request.getParameter("clubId"));
-		long leaderId = Long.parseLong(request.getParameter("leader"));
+/**
+		//long userId = Long.parseLong(request.getParameter("userId"));
+		//long clubId = Long.parseLong(request.getParameter("clubId"));
+		//long leaderId = Long.parseLong(request.getParameter("leader"));
 		
 		ClubManager manager = ClubManager.getInstance();
 		List<ClubDTO> clubList = manager.findClubList();
@@ -35,7 +35,7 @@ public class ClubController implements Controller {
 		else if(manager.alreadyJoin(userId, clubId)) {
 			request.setAttribute("joined", true);
 		}
-		
+		*/
 		request.setAttribute("page", "group/groupList.jsp");
 		return "/index.jsp";
 	}

@@ -27,7 +27,7 @@ public class JoinClubController implements Controller {
 			ClubManager manager = ClubManager.getInstance();		
 			manager.joinClub(belong);		
 
-			return "redirect:/gourp";
+			return "redirect:/group";
 			
 		}
 }

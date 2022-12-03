@@ -17,9 +17,7 @@ private JDBCUtil jdbcUtil = null;
 		jdbcUtil = new JDBCUtil();		// JDBCUtil 객체 생성
 	}
 		
-	/**
-	 * stat정보 입력(하루 단위로 새로 생성)
-	 */
+	//stat정보 입력(하루 단위로 새로 생성)
 	public int create(StatDTO stat) throws SQLException {
 		String sql = "Insert Into Stat(userId, m_date, weight, kcal, carb, protein, fat) "
 					+ "Values (?, ?, ?, ?, ?, ?, ?) ";		
@@ -40,9 +38,7 @@ private JDBCUtil jdbcUtil = null;
 		return 0;			
 	}
 	
-	/**
-	 * 기존의 stat 정보를 수정=식사 추가
-	 */
+	//기존의 stat 정보를 수정=식사 추가
 	public int update(StatDTO stat) throws SQLException {
 		String sql = "Update Stat "
 					+ "SET weight=?, kcal=?, carb=?. protein=?, fat=? "
@@ -118,12 +114,12 @@ private JDBCUtil jdbcUtil = null;
 		}
 		return null;
 	}
+	
 	//addWeightStat용
-	public int addWeight(StatDTO stat) throws SQLException {
-		String sql = "Update Stat "
-					+ "SET weight=? "
-					+ "WHERE userid=? ";
-		Object[] param = new Object[] {stat.getWeight(), stat.getUserId()};				
+	public int addWeightStat(long userId, Date date, float weight) throws SQLException {
+		String sql = "Insert Into Stat( userId, m_date, weight ) "
+				+ "Values (?, ?, ?) ";
+		Object[] param = new Object[] { userId, date, weight };				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			
 		try {				

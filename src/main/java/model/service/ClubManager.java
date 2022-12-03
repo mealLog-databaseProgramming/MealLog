@@ -59,7 +59,11 @@ public class ClubManager {
 		return clubDAO.joinClub(belong);
 	}
 	
+<<<<<<< HEAD
+	public int leaveClub(long deleteId, long clubId) throws SQLException {
+=======
 	public int leaveClub(long deleteId, long clubId) throws SQLException{
+>>>>>>> b178f6acf8d9a80385c68423bfedb1a60555048a
 		return clubDAO.removeClubMember(deleteId, clubId);
 	}
 
