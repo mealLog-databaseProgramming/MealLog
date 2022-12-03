@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import model.service.*;
 
-public class UserStatUpdateController implements Controller {
+public class StatUpdateController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

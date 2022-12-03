@@ -302,6 +302,41 @@ public class FeedDAO {
 		return 0;
 	}
 	
+	// 마이페이지 : 그동안 받은 up 개수
+	public int countPositiveReactbyUser(long userId) throws SQLException {
+		String sql = "SELECT COUNT(*)"
+				+ "FROM REACT"
+				+ "WHERE feedId = (SELECT feedId FROM FEED WHERE userId = ?)";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
+		
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		
+		return 0;
+	}
+	
+	// 마이페이지 : 그동안 작성한 피드 개수
+	public int countFeedbyUser(long userId) throws SQLException {
+		String sql = "SELECT COUNT(*) FROM FEED WHERE userId = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	
+		
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return 0;
+		
+	}
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public UserDTO findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "

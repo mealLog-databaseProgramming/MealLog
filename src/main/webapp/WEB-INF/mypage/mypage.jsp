@@ -5,21 +5,25 @@
 <link rel="stylesheet" href="/resources/css/mypage/mypage.css"/>
 <link rel="stylesheet" href="/resources/css/mypage/polaroid.css"/>
 
+<c:if test="${message ne null}">
+	<script defer>
+		alert("<%=request.getAttribute("message")%>");
+	</script>
+</c:if>
 <jsp:include page="modal/weightStat_update.jsp"/>
-
 <div class='Content'>
 <div class="mypage">
-	<c:if test="${edit eq true}">
+	<jsp:include page="profile/profile.jsp"/>
+	<c:if test="${userId eq param.uid}">
 		<jsp:include page="profile/profile_edit.jsp"/>
 	</c:if>
-	<c:if test="${edit eq false}">
-		<jsp:include page="profile/profile.jsp"/>
-	</c:if>
 	<hr/>
-	<jsp:include page="stat/stat.jsp"/>
-	<div class='seeAlso' onclick="location.href = '#feeds';">
-		▼ 식단 기록 모아 보기
-	</div>
+	<c:if test="${userId eq param.uid}">
+		<jsp:include page="stat/stat.jsp"/>
+		<div class='seeAlso' onclick="location.href = '#feeds';">
+			▼ 식단 기록 모아 보기
+		</div>
+	</c:if>
 	<div id='feeds' class="polra">
 		<c:forEach begin="1" end="40" varStatus="loop">
 			<jsp:include page="polaroid.jsp"/>

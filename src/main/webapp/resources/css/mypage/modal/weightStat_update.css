@@ -14,7 +14,7 @@
 }
 
 #modal .modal_window {
-	width: 500px; height: 650px;
+	width: 500px;
 	
 	background: #FFFFFF;
 	border-radius: 50px;
@@ -46,7 +46,7 @@
 	font-size: 36px;
 	margin-right: 10px;
 	
-	color: #6BA32D;
+	color: #547A1D;
 }
 #modal .modal_window .title h2 {
 	font-size: 32px;
@@ -113,6 +113,7 @@
 	display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 75px;
 }
 #weightStat_update input[type="date"], #weightStat_update input[type="number"] {
 	width: 150px; height: 35px;
@@ -133,17 +134,38 @@
 	font-size: 20px;
 	font-weight: 600;
 }
-#weightStat_update input[type="submit"] {
+#weightStat_update input[type="submit"], #weightStat_update input[type="button"] {
 	width: 75px; height: 35px;
 	background: #81B44F;
-	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 	margin: 20px;
 	
 	border: none;
 	
 	font-size: 20px;
-	font-weight: 600;
+	font-weight: 400;
 	line-height: 35px;
 	color: white;
+	
+	transform: translate(0, -2.5px);
+}
+#weightStat_update input[type="submit"] {
+	position: absolute;
+	width: 120px; font-weight: 600;
+	transform: translate(0, 67.5px);
+	background: #547A1D;
+}
+
+#weightStat_update input[type="submit"]:active, #weightStat_update input[type="button"]:active {
+	transform: none;
+	box-shadow: none;
+}
+
+#weightStat_update input[type="submit"]:active {
+	transform: translate(0, 70px);
+}
+
+#weightStat_update .hidden {
+	display: none;
 }
