@@ -4,6 +4,8 @@
 
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="model.dto.FeedDTO"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +19,8 @@
 <body>
 <div class='Content'>
 <% 
-	Map data = (HashMap) request.getAttribute("list"); 
+	/*Map data = (HashMap) request.getAttribute("list"); */
+	List<FeedDTO> temp = (List<FeedDTO>)request.getAttribute("temp"); 
 %> 
 
 	<div class="topDiv">
@@ -27,13 +30,14 @@
 		<hr>
 	</div>
 	<%//data.get("feed") %>
+	<%//temp %>
+	
 	<!-- test! -->
-	<!--<c:forEach var="feed" items="${feedList}">
-
+	<c:forEach var="feed" items="${temp}">
 		<span>${feed.feedId}</span>
 		<div>${feed.content}</div>
 		<div>${feed.photo}</div>
-	</c:forEach>-->
+	</c:forEach>
 	<div class="postContainer">
 		<div class="profileIcon">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">

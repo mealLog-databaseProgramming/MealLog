@@ -53,6 +53,7 @@ public class HomeController implements Controller {
 		}
 //		
 //		request.setAttribute("list", list);
+		request.setAttribute("temp", feedList);
 		
 		request.setAttribute("page", "home/home.jsp");
 		return "/index.jsp";
