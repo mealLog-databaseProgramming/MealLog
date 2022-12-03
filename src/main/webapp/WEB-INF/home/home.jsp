@@ -34,6 +34,10 @@
 	System.out.println(feedTemp.getContent());
 	System.out.println(foodTemp.get(0).getFname());
 	System.out.println(replyTemp.get(0).getContent());
+	
+	//feedTemp.getContent()
+	//foodTemp.get(0).getFname()
+	//replyTemp.get(0).getContent()
 %> 
 
 	<div class="topDiv">
@@ -41,9 +45,6 @@
 			글 작성하기
 		</button>
 		<hr>
-		<%=feedTemp.getContent() %>
-		<%=foodTemp.get(0).getFname() %>
-		<%=replyTemp.get(0).getContent() %>
 	</div>
 	
 
@@ -126,7 +127,6 @@
 				</div>
 			    <div class="foodContainer">
 			    	<%for (int j = 0; j < foodList.size(); j++) {%>
-			    	
 						<div class="food"><%=foodList.get(j).getFname() %></div>
 					<%} %>
 				</div>
@@ -243,9 +243,7 @@
 				<div class="food">샐러리</div>
 				<div class="food">샐러리</div>
 			</div>
-		    <div class='graphContainers'>
-				<jsp:include page="/WEB-INF/home/chart.jsp"/>
-			</div>
+			<!--그래프 들어갔던 자리-->
 		</div>
 	</div> -->
 </div>
