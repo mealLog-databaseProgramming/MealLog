@@ -19,10 +19,10 @@ public class test {
 	
 	public static void main(String[] args) throws SQLException {
 	
-		List<FeedDTO> list = feed.findFeedList();
-		System.out.println(list.get(0).getPhoto());
-		System.out.println(list.get(0).getContent());
+		List<FoodDTO> list = feed.findFoodList(7);
+		System.out.println(list.get(0).getFname());
 	}
+		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 //        //자바설정파일을 사용한 애플리케이션컨텍스트 초기화
 //        //ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);	//DaoFactory 설정정보를 생성자의 인자로 줌

@@ -27,6 +27,7 @@
 			<c:if test="${introduce eq null}">
 				<span style="color: rgba(0, 0, 0, .5)">자기소개 글이 아직 없습니다.</span>
 			</c:if>
+			${introduce}
 		</div>
 		<div class="tag">🥗 식단 기록 | 53</div>
 		<div class="tag">👍 긍정 반응 | 3</div>

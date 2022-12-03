@@ -5,7 +5,7 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import model.dto.FeedDTO;
@@ -209,7 +209,7 @@ public class FeedDAO {
 
 	// 최신 100개의 피드 리스트
 	public List<FeedDTO> findFeedList() throws SQLException {
-        String sql = "SELECT feedId, userId, publishDate, content, photo " 
+        String sql = "SELECT feedId, photo, publishDate, userId, content " 
      		   + "FROM FEED "
      		   + "WHERE ROWNUM < 101" 
      		   + "ORDER BY publishDate";
@@ -218,6 +218,7 @@ public class FeedDAO {
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();				
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
+			
 			while (rs.next()) {
 				System.out.println("123");
 				FeedDTO feed = new FeedDTO(	
@@ -226,8 +227,8 @@ public class FeedDAO {
 						rs.getDate("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
-					feedList.add(feed);		
-			}		
+				feedList.add(feed);	
+			}	
 			return feedList;					
 			
 		} catch (Exception ex) {
@@ -302,6 +303,41 @@ public class FeedDAO {
 		return 0;
 	}
 	
+	// 마이페이지 : 그동안 받은 up 개수
+	public int countPositiveReactbyUser(long userId) throws SQLException {
+		String sql = "SELECT COUNT(*)"
+				+ "FROM REACT"
+				+ "WHERE feedId = (SELECT feedId FROM FEED WHERE userId = ?)";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
+		
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		
+		return 0;
+	}
+	
+	// 마이페이지 : 그동안 작성한 피드 개수
+	public int countFeedbyUser(long userId) throws SQLException {
+		String sql = "SELECT COUNT(*) FROM FEED WHERE userId = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	
+		
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return 0;
+		
+	}
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public UserDTO findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
