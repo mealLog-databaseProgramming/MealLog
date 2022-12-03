@@ -2,10 +2,10 @@
 
 package model.dao;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.dto.FeedDTO;
@@ -25,9 +25,9 @@ public class FeedDAO {
 
 	// 피드 추가
 	public int createFeed(FeedDTO feed) throws SQLException {
-		String sql = "INSERT INTO Feed (feedId, userId, publishDate, content, photo) " 
-			+ "VALUE (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] {feed.getUserId(), feed.getPublishDate(), feed.getContent(), feed.getPhoto()};
+		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
+			+ "VALUE (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?)";
+		Object[] param = new Object[] {feed.getPhoto(), feed.getPublishDate(), feed.getUserId(), feed.getContent()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
@@ -182,21 +182,21 @@ public class FeedDAO {
 
 	// 특정 피드 출력
 	public FeedDTO findFeed(long feedId) throws SQLException {
-        String sql = "SELECT userId, publishDate, content, photo "
+        String sql = "SELECT feedId, photo, publishDate, userId, content"
         			+ "FROM feed "
         			+ "WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
-
+		FeedDTO feed = null;
+		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();	
 			if (rs.next()) {						
-				FeedDTO feed = new FeedDTO(
-						rs.getLong("userId"),
-						rs.getLong("feedId"),
+				feed = new FeedDTO(
+						feedId,
+						rs.getString("photo"),
 						rs.getDate("publishDate"),
-						rs.getString("content"),
-						rs.getString("photo"));
-				return feed;
+						rs.getLong("userId"),
+						rs.getString("content"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -219,12 +219,12 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
 			while (rs.next()) {
 				FeedDTO feed = new FeedDTO(	
-					rs.getLong("userId"),		
-					rs.getLong("feedId"),
-					rs.getDate("publishDate"),
-					rs.getString("content"),
-					rs.getString("photo"));	
-				feedList.add(feed);				
+						rs.getLong("feedId"),
+						rs.getString("photo"),
+						rs.getDate("publishDate"),
+						rs.getLong("userId"),
+						rs.getString("content"));
+					feedList.add(feed);		
 			}		
 			return feedList;					
 			
@@ -251,12 +251,12 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 			while (rs.next()) {						
 				FeedDTO feed = new FeedDTO(		
-					rs.getLong("userId"),
-					rs.getLong("feedId"),
-					rs.getDate("publishDate"),
-					rs.getString("content"),
-					rs.getString("photo"));
-				feedList.add(feed);
+						rs.getLong("feedId"),
+						rs.getString("photo"),
+						rs.getDate("publishDate"),
+						rs.getLong("userId"),
+						rs.getString("content"));
+					feedList.add(feed);
 			}
 			return feedList;
 		} catch (Exception ex) {
@@ -325,7 +325,7 @@ public class FeedDAO {
 	
 	// 유저의 피드 리스트
 	public List<FeedDTO> findFeedListbyUser(long userId) throws SQLException {
-        String sql = "SELECT feedId, userId, publishDate, content, photo FROM FEED WHERE userid = ? ORDER BY publishDate";
+        String sql = "SELECT feedId, photo, publishDate, userId, content FROM FEED WHERE userid = ? ORDER BY publishDate";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
@@ -333,11 +333,11 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 			while (rs.next()) {						
 				FeedDTO feed = new FeedDTO(		
-					rs.getLong("userId"),
 					rs.getLong("feedId"),
+					rs.getString("photo"),
 					rs.getDate("publishDate"),
-					rs.getString("content"),
-					rs.getString("photo"));
+					rs.getLong("userId"),
+					rs.getString("content"));
 				feedList.add(feed);
 			}
 			return feedList;

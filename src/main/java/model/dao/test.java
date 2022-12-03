@@ -15,13 +15,12 @@ import model.dao.FeedDAO;
 
 public class test {
 
-	private static FeedDAO feed = new FeedDAO();
-
-	public static void main(String[] args) throws SQLException {
-
+	public FeedDAO feed = new FeedDAO();
+	
+	public void main(String[] args) throws SQLException {
+	
 		List<FeedDTO> list = feed.findFeedList();
 		System.out.println(list);
-
 	}
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 //        //자바설정파일을 사용한 애플리케이션컨텍스트 초기화
