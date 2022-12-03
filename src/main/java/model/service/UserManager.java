@@ -47,9 +47,11 @@ public class UserManager {
 		return userDAO.delete(userId);
 	}
 	
-	public long login(String userId, String password) throws Exception {
-		UserDTO user = userDAO.findUser(userId);
-		if (user.getPassword().equals(password)) return user.getUserId();
-		throw new Exception();
+	public long login(String loginId, String password) throws Exception {
+		long userId = userDAO.findUserId(loginId, password);
+		
+		if(userId == -1) throw new Exception("아이디 또는 비밀번호가 일치하지 않습니다.");
+		
+		return userId;
 	}
 }
