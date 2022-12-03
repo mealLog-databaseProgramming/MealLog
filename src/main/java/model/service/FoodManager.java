@@ -27,14 +27,16 @@ public class FoodManager {
 	
 	public int create(FoodDTO food) throws SQLException {
 		return feedDAO.createFood(food);
-	}
+	} 
 	
 	// update X
 	
+	/* remove 필요 업을 듯
 	public int remove(long foodId) throws SQLException {
 		return feedDAO.removeFood(foodId);
 	}
-
+	*/
+	
 	public List<FoodDTO> findFoodList(long feedId) throws SQLException {
 		return feedDAO.findFoodList(feedId); 
 	}

@@ -2,26 +2,22 @@ package model.dto;
 
 public class FoodDTO {
 	private long foodId;
-	private long feedId;
-	private String fname;
+	private String fname;	
 	private float kcal;
 	private float carb;
 	private float protein;
 	private float fat;
+	private long feedId;
 	
-	public FoodDTO() {
-		super();
-	}
-	
-	public FoodDTO(long foodId, long feedId, String fname, float kcal, float carb, float protein, float fat) {
+	public FoodDTO(long foodId, String fname, float kcal, float carb, float protein, float fat, long feedId) {
 		this.foodId = foodId;
-		this.feedId = feedId;
 		this.fname = fname;
 		this.kcal = kcal;
 		this.carb = carb;
 		this.protein = protein;
 		this.fat = fat;
-	}
+		this.feedId = feedId;
+	} 
 
 	public long getFoodId() {
 		return foodId;

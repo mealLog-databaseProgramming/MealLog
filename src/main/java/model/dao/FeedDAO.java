@@ -64,9 +64,9 @@ public class FeedDAO {
 
 	// 피드 음식 추가
 	public int createFood(FoodDTO food) throws SQLException {
-		String sql = "INSERT INTO Food(foodId, fname, kcal, carb, protein, fat, feedId) " 
+		String sql = "INSERT INTO Food(foodId, kcal, carb, protein, fat, feedId, fname) " 
 		+ "VALUE(SEQUENCE_FOODID.nextval, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] {food.getFname(), food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId()};
+		Object[] param = new Object[] {food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId(), food.getFname()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
@@ -139,7 +139,7 @@ public class FeedDAO {
 			jdbcUtil.close();	// resource 반환
 		}		
 		return 0;
-	}
+	} 
 
 	// 댓글 삭제
 	public int removeReply(long replyId) throws SQLException {
@@ -161,7 +161,7 @@ public class FeedDAO {
 	}
 
 	
-	// 피드 음식 삭제
+	/* 피드 음식 삭제
 	public int removeFood(long foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {foodId});
@@ -179,7 +179,8 @@ public class FeedDAO {
 		}		
 		return 0;
 	} 
-
+	*/
+	
 	// 특정 피드 출력
 	public FeedDTO findFeed(long feedId) throws SQLException {
         String sql = "SELECT feedId, photo, publishDate, userId, content"
@@ -362,7 +363,7 @@ public class FeedDAO {
 					rs.getLong("replyId"),		
 					rs.getString("content"),
 					rs.getDate("publishDate"),
-					rs.getLong("feedId"),
+					feedId,
 					rs.getLong("userId"));	
 				replyList.add(reply);				
 			}		
@@ -378,21 +379,21 @@ public class FeedDAO {
 
 	// 피드별 전체 푸드 리스트
 	public List<FoodDTO> findFoodList(long feedId) throws SQLException {
-        String sql = "SELECT foodId, feedId, fname, kcal, carb, protein, fat FROM FOOD WHERE feedid = ?";
+        String sql = "SELECT foodId, fname, kcal, carb, protein, fat, feedId FROM FOOD WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();	
 			List<FoodDTO> foodList = new ArrayList<FoodDTO>();
 			while (rs.next()) {						
-				FoodDTO food = new FoodDTO(		
-					rs.getLong("foodId"),
-					rs.getLong("feedId"),
-					rs.getString("fname"),
-					rs.getFloat("kcal"),
-					rs.getFloat("carb"),
-					rs.getFloat("protein"),
-					rs.getFloat("fat"));
+				FoodDTO food = new FoodDTO(
+						rs.getLong("foodId"),
+						rs.getString("fname"),
+						rs.getFloat("kcal"),
+						rs.getFloat("carb"),
+						rs.getFloat("protein"),
+						rs.getFloat("fat"),
+						feedId);
 				foodList.add(food);
 			}
 			return foodList;
