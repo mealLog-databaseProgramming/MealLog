@@ -225,8 +225,7 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
-					System.out.println("(닉네임 중복?)RS:" + rs);
-					return (count == 1 ? true : false);
+					return (count >= 1 ? true : false);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -249,7 +248,6 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
-					System.out.println("(로그인 아이디 중복?)RS:" + rs);
 					return (count >= 1 ? true : false);
 				}
 			} catch (Exception ex) {
@@ -271,8 +269,7 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
-					System.out.println("(이메일 중복?)RS:" + rs);
-					return (count == 1 ? true : false);
+					return (count >= 1 ? true : false);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
