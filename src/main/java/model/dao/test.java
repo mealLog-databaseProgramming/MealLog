@@ -11,14 +11,16 @@ import model.dto.FoodDTO;
 import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.dto.UserDTO;
+import model.dao.FeedDAO;
 
 public class test {
 
-//	private static FeedDAO feed = new FeedDAO();
-//	
-//	public static void main(String[] args) throws SQLException {
-//	
-//		List<FeedDTO> list = feed.findFeedList();
-//		System.out.println(list);
-//	}
+	private FeedDAO feed = new FeedDAO();
+	
+	public static void main(String[] args) throws SQLException {
+	
+		List<FeedDTO> list = feed.findFeedList();
+		System.out.println(list);
+//		System.out.println("d");
+	}
 }
