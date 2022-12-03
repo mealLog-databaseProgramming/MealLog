@@ -214,7 +214,7 @@ public class UserDAO {
 		//중복검사
 		//닉네임(Uname) 중복인지 확인
 		public boolean existingUname(String uname) throws SQLException {
-			String sql = "SELECT count(uname) "
+			String sql = "SELECT count(*) as count "
 						+ "FROM UserInfo "
 						+ "WHERE uname = ? ";    
 			
@@ -225,6 +225,7 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
+					System.out.println("(닉네임 중복?)RS:" + rs);
 					return (count == 1 ? true : false);
 				}
 			} catch (Exception ex) {
@@ -237,7 +238,7 @@ public class UserDAO {
 		
 		//로그인 아이디 중복인지 확인
 		public boolean existingLoginId(String loginId) throws SQLException {
-			String sql = "SELECT count(Loginid) "
+			String sql = "SELECT count(*) as count "
 						+ "FROM UserInfo "
 						+ "WHERE loginId=? ";    
 			
@@ -248,7 +249,8 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
-					return (count == 1 ? true : false);
+					System.out.println("(로그인 아이디 중복?)RS:" + rs);
+					return (count >= 1 ? true : false);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -259,7 +261,7 @@ public class UserDAO {
 		}
 		//이메일 중복인지 확인
 		public boolean existingEmail(String emailAddress) throws SQLException {
-			String sql = "SELECT count(emailAddress) "
+			String sql = "SELECT count(*) as count "
 						+ "FROM UserInfo "
 						+ "WHERE emailAddress=? ";      
 			Object[] param = new Object[] {emailAddress};
@@ -269,6 +271,7 @@ public class UserDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {
 					int count = rs.getInt("count");
+					System.out.println("(이메일 중복?)RS:" + rs);
 					return (count == 1 ? true : false);
 				}
 			} catch (Exception ex) {
