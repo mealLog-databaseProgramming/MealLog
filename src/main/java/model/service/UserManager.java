@@ -27,8 +27,8 @@ public class UserManager {
 		if (userDAO.existingLoginId(user.getLoginId()) == true) {
 			throw new ExistingUserException(user.getLoginId() + "는 존재하는 아이디입니다.");
 		}
-		if (userDAO.existingUname(user.getName()) == true) {
-			throw new ExistingUserException(user.getUserId() + "는 존재하는 닉네임입니다.");
+		if (userDAO.existingUname(user.getUname()) == true) {
+			throw new ExistingUserException(user.getUname() + "는 존재하는 닉네임입니다.");
 		}
 		if (userDAO.existingEmail(user.getEmailAddress()) == true) {
 			throw new ExistingUserException(user.getEmailAddress() + "는 존재하는 이메일입니다.");
@@ -47,9 +47,11 @@ public class UserManager {
 		return userDAO.delete(userId);
 	}
 	
-	public long login(String userId, String password) throws Exception {
-		UserDTO user = userDAO.findUser(userId);
-		if (user.getPassword().equals(password)) return user.getUserId();
-		throw new Exception();
+	public long login(String loginId, String password) throws Exception {
+		long userId = userDAO.findUserId(loginId, password);
+		
+		if(userId == -1) throw new Exception("아이디 또는 비밀번호가 일치하지 않습니다.");
+		
+		return userId;
 	}
 }

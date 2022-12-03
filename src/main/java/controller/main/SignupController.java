@@ -26,14 +26,14 @@ public class SignupController implements Controller {
 				int age = Integer.parseInt(request.getParameter("age"));
 				float height = Float.parseFloat(request.getParameter("height"));
 				float weight = Float.parseFloat(request.getParameter("weight"));
-				float activeRank = Float.parseFloat(request.getParameter("activeRank"));
+				int activeRank = Integer.parseInt(request.getParameter("activeRank"));
 				
 				UserDTO user = new UserDTO();
 				user.setLoginId(loginId);
 				user.setPassword(password);
 				user.setEmailAddress(emailAddress);
 				
-				user.setName(name);
+				user.setUname(name);
 				user.setGender(gender);
 				user.setAge(age);
 				user.setHeight(height);
@@ -43,7 +43,7 @@ public class SignupController implements Controller {
 				UserManager userManager = UserManager.getInstance();
 				userManager.create(user);
 				
-				return "/login";
+				return "redirect:/login";
 			} catch(ExistingUserException e) {
 				request.setAttribute("message", e.getMessage());
 			} catch(Exception e) {

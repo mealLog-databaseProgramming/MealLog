@@ -23,7 +23,6 @@ public class LoginController implements Controller {
 				request.setAttribute("message", e.getMessage());
 			}
 		}
-		
 		request.setAttribute("page", "login.jsp");
 		return "/main.jsp";
 	}
