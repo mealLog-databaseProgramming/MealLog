@@ -17,7 +17,7 @@ public class FoodDTO {
 		this.protein = protein;
 		this.fat = fat;
 		this.feedId = feedId;
-	}
+	} 
 
 	public long getFoodId() {
 		return foodId;

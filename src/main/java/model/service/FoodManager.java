@@ -27,7 +27,7 @@ public class FoodManager {
 	
 	public int create(FoodDTO food) throws SQLException {
 		return feedDAO.createFood(food);
-	}
+	} 
 	
 	// update X
 	

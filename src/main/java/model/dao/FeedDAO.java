@@ -139,7 +139,7 @@ public class FeedDAO {
 			jdbcUtil.close();	// resource 반환
 		}		
 		return 0;
-	}
+	} 
 
 	// 댓글 삭제
 	public int removeReply(long replyId) throws SQLException {

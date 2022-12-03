@@ -98,7 +98,7 @@ public class RecommandManager {
 		//목표치 안에 드는 음식 없다면 -> 전체 결과값 중 랜덤 돌려서 dto에 저장 후 리턴
 		
 		//return foodDTO;
-	//}
+	// }
 	
 	//그날 필요한 stat의 퍼센트를 구한다.
 	public StatDTO getStatPerToday(Date today, float EER) {
