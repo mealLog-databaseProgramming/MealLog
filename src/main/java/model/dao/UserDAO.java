@@ -62,7 +62,6 @@ public class UserDAO {
 					user.getProfile(), 
 					user.getUserId()
 				};				
-			System.out.println(user.getUname());
 			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 				
 			try {				

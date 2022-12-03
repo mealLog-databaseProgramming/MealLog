@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="/resources/css/mypage/profile/profile.css"/>
 <link rel="stylesheet" href="/resources/css/mypage/profile/profile_edit.css"/>
 
-<form id="profile_edit" action="/userinfoupdate" class="profile" method="post">
+<form id="profile_edit" action="/userinfoupdate" class="profile" method="post" enctype="multipart/form-data">
 	<div class="img">
-		<img class="preview"/>
+		<img class="preview" src="${profile}"/>
 		<label for="file"><iconify-icon icon="mdi:image-edit-outline"></iconify-icon></label>
 		<input type="file" id="file" name="profile" accept="image/*"></input>
 	</div>

@@ -10,14 +10,11 @@
 </style>
 
 <div id="profile" class="profile">
-	<c:choose>
-		<c:when test="${profile eq null}">
-			<div class="img"></div>
-		</c:when>
-		<c:otherwise>
-			<div class="img" style="background: url(${profile})"></div>
-		</c:otherwise>
-	</c:choose>
+	<div class="img">
+		<c:if test="${profile ne null}">
+			<img class="profileImg" src="${profile}"></img>
+		</c:if>
+	</div>
 	<div class="info">
 		<div class="name">${uname}</div>
 		<c:if test="${userId eq param.uid}">
