@@ -25,7 +25,7 @@
 	display: flex;
 	justify-content: space-between;
 }
-.stat .s_box .s_header .edit {
+.stat .s_box .s_header .edit, input[type="month"] {
 	background: rgba(255, 255, 255, .5);
 	border-radius: 50px;
 	padding: 2.5px 20px;
@@ -36,7 +36,15 @@
 	
 	height: 30px;
     line-height: 30px;
-    margin: 10px 0px;
+    margin: 12.5px 0px;
+    
+    border: none;
+}
+input[type="month"] {
+	background: rgba(255, 255, 255, .25);
+	font-size: 22px;
+	font-weight: 600;
+	
 }
 .stat .s_box .s_header .edit iconify-icon { transform: translate(0, 2.5px); }
 .stat .s_box .s_header .edit:hover { scale: 1.05; }

@@ -1,59 +1,92 @@
-const data = {
-    '1/1/2020': 60,
-    '1/2/2020': 66,
-    '1/3/2020': 65,
-    '1/5/2020': 78,
-    '1/6/2020': 74,
-    '1/9/2020': 72,
-    '12/9/2020': 60,
-    '14/5/2020': 65,
-    '15/6/2020': 58,
-};
-
-function weightChartDraw(data) {
-    const weightData = generateWeightChartData(data);
+function weightChartDraw(data, year, month) {
+    const weightData = generateWeightChartData(data, year, month);
+	
     let ctx = document.getElementById('weight-chart').getContext('2d');
-    
-    window.weightChart = new Chart(ctx, {
+
+	window.weightChart = new Chart(ctx, {
         type: 'line',
         data: weightData,
+		showTooltips: true,
         options: {
-            responsive: false,
+			spanGaps: true,
 			legend: {
-                display: false
+                display: false,
             },
-            scales: {
-                x: {
-                  type: 'time',
-                  displayFormats: {
-                        quarter: 'MM/DD'
-                    }
-                }
-            }
+//			labels: {
+//				display: false,
+//			},
+			elements: {
+				point: {
+					backgroundColor: 'rgb(59, 92, 10)',
+					radius: 5,
+					hoverRadius: 10,
+				}
+			},
+			scales: {
+				xAxes: [{
+					ticks:{
+						fontSize : 20,
+						callback: function(val, index) {
+				        	return index % 5 === 4 ? index+1 : '';
+				        },
+					},
+				}],
+				yAxes: [{
+					ticks:{
+						fontSize : 20,
+					},
+					
+					max: 50,
+					min: 150,
+				}],
+			}
         }
     });
 };
 
-function generateWeightChartData(data) {
-    const weightData = { 
-        labels: [],
+function generateWeightChartData(data, year, month) {
+	const weightData = { 
+		labels: [],
         datasets: [{
             data: [],
-            borderColor: 'rgb(75, 192, 192)',
+            borderColor: 'rgb(59, 92, 10)',
 			tension: 0,
 			fill: false,
         }] 
     };
 
-	console.log(weightData.datasets[0]);
+	const _data = {};
+	
 	for (let key in data) {
-		weightData.labels.push(key);
-		weightData.datasets[0].data.push(data[key]);
+		var _date = new Date(key);
+		
+		if(year == _date.getFullYear() && month == _date.getMonth()) {
+			_data[_date.getDate()] = data[key];
+			//weightData.datasets[0].data.push({x: _date.getDate(), y: data[key]});
+		}	
+		else if(year < _date.getFullYear() || 
+			(year === _date.getFullYear() && month < _date.getMonth())) {
+			break;	
+		}	
 	}
 	
+	for(let i = 1; i <= 31; i++) {
+		weightData.labels.push(i);
 
-	
+		if(_data[i] == undefined) weightData.datasets[0].data.push(null);
+		else weightData.datasets[0].data.push( _data[i]);
+	}
+	console.log(weightData.datasets[0].data);
     return weightData;
 }
 
-weightChartDraw(data);
+const input = document.querySelector('input[type="month"]');
+const date = new Date();
+input.value = date.getFullYear()+"-"+(date.getMonth()+1);
+
+input.onchange = () => {
+	var _date = new Date(input.value);
+	weightChartDraw(statData, _date.getFullYear(), _date.getMonth());
+};
+
+weightChartDraw(statData, date.getFullYear(), date.getMonth());
