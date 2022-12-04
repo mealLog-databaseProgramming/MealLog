@@ -13,6 +13,7 @@ function readImage(input) {
             else previewImage.style.width = "200px";
         }
 		reader.readAsDataURL(input.files[0]);
+		console.log(input.files[0]);
 	}
 }
 
