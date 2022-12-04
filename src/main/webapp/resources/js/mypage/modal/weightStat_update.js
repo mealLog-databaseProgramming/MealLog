@@ -31,8 +31,12 @@ function weightStat_update_modal() {
 
 function record_create_display() {
 	document.querySelector('#weightStat_update').reset();
+	
 	var dateInput = document.querySelector('#weightStat_update input[name="date"]');
 	dateInput.removeAttribute('readonly');
+	
+	var weightInput = document.querySelector('#weightStat_update input[name="weight"]');
+	weightInput.setAttribute('value', '');
 	
 	var records = document.querySelectorAll('#modal .record');
 	
@@ -45,6 +49,7 @@ function record_create_display() {
 				while(record.className != "record") {
 					var record = record.parentNode;
 				}
+
 				record_update_display(record);
 			}
 		};
@@ -58,11 +63,45 @@ function record_create_display() {
 		
 		var date = form.querySelector('input[name="date"]').value;
 		var weight = form.querySelector('input[name="weight"]').value;
+		if(weight % 1 === 0) weight = weight + ".0";
 		
-		form.reset();
-		record_create(date, weight);
+		var record = getRecordByDate(date);
+		if(record != null) {
+			record.querySelector('.weight').innerText = weight+"kg";
+			
+			record_update(date, weight);
+		} else {
+			record = document.createRange().createContextualFragment(`
+				<div class="record">
+					<div class="date">${date}</div>
+					<div class="weight">${weight}kg</div>
+					<iconify-icon icon="ph:x-circle-bold"></iconify-icon>
+				</div>`);
+			var front = getFrontRecordByDate(date);
+			if(front == null) {
+				document.querySelector('.stat_list').prepend(record);
+			} else {
+				front.after(record);
+			}
+			
+			record_create(date, weight);
+			
+			record_delete_display();
+			record_create_display();
+		}
 	};
 }
+function getFrontRecordByDate(_date) {
+	var records = document.querySelectorAll('#modal .record');
+	
+	var front = null;
+	records.forEach((e) => {
+		var d = e.querySelector('.date').innerText;
+		if(d < _date) front = e;
+	});
+	return front;	
+}
+
 function record_update_display(record) {
 	document.querySelector('#weightStat_update').reset();
 	
@@ -78,6 +117,9 @@ function record_update_display(record) {
 	var dateInput = document.querySelector('#weightStat_update input[name="date"]');
 	dateInput.value = record.querySelector('.date').innerText;
 	dateInput.setAttribute('readonly', true);
+	
+	var weightInput = document.querySelector('#weightStat_update input[name="weight"]');
+	weightInput.setAttribute('value', record.querySelector('.weight').innerText.replace('kg', ''));
 	
 	var button = document.querySelector('#weightStat_update input[type="button"]');
 	button.setAttribute('value', '변경');
@@ -126,17 +168,45 @@ function record_create(_date, _weight) {
 	var hidden = document.querySelector('#weightStat_update .hidden');
 	
 	hidden.innerHTML = `${hidden.innerHTML}
-	<input type="hidden" name="create" value="${date+'/'+_weight}"></input>`;
+	<input type="hidden" name="statList" value="${_date+'/'+_weight}"></input>`;
 }
 function record_update(_date, _weight) {
-	var hidden = document.querySelector('#weightStat_update .hidden');
+	var tag = getInputTagByDate(_date);
 	
-	hidden.innerHTML = `${hidden.innerHTML}
-	<input type="hidden" name="update" value="${date+'/'+_weight}"></input>`;	
+	tag.value = `${_date}/${_weight}`;
 }
-function record_delete(date) {
-	var hidden = document.querySelector('#weightStat_update .hidden');
+function record_delete(_date) {
+	var tag = getInputTagByDate(_date);
+	if(tag === null) return;
 	
-	hidden.innerHTML = `${hidden.innerHTML}
-	<input type="hidden" name="delete" value="${date}"></input>`;
+	tag.remove();
+}
+
+function getInputTagByDate(_date) {
+	var tags = document.querySelectorAll('#weightStat_update .hidden input');
+	
+	var tag = null;
+	tags.forEach((e) => {
+		var d = e.value.split('/').shift();
+		if(d === _date) {
+			tag = e;
+			return;
+		}
+	});
+	return tag;
+}
+function getRecordByDate(_date) {
+	var records = document.querySelectorAll('#modal .record');
+	
+	var rec = null;
+	
+	records.forEach((e) => {
+		var d = e.querySelector('.date').innerText;
+		console.log(e);
+		if(d == _date) {
+			rec = e;
+			return;
+		}
+	});
+	return rec;
 }
