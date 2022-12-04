@@ -3,6 +3,7 @@
  */
 const API_KEY = "32a502c6245b410b95f6"; 
 const rowContainer = document.getElementById('rowContainer');
+let foodName;
 
 function searchFood() {
 	const keyword = document.getElementById("searchKeyword").value;
@@ -16,7 +17,7 @@ function searchFood() {
 	  redirect: 'follow'
 	};
 	
-	fetch("https://openapi.foodsafetykorea.go.kr/api/32a502c6245b410b95f6/I2790/json/1/10/DESC_KOR=\"오레오\"", requestOptions)
+	fetch(`https://openapi.foodsafetykorea.go.kr/api/32a502c6245b410b95f6/I2790/json/1/10/DESC_KOR=${keyword}`, requestOptions)
 	  .then(response => response.text())
 	  .then(result => displayFood(result))
 	  .catch(error => console.log('error', error));
@@ -41,10 +42,11 @@ function displayFood(foods) {
 		console.log(foodList[i])
 		const rsltItem = `
 			<tr>
-				<th scope="row">${i}</th>
+				<th scope="row">${i + 1}</th>
 				<td>${foodList[i].DESC_KOR}</td>
-				<td>Otto</td>
-				<td>@mdo</td>
+				<td>
+					<input type="button" value="선택" onclick="choiceFood()" data-bs-target="#addPostModal" data-bs-toggle="modal" data-id="${foodList[i].DESC_KOR}">
+				</td>
 			</tr>
 		`
 		rslt[i] = rsltItem;
@@ -54,4 +56,11 @@ function displayFood(foods) {
 		console.log(rslt[i]);
 		rowContainer.insertAdjacentHTML('beforeend', rslt[i]);
 	}
+}
+
+function choiceFood() {
+	//console.log("choice");
+	foodName = $(event.target).attr('data-id');
+	displayFoodList();
+	//console.log(foodName);
 }

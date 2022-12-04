@@ -236,6 +236,10 @@ svg .bi-chat-dots {
 	color: white;
 }
 
+.modal-body .foodContainer .food:hover img {
+	fill: white;
+}
+
 .modal .food {	
 	display: flex;
 	flex-direction: row;

@@ -21,9 +21,8 @@
 				  <thead class="table-light">
 				    <tr>
 				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
+				      <th scope="col">식품명</th>
+				      <th scope="col">추가하기</th>
 				    </tr>
 				  </thead>
 				  <tbody id="rowContainer">
@@ -54,7 +53,6 @@
 		    </div>
 		  </div>
 		</div>
-		
 	<script type="text/javascript" src="resources/js/home/addFoodModal.js"></script>
 </body>
 </html>
