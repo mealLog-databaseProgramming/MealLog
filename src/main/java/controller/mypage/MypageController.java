@@ -36,11 +36,18 @@ public class MypageController implements Controller {
 		request.setAttribute("introduce", user.getIntroduce());
 		
 		/* statList */
-		if(uid == userId) {
-			StatManager statManager = StatManager.getInstance();
-			List<StatDTO> statList = statManager.read(userId);
-			request.setAttribute("statList", statList);
+		StatManager statManager = StatManager.getInstance();
+		List<StatDTO> statList = statManager.read(uid);
+		request.setAttribute("statList", statList);
+		
+		/* chart */
+		String statData = "{";
+		for(StatDTO stat:statList) {
+			statData += "\'"+stat.getDate()+"\': "+stat.getWeight()+", ";
 		}
+		statData += "}";
+		request.setAttribute("statData", statData);
+		request.setAttribute("height", user.getHeight());
 		
 		request.setAttribute("page", "mypage/mypage.jsp");
 		return "/index.jsp";
