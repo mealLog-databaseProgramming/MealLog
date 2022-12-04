@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="model.dto.StatDTO" %>
-
-<% 
-	ArrayList<StatDTO> statList = new ArrayList<>();
-	
-	for(int i = 0; i < 10; i++) {
-		StatDTO stat = new StatDTO();
-		stat.setDate(java.sql.Date.valueOf("2022-12-03"));
-		stat.setWeight(60f);
-		
-		statList.add(stat);
-	}
-	
-	request.setAttribute("statList", statList);
-%>
-
 <script defer type="text/javascript" src="/resources/js/mypage/modal/weightStat_update.js"></script>
 <link rel="stylesheet" href="/resources/css/mypage/modal/weightStat_update.css"/>
 
@@ -38,7 +20,7 @@
 				</div>
 			</c:forEach>
 		</div>
-		<form id="weightStat_update" action="/statUpdate" method="post">
+		<form id="weightStat_update" action="/statupdate" method="post">
 			<input type="date" name="date"></input>
 			<input type="number" name="weight"></input>
 			<h3>kg</h3>
@@ -47,6 +29,9 @@
 			<input type="submit" value="적용"></input>
 			
 			<div class="hidden">
+				<c:forEach items="${statList}" var="stat">
+					<input type="hidden" name="statList" value="${stat.getDate()}/${stat.getWeight()}"></input>
+				</c:forEach>
 			</div>
 		</form>
 	</div>
