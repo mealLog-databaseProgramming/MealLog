@@ -4,6 +4,7 @@
 const API_KEY = "32a502c6245b410b95f6"; 
 const rowContainer = document.getElementById('rowContainer');
 let foodName;
+let rslt = [];
 
 function searchFood() {
 	const keyword = document.getElementById("searchKeyword").value;
@@ -37,7 +38,7 @@ function displayFood(foods) {
 			<td>@mdo</td>
 		</tr>
 	`
-	let rslt = [];
+
 	for (i = 0; i < foodList.length; i++) {
 		console.log(foodList[i])
 		const rsltItem = `
@@ -62,5 +63,10 @@ function choiceFood() {
 	//console.log("choice");
 	foodName = $(event.target).attr('data-id');
 	displayFoodList();
-	//console.log(foodName);
+	
+	//이전 결과값 삭제
+	rslt = [];
+    while (rowContainer.hasChildNodes()) {
+        rowContainer.removeChild(rowContainer.firstChild);
+	}
 }
