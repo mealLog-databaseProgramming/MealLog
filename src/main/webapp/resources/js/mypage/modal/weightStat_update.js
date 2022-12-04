@@ -1,6 +1,6 @@
 
 function weightStat_update_modal() {
-var weight_update = document.querySelector('.stat .edit');
+	var weight_update = document.querySelector('.stat .edit');
 	
 	var modal = document.querySelector('#modal');
 	weight_update.onclick = () => {
