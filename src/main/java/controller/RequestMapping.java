@@ -15,6 +15,8 @@ public class RequestMapping {
     public void initMapping() {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
     	mappings.put("/", new HomeController());
+    	mappings.put("/newfeed", new CreateFeedController());
+    	
     	mappings.put("/recomm", new RecommController());
 
     	mappings.put("/group", new ClubController());//

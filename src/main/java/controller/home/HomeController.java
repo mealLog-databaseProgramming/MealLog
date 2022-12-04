@@ -42,19 +42,16 @@ public class HomeController implements Controller {
 			
 			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
 			replyList = replyManager.display(feedList.get(i).getFeedId());
-////			reactList = feedManager.
-//					
+					
 			Map data = new HashMap();
 			data.put("feed", feedList.get(i));
 			data.put("food", foodList);
 			data.put("reply", replyList);
-//			
+		
 			list.add(data);
 		}
-//		
-//		System.out.println(((List<Map>) list.get(0).get("food")).get(0));
+		
 		request.setAttribute("list", list);
-		request.setAttribute("temp", feedList);
 		
 		request.setAttribute("page", "home/home.jsp");
 		return "/index.jsp";
