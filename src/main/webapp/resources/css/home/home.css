@@ -234,13 +234,14 @@ svg .bi-chat-dots {
 	margin-bottom: 20px;
 }
 
-.modal-body .foodContainer .food:hover {
-	background-color: #3B5C0A;
-	color: white;
+.modal-body .modalFoodContainer .food:hover {
+	/*background-color: #3B5C0A;
+	color: white;*/
 }
 
-.modal-body .foodContainer .food:hover img {
+.modal-body .modalFoodContainer .food img:hover {
 	fill: white;
+	cursor: pointer;
 }
 
 .modalFoodContainer {
