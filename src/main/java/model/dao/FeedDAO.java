@@ -220,7 +220,6 @@ public class FeedDAO {
 			List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
 			
 			while (rs.next()) {
-				System.out.println("123");
 				FeedDTO feed = new FeedDTO(	
 						rs.getLong("feedId"),
 						rs.getString("photo"),
