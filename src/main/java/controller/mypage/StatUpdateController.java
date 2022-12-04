@@ -6,23 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.service.*;
 
 public class StatUpdateController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		long userId = (long) request.getAttribute("userId");
-		Date date =  (Date) request.getAttribute("date");
-		float weight = (float) request.getAttribute("weight");
-		
-		StatManager statManager = StatManager.getInstance();
+		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		
 		try {
-			//statManager.(userId, date, weight);
+			String[] statList = request.getParameterValues("statList");
+
+			StatManager statManager = StatManager.getInstance();
+			statManager.updateStatList(userId, statList);
 			
 		} catch(Exception e) {
-			request.setAttribute("message", e.getMessage());
+			System.out.println(e);
 		}
 		
 		return "redirect:/mypage";

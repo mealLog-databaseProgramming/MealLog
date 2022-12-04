@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.ResultSet;//결과값 확인이 필요할 수도 있으니까
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import model.dto.ClubDTO;
@@ -66,18 +68,25 @@ private JDBCUtil jdbcUtil = null;
         		+ " FROM stat "
         		+ "WHERE userId = ?";
         Object[] param = new Object[] { userId };
-		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
+		jdbcUtil.setSqlAndParameters(sql, param);		// JDBCUtil에 query문 설정
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<StatDTO> nutriList = new ArrayList<StatDTO>();	
+			List<StatDTO> statList = new ArrayList<StatDTO>();	
 			while (rs.next()) {
 				StatDTO stat = new StatDTO();
-				stat.setDate(rs.getDate("date"));
+				stat.setDate(rs.getDate("m_date"));
 				stat.setWeight(rs.getFloat("weight"));
-				nutriList.add(stat);	
+				statList.add(stat);
 			}
-			return nutriList;					
+			statList.sort(new Comparator<StatDTO>() {
+				@Override
+				public int compare(StatDTO o1, StatDTO o2) {
+					// TODO Auto-generated method stub
+					return o1.getDate().compareTo(o2.getDate());
+				}
+			});		
+			return statList;
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -94,6 +103,26 @@ private JDBCUtil jdbcUtil = null;
 		String sql = "Delete From Stat " 
 					+ "Where m_Date = ? ";	
 		Object[] param = new Object[] { date };
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+	
+	public int deleteByUserId(long userId) throws SQLException {
+		String sql = "Delete From Stat " 
+					+ "Where userId = ? ";	
+		Object[] param = new Object[] { userId };
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 delete문과 매개 변수 설정
 
 		try {				
