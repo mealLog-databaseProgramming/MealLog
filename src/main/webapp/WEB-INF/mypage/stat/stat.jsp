@@ -16,7 +16,7 @@
 	<div class="s_box">
 		<div class="s_header">
 			체중 변화
-			<div class="edit">✏ 기록하기</div>
+			<div class="edit"><iconify-icon icon="ri:edit-2-fill"></iconify-icon> 기록하기</div>
 		</div>
 		<jsp:include page="weight_chart.jsp"/>
 	</div>

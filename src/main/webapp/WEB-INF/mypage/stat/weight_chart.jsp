@@ -8,7 +8,7 @@
  	}
 </style>
 
-<script defer type="text/javascript" src="/resources/js/mypage/weight_chart.js"></script> 
+<script defer type="text/javascript" src="/resources/js/mypage/chart/weight_chart.js"></script> 
 <div class="weight-chart-div">
 	 <canvas id="weight-chart" width="500px" height="350px"></canvas>
 </div>

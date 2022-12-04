@@ -25,7 +25,7 @@
     }
 </style>
 
-<script defer type="text/javascript" src="/resources/js/mypage/nutri_chart.js"></script> 
+<script defer type="text/javascript" src="/resources/js/mypage/chart/nutri_chart.js"></script> 
 <div class="nutri-chart-div">
 	 <canvas id="nutri-chart" width="350px" height="350px"></canvas>
 	 <div id='nutri-legend-div' class="nutri-legend-div"></div>

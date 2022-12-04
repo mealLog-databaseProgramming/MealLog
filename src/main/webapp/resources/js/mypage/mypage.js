@@ -19,14 +19,17 @@ function init_mypage() {
 function profile_edit() {
 	var profile = document.querySelector('#profile');
 	var profile_edit = document.querySelector('#profile_edit');
+	var weight_update = document.querySelector('.stat .edit');
 	
 	profile.style.display = "flex";
 	profile_edit.style.display = "none";
+	weight_update.style.display = "block";
 	
 	var profile_editButton = document.querySelector('#profile .edit');
 	profile_editButton.onclick = () => {
 		profile.style.display = "none";
 		profile_edit.style.display = "flex";
+		weight_update.style.display = "none";
 	};
 	
 	var profile_cancelButton = document.querySelector('#profile_edit .cancel');

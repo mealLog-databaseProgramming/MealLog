@@ -18,7 +18,7 @@
 	<div class="info">
 		<div class="name">${uname}</div>
 		<c:if test="${userId eq param.uid}">
-			<div class="edit">✏ 수정하기</div>
+			<div class="edit"><iconify-icon icon="ri:edit-2-fill"></iconify-icon> 수정하기</div>
 		</c:if>
 		<div class="introduce">
 			<c:if test="${introduce eq null}">
