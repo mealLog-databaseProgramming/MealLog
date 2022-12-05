@@ -22,15 +22,17 @@
 	tagify.on('add', function() {
 		console.log(tagify.value); 
 	});	
+	
 	tagify.addTags(<%=request.getParameter("tags")%>);
 	tagify.setReadonly(true);
 	
 	groupView.onclick = () => {
-		groupUpdate_set(
+		groupInfo_set(
 				<%=request.getParameter("clubId")%>, 
 				"<%=request.getParameter("cName")%>", 
 				"<%=request.getParameter("goal")%>", 
 				"<%=request.getParameter("info")%>",
+				<%=request.getParameter("current_member")%>,
 				<%=request.getParameter("max_member")%>,
 				<%=request.getParameter("tags")%>
 		);
