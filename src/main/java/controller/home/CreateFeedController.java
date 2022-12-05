@@ -43,8 +43,25 @@ public class CreateFeedController implements Controller{
 		
 		String savePath = request.getSession().getServletContext().getRealPath("resources/feed");
 		System.out.println(savePath);
-		//MultipartRequest multi = new MultipartRequest(request, savePath, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, savePath, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
 
+		String oldFileName = multi.getFilesystemName("file");
+		File oldFile = new File(savePath +"/"+oldFileName);
+		System.out.println(oldFileName);
+		
+		int pos = oldFileName.lastIndexOf(".");
+		String ext = oldFileName.substring(pos+1);
+		System.out.println(ext);
+		
+//		String newFileName = Long.toString(userId)+"."+ext;	//feedId필요
+//	    File newFile = new File(savePath +"/"+newFileName);
+//	    if(newFile.exists()) newFile.delete();	//있는 파일이면 취소
+//	    
+//	    oldFile.renameTo(newFile); 
+		
+		String content = multi.getParameter("content");
+		
+		
 		return "redirect:/";
 		
 		

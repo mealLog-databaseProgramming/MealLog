@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<form id="feed_create" action="/newfeed" class="feed" method="post" enctype="multipart/form-data">
 				    <div class="modal-content">
@@ -54,8 +54,8 @@
 			    </form>
 			</div>
 		</div>
-	 -->
-<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+	 
+<!-- <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <form id="feed_create" action="/newfeed" class="feed" method="post" enctype="multipart/form-data">
@@ -65,7 +65,7 @@
       </form>
     </div>
   </div>
-</div>	
+</div>	 -->
 	<script type="text/javascript" src="resources/js/home/addPostModal.js"></script>	
 </body>
 </html>
