@@ -17,6 +17,10 @@ function displayFoodList(){
 
 	console.log(food, foodContainer);
 	foodContainer.insertAdjacentHTML('afterbegin', food);
+	
+	request.setParameter("test", "adfs");
 }
 
 displayFoodList();
+
+//localStorage파싱해서 어떻게 넘기기?

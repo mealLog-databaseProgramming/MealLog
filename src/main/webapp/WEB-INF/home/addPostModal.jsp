@@ -24,6 +24,7 @@
 								<div class="modalFoodContainer">
 								</div>
 								<div class="modalMessage">오늘의 식사를 기록하세요.</div>
+								<!-- content -->
 								<textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
 								<div class="fileContainer">
 									<label for="file" class="btn-upload">
@@ -33,9 +34,13 @@
 										</svg>
 										파일 추가
 									</label>
+									<!-- file -->
 									<input type="file" accept=".jpg, .png, .jpeg" name="file" id="file" onchange="javascript:document.getElementById('fileName').value = this.value">
 									<input type="text" id="fileName"  name="fileName" readonly>
-										
+									
+									<!-- hidden data -->
+									<input type="hidden" name="food">
+									
 									<div class="addFoodBtn">
 										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgba(0,0,0,.75)" class="bi bi-plus-circle" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#addFoodModal">
 											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

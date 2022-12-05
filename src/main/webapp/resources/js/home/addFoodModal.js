@@ -64,6 +64,11 @@ function choiceFood() {
 	foodName = $(event.target).attr('data-id');
 	displayFoodList();
 	
+	//localStorage
+	//var food = {food:$(event.target).attr('data-id')};
+	//localStorage.setItem("food", JSON.stringify(food));
+	//const basket = JSON.parse(localStorage.getItem())
+	
 	//이전 결과값 삭제
 	rslt = [];
     while (rowContainer.hasChildNodes()) {

@@ -7,11 +7,13 @@ import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.service.FeedManager;
 import model.dto.FeedDTO;
 
@@ -40,6 +42,13 @@ public class CreateFeedController implements Controller{
 //		String file = null;
 //		
 //		boolean check = ServletFileUpload.isMultipartContent(request);
+		
+		//넘겨야 하는 정보
+		//userId v
+		//imagePath v
+		//content v
+		//foodList ?
+		long userId = 6;//UserSessionUtils.getLoginUserId(request.getSession());
 		
 		String savePath = request.getSession().getServletContext().getRealPath("resources/feed");
 		System.out.println(savePath);
