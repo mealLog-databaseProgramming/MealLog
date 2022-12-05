@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.dto.BelongDTO;
 import model.dto.ClubDTO;
 import model.service.ClubManager;
@@ -19,6 +20,7 @@ public class ClubController implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 /**
 		//long userId = Long.parseLong(request.getParameter("userId"));
 		//long clubId = Long.parseLong(request.getParameter("clubId"));
