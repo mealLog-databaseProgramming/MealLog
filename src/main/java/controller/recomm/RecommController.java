@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.dto.StatDTO;
 import model.dto.UserDTO;
 
@@ -22,6 +23,8 @@ public class RecommController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
+		
 		request.setAttribute("page", "recomm/recomm.jsp");
 	
 //		recommendManager = RecommandManager.getInstance();
