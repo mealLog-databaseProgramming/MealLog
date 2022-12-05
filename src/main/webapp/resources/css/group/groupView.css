@@ -20,12 +20,13 @@
 	margin: 7px 10px;
 }
 #groupView .title {
-	font-size: 28px;
-	font-weight: 600;
+	font-size: 32px;
+	font-weight: 700;
 }
 #groupView .goal {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 500;
+	margin-bottom: 20px;
 }
 #groupView tags {
 	border: none;
@@ -64,7 +65,7 @@
 	margin: 3px;
 
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 20px;
 	text-align: center;
 }
 
