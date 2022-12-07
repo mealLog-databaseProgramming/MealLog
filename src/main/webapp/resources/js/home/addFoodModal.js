@@ -2,7 +2,8 @@
  * 식품정보api     	32a502c6245b410b95f6
  */
 const API_KEY = "32a502c6245b410b95f6"; 
-const rowContainer = document.getElementById('rowContainer');
+const $rowContainer = document.getElementById('rowContainer');
+const $foodInfo = document.querySelector('.foodInfo');
 let foodName;
 let rslt = [];
 
@@ -46,7 +47,8 @@ function displayFood(foods) {
 				<th scope="row">${i + 1}</th>
 				<td>${foodList[i].DESC_KOR}</td>
 				<td>
-					<input type="button" value="선택" onclick="choiceFood()" data-bs-target="#addPostModal" data-bs-toggle="modal" data-id="${foodList[i].DESC_KOR}">
+					<input type="button" value="선택" onclick="choiceFood()" data-bs-target="#addPostModal" data-bs-toggle="modal" 
+					data-id="${foodList[i].DESC_KOR}/${foodList[i].NUTR_CONT1}/${foodList[i].NUTR_CONT2}/${foodList[i].NUTR_CONT3}/${foodList[i].NUTR_CONT4}">
 				</td>
 			</tr>
 		`
@@ -55,19 +57,23 @@ function displayFood(foods) {
 	
 	for (i = 0; i < rslt.length; i++) {
 		console.log(rslt[i]);
-		rowContainer.insertAdjacentHTML('beforeend', rslt[i]);
+		$rowContainer.insertAdjacentHTML('beforeend', rslt[i]);
 	}
+	console.log($foodInfo);
 }
 
 function choiceFood() {
 	//console.log("choice");
-	foodName = $(event.target).attr('data-id');
+	//foodName
+	rslt = $(event.target).attr('data-id');
+	//0:음식이름/1:칼로리/2:탄수/3:단백질/4:지방
+	foodInfo = rslt.split("/");
+	foodName = foodInfo[0];
 	displayFoodList();
 	
-	//localStorage
-	//var food = {food:$(event.target).attr('data-id')};
-	//localStorage.setItem("food", JSON.stringify(food));
-	//const basket = JSON.parse(localStorage.getItem())
+	//hidden객체 만들어주기
+	const foodInput = `<input type="hidden" name="food" value="${rslt}">`
+	$foodInfo.insertAdjacentHTML('beforeend', foodInput);
 	
 	//이전 결과값 삭제
 	rslt = [];

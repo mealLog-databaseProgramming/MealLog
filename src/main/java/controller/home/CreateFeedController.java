@@ -45,22 +45,23 @@ public class CreateFeedController implements Controller{
 		
 		//넘겨야 하는 정보
 		//userId v
-		//imagePath v
+		//imagePath v(imagePath)
 		//content v
-		//foodList ?
-		long userId = 6;//UserSessionUtils.getLoginUserId(request.getSession());
+		//foodList 해결	name=food[]
+		
+		long userId = UserSessionUtils.getLoginUserId(request.getSession());
+		System.out.println(userId);
 		
 		String savePath = request.getSession().getServletContext().getRealPath("resources/feed");
-		System.out.println(savePath);
+		//System.out.println(savePath);
 		MultipartRequest multi = new MultipartRequest(request, savePath, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
 
 		String oldFileName = multi.getFilesystemName("file");
 		File oldFile = new File(savePath +"/"+oldFileName);
-		System.out.println(oldFileName);
+		//System.out.println(oldFileName);
 		
-		int pos = oldFileName.lastIndexOf(".");
-		String ext = oldFileName.substring(pos+1);
-		System.out.println(ext);
+		//int pos = oldFileName.lastIndexOf(".");
+		//String ext = oldFileName.substring(pos+1);
 		
 //		String newFileName = Long.toString(userId)+"."+ext;	//feedId필요
 //	    File newFile = new File(savePath +"/"+newFileName);
@@ -69,6 +70,15 @@ public class CreateFeedController implements Controller{
 //	    oldFile.renameTo(newFile); 
 		
 		String content = multi.getParameter("content");
+		String foodData = multi.getParameter("food[]");
+		String imagePath = savePath + oldFileName;
+		//System.out.println(foodData);
+		
+		//foodList를 food객체 리스트로 가공
+		String[] foodList = foodData.split(",");
+		for (int i = 0; i < foodList.length; i++) {
+			
+		}
 		
 		
 		return "redirect:/";

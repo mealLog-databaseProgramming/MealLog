@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="model.dto.FeedDTO"%>
+<%@page import="model.dto.FoodDTO"%>
+<%@page import="model.dto.ReplyDTO"%>
+<%@page import="java.util.ArrayList"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +48,11 @@
 									<input type="text" id="fileName"  name="fileName" readonly>
 									
 									<!-- hidden data -->
-									<input type="hidden" name="food">
+									<div class="foodInfo">
+										<!-- <input type="hidden" name="food" value="김치찌개/80/10/10/10"> -->
+										<input type="hidden" name="food[]" id="foodList" value="">
+									</div>
+									<input type="hidden" name="userId">
 									
 									<div class="addFoodBtn">
 										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgba(0,0,0,.75)" class="bi bi-plus-circle" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#addFoodModal">
@@ -53,7 +66,7 @@
 						</div>
 				      </div>
 				      <div class="modal-footer">
-				        <input type="submit" class="btn btn-primary" value="등록">
+				        <input type="submit" class="btn btn-primary" value="등록" onclick="setFoods()">
 				      </div>
 				    </div>
 			    </form>

@@ -246,8 +246,9 @@
 	</div> -->
 </div>
 
-<jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
+
 <jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
+<jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
 <jsp:include page="/WEB-INF/home/commentModal.jsp"/>
 	
 	<script type="text/javascript" src="resources/js/home/home.js"></script>	
