@@ -1,6 +1,6 @@
 package model.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class FeedDTO {
 	private long feedId;
@@ -11,6 +11,12 @@ public class FeedDTO {
 
 	public FeedDTO(long feedId, String photo, Date publishDate, long userId, String content) {
 		this.feedId = feedId;
+		this.photo = photo;
+		this.publishDate = publishDate;
+		this.userId = userId;
+		this.content = content;
+	}
+	public FeedDTO(String photo, Date publishDate, long userId, String content) {
 		this.photo = photo;
 		this.publishDate = publishDate;
 		this.userId = userId;

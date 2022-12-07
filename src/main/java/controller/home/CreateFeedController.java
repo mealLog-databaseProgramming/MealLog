@@ -34,14 +34,10 @@ import org.apache.commons.fileupload.servlet.*;
 
 public class CreateFeedController implements Controller{
 	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
-	Date time = new Date();
+	Date publishDate = new Date();
+	FeedManager feedManager;
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-//		String content = null;
-//		String file = null;
-//		
-//		boolean check = ServletFileUpload.isMultipartContent(request);
 		
 		//넘겨야 하는 정보
 		//userId v
@@ -53,26 +49,17 @@ public class CreateFeedController implements Controller{
 		System.out.println(userId);
 		
 		String savePath = request.getSession().getServletContext().getRealPath("resources/feed");
-		//System.out.println(savePath);
 		MultipartRequest multi = new MultipartRequest(request, savePath, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
 
 		String oldFileName = multi.getFilesystemName("file");
-		File oldFile = new File(savePath +"/"+oldFileName);
-		//System.out.println(oldFileName);
-		
-		//int pos = oldFileName.lastIndexOf(".");
-		//String ext = oldFileName.substring(pos+1);
-		
-//		String newFileName = Long.toString(userId)+"."+ext;	//feedId필요
-//	    File newFile = new File(savePath +"/"+newFileName);
-//	    if(newFile.exists()) newFile.delete();	//있는 파일이면 취소
-//	    
-//	    oldFile.renameTo(newFile); 
+		File oldFile = new File(savePath +"/"+oldFileName); 
 		
 		String content = multi.getParameter("content");
 		String foodData = multi.getParameter("food[]");
 		String imagePath = savePath + oldFileName;
-		//System.out.println(foodData);
+		
+		FeedDTO feed = new FeedDTO(imagePath, publishDate, userId, content);
+		feedManager.create(feed);
 		
 		//foodList를 food객체 리스트로 가공
 		String[] foodList = foodData.split(",");

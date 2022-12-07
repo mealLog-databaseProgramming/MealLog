@@ -26,7 +26,10 @@ public class FeedDAO {
 	// 피드 추가
 	public int createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
-			+ "VALUE (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?)";
+			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?)";
+		String getFeedId = "SELECT LAST_NUMBER "
+				+ "FROM all_sequences"
+				+ "WHERE SEQUENCE_NAME = 'SEQUENCE_FEEDID'";
 		Object[] param = new Object[] {feed.getPhoto(), feed.getPublishDate(), feed.getUserId(), feed.getContent()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
