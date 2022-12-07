@@ -18,6 +18,15 @@ public class FoodDTO {
 		this.fat = fat;
 		this.feedId = feedId;
 	} 
+	
+	public FoodDTO(String fname, float kcal, float carb, float protein, float fat, long feedId) {
+		this.fname = fname;
+		this.kcal = kcal;
+		this.carb = carb;
+		this.protein = protein;
+		this.fat = fat;
+		this.feedId = feedId;
+	} 
 
 	public long getFoodId() {
 		return foodId;

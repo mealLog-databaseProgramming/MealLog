@@ -24,7 +24,7 @@ public class FeedManager {
 	}
 
 	//오류난 부분 일단 주석처리
-	public int create(FeedDTO feed) throws SQLException {
+	public long create(FeedDTO feed) throws SQLException {
 		//feedDAO.createFood(food);
 		return feedDAO.createFeed(feed);
 	}

@@ -1,7 +1,7 @@
 package controller.home;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.io.File;
 import java.text.SimpleDateFormat;
 
@@ -15,7 +15,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import controller.Controller;
 import controller.UserSessionUtils;
 import model.service.FeedManager;
+import model.service.FoodManager;
 import model.dto.FeedDTO;
+import model.dto.FoodDTO;
 
 import java.io.File;
 import java.util.List;
@@ -33,9 +35,13 @@ import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.fileupload.servlet.*;
 
 public class CreateFeedController implements Controller{
-	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
-	Date publishDate = new Date();
-	FeedManager feedManager;
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");	
+	String now = format1.format(new java.util.Date());
+	java.sql.Date publishDate = java.sql.Date.valueOf(now);
+	
+	FeedManager feedManager = new FeedManager();
+	FoodManager foodManager = new FoodManager();
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -56,17 +62,30 @@ public class CreateFeedController implements Controller{
 		
 		String content = multi.getParameter("content");
 		String foodData = multi.getParameter("food[]");
-		String imagePath = savePath + oldFileName;
+		String imageName = oldFileName;
+//		System.out.println(userId);
+//		System.out.println(imagePath);
+//		System.out.println(publishDate);
+//		System.out.println(content);
 		
-		FeedDTO feed = new FeedDTO(imagePath, publishDate, userId, content);
-		feedManager.create(feed);
+		FeedDTO feed = new FeedDTO(imageName, publishDate, userId, content);
+		
+		//imagePath가 너무 길다. 파일 이름만 남기고 저장해야할듯(식별값
+		long feedId = feedManager.create(feed);
 		
 		//foodList를 food객체 리스트로 가공
-		String[] foodList = foodData.split(",");
-		for (int i = 0; i < foodList.length; i++) {
-			
-		}
-		
+//		String[] foodList = foodData.split(",");
+//		for (int i = 0; i < foodList.length; i++) {
+//			String[] foodInfo = foodList[i].split("/");
+//			
+//			String fName = foodInfo[0];
+//			float kcal = Float.parseFloat(foodInfo[1]);
+//			float carb = Float.parseFloat(foodInfo[2]);
+//			float protein = Float.parseFloat(foodInfo[3]);
+//			float fat = Float.parseFloat(foodInfo[4]);
+//			FoodDTO food = new FoodDTO(fName, kcal, carb, protein, fat, feedId);
+//			foodManager.create(food);
+//		}
 		
 		return "redirect:/";
 		

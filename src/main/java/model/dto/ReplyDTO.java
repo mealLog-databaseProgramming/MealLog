@@ -1,6 +1,7 @@
 package model.dto;
 
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 public class ReplyDTO {
 	private long replyId;

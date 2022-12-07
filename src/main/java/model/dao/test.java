@@ -3,6 +3,7 @@ package model.dao;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,16 +12,25 @@ import model.dto.FoodDTO;
 import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.dto.UserDTO;
+import model.service.FeedManager;
 import model.dao.FeedDAO;
 
 public class test {
 
 	public static FeedDAO feed = new FeedDAO();
+	public static FeedManager feedm = new FeedManager();
+
+	
 	
 	public static void main(String[] args) throws SQLException {
 	
-		List<FoodDTO> list = feed.findFoodList(7);
-		System.out.println(list.get(0).getFname());
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
+		String now = format1.format(new java.util.Date());
+		java.sql.Date publishDate= java.sql.Date.valueOf(now);
+
+		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", publishDate, 7, "아무말");
+		System.out.println(feedm.create(feedDTO));
+//		System.out.println(list.get(0).getFname());
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

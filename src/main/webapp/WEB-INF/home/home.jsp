@@ -29,9 +29,9 @@
 	List<FoodDTO> foodTemp = (List<FoodDTO>)data.get(0).get("food");
 	List<ReplyDTO> replyTemp = (List<ReplyDTO>)data.get(0).get("reply");
 	
-	//System.out.println(feedTemp.getContent());
-	//System.out.println(foodTemp.get(0).getFname());
-	//System.out.println(replyTemp.get(0).getContent());
+	System.out.println(feedTemp.getContent());
+	System.out.println(foodTemp.get(0).getFname());
+	System.out.println(replyTemp.get(0).getContent());
 	
 	//feedTemp.getContent()
 	//foodTemp.get(0).getFname()
