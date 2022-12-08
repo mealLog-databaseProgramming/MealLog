@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+#groupInfo {
+	display: none;
+ 	position: absolute;
+  	width: 100%; height: 100%;
+ 	background: rgba(0, 0, 0, .5);
+ 	z-index: 500;
+ 	
+ 	top: 0; left: 0;
+}
+ 
+#groupInfo form {
+ 	position: absolute;
+  	width: 1000px; /*height: 550px;*/
+ 	background: #FFFFFF;
+ 	border-radius: 50px;
+	filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
+	
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+    justify-content: center;
+}
+ 
+#groupInfo form .title {
+ 	display: flex;
+ 	margin: 30px;
+ 	margin-bottom: 0px;
+}
+#groupInfo form .title iconify-icon {
+	font-size: 48px;
+	color: #3B5C0A;
+	margin: 10px;
+}
+#groupInfo form .title h2 {
+	font-size: 32px;
+	font-weight: 600;
+	margin: 10px;
+}
+
+#groupInfo form .info-group {
+	display: inherit;
+	padding: 10px 50px;
+	
+    flex-wrap: wrap;
+}
+#groupInfo form .info-left > div,  #groupInfo form .info-right > div {
+	width: 420px;
+	margin-bottom: 20px;
+}
+#groupInfo form .info-left {
+	margin-left: 30px;
+}
+
+#groupInfo form h3{
+	font-weight: 500;
+	font-size: 20px;
+	color: #929191;
+	
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+#groupInfo form span:not(tags span){
+	color: rgba(0, 0, 0, .75);
+	font-size: 22px;
+	font-weight: 500;
+}
+
+#groupInfo form .name span {
+	font-size: 36px;
+	font-weight: 600;
+}
+
+#groupInfo .member {
+	display: flex;
+	align-items: center;
+	
+	font-weight: 600;
+	font-size: 22px;
+	color: #929191;
+	
+}
+#groupInfo .member iconify-icon{
+	font-size: 42px;
+	color: #3B5C0A;	
+	
+	margin-right: 10px;
+}
+#groupInfo .member h3 {
+	line-height: 42px;
+	transform: translate(0, 5px);
+}
+#groupInfo .member span {
+	line-height: 42px;
+}
+
+
+#groupInfo .hashtagInput tags {
+	width: 400px;
+	border: none;
+}
+#groupInfo .hashtagInput tags tag {
+	font-size: 20px;
+	font-weight: 600;
+	--tag-text-color: #FFFFFF;
+	
+	--tag-bg: #81B44F;
+	--tag-hover: #81B44F;
+	--tag-border-radius: 50px;
+	--readonly-striped: #81B44F;
+	
+	margin: 5px;
+	--tag-pad: 5px 15px;
+}
+
+#groupInfo .goal span {
+	width: 400px;
+}
+
+#groupInfo .introduce span {
+	width: 400px; height: 130px;
+	overflow-y: auto;
+	word-break: break-all;
+}
+
+#groupInfo hr {
+	width: 80%;
+	
+	position: absolute;
+	left: 50%; transform: translate(-50%, 0%);
+}
+
+#groupInfo .buttons {
+	width: 900px; margin: 0 50px;
+	display: flex;
+    justify-content: space-evenly;
+}
+
+#groupInfo input[type="submit"], #groupInfo #cancel {
+	width: 200px; height: 50px;
+	
+	box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	border: none;
+	
+	margin: 20px;
+	margin-bottom: 30px;
+	
+	font-size: 24px;
+	font-weight: 700;
+}
+#groupInfo input[type="submit"]:active, #groupInfo #cancel:active {
+	transform: translate(0px, 5px);
+	box-shadow: none;
+}
+
+#groupInfo input[type="submit"] {
+	background: #6BA32D;
+	color: #FFFFFF;
+}
+#groupInfo #cancel {
+	background: rgba(0, 0, 0, 0.05);
+	color: rgba(0, 0, 0, 0.5);
+}

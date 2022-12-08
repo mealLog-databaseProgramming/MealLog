@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.dao.FeedDAO;
 import model.dto.FeedDTO;
+import model.dto.FoodDTO;
 
 public class FeedManager {
 	private static FeedManager FeedMan = new FeedManager();
@@ -24,7 +25,7 @@ public class FeedManager {
 
 	//오류난 부분 일단 주석처리
 	public int create(FeedDTO feed) throws SQLException {
-
+		//feedDAO.createFood(food);
 		return feedDAO.createFeed(feed);
 	}
 

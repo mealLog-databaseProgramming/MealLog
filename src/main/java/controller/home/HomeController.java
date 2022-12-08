@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
 import model.dto.ReactDTO;
@@ -26,7 +27,7 @@ public class HomeController implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 		
 		//hashMap
 		List<Map> list = new ArrayList<Map>();
@@ -42,19 +43,16 @@ public class HomeController implements Controller {
 			//리스트를 반환하는건데 왜 하나씩 입력하는가
 			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
 			replyList = replyManager.display(feedList.get(i).getFeedId());
-////			reactList = feedManager.
-//					
+					
 			Map data = new HashMap();
 			data.put("feed", feedList.get(i));
 			data.put("food", foodList);
 			data.put("reply", replyList);
-//			
+		
 			list.add(data);
 		}
-//		
-//		System.out.println(((List<Map>) list.get(0).get("food")).get(0));
+		
 		request.setAttribute("list", list);
-		request.setAttribute("temp", feedList);
 		
 		request.setAttribute("page", "home/home.jsp");
 		return "/index.jsp";

@@ -13,7 +13,7 @@
 		<div class="groupInputs-left">
 			<div class="nameInput">
 				<h3>그룹 이름</h3>
-				<input type="text" name="name" placeholder="그룹 이름을 입력하세요"></input>
+				<input type="text" name="cname" placeholder="그룹 이름을 입력하세요"></input>
 			</div>
 			<div class="memberInput">
 				<iconify-icon icon="mingcute:group-line"></iconify-icon>
@@ -33,11 +33,11 @@
 		<div class="groupInputs-right">
 			<div class="goalInput">
 				<h3>그룹 목표</h3>
-				<input type="text" name="name" placeholder="목표를 입력하세요"></input>
+				<input type="text" name="goal" placeholder="목표를 입력하세요"></input>
 			</div>
 			<div class="infoInput">
 				<h3>그룹 소개</h3>
-				<textarea name="name" placeholder="소개글을 입력하세요"></textarea>
+				<textarea name="info" placeholder="소개글을 입력하세요"></textarea>
 			</div>
 		</div>
 	</div>

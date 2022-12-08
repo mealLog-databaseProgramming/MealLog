@@ -7,6 +7,7 @@ const $modal_body = document.querySelector('.modal-body');
 const $modal_body_childs = $modal_body.childNodes;
 const $modal_foodContainer = $modal_body_childs[5];
 
+//오류 : 첫번째 react만 됨
 function reactUp(){
 	$thumbs_up.style.display = "none";
 	$thumbs_up_fill.style.display = "inline";
