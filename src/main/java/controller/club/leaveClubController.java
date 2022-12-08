@@ -16,7 +16,6 @@ public class leaveClubController implements Controller{
 			long clubId = Long.parseLong(request.getParameter("clubId"));
 						
 			ClubManager manager = ClubManager.getInstance();		
-		
 			manager.leaveClub(deleteId, clubId);
 				
 			return "redirect:/group";

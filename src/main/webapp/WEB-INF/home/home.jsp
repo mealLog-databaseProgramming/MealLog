@@ -27,10 +27,11 @@
 	List<FeedDTO> temp = (List<FeedDTO>)request.getAttribute("temp"); 
 	
 	//데이터 접근 샘플
-	FeedDTO feedTemp = (FeedDTO)data.get(0).get("feed");
-	List<FoodDTO> foodTemp = (List<FoodDTO>)data.get(0).get("food");
-	List<ReplyDTO> replyTemp = (List<ReplyDTO>)data.get(0).get("reply");
+	FeedDTO feedTemp = (FeedDTO)data.get(1).get("feed");
+	List<FoodDTO> foodTemp = (List<FoodDTO>)data.get(4).get("food");
+	List<ReplyDTO> replyTemp = (List<ReplyDTO>)data.get(4).get("reply");
 	
+	System.out.println("test");
 	System.out.println(feedTemp.getContent());
 	System.out.println(foodTemp.get(0).getFname());
 	System.out.println(replyTemp.get(0).getContent());

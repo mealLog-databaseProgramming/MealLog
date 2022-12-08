@@ -39,7 +39,7 @@ public class HomeController implements Controller {
 		
 		feedList = feedManager.read();
 		for (int i = 0; i < feedList.size(); i++) {
-			
+			//리스트를 반환하는건데 왜 하나씩 입력하는가
 			foodList = foodManager.findFoodList(feedList.get(i).getFeedId());
 			replyList = replyManager.display(feedList.get(i).getFeedId());
 ////			reactList = feedManager.
