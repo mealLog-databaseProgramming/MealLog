@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+#joinedGroupView {
+	width: 1150px;
+	background: #FFFFFF;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	
+	margin: 15px;
+	
+	display: flex;
+}
+.myGroup {
+	background: rgba(255, 255, 100, 0.05) !important;
+}
+#joinedGroupView > div {
+	width: 500px;
+	padding: 20px 0px 20px 40px;
+}
+#joinedGroupView > div > div {
+	margin: 20px;
+}
+#joinedGroupView .title {	
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 42px;
+}
+#joinedGroupView .title iconify-icon {
+	color:  #6BA32D;
+	font-size: 42px;
+	margin-right: 10px;
+	
+	transform: translate(0, 5px);
+}
+#joinedGroupView input[type="button"] {
+	background: rgba(0, 0, 0, .05);
+	border: none;
+	
+	width: 80px; height: 50px;
+	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 33px;
+	
+	color: rgba(0, 0, 0, 0.75);
+	transform: translate(0, 20px);
+	
+	position: absolute;
+	right: 110px;
+}
+#joinedGroupView input[type="button"]:active {
+	box-shadow: none;
+	transform: translate(0, 25px);
+}
+
+
+#joinedGroupView label {
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: 500;
+}
+#joinedGroupView div>div>div {
+	font-size: 22px;
+}
+#joinedGroupView .info {
+	height: 100px;
+	overflow-y: auto;
+}
+#joinedGroupView tags {
+	border: none;
+	width: 500px;
+	padding: 10px;
+}
+#joinedGroupView tags tag{
+	font-size: 22px;
+	font-weight: 600;
+	--tag-text-color: #FFFFFF;
+	
+	--tag-bg: #81B44F;
+	--tag-hover: #81B44F;
+	--tag-border-radius: 50px;
+	--readonly-striped: #81B44F;
+	
+	margin: 5px;
+	--tag-pad: 5px 15px;
+}
+
+#joinedGroupView .groupMember {
+	margin-top: 60px;
+}
+#joinedGroupView .memberList {
+	width: 450px; height: 260px;
+	background: rgba(0, 0, 0, 0.05);
+	box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.25);
+	border-radius: 15px;
+	
+	margin-top: 10px;
+	overflow-y: auto;
+}
+
+#joinedGroupView #member {
+	width: 380px;
+	height: 60px;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 25px;
+	margin: 10px;
+	
+	display: flex;
+	
+	line-height: 60px;
+}
+#joinedGroupView #member #profile {
+	width: 45px; height: 45px;
+	border-radius: 45px;
+	margin: 7.5px 50px;
+	
+	background: rgba(0, 0, 0, .25);
+	overflow: hidden;
+}
+#joinedGroupView #member:first-child {
+	background: #6BA32D;
+	color: white;
+	font-weight: 500px;
+}

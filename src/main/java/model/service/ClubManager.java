@@ -71,6 +71,28 @@ public class ClubManager {
 		return clubDAO.isLeader(userId, clubId);
 	}
 
+	public List<HashtagDTO> findClubByHashtag(String tag) throws SQLException {
+		
+		return clubDAO.findClubByHashtag(tag);
+	}
+
+	public List<ClubDTO> SearchClubList(List<HashtagDTO> tagList) throws SQLException {
+
+		return clubDAO.SearchClubList(tagList);
+	}
+
+	public List<HashtagDTO> HashtagList(long clubId) throws SQLException {
+		
+		return clubDAO.HashtagList(clubId);
+	}
+
+	public int createHashtag(List<HashtagDTO> hashtagList) throws SQLException {
+		
+		return clubDAO.createHashtag(hashtagList);
+	}
+
+
+
 	
 	
 	

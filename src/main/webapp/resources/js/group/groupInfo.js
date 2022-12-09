@@ -18,31 +18,31 @@ function groupInfo_init() {
 	};
 }
 
-function groupInfo_set(clubId, cName, goal, info, current_mamber, max_member, tags) {
+function groupInfo_set(e) {	
+	var clubIdInput = document.querySelector('#groupInfo input[name="clubId"]');
+	clubIdInput.setAttribute('value', e.querySelector("#clubId").value);
+	
+	var cNameInput = document.querySelector('#groupInfo .name span');
+	cNameInput.innerText = e.querySelector("#cName").innerText;
+	
+	var goalInput = document.querySelector('#groupInfo .goal span');
+	goalInput.innerText = e.querySelector("#goal").innerText;
+	
+	var infoInput = document.querySelector('#groupInfo .introduce span');
+	infoInput.innerText =  e.querySelector("#info").value;
+	
+	var max_memberInput = document.querySelector(`#groupInfo .member span`);
+	max_memberInput.innerText = e.querySelector("#member").innerText;
+	
+	var tagInput = document.querySelector('#groupInfo #hashtag');
+	tagInput.value = e.querySelector("#hashtag").value;
+	
+	var tagify = new Tagify(tagInput);
+	tagify.setReadonly(true);
+	
 	var popup = document.querySelector('#groupInfo');
 	popup.style.display = "block";
 	document.documentElement.scrollTop = 0; // 임시
 	
-	body.style.overflowY = "hidden";
-	
-	var clubIdInput = document.querySelector('#groupInfo input[name="clubId"]');
-	clubIdInput.setAttribute('value',clubId);
-	
-	var cNameInput = document.querySelector('#groupInfo .name span');
-	cNameInput.innerText = cName;
-	
-	var goalInput = document.querySelector('#groupInfo .goal span');
-	goalInput.innerText = goal;
-	
-	var infoInput = document.querySelector('#groupInfo .introduce span');
-	infoInput.innerText = info;
-	
-	var max_memberInput = document.querySelector(`#groupInfo .member span`);
-	max_memberInput.innerText = `${current_mamber} / ${max_member}`;
-	
-	var tagInput = document.querySelector('#groupInfo #hashtag');
-
-	var tagify = new Tagify(tagInput);
-	tagify.addTags(tags);
-	tagify.setReadonly(true);
+	body.style.overflowY = "hidden";	
 }
