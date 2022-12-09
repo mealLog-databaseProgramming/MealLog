@@ -74,18 +74,21 @@ public class CreateFeedController implements Controller{
 		long feedId = feedManager.create(feed);
 		
 		//foodList를 food객체 리스트로 가공
-//		String[] foodList = foodData.split(",");
-//		for (int i = 0; i < foodList.length; i++) {
-//			String[] foodInfo = foodList[i].split("/");
-//			
-//			String fName = foodInfo[0];
-//			float kcal = Float.parseFloat(foodInfo[1]);
-//			float carb = Float.parseFloat(foodInfo[2]);
-//			float protein = Float.parseFloat(foodInfo[3]);
-//			float fat = Float.parseFloat(foodInfo[4]);
-//			FoodDTO food = new FoodDTO(fName, kcal, carb, protein, fat, feedId);
-//			foodManager.create(food);
-//		}
+		System.out.println(feedId);
+		String[] foodList = foodData.split(",");
+		for (int i = 0; i < foodList.length; i++) {
+			String[] foodInfo = foodList[i].split("/");
+			
+			String fName = foodInfo[0];
+			float kcal = Float.parseFloat(foodInfo[1]);
+			float carb = Float.parseFloat(foodInfo[2]);
+			float protein = Float.parseFloat(foodInfo[3]);
+			float fat = Float.parseFloat(foodInfo[4]);
+			System.out.println(fName + ", " + kcal + ", " + carb + ", " + protein + ", " + fat);
+			
+			FoodDTO food = new FoodDTO(fName, kcal, carb, protein, fat, feedId);
+			foodManager.create(food);
+		}
 		
 		return "redirect:/";
 		

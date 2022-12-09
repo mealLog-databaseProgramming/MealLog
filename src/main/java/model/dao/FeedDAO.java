@@ -27,9 +27,8 @@ public class FeedDAO {
 	public long createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
 			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, ?, ?, ?)";
-		String getFeedId = "SELECT LAST_NUMBER "
-				+ "FROM all_sequences "
-				+ "WHERE SEQUENCE_NAME = 'SEQUENCE_FEEDID'";
+//		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
+		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
 		Object[] param = new Object[] {feed.getPhoto(), feed.getPublishDate(), feed.getUserId(), feed.getContent()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -39,7 +38,7 @@ public class FeedDAO {
 			jdbcUtil.setSqlAndParameters(getFeedId, null);
 			ResultSet rs = jdbcUtil.executeQuery();
 			rs.next();
-			long feedId = rs.getLong("LAST_NUMBER");
+			long feedId = rs.getLong("CURRVAL");
 			return feedId;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -73,9 +72,9 @@ public class FeedDAO {
 
 	// 피드 음식 추가
 	public int createFood(FoodDTO food) throws SQLException {
-		String sql = "INSERT INTO Food(foodId, kcal, carb, protein, fat, feedId, fname) " 
+		String sql = "INSERT INTO Food(foodId, fname, kcal, carb, protein, fat, feedId) " 
 		+ "VALUES(SEQUENCE_FOODID.nextval, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] {food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId(), food.getFname()};
+		Object[] param = new Object[] {food.getFname(), food.getKcal(), food.getCarb(), food.getProtein(), food.getFat(), food.getFeedId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
