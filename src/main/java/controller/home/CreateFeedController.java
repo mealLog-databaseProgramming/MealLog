@@ -70,9 +70,9 @@ public class CreateFeedController implements Controller{
 //		System.out.println(userId);
 //		System.out.println(imagePath);
 //		System.out.println(publishDate);
-//		System.out.println(content);
+		System.out.println(content);
 		
-		FeedDTO feed = new FeedDTO(imageName, publishDate, userId, content);
+		FeedDTO feed = new FeedDTO(imageName, userId, content);
 		
 		//imagePath가 너무 길다. 파일 이름만 남기고 저장해야할듯(식별값
 		long feedId = feedManager.create(feed);
@@ -95,20 +95,5 @@ public class CreateFeedController implements Controller{
 		}
 		
 		return "redirect:/";
-		
-		
-		//String content = multi.getParameter("content");
-				//System.out.println(content);
-				/*long feedId = Long.parseLong(request.getParameter("feedId"));
-				String photo = request.getParameter("photo");
-				String Date = format1.format(time);
-				java.sql.Date joinDate= java.sql.Date.valueOf(Date);
-				long userId = Long.parseLong(request.getParameter("userId"));
-				String content = request.getParameter("content");
-				
-				FeedDTO feed = new FeedDTO(feedId, photo, joinDate, userId, content );	
-				
-				FeedManager feedManager = FeedManager.getInstance();
-				feedManager.create(feed);*/
 	}
 }

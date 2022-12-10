@@ -22,6 +22,11 @@ public class FeedDTO {
 		this.userId = userId;
 		this.content = content;
 	}
+	public FeedDTO(String photo, long userId, String content) {
+		this.photo = photo;
+		this.userId = userId;
+		this.content = content;
+	}
 
 	public long getUserId() {
 		return userId;

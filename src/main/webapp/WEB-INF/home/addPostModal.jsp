@@ -38,7 +38,7 @@
 								</div>
 								<!-- div class="modalMessage">오늘의 식사를 기록하세요.</div-->
 								<!-- content --> 
-								<textarea placeholder="오늘의 식사를 기록하세요." maxlength="100" name="exampleFormControlTextarea1" class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
+								<textarea placeholder="오늘의 식사를 기록하세요." maxlength="100" name="content" class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
 								<script>
 								$(document).ready(function() {
 									$('#exampleFormControlTextarea1').on('keyup', function() {

@@ -29,7 +29,7 @@ public class FeedDAO {
 			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yyyy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
-		Object[] param = new Object[] {feed.getPhoto(), feed.getPublishDate(), feed.getUserId(), feed.getContent()};
+		Object[] param = new Object[] {feed.getPhoto(), feed.getUserId(), feed.getContent()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
