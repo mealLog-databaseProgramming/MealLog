@@ -17,7 +17,7 @@ public class ResourceFilter implements Filter {
     static {
         resourcePrefixs.add("/resources");
         resourcePrefixs.add("/favicon.ico");
-        resourcePrefixs.add("/foodImg");
+        resourcePrefixs.add("/resources/feed");
     }
 
     private RequestDispatcher defaultRequestDispatcher;

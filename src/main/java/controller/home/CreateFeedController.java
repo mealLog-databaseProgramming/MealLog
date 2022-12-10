@@ -55,6 +55,10 @@ public class CreateFeedController implements Controller{
 		System.out.println(userId);
 		
 		String savePath = request.getSession().getServletContext().getRealPath("resources/feed");
+		File dir = new File(savePath);			
+					
+		if (!dir.exists()) dir.mkdir();  // 전송된 파일을 저장할 폴더 생성
+		
 		MultipartRequest multi = new MultipartRequest(request, savePath, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
 
 		String oldFileName = multi.getFilesystemName("file");
