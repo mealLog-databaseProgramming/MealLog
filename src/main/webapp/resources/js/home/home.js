@@ -1,16 +1,42 @@
-const $thumbs_up = document.querySelector('.bi-hand-thumbs-up');
-const $thumbs_up_fill = document.querySelector('.bi-hand-thumbs-up-fill');
-const $thumbs_down = document.querySelector('.bi-hand-thumbs-down');
-const $thumbs_down_fill = document.querySelector('.bi-hand-thumbs-down-fill');
+const thumbs_up = document.querySelectorAll('.bi-hand-thumbs-up');
+const thumbs_up_fill = document.querySelectorAll('.bi-hand-thumbs-up-fill');
+const thumbs_down = document.querySelectorAll('.bi-hand-thumbs-down');
+const thumbs_down_fill = document.querySelectorAll('.bi-hand-thumbs-down-fill');
 
 const $modal_body = document.querySelector('.modal-body');
 const $modal_body_childs = $modal_body.childNodes;
 const $modal_foodContainer = $modal_body_childs[5];
 
-//오류 : 첫번째 react만 됨
-function reactUp(){
-	$thumbs_up.style.display = "none";
-	$thumbs_up_fill.style.display = "inline";
+//좋아요 버튼
+for(let i = 0; i< thumbs_up.length; i++) {
+	thumbs_up[i].addEventListener('click', function(e){
+		thumbs_up[i].style.display="none";
+		thumbs_up_fill[i].style.display="inline";
+	});
+}
+
+//싫어요 버튼
+for(let i = 0; i< thumbs_down.length; i++) {
+	thumbs_down[i].addEventListener('click', function(e){
+		thumbs_down[i].style.display="none";
+		thumbs_down_fill[i].style.display="inline";
+	});
+}
+
+//좋아요 버튼 취소
+for(let i = 0; i< thumbs_up_fill.length; i++) {
+	thumbs_up_fill[i].addEventListener('click', function(e){
+		thumbs_up_fill[i].style.display="none";
+		thumbs_up[i].style.display="inline";
+	});
+}
+
+//싫어요 버튼 취소
+for(let i = 0; i< thumbs_down_fill.length; i++) {
+	thumbs_down_fill[i].addEventListener('click', function(e){
+		thumbs_down_fill[i].style.display="none";
+		thumbs_down[i].style.display="inline";
+	});
 }
 
 function reactDown(){
