@@ -33,7 +33,7 @@
 								<div class="modalFoodContainer">
 								</div>
 								<!-- div class="modalMessage">오늘의 식사를 기록하세요.</div-->
-								<!-- content -->
+								<!-- content --> 
 								<textarea placeholder="오늘의 식사를 기록하세요." name="content" class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
 								<div class="fileContainer">
 									<label for="file" class="btn-upload">
