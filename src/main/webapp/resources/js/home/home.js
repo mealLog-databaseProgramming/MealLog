@@ -15,7 +15,7 @@ for(let i = 0; i< thumbs_up.length; i++) {
 	});
 }
 
-//싫어요 버튼
+//싫어요 버튼 
 for(let i = 0; i< thumbs_down.length; i++) {
 	thumbs_down[i].addEventListener('click', function(e){
 		thumbs_down[i].style.display="none";
