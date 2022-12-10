@@ -25,7 +25,15 @@ function searchFood() {
 	  .catch(error => console.log('error', error));
 }
 
+function removeAllChild(row) {
+	while (row.hasChildNodes()) {
+        row.removeChild(row.firstChild);
+    }
+}
+
 function displayFood(foods) {
+	removeAllChild($rowContainer);
+	
 	object = JSON.parse(foods)
 	//console.log(object);
 	const foodList = object.I2790.row;
