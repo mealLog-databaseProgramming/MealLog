@@ -29,9 +29,9 @@
 	List<FoodDTO> foodTemp = (List<FoodDTO>)data.get(4).get("food");
 	List<ReplyDTO> replyTemp = (List<ReplyDTO>)data.get(4).get("reply");
 	
-	System.out.println(feedTemp.getContent());
-	System.out.println(foodTemp.get(0).getFname());
-	System.out.println(replyTemp.get(0).getContent());
+	//System.out.println(feedTemp.getContent());
+	//System.out.println(foodTemp.get(0).getFname());
+	//System.out.println(replyTemp.get(0).getContent());
 	
 	//feedTemp.getContent()
 	//foodTemp.get(0).getFname()
@@ -70,7 +70,7 @@
 				<div class="contentWrap">
 					<div class="leftContainer">
 						<div class="photo">
-							<img src=<%=feed.getPhoto() %>>
+							<img src="/resources/feed/<%=feed.getPhoto() %>">
 						</div>
 					</div>
 					<div class="rightContainer">
