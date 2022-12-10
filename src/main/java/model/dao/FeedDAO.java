@@ -220,7 +220,7 @@ public class FeedDAO {
         String sql = "SELECT feedId, photo, publishDate, userId, content " 
      		   + "FROM FEED "
      		   + "WHERE ROWNUM < 101" 
-     		   + "ORDER BY publishDate";
+     		   + "ORDER BY publishDate DESC";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
 		try {
@@ -250,7 +250,7 @@ public class FeedDAO {
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
         		   + "FROM FEED "
-        		   + "ORDER BY publishDate" 
+        		   + "ORDER BY publishDate DESC" 
         		   + "WHERE ROWNUM < 101";
 		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
 				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
@@ -370,7 +370,7 @@ public class FeedDAO {
 	
 	// 유저의 피드 리스트
 	public List<FeedDTO> findFeedListbyUser(long userId) throws SQLException {
-        String sql = "SELECT feedId, photo, publishDate, userId, content FROM FEED WHERE userid = ? ORDER BY publishDate";
+        String sql = "SELECT feedId, photo, publishDate, userId, content FROM FEED WHERE userid = ? ORDER BY publishDate DESC";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
@@ -396,7 +396,7 @@ public class FeedDAO {
 	
 	// 피드 별 전체 댓글
 	public List<ReplyDTO> replyList(long feedId) throws SQLException {
-        String sql = "SELECT content, feedId, publishDate, replyId, userId FROM Reply WHERE feedId = ? ORDER BY publishDate";
+        String sql = "SELECT content, feedId, publishDate, replyId, userId FROM Reply WHERE feedId = ? ORDER BY publishDate DESC";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});		// JDBCUtil에 query문 설정
 					
 		try {
