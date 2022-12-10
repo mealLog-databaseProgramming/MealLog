@@ -32,5 +32,3 @@ function setFoods() {
 }
 
 displayFoodList();
-
-//localStorage파싱해서 어떻게 넘기기?

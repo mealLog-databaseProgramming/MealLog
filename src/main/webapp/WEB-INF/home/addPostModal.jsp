@@ -39,18 +39,6 @@
 								<!-- div class="modalMessage">오늘의 식사를 기록하세요.</div-->
 								<!-- content --> 
 								<textarea placeholder="오늘의 식사를 기록하세요." maxlength="100" name="exampleFormControlTextarea1" class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea>
-								<script>
-								$(document).ready(function() {
-							        $('#exampleFormControlTextarea1').on('keyup', function() {
-							            $('#test_cnt').html("("+$(this).val().length+" / 100)");
-							 
-							            if($(this).val().length > 100) {
-							                $(this).val($(this).val().substring(0, 100));
-							                $('#test_cnt').html("(100 / 100)");
-							            }
-							        });
-							    });
-								</script>
 								<div class="fileContainer">
 									<label for="file" class="btn-upload">
 										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgba(0,0,0,.75)" class="bi bi-image" viewBox="0 0 16 16">
