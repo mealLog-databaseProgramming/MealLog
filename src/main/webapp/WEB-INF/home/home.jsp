@@ -5,6 +5,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
+<%@page import="model.dao.FeedDAO"%>
 <%@page import="model.dto.FeedDTO"%>
 <%@page import="model.dto.FoodDTO"%>
 <%@page import="model.dto.ReplyDTO"%>
@@ -52,6 +53,8 @@
 			FeedDTO feed = (FeedDTO)data.get(i).get("feed");
 			List<FoodDTO> foodList = (List<FoodDTO>)data.get(i).get("food");
 			List<ReplyDTO> replyList = (List<ReplyDTO>)data.get(i).get("reply");
+			FeedDAO feedDAO = new FeedDAO();
+			String uname = feedDAO.findUname(feed.getUserId());
 		%>
 		<div class="postContainer">
 			<div class="profileIcon">
@@ -63,7 +66,7 @@
 			<div class="posting">
 				<div class="infoContainer">
 					<div class="info_line">
-						<span class="writer"><%=feed.getUserId() %></span>
+						<span class="writer"><%=uname %></span>
 						<div class="time"><%=feed.getPublishDate() %></div>
 					</div>
 				</div>

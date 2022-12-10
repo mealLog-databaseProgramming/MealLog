@@ -346,7 +346,7 @@ public class FeedDAO {
 		
 	}
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
-	public UserDTO findUname(long userId) throws SQLException {
+	public String findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
 	        		+ "FROM UserInfo "
 			        + "WHERE userId=? ";   
@@ -355,11 +355,11 @@ public class FeedDAO {
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {
+			String uname = null;
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {						// 비밀번호 정보 발견
-				UserDTO user = new UserDTO(rs.getInt("userID"));
-				return user; 
-			}
+			while (rs.next())
+				uname = rs.getString("uname");
+			return uname;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -367,7 +367,6 @@ public class FeedDAO {
 		} 
 		return null;
 	}
-	
 	// 유저의 피드 리스트
 	public List<FeedDTO> findFeedListbyUser(long userId) throws SQLException {
         String sql = "SELECT feedId, photo, publishDate, userId, content FROM FEED WHERE userid = ? ORDER BY publishDate DESC";
