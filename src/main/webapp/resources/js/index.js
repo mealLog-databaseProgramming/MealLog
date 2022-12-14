@@ -23,6 +23,10 @@ function init() {
 		else
 			header.style.boxShadow = '0px 2px 5px rgba(0, 0, 0, 0.25)';
 	});
+	
+	var img = document.querySelector(".Header .greet #profile img");
+	if(img.width > img.height) img.style.height = "100%";
+    else img.style.width = "100%";
 }
 
 function lis_select(i) {

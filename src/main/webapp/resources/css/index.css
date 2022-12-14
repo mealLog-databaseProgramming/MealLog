@@ -86,8 +86,17 @@ body::-webkit-scrollbar-track {
 .Header .greet {
 	margin-right: 5vw;
 }
-.Header .greet iconify-icon {
-	font-size: 40px;
+.Header .greet #profile {
+	width: 50px; height: 50px;
+	background: rgba(0, 0, 0, .1);
+	border-radius: 45px;
+	overflow: hidden;
+	
+	margin: 10px;
+	text-align:center;
+	
+	display: inline-flex;
+    justify-content: center;
 }
 .Header .logout {
 	margin-left: 5vw;
