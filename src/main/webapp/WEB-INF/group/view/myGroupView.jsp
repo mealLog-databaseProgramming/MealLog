@@ -3,7 +3,7 @@
 
 <div id="myGroup">
 	<div id="joinedGroupView" class="myGroupView">
-		<input type="button" value="수정"></input>
+		<input type="button" value="수정" onclick="group_edit(this)"></input>
 		<div>
 			<div class="title">
 				<iconify-icon icon="mdi:account-group"></iconify-icon>
@@ -32,22 +32,28 @@
 		</div>
 	</div>
 	
-	<form id="joinedGroupView" class="myGroup_edit">
-		<input type="submit" value="수정"></input>
+	<form id="joinedGroupView" class="myGroup_edit" style="display: none;"
+		action="/groupUpdate" method="post">
+		<input type="hidden" name="clubId" value="${clubData.getClubId()}">
+		<input type="submit" value="적용"></input>
+		<input type="button" value="취소" onclick="location.href=''"></input>
 		<div>
 			<div class="title">
 				<iconify-icon icon="mdi:account-group"></iconify-icon>
-				${clubData.getCname()}
+				<input type="text" name="cname" value="${clubData.getCname()}"/>
 			</div>
 			<div>
 				<label>그룹 목표</label>
-				<div>${clubData.getGoal()}</div>
+				<input type="text" name="goal" value="${clubData.getGoal()}"/>
 			</div>
 			<div>
 				<label>그룹 소개</label>
-				<div class="info">${clubData.getInfo()}</div>
+				<textarea name="info" >${clubData.getInfo()}</textarea>
 			</div>
-			<input id="hashtag" value="${hashtags.get(Long.valueOf(clubData.getClubId()))}"></input>
+			<div>
+				<label>해시태그</label>
+				<input id="hashtag" value="${hashtags.get(Long.valueOf(clubData.getClubId()))}"></input>
+			</div>
 		</div>
 		<div>
 			<div class="groupMember">

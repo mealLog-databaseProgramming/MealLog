@@ -65,7 +65,7 @@
 	height: 100px;
 	overflow-y: auto;
 }
-#joinedGroupView tags {
+#joinedGroupView tags:not(.myGroup_edit tags) {
 	border: none;
 	width: 500px;
 	padding: 10px;
