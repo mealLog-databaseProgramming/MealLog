@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="resources/css/group/groupList.css"/>
 <link rel="stylesheet" href="resources/css/group/view/groupView.css"/>
 <link rel="stylesheet" href="resources/css/group/view/joinedGroupView.css"/>
+<link rel="stylesheet" href="resources/css/group/view/myGroupView.css"/>
 
 <div class='Content'>
 	<div class="groupHeader">

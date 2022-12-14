@@ -20,8 +20,14 @@ function groupView_init() {
 		var tagify = new Tagify(input);
 	 	tagify.setReadonly(true);
 	});
+	
+	var profiles = document.querySelectorAll("#member img");
+	profiles.forEach((img) => {
+		if(img.width > img.height) img.style.height = "45px";
+        else img.style.width = "45px";
+	});
 }
-
+//
 function moveSrc(e) {
 	location.href = `/mypage?uid=${e.querySelector("#userId").value}`;
 }
