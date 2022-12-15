@@ -22,7 +22,8 @@
 			<div class="graphComment">
 				사용자 님,
 				<br>
-				단백질이 부족하네요
+				단백질이 부족하네요<%=EER %>
+				<input type="hidden" value="<%=EER %>" name="EER">
 			</div>
 			<canvas id="graph" width="600" height="200"></canvas> 
 		</div>
@@ -42,11 +43,11 @@
 		        <div class="item front"><img src="resources/favicon/favicon-96x96.png"></div>
 		        <div class="item back">
 		        	<div class="itemText">
-			        	<p class="title">돼지고기 김치찌개</p>
-			        	<p class="content">칼로리 : 520kcal</p>
-						<p class="content">탄수화물 : 55g</p>
-						<p class="content">단백질 : 60g</p>
-						<p class="content">지방 : 60g</p>
+			        	<p class="foodTitle"></p>
+			        	<p class="kcal"></p>
+						<p class="carb"></p>
+						<p class="protein"></p>
+						<p class="fat"></p>
 					</div>
 		        </div>
 		  	</div>
@@ -190,6 +191,8 @@
 		</div>
 	</div>
 </div>
+	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="resources/js/recomm/recomm.js"></script>
 	
@@ -197,5 +200,7 @@
 	<script src="resources/js/recomm/chart.js"></script>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+	<script src="resources/js/recomm/foodData.js" type="module"></script>
 </body>
 </html>

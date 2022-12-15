@@ -288,7 +288,7 @@
 		
 		margin-bottom: 33px;
     }
-    .item.back .content {
+    .item.back .kcal, .item.back .carb, .item.back .protein, .item.back .fat{
     	font-family: 'Jua';
 		font-style: normal;
 		font-weight: 400;
