@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="resources/css/group/modal/groupCreate.css"/>
 
 <div id="groupCreate">
-<form action="" method="post" onsubmit="return false">
+<form action="/newGroup" method="post" onsubmit="return false">
 	<div class="title">
 		<iconify-icon icon="mdi:account-group"></iconify-icon>
 		<h2>그룹 생성</h2>

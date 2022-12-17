@@ -14,10 +14,17 @@ function readImage(input) {
         }
 		reader.readAsDataURL(input.files[0]);
 		console.log(input.files[0]);
+		
+		var form = document.querySelector("#profile_edit");
+		form.setAttribute("enctype", "multipart/form-data");
 	}
 }
 
 var fileInput = document.querySelector('#file');
 fileInput.onchange = (e) => {
 	readImage(e.target);
+}
+
+function profile_edit_submit(e) {
+	
 }

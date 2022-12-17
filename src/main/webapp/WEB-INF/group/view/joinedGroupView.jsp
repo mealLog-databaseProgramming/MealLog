@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="joinedGroupView">
-	<input type="button" value="탈퇴"></input>
+<form id="joinedGroupView" action="/leaveGroup" method="post">
+	<input type="hidden" name="clubId" value="${clubData.getClubId()}">
+	<input type="submit" value="탈퇴"></input>
 	<div>
 		<div class="title">
 			<iconify-icon icon="mdi:account-group"></iconify-icon>
@@ -29,4 +30,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</form>

@@ -10,9 +10,7 @@
 	
 	display: flex;
 }
-.myGroup {
-	background: rgba(255, 255, 100, 0.05) !important;
-}
+
 #joinedGroupView > div {
 	width: 500px;
 	padding: 20px 0px 20px 40px;
@@ -32,7 +30,7 @@
 	
 	transform: translate(0, 5px);
 }
-#joinedGroupView input[type="button"] {
+#joinedGroupView input[type="button"], #joinedGroupView input[type="submit"] {
 	background: rgba(0, 0, 0, .05);
 	border: none;
 	
@@ -50,11 +48,10 @@
 	position: absolute;
 	right: 110px;
 }
-#joinedGroupView input[type="button"]:active {
+#joinedGroupView input[type="button"]:active, #joinedGroupView input[type="submit"]:active {
 	box-shadow: none;
 	transform: translate(0, 25px);
 }
-
 
 #joinedGroupView label {
 	font-size: 20px;
@@ -68,7 +65,7 @@
 	height: 100px;
 	overflow-y: auto;
 }
-#joinedGroupView tags {
+#joinedGroupView tags:not(.myGroup_edit tags) {
 	border: none;
 	width: 500px;
 	padding: 10px;
@@ -113,6 +110,8 @@
 	
 	line-height: 60px;
 }
+#joinedGroupView #member:hover { scale: 1.01; }
+#joinedGroupView #member:active { scale: 0.99; }
 #joinedGroupView #member #profile {
 	width: 45px; height: 45px;
 	border-radius: 45px;
