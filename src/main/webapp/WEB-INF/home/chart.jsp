@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="model.dao.FeedDAO"%>
+<%@page import="model.dto.FeedDTO"%>
+<%@page import="model.dto.FoodDTO"%>
+<%@page import="model.dto.ReplyDTO"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +17,17 @@
 	<link rel="stylesheet" href="resources/css/home/chart.css"/>
 </head>
 <body>
-	<div class="stats_graph_box">                               
+<%
+    String kcalSum = request.getParameter("kcalSum");
+	String carbSum = request.getParameter("carbSum");
+	String proteinSum = request.getParameter("proteinSum");
+	String fatSum = request.getParameter("fatSum");
+%>
+	<div class="stats_graph_box">   
+	<%=kcalSum %>     
+	<%=carbSum %> 
+	<%=proteinSum %> 
+	<%=fatSum %>                        
 	<div class="graph">
 	  <!-- 비율에 따라 width 값 조정 -->
 	  <div class="bar carb" style="width:30%;">
@@ -32,17 +51,6 @@
 	    </dl>
 	  </div>
   </div>
-  <!-- 위치시킬 값에 따라 left 값 조정 -->
-  <!-- <dl class="fixed_data" style="left:75%;">
-    <div class="item">
-      <dt>data data</dt>
-      <dd><em>21</em>개</dd>
-    </div>
-    <div class="item">
-      <dt>data data data</dt>
-      <dd><em>190</em>개</dd>
-    </div>
-  </dl> -->
 </div>
 </body>
 </html>

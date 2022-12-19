@@ -24,13 +24,16 @@ public class test {
 	
 	public static void main(String[] args) throws SQLException {
 	
-		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
-		String now = format1.format(new java.util.Date());
-		java.sql.Date publishDate= java.sql.Date.valueOf(now);
-
-		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", publishDate, 7, "아무말");
-		System.out.println(feedm.create(feedDTO));
-//		System.out.println(list.get(0).getFname());
+//		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
+//		String now = format1.format(new java.util.Date());
+//		java.sql.Date publishDate= java.sql.Date.valueOf(now);
+//
+//		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", publishDate, 7, "아무말");
+//		System.out.println(feedm.create(feedDTO));
+//		
+		
+		List<FeedDTO> fList = feed.findFeedList();
+		System.out.println(fList.get(1).getContent());
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

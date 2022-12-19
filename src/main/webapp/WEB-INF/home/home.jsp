@@ -21,6 +21,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
+<div id="top" style="position:fixed; top:5px;">ddd</div>
 <div class='Content'>
 <% 
 	List<Map> data = (List<Map>)request.getAttribute("list");
@@ -61,6 +62,12 @@
 			// react 출력
 			int upCount = feedDAO.countPositiveReact(feed.getFeedId());
 			int downCount = feedDAO.countNegativeReact(feed.getFeedId());
+			
+			//영양소 계산 저장
+			float kcalSum = (float)0.0;
+			float carbSum = (float)0.0;
+			float proteinSum = (float)0.0;
+			float fatSum = (float)0.0;
 		%>
 		<div class="postContainer">
 			<div class="profileIcon">
@@ -138,10 +145,20 @@
 			    <div class="foodContainer">
 			    	<%for (int j = 0; j < foodList.size(); j++) {%>
 						<div class="food"><%=foodList.get(j).getFname() %></div>
-					<%} %>
+					<%
+						kcalSum += foodList.get(j).getKcal();
+						carbSum += foodList.get(j).getCarb();
+						proteinSum += foodList.get(j).getProtein();
+						fatSum += foodList.get(j).getFat();
+					} %>
 				</div>
 			    <div class='graphContainers'>
-					<jsp:include page="/WEB-INF/home/chart.jsp"/>
+					<jsp:include page="/WEB-INF/home/chart.jsp">
+						<jsp:param name="kcalSum" value="<%=kcalSum %>"/>
+						<jsp:param name="carbSum" value="<%=carbSum %>"/>
+						<jsp:param name="proteinSum" value="<%=proteinSum %>"/>
+						<jsp:param name="fatSum" value="<%=fatSum %>"/>
+					</jsp:include>
 				</div>
 			</div>
 		</div>
@@ -255,7 +272,6 @@
 			</div>
 			<!--그래프 들어갔던 자리-->
 		</div>
-	</div> -->
 </div>
 
 

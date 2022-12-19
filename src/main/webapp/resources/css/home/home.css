@@ -187,6 +187,12 @@ svg .bi-chat-dots {
 	margin-top: 20px;
 }
 
+.moveTop {
+	position: fixed;
+	right: 100px;
+	bottom: 100px;
+}
+
 /*modal*/
 .modal-header {
 	border-bottom: 0px !important;
