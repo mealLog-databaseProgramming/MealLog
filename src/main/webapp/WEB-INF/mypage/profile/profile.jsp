@@ -26,7 +26,7 @@
 			</c:if>
 			${introduce}
 		</div>
-		<div class="tag">🥗 식단 기록 | 53</div>
-		<div class="tag">👍 긍정 반응 | 3</div>
+		<div class="tag">🥗 식단 기록 | ${feedNum}</div>
+		<div class="tag">👍 긍정 반응 | ${reactNum}</div>
 	</div>
 </div>

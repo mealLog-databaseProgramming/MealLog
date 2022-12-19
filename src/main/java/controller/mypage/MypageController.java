@@ -13,6 +13,7 @@ import model.dto.StatDTO;
 import model.dto.UserDTO;
 import model.service.StatManager;
 import model.service.UserManager;
+import model.service.FeedManager;
 
 public class MypageController implements Controller {
 
@@ -34,6 +35,11 @@ public class MypageController implements Controller {
 		if(user.getProfile() != null) request.setAttribute("profile", "/resources/profile/" + user.getProfile());
 		request.setAttribute("uname", user.getUname());
 		request.setAttribute("introduce", user.getIntroduce());
+		
+		/* 프로필 태그 */
+		FeedManager feedManager = FeedManager.getInstance();
+		request.setAttribute("feedNum", feedManager.countFeedbyUser(uid));
+		request.setAttribute("reactNum", feedManager.countPositiveReactbyUser(uid));
 		
 		/* statList */
 		StatManager statManager = StatManager.getInstance();
