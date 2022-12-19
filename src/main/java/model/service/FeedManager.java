@@ -39,5 +39,14 @@ public class FeedManager {
 		 
 		return feedList;
 	}
+	
+	/* 마이페이지 */
+	public int countPositiveReactbyUser(long userId) throws SQLException {
+		return feedDAO.countPositiveReactbyUser(userId);
+	}
+	
+	public int countFeedbyUser(long userId) throws SQLException {
+		return feedDAO.countFeedbyUser(userId);
+	}
 
 }
