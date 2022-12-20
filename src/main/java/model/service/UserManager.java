@@ -49,6 +49,9 @@ public class UserManager {
 	public UserDTO findUser(long userId) {
 		return userDAO.findUser(userId);
 	}
+	public boolean existingLoginId(String loginId) throws SQLException, ExistingUserException {
+		return userDAO.existingLoginId(loginId);
+	}
 	
 	public long login(String loginId, String password) throws Exception {
 		long userId = userDAO.findUserId(loginId, password);

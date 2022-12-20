@@ -4,25 +4,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import model.dao.*;
-import model.dto.*;
-import model.service.*;
+import model.dto.UserDTO;
+import model.service.UserManager;
 import model.service.exception.ExistingUserException;
 
-public class SignupController implements Controller {
+public class KakaoSyncController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub	
-		String loginId = request.getParameter("loginId"); 
-		if ( loginId != null ) {
+		String loginId = (String) request.getAttribute("loginId"); 
+		
+		if(loginId == null) {
+			loginId = (String) request.getParameter("loginId"); 
+			String password = (String) request.getParameter("password");
+			String emailAddress = (String) request.getParameter("emailAddress");
+			int gender = Integer.parseInt(request.getParameter("gender"));
+			
+			request.setAttribute("loginId", loginId);
+			request.setAttribute("password", password);
+			request.setAttribute("emailAddress", emailAddress);
+			request.setAttribute("gender", gender);
+		}
+		
+		String name = request.getParameter("name");
+		if ( name != null ) {
 			try {
 				String password = request.getParameter("password");
 				String emailAddress = request.getParameter("emailAddress");
-				
-				String name = request.getParameter("name");
 				int gender = Integer.parseInt(request.getParameter("gender"));
-				int age = Integer.parseInt(request.getParameter("age"));
+				int age =  Integer.parseInt(request.getParameter("age"));
 				float height = Float.parseFloat(request.getParameter("height"));
 				float weight = Float.parseFloat(request.getParameter("weight"));
 				int activeRank = Integer.parseInt(request.getParameter("activeRank"));
@@ -50,8 +60,7 @@ public class SignupController implements Controller {
 			}
 		}
 		
-		request.setAttribute("page", "signup.jsp");
+		request.setAttribute("page", "kakao_signup.jsp");
 		return "/main.jsp";
 	}
-	
 }
