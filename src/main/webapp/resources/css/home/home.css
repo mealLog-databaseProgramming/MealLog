@@ -57,6 +57,10 @@
 	color: rgba(0,0,0,.75);
 }
 
+.deleteBtn {
+	float: right;
+}
+
 .time {
 	float: right;
 	font-size: 24px;
@@ -149,6 +153,7 @@ svg .bi-chat-dots {
 }
 
 .commentList {
+	height: 250;
 	margin-top: 40px;
 }
 

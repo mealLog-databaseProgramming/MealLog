@@ -28,6 +28,8 @@ public class HomeController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
+		long userId = UserSessionUtils.getLoginUserId(request.getSession());
+		request.setAttribute("currUserId", userId);
 		
 		//hashMap
 		List<Map> list = new ArrayList<Map>();		

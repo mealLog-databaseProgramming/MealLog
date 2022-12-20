@@ -53,7 +53,6 @@ function addFood() {
 	var inputFood = prompt("임시, 음식 이름 입력");
 	const foodElement = `<div class="food" onclick="deleteFood()">${inputFood}</div>`
 	$modal_foodContainer.insertAdjacentHTML('beforeend', foodElement);
-	
 }
  
 
