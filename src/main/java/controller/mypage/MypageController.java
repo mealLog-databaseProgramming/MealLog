@@ -25,7 +25,6 @@ public class MypageController implements Controller {
 		
 		if(request.getParameter("uid") == null) return "redirect:/mypage?uid=" + userId;
 		
-		
 		long uid = Long.valueOf(request.getParameter("uid"));
 		UserManager userManager = UserManager.getInstance();
 		UserDTO user = userManager.findUser(uid);
@@ -53,6 +52,10 @@ public class MypageController implements Controller {
 		statData += "}";
 		request.setAttribute("statData", statData);
 		request.setAttribute("height", user.getHeight());
+		
+		float[] nutriList = feedManager.findSumFoodList(userId);
+		String nutriData = "[" + nutriList[1] +","+nutriList[2]+","+ nutriList[0] + "]";
+		request.setAttribute("nutriData", nutriData);
 		
 		request.setAttribute("page", "mypage/mypage.jsp");
 		return "/index.jsp";

@@ -40,6 +40,10 @@
 						<option value="1">여성</option>
 						<option value="2" selected>남성</option>
 					</c:if>
+					<c:if test="${gender eq null}">
+						<option value="1">여성</option>
+						<option value="2">남성</option>
+					</c:if>
 				</select>
 			</div>
 			<div class="input">
