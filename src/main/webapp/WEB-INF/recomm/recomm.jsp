@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="model.dao.FeedDAO"%>
+<%@page import="model.dto.FeedDTO"%>
+<%@page import="model.dto.FoodDTO"%>
+<%@page import="model.dto.ReplyDTO"%>
+<%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,28 +24,42 @@
 <body>
 <div class="Content">
 <% 
+	//EER
 	Object userId = request.getAttribute("userId"); //꼭 Object형으로 받기
 	Object EER = request.getAttribute("EER");
+	
+	//영양소 합
+	float kcalSum = (float)request.getAttribute("kcalSum");
+	float carbSum = (float)request.getAttribute("carbSum");
+	float proteinSum = (float)request.getAttribute("proteinSum");
+	float fatSum = (float)request.getAttribute("fatSum");
+	
+	//당일 피드
+	List<Map> list = (List<Map>)request.getAttribute("list");
+	
+	//유저이름
+	String uname = (String)request.getAttribute("uname");
 %>
 	<div class="topDiv">
 		<div class="graphContainer">
 			<div class="graphComment">
-				사용자 님,
-				<br>
-				단백질이 부족하네요<%=EER %>
-				<input type="hidden" value="<%=EER %>" name="EER">
 			</div>
+			<input type="hidden" value="<%=uname %>" name="uname">
+			<input type="hidden" value="<%=EER %>" name="EER">
+			<input type="hidden" value="<%=kcalSum %>" name="kcalSum">
+			<input type="hidden" value="<%=carbSum %>" name="carbSum">
+			<input type="hidden" value="<%=proteinSum %>" name="proteinSum">
+			<input type="hidden" value="<%=fatSum %>" name="fatSum">
+			
 			<canvas id="graph" width="600" height="200"></canvas> 
 		</div>
-		
-		
-		
+
 		<!-- 공백div -->
 		<div></div>
 		
 		<div class="recommContainer">
 			<span class="recommTitle">오늘의 추천메뉴</span>
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16" onclick="setRecomm()">
 			  	<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
 			  	<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
 			</svg>
@@ -56,139 +80,33 @@
 	
 	<p class="cardTitle">오늘의 음식기록</p>
 	<div class="cardContainer">
+	<%for (int i = 0; i < list.size(); i++) {%>
+		<%
+			FeedDTO feed = (FeedDTO)list.get(i).get("feed");
+			List<FoodDTO> foodList = (List<FoodDTO>)list.get(i).get("food"); 
+		%>
 		<div class="flip">  
 		  <div class="card">
 		    <!-- 앞면 -->
 		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+		    	<img src="/resources/feed/<%=feed.getPhoto()%>" class="card-img"  alt="...">
 			  	<div class="date">
-			    	2022-12-12 pm 6:50
+			    	<%=feed.getPublishDate()%>
 			  	</div>
 		    </div>
 		    <!-- 뒷면 -->
 		    <div class="back">
 		    	<div class="backContainer">
 			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
+			    		<%for (int j = 0; j < foodList.size(); j++) {%>
+			    			<li><%=foodList.get(j).getFname()%>, <%=foodList.get(j).getKcal()%>kcal</li>
+			    		<%} %>
 			    	</ul>
 		    	</div>
 		    </div>
 		  </div>
 		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
+	<% }%>
 	</div>
 </div>
 	

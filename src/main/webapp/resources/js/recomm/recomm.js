@@ -586,32 +586,6 @@ const foods = [
 		{"fname":"탕평채","kcal":97.5,"carb":"12.26","protein":3.55,"fat":"3.81"},
 		{"fname":"홍어무침","kcal":198.94,"carb":"25.95","protein":17.85,"fat":"2.63"},
 
-		{"fname":"콘샐러드","kcal":145,"carb":"-","protein":2,"fat":"-"},
-		{"fname":"단호박+고구마샐러드","kcal":605,"carb":"-","protein":3,"fat":"-"},
-		{"fname":"후무스&베지스틱","kcal":126,"carb":"-","protein":16,"fat":"-"},
-		{"fname":"쉬림프 그릭 샐러드","kcal":171,"carb":"-","protein":20,"fat":"-"},
-		{"fname":"쉬림프 콥 샐러드","kcal":205,"carb":"-","protein":38,"fat":"-"},
-		{"fname":"아보카도 콥 샐러드","kcal":250,"carb":"-","protein":39,"fat":"-"},
-		{"fname":"카프레제 샐러드","kcal":175,"carb":"-","protein":20,"fat":"-"},
-		{"fname":"허브치킨 가든샐러드","kcal":180,"carb":"-","protein":29,"fat":"-"},
-		{"fname":"그릴드치킨 시저샐러드","kcal":235,"carb":"-","protein":38,"fat":"-"},
-		{"fname":"건강한컵 리프레쉬","kcal":75,"carb":"-","protein":1,"fat":"-"},
-		{"fname":"사이드 샐러드","kcal":20,"carb":"-","protein":2,"fat":"-"},
-		{"fname":"토마토 모짜렐라","kcal":465,"carb":"-","protein":44,"fat":"-"},
-		{"fname":"스트로베리 시트론 샐러드","kcal":70,"carb":"-","protein":2,"fat":"-"},
-		{"fname":"레몬치킨클럽","kcal":710,"carb":"-","protein":64,"fat":"-"},
-		{"fname":"카프레제 발사믹 샐러드","kcal":170,"carb":"-","protein":7,"fat":"-"},
-		{"fname":"리코타치즈올리브 샐러드","kcal":120,"carb":"-","protein":7,"fat":"-"},
-		{"fname":"나폴리샐러드","kcal":256,"carb":"-","protein":2,"fat":"-"},
-		{"fname":"콘샐러드","kcal":146,"carb":"-","protein":2,"fat":"-"},
-		{"fname":"로스트 비프 샐러드 밀 박스","kcal":210,"carb":"-","protein":12,"fat":"-"},
-		{"fname":"로스트 치킨 샐러드 밀 박스","kcal":170,"carb":"-","protein":14,"fat":"-"},
-		{"fname":"베이컨 포테이토 샐러드 밀 박스","kcal":238,"carb":"-","protein":8,"fat":"-"},
-		{"fname":"브로콜리 에그 샐러드 밀 박스","kcal":358,"carb":"-","protein":11,"fat":"-"},
-		{"fname":"쉬림프 코코넛 샐러드 밀 박스","kcal":177,"carb":"-","protein":12,"fat":"-"},
-		{"fname":"콥 & 요거트 샐러드","kcal":203,"carb":"-","protein":11,"fat":"-"},
-		{"fname":"오리지널 시저 샐러드","kcal":385,"carb":"-","protein":16,"fat":"-"},
-		{"fname":"오리지널 시저 샐러드 Mini","kcal":225,"carb":"-","protein":2,"fat":"-"},
 		{"fname":"유부 우엉 잡채","kcal":40.71,"carb":"3.02","protein":1.13,"fat":"2.68"},
 		{"fname":"삼색나물 & 토마토양념장","kcal":35.96,"carb":"5.71","protein":1.71,"fat":"0.7"},
 		{"fname":"매운 락교무침","kcal":36.5,"carb":"8.02","protein":0.69,"fat":"0.18"},
@@ -862,28 +836,65 @@ const kcal = document.querySelector(".kcal");
 const carb = document.querySelector(".carb");
 const protein = document.querySelector(".protein");
 const fat = document.querySelector(".fat");
+const graphComment = document.querySelector(".graphComment");
 
 const EER = $("input[name=EER]").val();
-const todayKcal = 2398.0;	//가정, 나중에 변경
+const todayKcal = $("input[name=kcalSum]").val();
 const recommKcal = EER - todayKcal;
+
+//chart에 사용될 데이터들
+const kcalSum = $("input[name=kcalSum]").val();
+const carbSum = $("input[name=carbSum]").val();
+const proteinSum = $("input[name=proteinSum]").val();
+const fatSum = $("input[name=fatSum]").val();
+
+let nutriPer = []
+const nutriLabels = ["탄수화물", "단백질", "지방"];
+const kcalPer = Math.round(kcalSum / EER * 100);
+nutriPer.push(Math.round(carbSum * 4 / EER * 100));
+nutriPer.push(Math.round(proteinSum * 4 / EER * 100));
+nutriPer.push(Math.round(fatSum * 9 / EER * 100));
 
 const len = foods.length;
 let newFoodList = []
 
-for (let i = 0; i < len; i++) {
-	if (foods[i].kcal < recommKcal) {
-		newFoodList.push(foods[i]);
+function setRecomm() {
+	if (recommKcal <= 0) {
+		console.log("0이하");
+		kcal.innerHTML = "오늘 필요한 영양소를<br>모두 채웠어요!";
+	}
+	else {
+		for (let i = 0; i < len; i++) 
+			if (foods[i].kcal < recommKcal) 
+				newFoodList.push(foods[i]);
+		
+		let pickIdx;
+		if (newFoodList.length == 0)
+			pickIdx = Math.floor(Math.random() * foods.length);
+		else
+			pickIdx = Math.floor(Math.random() * newFoodList.length);
+		console.log(newFoodList[pickIdx].fname);
+	
+		title.innerHTML = `${newFoodList[pickIdx].fname}`;
+		kcal.innerHTML = `kcal: ${newFoodList[pickIdx].kcal}`;
+		carb.innerHTML = `탄수화물: ${newFoodList[pickIdx].carb}`;
+		protein.innerHTML = `단백질: ${newFoodList[pickIdx].protein}`;
+		fat.innerHTML = `지방: ${newFoodList[pickIdx].fat}`;
 	}
 }
 
-const pickIdx = Math.floor(Math.random() * newFoodList.length);
-console.log(newFoodList[pickIdx].fname);
+setRecomm();
 
-title.innerHTML = `${newFoodList[pickIdx].fname}`;
-kcal.innerHTML = `kcal: ${newFoodList[pickIdx].kcal}`;
-carb.innerHTML = `탄수화물: ${newFoodList[pickIdx].carb}`;
-protein.innerHTML = `단백질: ${newFoodList[pickIdx].protein}`;
-fat.innerHTML = `지방: ${newFoodList[pickIdx].fat}`;
+//영양소 최솟값 구하기
+const minNutri = Math.min(...nutriPer);
+const minIdx = nutriPer.indexOf(minNutri);
+console.log(minIdx);
+
+const uname = $("input[name=uname]").val();
+graphComment.innerHTML = `
+				${uname} 님,
+				<br>
+				${nutriLabels[minIdx]}이 부족하네요`;
 
 //그래프
 (function( $ ) {

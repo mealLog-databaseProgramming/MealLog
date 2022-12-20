@@ -3,26 +3,35 @@ package model.dao;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import controller.recomm.RecommController;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
 import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.dto.UserDTO;
 import model.service.FeedManager;
+import model.service.RecommandManager;
+import model.service.UserManager;
 import model.dao.FeedDAO;
 
 public class test {
 
 	public static FeedDAO feed = new FeedDAO();
+	public static UserManager userManager = new UserManager();
 	public static FeedManager feedm = new FeedManager();
+	public static RecommandManager recommM = new RecommandManager();
+	public static RecommController recommC = new RecommController();
 
 	
 	
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, ParseException {
 	
 //		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");	
 //		String now = format1.format(new java.util.Date());
@@ -32,8 +41,15 @@ public class test {
 //		System.out.println(feedm.create(feedDTO));
 //		
 		
-		List<FeedDTO> fList = feed.findFeedList();
-		System.out.println(fList.get(1).getContent());
+//		List<FeedDTO> fList = feed.findFeedList();
+//		System.out.println(fList.get(0).getContent());
+		
+//		long userId = 20;
+//		float[] fList = feed.findSumFoodListToday(userId);
+//		System.out.println(fList[0]);
+		
+		UserDTO user = userManager.findUser(20);
+		System.out.println(user.getUname());
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

@@ -1,15 +1,19 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import model.dao.FeedDAO;
 import model.dao.JDBCUtil;
 import model.dao.UserDAO;
 import model.dao.StatDAO;
 
 import model.dto.UserDTO;
+import model.dto.FeedDTO;
 import model.dto.FoodDTO;
 import model.dto.StatDTO;
 
@@ -17,14 +21,18 @@ public class RecommandManager {
 	private static RecommandManager recommMan = new RecommandManager();
 	private UserDAO userDAO;
 	private StatDAO statDAO;
+	private FeedDAO feedDAO;
 	
 	private UserDTO userDTO;
 	private StatDTO statDTO;
+	private FeedDTO feedDTO;
 	
-	private RecommandManager() {
+	public RecommandManager() {
 		try {
 			userDAO = new UserDAO();
 			statDAO = new StatDAO();
+			feedDAO = new FeedDAO();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -86,47 +94,54 @@ public class RecommandManager {
 		System.out.println("eer:" + EER);
 		return EER;
 	}
+
+	public List<FeedDTO> findFeedByDate() {
+		try {
+			List<FeedDTO> todayFeedList = new ArrayList<FeedDTO>();
+			List<FeedDTO> feedList = feedDAO.findFeedList();
+			
+			Date today = new Date();
+			
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+			String todayStr = simpleDateFormat.format(today); 
+		
+			for (int i = 0; i < feedList.size(); i++) {
+				Date publishDate = feedList.get(i).getPublishDate();
+				String publishDateStr = simpleDateFormat.format(publishDate);
+				
+				if (todayStr.equals(publishDateStr))
+					todayFeedList.add(feedList.get(i));
+			}
+			
+			return todayFeedList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
-	//음식 재료 기반으로 조리음식 n개 검색 후 하나 랜덤 리턴
-	//매개변수 재료, eer
-	//1. 사용자가 입력한 재료를 받아온다
-			//2. 입력받아온 재료로 검색
-			//3. EER 안쪽으로 열량을 가진 음식이 있다면 그것을 추천
-			//4. 없다면 걍 결과값에서 아무거나 출력
-	//public FoodDTO recommendFood(String ingredient, float EER) {	//메소드 삭제, js에서 진행
-		// FoodDTO foodDTO = new FoodDTO();
-		
-		//예외처리 : 결과값이 없음.(ex)'궯둛' 입력)
-		
-		//api 호출 및 파싱(최대 100개의 결과)
-		
-		//for문 돌면서 열량이 목표치 안에 있는 음식 골라내기
-		
-		//있다면 -> 랜덤 돌려서 나온 음식 dto에 값 저장
-		
-		//목표치 안에 드는 음식 없다면 -> 전체 결과값 중 랜덤 돌려서 dto에 저장 후 리턴
-		
-		//return foodDTO;
-	// }
+	public List<FoodDTO> findFoodList(long feedId) {
+		try {
+			List<FoodDTO> foodList = feedDAO.findFoodList(feedId);
+			return foodList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
-	//그날 필요한 stat의 퍼센트를 구한다.
-//	public FoodDTO getStatPerToday(Date today, float EER) {
-//		FoodDTO food = ;
-////		stat = statDAO.getStatToday(today);	//추가해야할 메소드(stat리스트를 가져옴)
-//		//가장 최근 stat정보만 잘라서 밑의 과정 수행
-//		
-//		//하루치의 stat객체
-//		float kcal = stat.getKcal();
-//		float carb = stat.getCarb();
-//		float protein = stat.getProtein();
-//		float fat = stat.getFat();
-//		
-//		//퍼센트를 구하여 stat객체에 set
-//		stat.setKcal(kcal / EER);
-//		stat.setCarb(carb / EER);
-//		stat.setProtein(protein / EER);
-//		stat.setFat(fat / EER);
-//		
-//		return stat;
-//	}
+	public float[] findSumFoodListToday(long userId) {
+		try {
+			float[] foodList = new float[4];
+			foodList = feedDAO.findSumFoodListToday(userId);
+			
+			return foodList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
