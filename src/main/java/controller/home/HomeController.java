@@ -30,8 +30,7 @@ public class HomeController implements Controller {
 		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 		
 		//hashMap
-		List<Map> list = new ArrayList<Map>();
-		
+		List<Map> list = new ArrayList<Map>();		
 		
 		List<FeedDTO> feedList = new ArrayList<FeedDTO>();
 		List<FoodDTO> foodList = new ArrayList<FoodDTO>();

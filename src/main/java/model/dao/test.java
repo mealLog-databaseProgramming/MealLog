@@ -10,19 +10,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import controller.recomm.RecommController;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
 import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.dto.UserDTO;
 import model.service.FeedManager;
+import model.service.RecommandManager;
 import model.dao.FeedDAO;
 
 public class test {
 
 	public static FeedDAO feed = new FeedDAO();
 	public static FeedManager feedm = new FeedManager();
-
+	public static RecommandManager recommM = new RecommandManager();
+	public static RecommController recommC = new RecommController();
 
 	
 	
@@ -36,8 +39,11 @@ public class test {
 //		System.out.println(feedm.create(feedDTO));
 //		
 		
-		List<FeedDTO> fList = feed.findFeedList();
-		System.out.println(fList.get(0).getContent());
+//		List<FeedDTO> fList = feed.findFeedList();
+//		System.out.println(fList.get(0).getContent());
+		
+		List<FeedDTO> fList = recommM.findFeedByDate();
+		System.out.println(fList);
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

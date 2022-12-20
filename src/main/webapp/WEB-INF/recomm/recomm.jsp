@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="model.dao.FeedDAO"%>
+<%@page import="model.dto.FeedDTO"%>
+<%@page import="model.dto.FoodDTO"%>
+<%@page import="model.dto.ReplyDTO"%>
+<%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +24,12 @@
 <body>
 <div class="Content">
 <% 
+	//EER
 	Object userId = request.getAttribute("userId"); //꼭 Object형으로 받기
 	Object EER = request.getAttribute("EER");
+	
+	//당일 피드
+	List<Map> list = (List<Map>)request.getAttribute("list");
 %>
 	<div class="topDiv">
 		<div class="graphContainer">
@@ -56,6 +70,7 @@
 	
 	<p class="cardTitle">오늘의 음식기록</p>
 	<div class="cardContainer">
+	<%for (int i = 0; i < list.size(); i++) {%>
 		<div class="flip">  
 		  <div class="card">
 		    <!-- 앞면 -->
@@ -75,120 +90,7 @@
 		    </div>
 		  </div>
 		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
-		<div class="flip">  
-		  <div class="card">
-		    <!-- 앞면 -->
-		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
-			  	<div class="date">
-			    	2022-12-12 pm 6:50
-			  	</div>
-		    </div>
-		    <!-- 뒷면 -->
-		    <div class="back">
-		    	<div class="backContainer">
-			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
-			    	</ul>
-		    	</div>
-		    </div>
-		  </div>
-		</div>
+	<% }%>
 	</div>
 </div>
 	
