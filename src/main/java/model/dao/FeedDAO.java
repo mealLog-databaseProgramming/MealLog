@@ -396,7 +396,8 @@ public class FeedDAO {
 								
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();				
-				List<FoodDTO> foodList = new ArrayList<FoodDTO>();		
+				List<FoodDTO> foodList = new ArrayList<FoodDTO>();	
+				
 				while (rs.next()) {
 					FoodDTO food = new FoodDTO(	
 							rs.getLong("foodId"),
@@ -408,7 +409,7 @@ public class FeedDAO {
 							rs.getLong("feedId"));
 					foodList.add(food);	
 				}	
-					return foodList;					
+				return foodList;	
 				} catch (Exception ex) {
 						ex.printStackTrace();
 				} finally {
@@ -417,6 +418,43 @@ public class FeedDAO {
 			return null;
 		}
 		
+		// 추천 페이지 : 당일 사용자 식단 값 합계
+		public float[] findSumFoodListToday(long userId) throws SQLException {
+			String sql = "SELECT SUM(food.kcal) as sumKcal, SUM(food.protein) as sumProtein, SUM(food.carb) as sumCarb, SUM(food.fat) as sumFat"
+			     		   + "FROM FOOD food, Feed feed"
+			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD')) AND food.feedId = feed.feedId";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+								
+			try {
+				float sumKcal = 0;
+				float sumProtein = 0;
+				float sumCarb = 0;
+				float sumFat = 0;
+
+				ResultSet rs = jdbcUtil.executeQuery();
+				float[] foodList = new float[4];
+				
+				while (rs.next()) {
+						sumKcal = rs.getFloat("sumkcal");
+						sumProtein = rs.getFloat("sumProtein");
+						sumCarb = rs.getFloat("sumCarb");
+						sumFat = rs.getFloat("sumFat");
+						
+						foodList[0] = sumKcal;
+						foodList[1] = sumProtein;
+						foodList[2] = sumCarb;
+						foodList[3] = sumFat;
+						
+				}
+					return foodList;					
+				} catch (Exception ex) {
+						ex.printStackTrace();
+				} finally {
+					jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public String findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
