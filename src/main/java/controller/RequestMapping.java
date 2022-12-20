@@ -35,7 +35,7 @@ public class RequestMapping {
     	mappings.put("/signup", new SignupController());
     	mappings.put("/logout", new LogoutController());
     	
-    	mappings.put("/grouptest", new ClubTestController());
+    	mappings.put("/grouptest", new TempClubController());
     }
 
     public Controller findController(String uri) {

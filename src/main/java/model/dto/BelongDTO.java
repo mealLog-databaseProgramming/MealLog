@@ -10,6 +10,9 @@ public class BelongDTO {
 	public BelongDTO() {
 		super();
 	}
+	public BelongDTO(long userId) {
+		this.userId = userId;
+	}
 	public BelongDTO(long userId, long clubId) {
 		this.userId = userId;
 		this.clubId = clubId;

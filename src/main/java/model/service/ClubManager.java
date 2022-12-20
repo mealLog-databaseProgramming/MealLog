@@ -1,6 +1,7 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.ClubDAO;
@@ -48,7 +49,7 @@ public class ClubManager {
 	public List<ClubDTO> findClubList() throws SQLException {
 		return clubDAO.findClubList();
 	}
-
+	
 	public int joinClub(BelongDTO belong) throws SQLException, ExistingUserException {
 		ClubDTO club = clubDAO.findClub(belong.getClubId());
 		int maxMember = club.getMax_member();
@@ -57,6 +58,10 @@ public class ClubManager {
 			throw new ExistingUserException("정원 초과입니다.");
 		}
 		return clubDAO.joinClub(belong);
+	}
+	
+	public List<Long> findMembersByClubId(long clubId) throws SQLException {
+		return clubDAO.findMembersByClubId(clubId);
 	}
 	
 	public int leaveClub(long deleteId, long clubId) throws SQLException {
@@ -76,14 +81,14 @@ public class ClubManager {
 		return clubDAO.findClubByHashtag(tag);
 	}
 
-	public List<ClubDTO> SearchClubList(List<HashtagDTO> tagList) throws SQLException {
-
-		return clubDAO.SearchClubList(tagList);
-	}
-
-	public List<HashtagDTO> HashtagList(long clubId) throws SQLException {
+//	public List<ClubDTO> SearchClubList(List<HashtagDTO> tagList) throws SQLException {
+//
+//		return clubDAO.SearchClubList(tagList);
+//	}
+//클럽 아이디로 해시태그 찾기
+	public List<String> findHashtagbyClubId(long clubId) throws SQLException {
 		
-		return clubDAO.HashtagList(clubId);
+		return clubDAO.findHashtagbyClubId(clubId);
 	}
 
 	public int createHashtag(List<HashtagDTO> hashtagList) throws SQLException {

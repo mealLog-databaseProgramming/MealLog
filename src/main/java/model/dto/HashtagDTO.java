@@ -3,27 +3,17 @@ package model.dto;
 import java.util.List;
 
 public class HashtagDTO {
-	private String tagId;
 	private long clubId;
 	private String hname;
 	
 	public HashtagDTO() {
 		super();
 	}
-	
-	public HashtagDTO(String tagId, long clubId, String hname) {
-		this.setTagId(clubId+hname);
+	public HashtagDTO(long clubId, String hname) {
 		this.clubId = clubId;
 		this.hname = hname;
 	}
 	
-	public String getTagId() {
-		return tagId;
-	}
-
-	public void setTagId(String tagId) {
-		this.tagId = tagId;
-	}
 	
 	public String getHname() {
 		return hname;
