@@ -356,7 +356,7 @@ public class FeedDAO {
 		
 	}
 	
-	// 마이페이지/추천 페이지 : 오늘 사용자 피드 출력
+	// 마이페이지&추천 페이지 : 당일 사용자 피드 출력
 		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
 	        String sql = "SELECT feedId, photo, publishDate, userId, content " 
 	     		   + "FROM FEED "
@@ -383,6 +383,36 @@ public class FeedDAO {
 				ex.printStackTrace();
 			} finally {
 				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+
+		// 추천 페이지 : 당일 사용자 식단
+		public List<FoodDTO> findFoodListToday(long userId) throws SQLException {
+			String sql = "SELECT food.foodId, food.fname, food.kcal, food.carb, food.protein, food.fat " 
+			     		   + "FROM FOOD food, Feed feed"
+			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD')) AND food.feedId = feed.feedId";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+								
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();				
+				List<FoodDTO> foodList = new ArrayList<FoodDTO>();		
+				while (rs.next()) {
+					FoodDTO food = new FoodDTO(	
+							rs.getLong("foodId"),
+							rs.getString("fname"),
+							rs.getFloat("kcal"),
+							rs.getFloat("carb"),
+							rs.getFloat("protein"),
+							rs.getFloat("fat"),
+							rs.getLong("feedId"));
+					foodList.add(food);	
+				}	
+					return foodList;					
+				} catch (Exception ex) {
+						ex.printStackTrace();
+				} finally {
+					jdbcUtil.close();		// resource 반환
 			}
 			return null;
 		}
