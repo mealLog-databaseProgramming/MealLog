@@ -1,8 +1,8 @@
 
-const nutriData = {
+const nutriChartData = {
     labels: ['탄수화물', '지방', '단백질'],
     datasets: [{
-        data: [50, 30, 20],
+        data: nutriData,
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)']
     }] 
 };
@@ -12,7 +12,7 @@ let nutriChartDraw = function () {
     
     window.nutriChart = new Chart(ctx, {
         type: 'doughnut',
-        data: nutriData,
+        data: nutriChartData,
         options: {
             responsive: false,
             legend: {

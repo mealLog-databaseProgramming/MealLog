@@ -48,5 +48,9 @@ public class FeedManager {
 	public int countFeedbyUser(long userId) throws SQLException {
 		return feedDAO.countFeedbyUser(userId);
 	}
+	
+	public float[] findSumFoodList(long userId) throws SQLException {
+		return feedDAO.findSumFoodList(userId);
+	}
 
 }
