@@ -26,7 +26,7 @@ public class FeedDAO {
 	// 피드 추가
 	public long createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
-			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yyyy-MM-dd hh24:mi:ss'), ?, ?)";
+			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
 		Object[] param = new Object[] {feed.getPhoto(), feed.getUserId(), feed.getContent()};
@@ -355,6 +355,38 @@ public class FeedDAO {
 		return 0;
 		
 	}
+	
+	// 마이페이지/추천 페이지 : 오늘 사용자 피드 출력
+		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
+	        String sql = "SELECT feedId, photo, publishDate, userId, content " 
+	     		   + "FROM FEED "
+	     		   + "WHERE userId = ?" 
+	     		   + "ORDER BY publishDate DESC";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+						
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();				
+				List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
+				
+				while (rs.next()) {
+					FeedDTO feed = new FeedDTO(	
+							rs.getLong("feedId"),
+							rs.getString("photo"),
+							rs.getDate("publishDate"),
+							userId,
+							rs.getString("content"));
+					feedList.add(feed);	
+				}	
+				return feedList;					
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+		
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public String findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
