@@ -318,13 +318,14 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 받은 up 개수
 	public int countPositiveReactbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*)"
-				+ "FROM REACT"
-				+ "WHERE feedId = (SELECT feedId FROM FEED WHERE userId = ?)";
+		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?)";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 		
 		try {
-			int result = jdbcUtil.executeUpdate();
+			int result = 0;
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next())
+				result = rs.getInt("result");
 			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -337,11 +338,14 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 작성한 피드 개수
 	public int countFeedbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM FEED WHERE userId = ?";
+		String sql = "SELECT COUNT(*) as result FROM FEED WHERE userId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	
 		
 		try {
-			int result = jdbcUtil.executeUpdate();
+			int result = 0;
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next())
+				result = rs.getInt("result");
 			return result;
 		} catch(Exception ex) {
 			ex.printStackTrace();
