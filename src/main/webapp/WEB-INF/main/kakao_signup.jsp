@@ -1,27 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/resources/css/main/signup.css"/>
- 
+
 <div class="Content">
 	<div id="move_login" onclick="location.href='/login'">${ "< 로그인" }</div>
 	<div class="signup" align="center">
 		<div class="title">회원 가입</div>
-		<form action="" id="signup_form" method="post">
+		<form action="/kakao_signup" id="signup_form" method="post">
 			<div class="input">
 				<label>아이디</label>
-				<input type="text" name="loginId" placeholder="입력" required></input>
+				<input type="password" name="loginId" value="${loginId}" readonly></input>
 			</div>
 			<div class="input">
 				<label>비밀번호</label>
-				<input type="password" name="password" placeholder="입력" required></input>
+				<input type="password" name="password" value="${password}" readonly></input>
 			</div>
 			<div class="input">
 				<label>비밀번호 확인</label>
-				<input type="password" name="confirm_password" placeholder="입력" required></input>
+				<input type="password" name="confirm_password" value="${password}" readonly></input>
 			</div>
 			<div class="input">
 				<label>이메일</label>
-				<input type="email" name="emailAddress" placeholder="입력" required></input>
+				<input type="email" name="emailAddress" value="${emailAddress}" readonly></input>
 			</div>
 			<hr/>
 			<div class="input">
@@ -30,9 +31,15 @@
 			</div>
 			<div class="input">
 				<label>성별</label>
-				<select name="gender" size="2" required>
-					<option value="1">여성</option>
-					<option value="2">남성</option>
+				<select name="gender" size="2">
+					<c:if test="${gender eq 1}">
+						<option value="1" selected>여성</option>
+						<option value="2">남성</option>
+					</c:if>
+					<c:if test="${gender eq 2}">
+						<option value="1">여성</option>
+						<option value="2" selected>남성</option>
+					</c:if>
 				</select>
 			</div>
 			<div class="input">
@@ -57,20 +64,4 @@
 		</form>
 	</div>
 </div>
-
-<script defer>
-	 var password = document.querySelector("input[name='password']")
-	 , confirm_password = document.querySelector("input[name='confirm_password']");
-	
-	function validatePassword(){
-	 if(password.value != confirm_password.value) {
-	   confirm_password.setCustomValidity("비밀번호가 일치하지않습니다.");
-	 } else {
-	   confirm_password.setCustomValidity('');
-	 }
-	}
-	
-	password.onchange = validatePassword;
-	confirm_password.onkeyup = validatePassword;
- </script>
  

@@ -35,6 +35,8 @@ public class RequestMapping {
     	mappings.put("/login", new LoginController());
     	mappings.put("/signup", new SignupController());
     	mappings.put("/logout", new LogoutController());
+    	mappings.put("/kakao_login", new KakaoLoginController());
+    	mappings.put("/kakao_signup", new KakaoSyncController());
     	
     	mappings.put("/grouptest", new TempClubController());
     }
