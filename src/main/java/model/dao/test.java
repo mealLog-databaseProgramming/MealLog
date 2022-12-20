@@ -42,8 +42,9 @@ public class test {
 //		List<FeedDTO> fList = feed.findFeedList();
 //		System.out.println(fList.get(0).getContent());
 		
-		List<FeedDTO> fList = recommM.findFeedByDate();
-		System.out.println(fList);
+		long userId = 20;
+		float[] fList = feed.findSumFoodListToday(userId);
+		System.out.println(fList[0]);
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

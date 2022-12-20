@@ -131,4 +131,17 @@ public class RecommandManager {
 		}
 		return null;
 	}
+	
+	public float[] findSumFoodListToday(long userId) {
+		try {
+			float[] foodList = new float[4];
+			foodList = feedDAO.findSumFoodListToday(userId);
+			
+			return foodList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

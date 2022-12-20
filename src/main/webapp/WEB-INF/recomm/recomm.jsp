@@ -28,6 +28,12 @@
 	Object userId = request.getAttribute("userId"); //꼭 Object형으로 받기
 	Object EER = request.getAttribute("EER");
 	
+	//영양소 합
+	float kcalSum = (float)request.getAttribute("kcalSum");
+	float carbSum = (float)request.getAttribute("carbSum");
+	float proteinSum = (float)request.getAttribute("proteinSum");
+	float fatSum = (float)request.getAttribute("fatSum");
+	
 	//당일 피드
 	List<Map> list = (List<Map>)request.getAttribute("list");
 %>
@@ -36,8 +42,12 @@
 			<div class="graphComment">
 				사용자 님,
 				<br>
-				단백질이 부족하네요<%=EER %>
+				단백질이 부족하네요
 				<input type="hidden" value="<%=EER %>" name="EER">
+				<input type="hidden" value="<%=kcalSum %>" name="kcalSum">
+				<input type="hidden" value="<%=carbSum %>" name="carbSum">
+				<input type="hidden" value="<%=proteinSum %>" name="proteinSum">
+				<input type="hidden" value="<%=fatSum %>" name="fatSum">
 			</div>
 			<canvas id="graph" width="600" height="200"></canvas> 
 		</div>

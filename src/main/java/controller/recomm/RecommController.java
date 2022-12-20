@@ -42,18 +42,21 @@ public class RecommController implements Controller {
 		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 		long userId = UserSessionUtils.getLoginUserId(request.getSession());		
 	
-		recommendManager = RecommandManager.getInstance();
 		foodManager = FoodManager.getInstance();
 		
-		float EER = recommendManager.getUserEER(userId);
+		float EER = recommManager.getUserEER(userId);
 		request.setAttribute("EER", EER);
 		
 		//영양소 총합 가져오기
+		float[] nutriList = new float[4];
+		nutriList = recommManager.findSumFoodListToday(userId);
+		request.setAttribute("kcalSum", nutriList[0]);
+		request.setAttribute("proteinSum", nutriList[1]);
+		request.setAttribute("carbSum", nutriList[2]);
+		request.setAttribute("fatSum", nutriList[3]);
 		
 		//오늘자 피드리스트 가져오기
 		List<FeedDTO> feedList = recommManager.findFeedByDate();
-		
-		//hashMap
 		List<Map> list = new ArrayList<Map>();	
 		
 		List<FoodDTO> foodList = new ArrayList<FoodDTO>();

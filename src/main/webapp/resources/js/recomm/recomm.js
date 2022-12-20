@@ -838,13 +838,12 @@ const protein = document.querySelector(".protein");
 const fat = document.querySelector(".fat");
 
 const EER = $("input[name=EER]").val();
-const todayKcal = 2398.0;	//가정, 나중에 변경
+const todayKcal = $("input[name=kcalSum]").val();
 const recommKcal = EER - todayKcal;
 
 const len = foods.length;
 let newFoodList = []
 
-console.log(recommKcal);
 if (recommKcal <= 0) {
 	console.log("0이하");
 	kcal.innerHTML = "오늘 필요한 영양소를<br>모두 채웠어요!";
