@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set var="memberDatas" value="[ "/>
+<c:forEach var="user" items="${members.get(Long.valueOf(clubData.getClubId()))}">
+	<c:set var="memberDatas" value="${memberDatas} { value: '${user.getUname()}', profile: '/resources/profile/${user.getProfile()}' },"/>
+</c:forEach>
+<c:set var="memberDatas" value="${memberDatas} ]"/>
+
 <div id="myGroup">
 	<div id="joinedGroupView" class="myGroupView">
-		<input type="button" value="수정" onclick="group_edit(this)"></input>
+		<input type="button" value="수정" onclick="group_edit(this, ${clubData.getClubId()}, ${memberDatas})"></input>
 		<div>
 			<div class="title">
 				<iconify-icon icon="mdi:account-group"></iconify-icon>
@@ -58,12 +64,7 @@
 		<div>
 			<div class="groupMember">
 				<label>그룹원 명단</label>
-				<div class="memberList">
-					<c:forEach var="user" items="${members.get(Long.valueOf(clubData.getClubId()))}">
-						<c:set var="userData" value="${user}" scope="request"/>
-						<jsp:include page="member.jsp"/>
-					</c:forEach>
-				</div>
+				<input id="memberList_${clubData.getClubId()}"></input>	
 			</div>
 		</div>
 	</form>
