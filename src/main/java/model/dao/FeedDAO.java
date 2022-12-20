@@ -454,7 +454,41 @@ public class FeedDAO {
 			}
 			return null;
 		}
+		
+		// 마이페이지 : 사용자 최근 100개의 피드의 영양 리스트
+				public float[] findSumFoodList(long userId) throws SQLException {
+					String sql = "SELECT SUM(protein) as sumProtein, SUM(carb) as sumCarb, SUM(fat) as sumFat "
+							+ "FROM food food, (SELECT * FROM feed ORDER BY PUBLISHDATE) feed "
+							+ "WHERE feed.userId = ? AND food.feedId = feed.feedId AND ROWNUM <= 100";
+					jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+										
+					try {
+						float sumProtein = 0;
+						float sumCarb = 0;
+						float sumFat = 0;
 
+						ResultSet rs = jdbcUtil.executeQuery();
+						float[] foodList = new float[3];
+						
+						while (rs.next()) {
+								sumProtein = rs.getFloat("sumProtein");
+								sumCarb = rs.getFloat("sumCarb");
+								sumFat = rs.getFloat("sumFat");
+								
+								foodList[0] = sumProtein;
+								foodList[1] = sumCarb;
+								foodList[2] = sumFat;
+								
+						}
+							return foodList;					
+						} catch (Exception ex) {
+								ex.printStackTrace();
+						} finally {
+							jdbcUtil.close();		// resource 반환
+					}
+					return null;
+				}
+				
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public String findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
