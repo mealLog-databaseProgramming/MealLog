@@ -71,20 +71,26 @@
 	<p class="cardTitle">오늘의 음식기록</p>
 	<div class="cardContainer">
 	<%for (int i = 0; i < list.size(); i++) {%>
+		<%
+			FeedDTO feed = (FeedDTO)list.get(i).get("feed");
+			List<FoodDTO> foodList = (List<FoodDTO>)list.get(i).get("food"); 
+		%>
 		<div class="flip">  
 		  <div class="card">
 		    <!-- 앞면 -->
 		    <div class="front">
-		    	<img src="resources/img/salad.jpg" class="card-img"  alt="...">
+		    	<img src="/resources/feed/<%=feed.getPhoto()%>" class="card-img"  alt="...">
 			  	<div class="date">
-			    	2022-12-12 pm 6:50
+			    	<%=feed.getPublishDate()%>
 			  	</div>
 		    </div>
 		    <!-- 뒷면 -->
 		    <div class="back">
 		    	<div class="backContainer">
 			    	<ul>
-			    		<li>닭가슴살 샐러드 261kcal</li>
+			    		<%for (int j = 0; j < foodList.size(); j++) {%>
+			    			<li><%=foodList.get(j).getFname()%>, <%=foodList.get(j).getKcal()%>kcal</li>
+			    		<%} %>
 			    	</ul>
 		    	</div>
 		    </div>
