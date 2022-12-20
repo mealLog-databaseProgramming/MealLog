@@ -18,11 +18,13 @@ import model.dto.ReplyDTO;
 import model.dto.UserDTO;
 import model.service.FeedManager;
 import model.service.RecommandManager;
+import model.service.UserManager;
 import model.dao.FeedDAO;
 
 public class test {
 
 	public static FeedDAO feed = new FeedDAO();
+	public static UserManager userManager = new UserManager();
 	public static FeedManager feedm = new FeedManager();
 	public static RecommandManager recommM = new RecommandManager();
 	public static RecommController recommC = new RecommController();
@@ -42,9 +44,12 @@ public class test {
 //		List<FeedDTO> fList = feed.findFeedList();
 //		System.out.println(fList.get(0).getContent());
 		
-		long userId = 20;
-		float[] fList = feed.findSumFoodListToday(userId);
-		System.out.println(fList[0]);
+//		long userId = 20;
+//		float[] fList = feed.findSumFoodListToday(userId);
+//		System.out.println(fList[0]);
+		
+		UserDTO user = userManager.findUser(20);
+		System.out.println(user.getUname());
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {

@@ -36,19 +36,21 @@
 	
 	//당일 피드
 	List<Map> list = (List<Map>)request.getAttribute("list");
+	
+	//유저이름
+	String uname = (String)request.getAttribute("uname");
 %>
 	<div class="topDiv">
 		<div class="graphContainer">
 			<div class="graphComment">
-				사용자 님,
-				<br>
-				단백질이 부족하네요
-				<input type="hidden" value="<%=EER %>" name="EER">
-				<input type="hidden" value="<%=kcalSum %>" name="kcalSum">
-				<input type="hidden" value="<%=carbSum %>" name="carbSum">
-				<input type="hidden" value="<%=proteinSum %>" name="proteinSum">
-				<input type="hidden" value="<%=fatSum %>" name="fatSum">
 			</div>
+			<input type="hidden" value="<%=uname %>" name="uname">
+			<input type="hidden" value="<%=EER %>" name="EER">
+			<input type="hidden" value="<%=kcalSum %>" name="kcalSum">
+			<input type="hidden" value="<%=carbSum %>" name="carbSum">
+			<input type="hidden" value="<%=proteinSum %>" name="proteinSum">
+			<input type="hidden" value="<%=fatSum %>" name="fatSum">
+			
 			<canvas id="graph" width="600" height="200"></canvas> 
 		</div>
 		

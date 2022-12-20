@@ -11,7 +11,7 @@ public class UserManager {
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
 
-	private UserManager() {
+	public UserManager() {
 		try {
 			userDAO = new UserDAO();
 		} catch (Exception e) {

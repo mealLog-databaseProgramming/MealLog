@@ -1,4 +1,5 @@
 const chart = document.getElementById('graph');
+
 const stat = new Chart(chart, {
     type: 'horizontalBar',
     data: {
@@ -6,7 +7,7 @@ const stat = new Chart(chart, {
         datasets: [{
 			axis: 'y',
             label: '하루 섭취량',
-            data: [25, 100, 30, 45],
+            data: [kcalPer, nutriPer[0], nutriPer[1], nutriPer[2]],
             backgroundColor: '#A7E074',
             borderColor: '#A7E074',
             borderWidth: 0,
@@ -24,6 +25,7 @@ const stat = new Chart(chart, {
 			xAxes : [ {
 				ticks : {
 					beginAtZero : true, // 0부터 시작하게 합니다.
+					max: 100,
 				}
 			} ]
 		},

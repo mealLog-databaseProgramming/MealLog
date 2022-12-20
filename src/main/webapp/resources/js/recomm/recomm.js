@@ -836,10 +836,24 @@ const kcal = document.querySelector(".kcal");
 const carb = document.querySelector(".carb");
 const protein = document.querySelector(".protein");
 const fat = document.querySelector(".fat");
+const graphComment = document.querySelector(".graphComment");
 
 const EER = $("input[name=EER]").val();
 const todayKcal = $("input[name=kcalSum]").val();
 const recommKcal = EER - todayKcal;
+
+//chart에 사용될 데이터들
+const kcalSum = $("input[name=kcalSum]").val();
+const carbSum = $("input[name=carbSum]").val();
+const proteinSum = $("input[name=proteinSum]").val();
+const fatSum = $("input[name=fatSum]").val();
+
+let nutriPer = []
+const nutriLabels = ["탄수화물", "단백질", "지방"];
+const kcalPer = Math.round(kcalSum / EER * 100);
+nutriPer.push(Math.round(carbSum * 4 / EER * 100));
+nutriPer.push(Math.round(proteinSum * 4 / EER * 100));
+nutriPer.push(Math.round(fatSum * 9 / EER * 100));
 
 const len = foods.length;
 let newFoodList = []
@@ -866,6 +880,17 @@ else {
 	protein.innerHTML = `단백질: ${newFoodList[pickIdx].protein}`;
 	fat.innerHTML = `지방: ${newFoodList[pickIdx].fat}`;
 }
+
+//영양소 최솟값 구하기
+const minNutri = Math.min(...nutriPer);
+const minIdx = nutriPer.indexOf(minNutri);
+console.log(minIdx);
+
+const uname = $("input[name=uname]").val();
+graphComment.innerHTML = `
+				${uname} 님,
+				<br>
+				${nutriLabels[minIdx]}이 부족하네요`;
 
 //그래프
 (function( $ ) {

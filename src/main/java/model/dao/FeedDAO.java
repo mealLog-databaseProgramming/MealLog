@@ -422,7 +422,7 @@ public class FeedDAO {
 		public float[] findSumFoodListToday(long userId) throws SQLException {
 			String sql = "SELECT SUM(food.kcal) as sumKcal, SUM(food.protein) as sumProtein, SUM(food.carb) as sumCarb, SUM(food.fat) as sumFat "
 			     		   + "FROM FOOD food, Feed feed "
-			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD')) AND food.feedId = feed.feedId";
+			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE, 'YYYYMMDD')) AND food.feedId = feed.feedId";
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
 								
 			try {

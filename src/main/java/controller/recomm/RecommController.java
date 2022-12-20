@@ -21,6 +21,7 @@ import model.service.FeedManager;
 import model.service.FoodManager;
 import model.service.RecommandManager;
 import model.service.StatManager;
+import model.service.UserManager;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class RecommController implements Controller {
 	FeedManager feedManager = new FeedManager();
 	FoodManager foodManager;
 	StatManager statManager;
+	UserManager userManager = new UserManager();
 	RecommandManager recommManager = new RecommandManager();
 	Date today = new Date();
 	
@@ -71,6 +73,10 @@ public class RecommController implements Controller {
 			list.add(data);
 		}
 		request.setAttribute("list", list);
+		
+		//유저이름 구하기
+		UserDTO user = userManager.findUser(userId);
+		request.setAttribute("uname", user.getUname());
 		
 		request.setAttribute("page", "recomm/recomm.jsp");
 		return "/index.jsp";
