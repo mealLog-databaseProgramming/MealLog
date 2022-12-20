@@ -25,6 +25,10 @@
 		flex-direction: column;
 	}
 	
+	.bi-arrow-counterclockwise:hover {
+		cursor: pointer;
+	}
+	
 	.cardTitle {
 		font-family: 'Jua';
 		font-style: normal;
