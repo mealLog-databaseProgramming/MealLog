@@ -453,6 +453,5 @@ public class FeedDAO {
 		}
 		return null;
 	}
-	
 }
 

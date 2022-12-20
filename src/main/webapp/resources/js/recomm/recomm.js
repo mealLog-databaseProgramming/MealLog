@@ -870,20 +870,29 @@ const recommKcal = EER - todayKcal;
 const len = foods.length;
 let newFoodList = []
 
-for (let i = 0; i < len; i++) {
-	if (foods[i].kcal < recommKcal) {
-		newFoodList.push(foods[i]);
-	}
+console.log(recommKcal);
+if (recommKcal <= 0) {
+	console.log("0이하");
+	kcal.innerHTML = "오늘 필요한 영양소를<br>모두 채웠어요!";
 }
+else {
+	for (let i = 0; i < len; i++) 
+		if (foods[i].kcal < recommKcal) 
+			newFoodList.push(foods[i]);
+	
+	let pickIdx;
+	if (newFoodList.length == 0)
+		pickIdx = Math.floor(Math.random() * foods.length);
+	else
+		pickIdx = Math.floor(Math.random() * newFoodList.length);
+	console.log(newFoodList[pickIdx].fname);
 
-const pickIdx = Math.floor(Math.random() * newFoodList.length);
-console.log(newFoodList[pickIdx].fname);
-
-title.innerHTML = `${newFoodList[pickIdx].fname}`;
-kcal.innerHTML = `kcal: ${newFoodList[pickIdx].kcal}`;
-carb.innerHTML = `탄수화물: ${newFoodList[pickIdx].carb}`;
-protein.innerHTML = `단백질: ${newFoodList[pickIdx].protein}`;
-fat.innerHTML = `지방: ${newFoodList[pickIdx].fat}`;
+	title.innerHTML = `${newFoodList[pickIdx].fname}`;
+	kcal.innerHTML = `kcal: ${newFoodList[pickIdx].kcal}`;
+	carb.innerHTML = `탄수화물: ${newFoodList[pickIdx].carb}`;
+	protein.innerHTML = `단백질: ${newFoodList[pickIdx].protein}`;
+	fat.innerHTML = `지방: ${newFoodList[pickIdx].fat}`;
+}
 
 //그래프
 (function( $ ) {
