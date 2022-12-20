@@ -20,7 +20,7 @@ public class RequestMapping {
     	
     	mappings.put("/recomm", new RecommController());
 
-    	mappings.put("/group", new ClubController());//
+    	mappings.put("/group", new TempClubController());//
     	mappings.put("/groupUpdate", new ClubUpdateController());
     	mappings.put("/newgroup", new CreateClubController());
     	mappings.put("/deletegroup", new DeleteClubController());

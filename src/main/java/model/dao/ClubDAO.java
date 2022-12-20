@@ -187,7 +187,7 @@ public class ClubDAO {
 		
 	//전체 group 정보를 검색하여 List에 저장 및 반환 
 	public List<ClubDTO> findClubList() throws SQLException {
-        String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM group";
+        String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
 		try {
