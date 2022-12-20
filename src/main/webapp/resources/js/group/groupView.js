@@ -36,10 +36,45 @@ function moveSrc(e) {
 	location.href = `/mypage?uid=${e.querySelector("#userId").value}`;
 }
 
-function group_edit(e) {
+function group_edit(e, clubId, memberDatas) {
 	var myGroup = e.parentNode.parentNode;
 	
 	myGroup.querySelector(".myGroupView").style.display = "none";
 	myGroup.querySelector(".myGroup_edit").style.display = "flex";
-	console.log(myGroup);
+	
+	const input = document.querySelector(`#memberList_${clubId}`);
+	
+	const tagify = new Tagify( input, {
+			templates : {
+				tag : function(tagData){
+		            try{
+		                return `<tag title='${tagData.value}' spellcheck="false">
+			                        <x title='remove tag' class='tagify__tag__removeBtn'></x>
+									<div class="profile">
+			                            <img src='${tagData.profile}' onerror="this.style.visibility='hidden'">
+									</div>
+			                        <span class='tagify__tag-text'>${tagData.value}</span>
+			                    </tag>`;
+		            }
+		            catch(err){}
+		        },
+			},
+			 hooks: {
+	       		beforeRemoveTag : function( tags ) {
+		            return new Promise((resolve, reject) => {
+		                confirm(tags[0].data.value + "님을 그룹에서 탈퇴시킵니다.")
+		                    ? resolve()
+		                    : reject()
+		            })
+		        },
+			},
+		}
+	);
+	tagify.addTags(memberDatas);
+	
+	var profiles = document.querySelectorAll(".myGroup_edit .groupMember tag .profile img");
+	profiles.forEach((img) => {
+		if(img.width > img.height) img.style.height = "45px";
+        else img.style.width = "45px";
+	});
 }

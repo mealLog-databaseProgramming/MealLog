@@ -3,8 +3,7 @@
 
 <script defer type="text/javascript" src="/resources/js/group/groupEvents.js"></script> 
 <script defer type="text/javascript" src="/resources/js/group/groupView.js"></script>
-<script defer type="text/javascript" src="/resources/js/group/groupCreate.js"></script> 
-<script defer type="text/javascript" src="/resources/js/group/groupUpdate.js"></script> 
+<script defer type="text/javascript" src="/resources/js/group/groupCreate.js"></script>  
 <script defer type="text/javascript" src="/resources/js/group/groupInfo.js"></script> 
 
 <link rel="stylesheet" href="resources/css/group/groupList.css"/>
