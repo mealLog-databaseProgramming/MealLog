@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.UserSessionUtils;
 
-import model.dao.UserDAO;
 import model.dto.StatDTO;
 import model.dto.UserDTO;
 import model.service.StatManager;

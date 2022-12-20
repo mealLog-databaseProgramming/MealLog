@@ -42,7 +42,6 @@ function groupInfo_set(e) {
 	
 	var popup = document.querySelector('#groupInfo');
 	popup.style.display = "block";
-	document.documentElement.scrollTop = 0; // 임시
 	
 	body.style.overflowY = "hidden";	
 }
