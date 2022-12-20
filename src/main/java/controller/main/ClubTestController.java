@@ -43,7 +43,7 @@ public class ClubTestController implements Controller {
 			hashtags.put(i, hashtag);
 			
 			List<UserDTO> member = new ArrayList<>();
-			member.add(user1); member.add(user2); member.add(user2);
+			member.add(user1); member.add(user2);
 			members.put(i, member);
 		}
 		

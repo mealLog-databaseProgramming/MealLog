@@ -70,7 +70,7 @@
 	width: 500px;
 	padding: 10px;
 }
-#joinedGroupView tags tag{
+#joinedGroupView tags{
 	font-size: 22px;
 	font-weight: 600;
 	--tag-text-color: #FFFFFF;
@@ -123,5 +123,5 @@
 #joinedGroupView #member:first-child {
 	background: #6BA32D;
 	color: white;
-	font-weight: 500px;
+	font-weight: 500;
 }
