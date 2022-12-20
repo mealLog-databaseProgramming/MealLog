@@ -26,7 +26,7 @@ public class FeedDAO {
 	// 피드 추가
 	public long createFeed(FeedDTO feed) throws SQLException {
 		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
-			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yyyy-MM-dd hh24:mi:ss'), ?, ?)";
+			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
 		Object[] param = new Object[] {feed.getPhoto(), feed.getUserId(), feed.getContent()};
@@ -318,13 +318,14 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 받은 up 개수
 	public int countPositiveReactbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*)"
-				+ "FROM REACT"
-				+ "WHERE feedId = (SELECT feedId FROM FEED WHERE userId = ?)";
+		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?)";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 		
 		try {
-			int result = jdbcUtil.executeUpdate();
+			int result = 0;
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next())
+				result = rs.getInt("result");
 			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -337,11 +338,14 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 작성한 피드 개수
 	public int countFeedbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM FEED WHERE userId = ?";
+		String sql = "SELECT COUNT(*) as result FROM FEED WHERE userId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	
 		
 		try {
-			int result = jdbcUtil.executeUpdate();
+			int result = 0;
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next())
+				result = rs.getInt("result");
 			return result;
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -351,6 +355,106 @@ public class FeedDAO {
 		return 0;
 		
 	}
+	
+	// 마이페이지&추천 페이지 : 당일 사용자 피드 출력
+		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
+	        String sql = "SELECT feedId, photo, publishDate, userId, content " 
+	     		   + "FROM FEED "
+	     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD'))" 
+	     		   + "ORDER BY publishDate DESC";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+						
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();				
+				List<FeedDTO> feedList = new ArrayList<FeedDTO>();	
+				
+				while (rs.next()) {
+					FeedDTO feed = new FeedDTO(	
+							rs.getLong("feedId"),
+							rs.getString("photo"),
+							rs.getDate("publishDate"),
+							userId,
+							rs.getString("content"));
+					feedList.add(feed);	
+				}	
+				return feedList;					
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+
+		// 추천 페이지 : 당일 사용자 식단
+		public List<FoodDTO> findFoodListToday(long userId) throws SQLException {
+			String sql = "SELECT food.foodId, food.fname, food.kcal, food.carb, food.protein, food.fat " 
+			     		   + "FROM FOOD food, Feed feed"
+			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD')) AND food.feedId = feed.feedId";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+								
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();				
+				List<FoodDTO> foodList = new ArrayList<FoodDTO>();	
+				
+				while (rs.next()) {
+					FoodDTO food = new FoodDTO(	
+							rs.getLong("foodId"),
+							rs.getString("fname"),
+							rs.getFloat("kcal"),
+							rs.getFloat("carb"),
+							rs.getFloat("protein"),
+							rs.getFloat("fat"),
+							rs.getLong("feedId"));
+					foodList.add(food);	
+				}	
+				return foodList;	
+				} catch (Exception ex) {
+						ex.printStackTrace();
+				} finally {
+					jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+		
+		// 추천 페이지 : 당일 사용자 식단 값 합계
+		public float[] findSumFoodListToday(long userId) throws SQLException {
+			String sql = "SELECT SUM(food.kcal) as sumKcal, SUM(food.protein) as sumProtein, SUM(food.carb) as sumCarb, SUM(food.fat) as sumFat"
+			     		   + "FROM FOOD food, Feed feed"
+			     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD')) AND food.feedId = feed.feedId";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
+								
+			try {
+				float sumKcal = 0;
+				float sumProtein = 0;
+				float sumCarb = 0;
+				float sumFat = 0;
+
+				ResultSet rs = jdbcUtil.executeQuery();
+				float[] foodList = new float[4];
+				
+				while (rs.next()) {
+						sumKcal = rs.getFloat("sumkcal");
+						sumProtein = rs.getFloat("sumProtein");
+						sumCarb = rs.getFloat("sumCarb");
+						sumFat = rs.getFloat("sumFat");
+						
+						foodList[0] = sumKcal;
+						foodList[1] = sumProtein;
+						foodList[2] = sumCarb;
+						foodList[3] = sumFat;
+						
+				}
+					return foodList;					
+				} catch (Exception ex) {
+						ex.printStackTrace();
+				} finally {
+					jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+
 	// uid로 uname 찾기(feed와 comment에서 이름을 보여주기 위해)
 	public String findUname(long userId) throws SQLException {
 		String sql = "SELECT uname "
