@@ -54,7 +54,7 @@ public class CreateReplyController implements Controller{
 		System.out.println(content);
 		
 		ReplyDTO reply = new ReplyDTO(userId, content, feedId);
-		
+		 
 		long replyId = replyManager.create(reply);
 		
 		return "redirect:/";
