@@ -58,7 +58,7 @@ public class RecommController implements Controller {
 		request.setAttribute("fatSum", nutriList[3]);
 		
 		//오늘자 피드리스트 가져오기
-		List<FeedDTO> feedList = recommManager.findFeedByDate();
+		List<FeedDTO> feedList = recommManager.findFeedListToday(userId);
 		List<Map> list = new ArrayList<Map>();	
 		
 		List<FoodDTO> foodList = new ArrayList<FoodDTO>();

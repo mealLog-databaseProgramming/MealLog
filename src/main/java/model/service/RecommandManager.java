@@ -95,24 +95,9 @@ public class RecommandManager {
 		return EER;
 	}
 
-	public List<FeedDTO> findFeedByDate() {
+	public List<FeedDTO> findFeedListToday(long userId) {
 		try {
-			List<FeedDTO> todayFeedList = new ArrayList<FeedDTO>();
-			List<FeedDTO> feedList = feedDAO.findFeedList();
-			
-			Date today = new Date();
-			
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-			String todayStr = simpleDateFormat.format(today); 
-		
-			for (int i = 0; i < feedList.size(); i++) {
-				Date publishDate = feedList.get(i).getPublishDate();
-				String publishDateStr = simpleDateFormat.format(publishDate);
-				
-				if (todayStr.equals(publishDateStr))
-					todayFeedList.add(feedList.get(i));
-			}
-			
+			List<FeedDTO> todayFeedList = feedDAO.findFeedListToday(userId);
 			return todayFeedList;
 		} catch (SQLException e) {
 			e.printStackTrace();
