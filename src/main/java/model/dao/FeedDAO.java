@@ -54,7 +54,7 @@ public class FeedDAO {
 	// 반응 추가
 	public int createReact(ReactDTO react) throws SQLException {
 		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUE(?, ?, ?)";
-		Object[] param = new Object[] {react.getFeedId(), react.getUserId()};
+		Object[] param = new Object[] {react.getFeedId(), react.getUserId(), react.getType()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
@@ -113,7 +113,8 @@ public class FeedDAO {
 	// 피드 삭제 (+댓글도 삭제되도록 추가 수정 해봄)
 	public int removeFeed(long feedId) throws SQLException {
 		String sql = "DELETE FROM FEED WHERE feedId = ?"
-				+ "DELETE FROM reply WHERE feedId = ?";
+				+ "DELETE FROM reply WHERE feedId = ?"
+				+ "DELETE FROM react WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
 
 		try {				
@@ -130,45 +131,45 @@ public class FeedDAO {
 		return 0;
 	}
 
-	// 반응 삭제
-	public int removeReact(long feedId, long userId) throws SQLException {
-		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	} 
-
-	// 댓글 삭제
-	public int removeReply(long replyId) throws SQLException {
-		String sql = "DELETE FROM REPLY WHERE replyId = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	}
-
-	
+//	// 반응 삭제
+//	public int removeReact(long feedId, long userId) throws SQLException {
+//		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
+//		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
+//
+//		try {				
+//			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+//			return result;
+//		} catch (Exception ex) {
+//			jdbcUtil.rollback();
+//			ex.printStackTrace();
+//		}
+//		finally {
+//			jdbcUtil.commit();
+//			jdbcUtil.close();	// resource 반환
+//		}		
+//		return 0;
+//	} 
+//
+//	// 댓글 삭제
+//	public int removeReply(long replyId) throws SQLException {
+//		String sql = "DELETE FROM REPLY WHERE replyId = ?";
+//		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
+//
+//		try {				
+//			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+//			return result;
+//		} catch (Exception ex) {
+//			jdbcUtil.rollback();
+//			ex.printStackTrace();
+//		}
+//		finally {
+//			jdbcUtil.commit();
+//			jdbcUtil.close();	// resource 반환
+//		}		
+//		return 0;
+//	}
+//
+//	
 	/* 피드 음식 삭제
 	public int removeFood(long foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";

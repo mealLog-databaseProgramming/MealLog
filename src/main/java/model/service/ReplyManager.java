@@ -35,11 +35,11 @@ public class ReplyManager {
 
 	//댓글 수정 없음(update)
 	
-	public int remove(ReplyDTO reply) throws SQLException {
-		
-		return FeedDAO.removeReply(reply.getReplyId());
-	}
-	
+//	public int remove(ReplyDTO reply) throws SQLException {
+//		
+//		return FeedDAO.removeReply(reply.getReplyId());
+//	}
+//	
 	public List<ReplyDTO> display(long feedId) throws SQLException {
 		return FeedDAO.replyList(feedId);
 	}

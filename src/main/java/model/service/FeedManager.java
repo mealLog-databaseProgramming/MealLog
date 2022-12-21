@@ -6,6 +6,7 @@ import java.util.List;
 import model.dao.FeedDAO;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
+import model.dto.ReactDTO;
 
 public class FeedManager {
 	private static FeedManager FeedMan = new FeedManager();
@@ -52,5 +53,14 @@ public class FeedManager {
 	public float[] findSumFoodList(long userId) throws SQLException {
 		return feedDAO.findSumFoodList(userId);
 	}
+	
+	/* 리액트 */
+	public int createReact(ReactDTO react) throws SQLException {
+		return feedDAO.createReact(react);
+	}
+	
+//	public int removeReact(long feedId, long userId) throws SQLException {
+//		return feedDAO.removeReact(feedId, userId);
+//	}
 
 }
