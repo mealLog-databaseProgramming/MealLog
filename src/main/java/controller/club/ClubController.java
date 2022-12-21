@@ -72,9 +72,9 @@ public class ClubController implements Controller {
 			/**클럽아이디 + 해시태그**/
 				List<HashtagDTO> hashTagList = new ArrayList<HashtagDTO>();
 				hashtagList = manager.findHashtagbyClubId(clubId);
-				
-				Map hashtahData = new HashMap<Long, List<HashtagDTO>>();
-				hashtahData.put(clubId, hashtagList);
+				System.out.println(String.join(", ", hashtagList));
+				Map hashtahData = new HashMap<Long, String>();
+				hashtahData.put(clubId, String.join(", ", hashtagList));
 				hashtags.add(hashtahData);
 			
 			/**클럽아이디 + 유저리스트**/
