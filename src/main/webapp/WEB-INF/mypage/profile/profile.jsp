@@ -12,7 +12,7 @@
 <div id="profile" class="profile">
 	<div class="img">
 		<c:if test="${profile ne null}">
-			<img class="profileImg" src="${profile}"></img>
+			<img class="profileImg" src="${profile}" onerror="this.style.display='none'"/></img>
 		</c:if>
 	</div>
 	<div class="info">

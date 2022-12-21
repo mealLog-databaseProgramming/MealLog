@@ -81,8 +81,6 @@ public class MypageController implements Controller {
 			publishDates.put(feedId, date.toLowerCase());
 			positiveReacts.put(feedId, feedManager.countPositiveReact(feedId));
 			negativeReacts.put(feedId, feedManager.countNegativeReact(feedId));
-			
-			System.out.println(foodManager.findFoodList(feedId));
 		}
 		request.setAttribute("feedList", feedList);
 		request.setAttribute("foods", foods);
