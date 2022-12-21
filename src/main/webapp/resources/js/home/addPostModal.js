@@ -1,4 +1,5 @@
 const foodContainer = document.querySelector('.modalFoodContainer');
+const fileName = document.getElementById('fileName');
 
 function deleteFood(){
 	console.log(event.target.parentNode)
@@ -30,5 +31,14 @@ function setFoods() {
 	const foodList = document.querySelector('#foodList');
 	console.log(foodList);
 }
+
+file.onchange = () => {
+	let path = event.target.value;
+	console.log(path);
+	const splitPath = path.split("\\");
+	
+	fileName.value = splitPath[splitPath.length - 1];
+	console.log(splitPath);
+};
 
 displayFoodList();

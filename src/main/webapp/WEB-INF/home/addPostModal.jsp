@@ -60,7 +60,7 @@
 										사진 추가
 									</label>
 									<!-- file -->
-									<input type="file" accept=".jpg, .png, .jpeg" name="file" id="file" onchange="javascript:document.getElementById('fileName').value = this.value">
+									<input type="file" accept=".jpg, .png, .jpeg" name="file" id="file">
 									<input type="text" id="fileName"  name="fileName" readonly>
 									
 									<!-- hidden data -->

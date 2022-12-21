@@ -4,6 +4,8 @@
 const API_KEY = "32a502c6245b410b95f6"; 
 const $rowContainer = document.getElementById('rowContainer');
 const $foodInfo = document.querySelector('.foodInfo');
+const searchKeyword = document.getElementById('searchKeyword');
+
 let foodName;
 let rslt = [];
 
@@ -31,22 +33,29 @@ function removeAllChild(row) {
     }
 }
 
-function displayFood(foods) {
-	removeAllChild($rowContainer);
+function setPlaceholder(foods) {
+	removeAllChild($rowContainer);	
+	const placeholder = `
+						<tr>
+				  			<td colspan="7">
+								<p class="card-text placeholder-glow">
+							      <span class="placeholder col-12 placeholder-lg"></span>
+							    </p>
+						    </td>
+					    </tr>
+					    `;
+
+	for (i = 0; i < 10; i++) {
+		$rowContainer.insertAdjacentHTML('beforeend', placeholder);
+	}
 	
+	searchFood(foods);
+}
+
+function displayFood(foods) {
 	object = JSON.parse(foods)
 	//console.log(object);
 	const foodList = object.I2790.row;
-	//console.log(foodList);
-	
-	const rsltItem = `
-		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
-		</tr>
-	`
 
 	for (i = 0; i < foodList.length; i++) {
 		console.log(foodList[i])
@@ -54,6 +63,10 @@ function displayFood(foods) {
 			<tr>
 				<th scope="row">${i + 1}</th>
 				<td>${foodList[i].DESC_KOR}</td>
+				<td>${foodList[i].NUTR_CONT1}</td>
+				<td>${foodList[i].NUTR_CONT2}</td>
+				<td>${foodList[i].NUTR_CONT3}</td>
+				<td>${foodList[i].NUTR_CONT4}</td>
 				<td>
 					<input type="button" value="선택" onclick="choiceFood()" data-bs-target="#addPostModal" data-bs-toggle="modal" 
 					data-id="${foodList[i].DESC_KOR}/${foodList[i].NUTR_CONT1}/${foodList[i].NUTR_CONT2}/${foodList[i].NUTR_CONT3}/${foodList[i].NUTR_CONT4}">
@@ -63,6 +76,7 @@ function displayFood(foods) {
 		rslt[i] = rsltItem;
 	}
 	
+	removeAllChild($rowContainer);
 	for (i = 0; i < rslt.length; i++) {
 		console.log(rslt[i]);
 		$rowContainer.insertAdjacentHTML('beforeend', rslt[i]);
@@ -71,12 +85,17 @@ function displayFood(foods) {
 }
 
 function choiceFood() {
-	//console.log("choice");
-	//foodName
 	rslt = $(event.target).attr('data-id');
+	
 	//0:음식이름/1:칼로리/2:탄수/3:단백질/4:지방
 	foodInfo = rslt.split("/");
 	foodName = foodInfo[0];
+	
+	for (i = 1; i < foodInfo.length; i++)
+		if (foodInfo[i] == "")
+			foodInfo[i] = 0;
+	$(event.target).attr('data-id', foodInfo[0]+"/"+foodInfo[1]+"/"+foodInfo[2]+"/"+foodInfo[3]+"/"+foodInfo[4]);
+	
 	displayFoodList();
 	
 	//hidden객체 만들어주기
@@ -89,3 +108,9 @@ function choiceFood() {
         rowContainer.removeChild(rowContainer.firstChild);
 	}
 }
+
+const addFoodModal = document.getElementById('addFoodModal')
+addFoodModal.addEventListener('show.bs.modal', event => {
+	searchKeyword.value="";
+})
+
