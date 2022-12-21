@@ -27,10 +27,10 @@ public class ReactManager {
 		return feedDAO.createReact(reply);
 	}
 	
-	public int remove(ReactDTO react) throws SQLException {
-		
-		return feedDAO.removeReact(react.getFeedId(), react.getUserId());
-	}
+//	public int remove(ReactDTO react) throws SQLException {
+//		
+//		return feedDAO.removeReact(react.getFeedId(), react.getUserId());
+//	}
 	
 //	public List<ReactDTO> display(long feedId) throws SQLException {
 //		return FeedDAO.replyList(feedId);

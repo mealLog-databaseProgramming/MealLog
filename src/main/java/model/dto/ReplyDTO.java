@@ -1,12 +1,12 @@
 package model.dto;
 
 //import java.util.Date;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ReplyDTO {
 	private long replyId;
 	private String content;
-	private Date publishDate;
+	private Timestamp publishDate;
 	private long feedId;
 	private long userId;
 
@@ -14,7 +14,7 @@ public class ReplyDTO {
 		super();
 	}
 
-	public ReplyDTO(long replyId, String content, Date publishDate, long feedId, long userId) {
+	public ReplyDTO(long replyId, String content, Timestamp publishDate, long feedId, long userId) {
 		super();
 		this.replyId = replyId;
 		this.content = content;
@@ -39,11 +39,11 @@ public class ReplyDTO {
 		this.content = content;
 	}
 
-	public Date getPublishDate() {
+	public Timestamp getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(Date publishDate) {
+	public void setPublishDate(Timestamp publishDate) {
 		this.publishDate = publishDate;
 	}
 

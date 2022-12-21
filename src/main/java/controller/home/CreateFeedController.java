@@ -1,7 +1,7 @@
 package controller.home;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.io.File;
 import java.text.SimpleDateFormat;
 
@@ -35,9 +35,9 @@ import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.fileupload.servlet.*;
 
 public class CreateFeedController implements Controller{
-	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");	
-	String now = format1.format(new java.util.Date());
-	java.sql.Date publishDate = java.sql.Date.valueOf(now);
+//	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");	
+//	String now = format1.format(new java.util.Date());
+//	java.sql.Date publishDate = java.sql.Date.valueOf(now);
 	
 	FeedManager feedManager = new FeedManager();
 	FoodManager foodManager = new FoodManager();
