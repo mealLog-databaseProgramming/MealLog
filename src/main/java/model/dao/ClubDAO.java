@@ -144,15 +144,22 @@ public class ClubDAO {
 		}
 		return false;
 	}
-	//리더여부확인
+	/**리더여부확인
 	public boolean isLeader(long userId, long clubId) {
 		String sql = "SELECT leader "
 	    			+ "FROM club "
-	    			+ "WHERE userId = ? and clubId = ?";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});	// JDBCUtil에 query문과 매개 변수 설정
+	    			+ "WHERE clubId = ?";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});	// JDBCUtil에 query문과 매개 변수 설정
 	
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			ResultSet rs = jdbcUtil.executeQuery();	// query 실행
+			
+			long clubLeader = rs.getLong("leader");
+			//	clubLeader == userId
+			System.out.println(clubLeader);
+			//System.out.println(clubLeader.equals(userId));
+			return ((clubLeader == userId) ? true : false);
+			/**
 			if (rs.next()) {						
 				int count = rs.getInt("count");
 				return (count == 1 ? true : false);
@@ -163,10 +170,10 @@ public class ClubDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return false;
-	}
+	}**/
 	//그룹 맴버인지 확인
 		public boolean isMember(long userId, long clubId) throws SQLException {
-	        String sql = "SELECT clubId "
+	        String sql = "SELECT count(*) as count "
 	        			+ "FROM belong "
 	        			+ "WHERE userId = ? and clubId = ?";              
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -175,7 +182,7 @@ public class ClubDAO {
 				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 				if (rs.next()) {						
 					int count = rs.getInt("count");
-					return (count == 1 ? true : false);
+					return (count >= 1 ? true : false);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();

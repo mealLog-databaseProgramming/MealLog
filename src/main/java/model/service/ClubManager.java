@@ -72,9 +72,6 @@ public class ClubManager {
 		return clubDAO.isMember(userId, clubId);
 	}
 	
-	public boolean isLeader(long userId, long clubId) throws SQLException {
-		return clubDAO.isLeader(userId, clubId);
-	}
 
 	public List<HashtagDTO> findClubByHashtag(String tag) throws SQLException {
 		

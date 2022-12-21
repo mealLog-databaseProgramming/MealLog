@@ -41,12 +41,12 @@ public class ClubController implements Controller {
 		ClubDTO club;
 		HashtagDTO hashtag;
 				
-		if (manager.isLeader(leaderId, clubId)){
-			request.setAttribute("isLeader", true);
-		}
-		else if(manager.isMember(userId, clubId)) {
-			request.setAttribute("joined", true);
-		}
+//		if (manager.isLeader(leaderId, clubId)){
+//			request.setAttribute("isLeader", true);
+//		}
+//		else if(manager.isMember(userId, clubId)) {
+//			request.setAttribute("joined", true);
+//		}
 		
 		//클럽정보 + 해시태그 정보 매핑해서 setAttribute하기
 		for (int i = 0; i < clubList.size(); i++) {
