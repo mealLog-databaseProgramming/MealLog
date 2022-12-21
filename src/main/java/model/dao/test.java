@@ -11,11 +11,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import controller.recomm.RecommController;
+import model.dto.ClubDTO;
 import model.dto.FeedDTO;
 import model.dto.FoodDTO;
 import model.dto.ReactDTO;
 import model.dto.ReplyDTO;
 import model.dto.UserDTO;
+import model.service.ClubManager;
 import model.service.FeedManager;
 import model.service.RecommandManager;
 import model.service.UserManager;
@@ -48,8 +50,14 @@ public class test {
 //		float[] fList = feed.findSumFoodListToday(userId);
 //		System.out.println(fList[0]);
 		
-		UserDTO user = userManager.findUser(20);
-		System.out.println(user.getUname());
+		//UserDTO user = userManager.findUser(20);
+		//System.out.println(user.getUname());
+		
+		ClubManager manager = ClubManager.getInstance();
+		List<ClubDTO> clubList = manager.findClubList();
+		System.out.println(clubList.get(0));
+		System.out.println(clubList.get(1));
+		
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
