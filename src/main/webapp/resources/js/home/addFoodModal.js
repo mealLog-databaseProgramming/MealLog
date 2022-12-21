@@ -99,7 +99,7 @@ function choiceFood() {
 	displayFoodList();
 	
 	//hidden객체 만들어주기
-	const foodInput = `<input type="hidden" name="food" value="${rslt}">`
+	const foodInput = `<input type="hidden" name="selectFood" class="selectFood" value="${rslt}">`
 	$foodInfo.insertAdjacentHTML('beforeend', foodInput);
 	
 	//이전 결과값 삭제
