@@ -319,7 +319,7 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 받은 up 개수
 	public int countPositiveReactbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?)";
+		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?) AND type = 'P'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 		
 		try {
@@ -355,7 +355,7 @@ public class FeedDAO {
 		}
 		return 0;
 		
-	}
+	} 
 	
 	// 마이페이지&추천 페이지 : 당일 사용자 피드 출력
 		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {

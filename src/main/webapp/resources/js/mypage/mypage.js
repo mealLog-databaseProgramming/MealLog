@@ -14,6 +14,10 @@ function init_mypage() {
 	const previewImage = document.querySelector(".preview");
     if(previewImage.width > previewImage.height) previewImage.style.height = "200px";
     else previewImage.style.width = "200px";
+
+	const feedImg = document.querySelector(".polaroid .front .photo img");
+    if(feedImg.width > feedImg.height) feedImg.style.height = "180px";
+    else feedImg.style.width = "180px";
 }
 
 function profile_edit() {

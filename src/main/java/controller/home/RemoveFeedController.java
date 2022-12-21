@@ -11,10 +11,10 @@ public class RemoveFeedController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		long feedTd = (long) request.getAttribute("feedTd");
+		long feedId = (long) request.getAttribute("feedId");
 		FeedManager manager = FeedManager.getInstance();
 				
-		manager.remove(feedTd);
+		manager.remove(feedId);
 		
 		return "redirect:/";
 	}
