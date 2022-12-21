@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.UserSessionUtils;
 import model.dto.UserDTO;
+import model.service.PasswordSecureHashGenerator;
 import model.service.UserManager;
 import model.service.exception.ExistingUserException;
 
@@ -20,13 +21,13 @@ public class KakaoLoginController implements Controller {
 			try {
 				UserManager userManager = UserManager.getInstance();
 				if(userManager.existingLoginId(id)) {
-					UserSessionUtils.login(userManager.login(id, email), request.getSession());
+					UserSessionUtils.login(userManager.login(email, PasswordSecureHashGenerator.encrypt(id)), request.getSession());
 					return "redirect:/";
 				}
 				String gender = request.getParameter("gender");
 				
-				request.setAttribute("loginId", id);
-				request.setAttribute("password", email);
+				request.setAttribute("loginId", email);
+				request.setAttribute("password", id);
 				request.setAttribute("emailAddress", email);
 				request.setAttribute("gender", gender);
 				
