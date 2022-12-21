@@ -20,7 +20,7 @@ public class RequestMapping {
     	
     	mappings.put("/recomm", new RecommController());
 
-    	mappings.put("/group", new TempClubController());//
+    	mappings.put("/group", new ClubController());//
     	mappings.put("/groupUpdate", new ClubUpdateController());
     	mappings.put("/newgroup", new CreateClubController());
     	mappings.put("/deletegroup", new DeleteClubController());
@@ -38,7 +38,7 @@ public class RequestMapping {
     	mappings.put("/kakao_login", new KakaoLoginController());
     	mappings.put("/kakao_signup", new KakaoSyncController());
     	
-    	mappings.put("/grouptest", new TempClubController());
+    	mappings.put("/grouptest", new ClubController());
     }
 
     public Controller findController(String uri) {
