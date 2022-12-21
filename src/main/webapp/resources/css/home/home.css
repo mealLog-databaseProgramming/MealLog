@@ -190,6 +190,8 @@ svg .bi-chat-dots {
 	cursor: pointer;
 	
 	margin-top: 20px;
+	border: 0px;
+	background-color: white;
 }
 
 .moveTop {

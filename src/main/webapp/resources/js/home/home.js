@@ -6,6 +6,7 @@ const thumbs_down_fill = document.querySelectorAll('.bi-hand-thumbs-down-fill');
 const $modal_body = document.querySelector('.modal-body');
 const $modal_body_childs = $modal_body.childNodes;
 const $modal_foodContainer = $modal_body_childs[5];
+const $comment_modal_body = document.querySelector('.commentModalBody');
 
 //좋아요 버튼
 for(let i = 0; i< thumbs_up.length; i++) {
@@ -55,4 +56,37 @@ function addFood() {
 	$modal_foodContainer.insertAdjacentHTML('beforeend', foodElement);
 }
  
-
+function displayReply(e){
+	var list = e.querySelectorAll('.replyAll');
+	
+	for (i = 0; i < list.length; i++) {
+		var replyObj = list.item(i);
+		
+		var writer = replyObj.querySelector('.replyWriter').value;
+		var date = replyObj.querySelector('.replyTime').value;
+		var reply = replyObj.querySelector('.reply').value;
+		
+		const comment = `
+            <div class="commentContainer">
+               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+               </svg>
+               <div class="commentText">
+                  <span class="commentWriter">${writer}</span>
+                  <span class="commentTime">${date}</span>
+                  <div class="comment">${reply}</div>
+               </div>
+            </div>
+      `;
+      
+      $comment_modal_body.insertAdjacentHTML('beforeend', comment);
+	}
+} 
+ 
+$(document).ready(function() {
+    $('#commentModal').on('show.bs.modal', function (event) {
+        var content = $(event.relatedTarget);
+        console.log(content);
+    })
+});

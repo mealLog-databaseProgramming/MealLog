@@ -123,7 +123,12 @@
 						</div>
 						<hr>
 						<div class="commentList">
-							<%for (int k = 0; k < replyList.size(); k++) {%>
+						
+							<%
+							int replyLen = replyList.size();
+							if (replyLen > 4) replyLen = 4;
+							
+							for (int k = 0; k < replyLen; k++) {%>
 								<div class="commentContainer">
 									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
 										<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -139,9 +144,6 @@
 									</div>
 								</div>
 							<%} %>
-							<jsp:include page="/WEB-INF/home/commentModal.jsp">
-								<jsp:param name="replyList" value="<%=replyList %>"/>
-							</jsp:include>
 						</div>
 						<div class="inputComment">
 							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -153,7 +155,19 @@
 							  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
 							</svg>
 						</div>
-						<div class="commentModalBtn" data-bs-toggle="modal" data-bs-target="#commentModal">모든 댓글 보기</div>
+						<div class="commentModalBtn" data-bs-toggle="modal" data-bs-target="#commentModal" onclick = "displayReply(this)">
+							<div>모든 댓글 보기</div>
+							<%for (int k = 0; k < replyList.size(); k++){ %>
+									<%
+										String commentUname = feedDAO.findUname(replyList.get(k).getUserId());
+									%>
+									<div class="replyAll">
+										<input type="hidden" class="replyWriter" value=<%=commentUname %>>
+										<input type="hidden" class="replyTime" value="<%=replyList.get(k).getPublishDate() %>">
+										<input type="hidden" class="reply" value="<%=replyList.get(k).getContent() %>">
+									</div>
+							<%} %>
+						</div>
 					</div>
 				</div>
 			    <div class="foodContainer">
@@ -186,6 +200,7 @@
 
 <jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
 <jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
+<jsp:include page="/WEB-INF/home/commentModal.jsp"/>
 	
 	<script type="text/javascript" src="resources/js/home/home.js"></script>	
 	
