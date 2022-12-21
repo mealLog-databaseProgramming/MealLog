@@ -139,6 +139,9 @@
 									</div>
 								</div>
 							<%} %>
+							<jsp:include page="/WEB-INF/home/commentModal.jsp">
+								<jsp:param name="replyList" value="<%=replyList %>"/>
+							</jsp:include>
 						</div>
 						<div class="inputComment">
 							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="rgba(0,0,0,.75)" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -183,7 +186,6 @@
 
 <jsp:include page="/WEB-INF/home/addPostModal.jsp"/>
 <jsp:include page="/WEB-INF/home/addFoodModal.jsp"/>
-<jsp:include page="/WEB-INF/home/commentModal.jsp"/>
 	
 	<script type="text/javascript" src="resources/js/home/home.js"></script>	
 	

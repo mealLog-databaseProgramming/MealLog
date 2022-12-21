@@ -14,14 +14,14 @@
 </head>
 <body>
 <%
-	//List<Map> data = (List<Map>)request.getAttribute("list");
-	//List<ReplyDTO> reply = (List<ReplyDTO>)data.get(feedId).get("reply");
+	String replyList = request.getParameter("replyList");
 %>
 <div class="modal fade" id="commentModal" tabindex="-1">
 		  <div class="modal-dialog modal-dialog-scrollable">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		      	<h5 class="modal-title">모든 댓글 보기</h5>
+		      	<%=replyList %>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">

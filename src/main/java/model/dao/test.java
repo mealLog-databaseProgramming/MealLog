@@ -48,8 +48,11 @@ public class test {
 //		float[] fList = feed.findSumFoodListToday(userId);
 //		System.out.println(fList[0]);
 		
-		UserDTO user = userManager.findUser(20);
-		System.out.println(user.getUname());
+//		UserDTO user = userManager.findUser(20);
+//		System.out.println(user.getUname());
+		
+		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", 20, "아무말");
+		feed.createFeed(feedDTO);
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
