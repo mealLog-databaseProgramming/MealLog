@@ -49,7 +49,7 @@ public class CreateFeedController implements Controller{
 		//userId v
 		//imagePath v(imagePath)
 		//content v
-		//foodList 해결	name=food[]
+		//foodList 해결	name=food[] 
 		
 		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		System.out.println(userId);
