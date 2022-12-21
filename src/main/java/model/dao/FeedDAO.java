@@ -355,7 +355,7 @@ public class FeedDAO {
 		}
 		return 0;
 		
-	}
+	} 
 	
 	// 마이페이지&추천 페이지 : 당일 사용자 피드 출력
 		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
