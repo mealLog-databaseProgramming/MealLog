@@ -27,7 +27,7 @@
 		Meal:<span>Log</span>
 	</div>
 	<div class='greet'>
-		<div id="profile">
+		<div id="profile" onclick="location.href='/mypage'">
 			<img src="/resources/profile/${header_profile}" onError="this.style.visibility='hidden'">
 		</div>
 		${header_uname}님, 식사 맛있게 하셨나요? 식단을 그룹원들에게 공유해보세요
