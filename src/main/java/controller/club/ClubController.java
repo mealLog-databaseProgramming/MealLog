@@ -12,54 +12,90 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.UserSessionUtils;
+import model.dto.BelongDTO;
 import model.dto.ClubDTO;
 import model.dto.HashtagDTO;
+import model.dto.UserDTO;
 import model.service.ClubManager;
 import model.service.UserManager;
 import model.dao.ClubDAO;
+import model.service.UserManager;
 
 public class ClubController implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
+		System.out.println("-----------------");
+		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		//hashMap
-		List<Map> list = new ArrayList<Map>();
-		//long userId = Long.parseLong(request.getParameter("userId"));
-		//long clubId = Long.parseLong(request.getParameter("clubId"));
-		//long leaderId = Long.parseLong(request.getParameter("leader"));
-		//String tag = request.getParameter("tag");
+		List<ClubDTO> otherClubList = new ArrayList<>();
+		List<ClubDTO> myClubList = new ArrayList<>();
+		List<ClubDTO> joinedClubList = new ArrayList<>();
 		
-		long userId = 1;
-		long clubId = 1;
-		long leaderId = 1;
-		String tag = "diet";
-		
+		List<Map> hashtags = new ArrayList<Map>();
+		List<Map> members = new ArrayList<Map>();
+		 
 		ClubManager manager = ClubManager.getInstance();
-		List<ClubDTO> clubList = manager.findClubList();
-		List<HashtagDTO> hashtagList;
+		List<ClubDTO> clubList = new ArrayList<ClubDTO>();
+		List<String> hashtagList = new ArrayList<String>();
 		
+	
 		ClubDTO club;
 		HashtagDTO hashtag;
-				
-//		if (manager.isLeader(leaderId, clubId)){
-//			request.setAttribute("isLeader", true);
-//		}
-//		else if(manager.isMember(userId, clubId)) {
-//			request.setAttribute("joined", true);
-//		}
 		
-		//클럽정보 + 해시태그 정보 매핑해서 setAttribute하기
-		for (int i = 0; i < clubList.size(); i++) {
-			hashtagList = manager.HashtagList(clubList.get(i).getClubId());
-
-			Map data = new HashMap();
-			data.put("clubList", clubList.get(i));
-			data.put("hashtags", hashtagList);
-			
-			list.add(data);
-		}
-		request.setAttribute("list", list);
+		UserManager userManager = UserManager.getInstance();
 	
+		clubList = manager.findClubList();
+			
+		/**클럽 정보**/
+		for (int i = 0; i < clubList.size(); i++) {		
+			long clubId = clubList.get(i).getClubId();
+			//long clubId = 1;
+			//long userId = 10;
+			System.out.println("cName:" + clubId + " userId:" + userId + " leader: " + clubList.get(i).getLeader());
+			//System.out.println(userId.equals(clubId));
+			System.out.println(userId == clubList.get(i).getLeader());
+			if(userId == clubList.get(i).getLeader()) { //리더이면
+				System.out.println("리더입니다");
+				myClubList.add(clubList.get(i));}
+			else {
+				if(manager.isMember(userId, clubList.get(i).getClubId())) {//그룹원이면
+					System.out.println("그룹원입니다");
+						joinedClubList.add(clubList.get(i));
+				}
+				else //그룹원이 아니면
+					otherClubList.add(clubList.get(i));
+			}
+			
+			/**클럽아이디 + 해시태그**/
+				List<HashtagDTO> hashTagList = new ArrayList<HashtagDTO>();
+				hashtagList = manager.findHashtagbyClubId(clubId);
+				
+				Map hashtahData = new HashMap<Long, List<HashtagDTO>>();
+				hashtahData.put(clubId, hashtagList);
+				hashtags.add(hashtahData);
+			
+			/**클럽아이디 + 유저리스트**/
+				List<UserDTO> memberList = new ArrayList<UserDTO>();
+				List<Long> memberIdList = manager.findMembersByClubId(clubId);//그룹원 id리스트 받아옴
+
+				for (int j = 0; j < memberIdList.size(); j++) {
+					System.out.println("cName:" + clubId + " member:" + memberIdList.get(j));
+					UserDTO user = userManager.findUser(memberIdList.get(j));
+					memberList.add(user);
+				}
+				Map memberData = new HashMap<Long, List<UserDTO>>();
+				memberData.put(clubId, memberList);
+				members.add(memberData);
+		}
+		
+		request.setAttribute("myClubList", myClubList);
+		request.setAttribute("joinedClubList", joinedClubList);
+		request.setAttribute("clubList", otherClubList);
+		request.setAttribute("hashTags", hashtags);
+		//request.setAttribute("members", members);
 		request.setAttribute("page", "group/groupList.jsp");
 		return "/index.jsp";
 	}

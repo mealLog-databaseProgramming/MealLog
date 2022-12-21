@@ -33,7 +33,6 @@ public class CreateClubController implements Controller {
 		//클럽정보 + 해시태그 정보 매핑해서 setAttribute하기
 		for (int i = 0; i < 5; i++) {
 			HashtagDTO hashtag = new HashtagDTO(		
-					request.getParameter("tagId"),
 					Long.parseLong(request.getParameter("clubId")),
 					request.getParameter("hname"));
 			hashtagList.add(hashtag);	
