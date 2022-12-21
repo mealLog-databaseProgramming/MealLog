@@ -22,7 +22,7 @@ import model.service.UserManager;
 import model.dao.ClubDAO;
 import model.service.UserManager;
 
-public class TempClubController implements Controller {
+public class Temp2ClubController implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -30,9 +30,9 @@ public class TempClubController implements Controller {
 
 		//long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		//hashMap
-		List<Map> otherClubList = new ArrayList<Map>();
-		List<Map> myClubList = new ArrayList<Map>();
-		List<Map> joinedClubList = new ArrayList<Map>();
+		List<ClubDTO> otherClubList = new ArrayList<>();
+		List<ClubDTO> myClubList = new ArrayList<>();
+		List<ClubDTO> joinedClubList = new ArrayList<>();
 		
 		List<Map> hashtags = new ArrayList<Map>();
 		List<Map> members = new ArrayList<Map>();
@@ -60,38 +60,22 @@ public class TempClubController implements Controller {
 	
 		//clubList = manager.findClubList();
 			
-		//클럽 정보 매핑
-		/**만약 그룹원이다->근데 리더다->mygroup에 저장
-		//           ->리더는 아니다->joingroup에 저장
-		//속한 그룹이 아니다->그냥 그룹 리스트에 저장**/
-		//System.out.println("테스트1");
-		for (int i = 0; i < clubList.size(); i++) {
-			//System.out.print("테스트");
-			Map myClubData = new HashMap();
-			Map joinedClubData = new HashMap();
-			Map otherClubData = new HashMap();
+		/**클럽 정보**/
+		for (int i = 0; i < clubList.size(); i++) {		
 			//long clubId = clubList.get(i).getClubId();
 			long clubId = 1;
 			long userId = 9;
 			
 			if(manager.isMember(userId, clubList.get(i).getClubId())) {//그룹원이면
-				if(manager.isLeader(userId, clubId)) {//리더이면
-					myClubData.put(clubId, clubList.get(i));
-					myClubList.add(myClubData);
-				}
-				else {//리더가 아니면
-					joinedClubData.put(clubId, clubList.get(i));
-					joinedClubList.add(joinedClubData);
-				}
+				if(manager.isLeader(userId, clubId)) //리더이면
+					myClubList.add(clubList.get(i));
+				else//리더가 아니면
+					joinedClubList.add(clubList.get(i));
 			}
-			else {//그룹원이 아니면
-				otherClubData.put(clubId, clubList.get(i));
-				otherClubList.add(otherClubData);
-			}	
+			else //그룹원이 아니면
+				otherClubList.add(clubList.get(i));
 			
-			//클럽아이디 + 해시태그 매핑
-			//ㄴ클럽아이디가 @인 클럽의 해시태그 리스트 받아오기->리스트 매핑
-			//기존 hashtagDTO 객체 -> 수정 그냥 string list
+			/**클럽아이디 + 해시태그**/
 				//List<HashtagDTO> hashTagList = new ArrayList<HashtagDTO>();
 				hashtagList = manager.findHashtagbyClubId(clubId);
 				hashtagList.add("식사");//test
@@ -101,8 +85,7 @@ public class TempClubController implements Controller {
 				hashtahData.put(clubId, hashtagList);
 				hashtags.add(hashtahData);
 			
-			//클럽아이디 + 유저리스트 매핑
-				//한번 꺾어야함..
+			/**클럽아이디 + 유저리스트**/
 				List<UserDTO> memberList = new ArrayList<UserDTO>();
 				//memberIdList = manager.findMembersByClubId(clubId);//그룹원 id 받아옴
 				memberIdList.add(clubId);//test
