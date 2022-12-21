@@ -54,15 +54,15 @@ public class ClubController implements Controller {
 			long clubId = clubList.get(i).getClubId();
 			//long clubId = 1;
 			//long userId = 10;
-			System.out.println("\ncName:" + clubId + " userId:" + userId + " leader: " + clubList.get(i).getLeader());
+			//System.out.println("\ncName:" + clubId + " userId:" + userId + " leader: " + clubList.get(i).getLeader());
 			//System.out.println(userId.equals(clubId));
-			System.out.print(userId == clubList.get(i).getLeader());
+			//System.out.print(userId == clubList.get(i).getLeader());
 			if(userId == clubList.get(i).getLeader()) { //리더이면
-				System.out.println(" 리더입니다");
+				//System.out.println(" 리더입니다");
 				myClubList.add(clubList.get(i));}
 			else {
 				if(manager.isMember(userId, clubList.get(i).getClubId())) {//그룹원이면
-					System.out.println(" 그룹원입니다");
+					//System.out.println(" 그룹원입니다");
 						joinedClubList.add(clubList.get(i));
 				}
 				else //그룹원이 아니면

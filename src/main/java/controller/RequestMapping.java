@@ -23,10 +23,10 @@ public class RequestMapping {
 
     	mappings.put("/group", new ClubController());//
     	mappings.put("/groupUpdate", new ClubUpdateController());
-    	mappings.put("/newgroup", new CreateClubController());
-    	mappings.put("/deletegroup", new DeleteClubController());
+    	mappings.put("/newGroup", new CreateClubController());
+    	mappings.put("/deleteGroup", new DeleteClubController());
     	mappings.put("/joingroup", new JoinClubController());
-    	mappings.put("/leavegroup", new leaveClubController());
+    	mappings.put("/leaveGroup", new leaveClubController());
 
     	mappings.put("/mypage", new MypageController());
     	

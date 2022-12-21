@@ -27,7 +27,7 @@ public class ClubManager {
 		return ClubMan;
 	}
 
-	public int create(ClubDTO club, HashtagDTO hashtag) throws SQLException, ExistingUserException {
+	public long create(ClubDTO club) throws SQLException, ExistingUserException {
 
 		if(clubDAO.existClub(club.getCname())==true){
 			throw new ExistingUserException(club.getCname() + "는 이미 사용중인 이름입니다.");
