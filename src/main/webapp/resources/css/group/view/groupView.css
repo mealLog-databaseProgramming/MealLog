@@ -20,6 +20,7 @@
 	margin: 7px 10px;
 }
 #groupView .title {
+	width: 300px;
 	font-size: 32px;
 	font-weight: 700;
 }
