@@ -4,7 +4,7 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import model.dto.FeedDTO;
@@ -203,7 +203,7 @@ public class FeedDAO {
 				feed = new FeedDTO(
 						feedId,
 						rs.getString("photo"),
-						rs.getTimestamp("publishDate"),
+						rs.getDate("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 			}
@@ -231,7 +231,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(	
 						rs.getLong("feedId"),
 						rs.getString("photo"),
-						rs.getTimestamp("publishDate"),
+						rs.getDate("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 				feedList.add(feed);	
@@ -262,7 +262,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(		
 						rs.getLong("feedId"),
 						rs.getString("photo"),
-						rs.getTimestamp("publishDate"),
+						rs.getDate("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 					feedList.add(feed);
@@ -371,7 +371,7 @@ public class FeedDAO {
 					FeedDTO feed = new FeedDTO(	
 							rs.getLong("feedId"),
 							rs.getString("photo"),
-							rs.getTimestamp("publishDate"),
+							rs.getDate("publishDate"),
 							userId,
 							rs.getString("content"));
 					feedList.add(feed);	
@@ -522,7 +522,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(		
 					rs.getLong("feedId"),
 					rs.getString("photo"),
-					rs.getTimestamp("publishDate"),
+					rs.getDate("publishDate"),
 					rs.getLong("userId"),
 					rs.getString("content"));
 				feedList.add(feed);
@@ -548,7 +548,7 @@ public class FeedDAO {
 				ReplyDTO reply = new ReplyDTO(	
 					rs.getLong("replyId"),		
 					rs.getString("content"),
-					rs.getTimestamp("publishDate"),
+					rs.getDate("publishDate"),
 					feedId,
 					rs.getLong("userId"));	
 				replyList.add(reply);				
