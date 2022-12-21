@@ -25,7 +25,7 @@ public class FeedDAO {
 
 	// 피드 추가
 	public long createFeed(FeedDTO feed) throws SQLException {
-		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
+		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) FROM DUAL" 
 			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
@@ -250,8 +250,7 @@ public class FeedDAO {
 	// 페이지를 이용해 최신 100개의 피드(일단 교수님거 복붙)
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
-        		   + "FROM FEED "
-        		   + "ORDER BY publishDate DESC" 
+        		   + "FROM (SELECT * FROM feed ORDER BY publishDate DESC) feed"
         		   + "WHERE ROWNUM < 101";
 		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
 				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
