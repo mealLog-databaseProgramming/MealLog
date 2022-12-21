@@ -1,11 +1,10 @@
 // FeedDAO
-
 package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import model.dto.FeedDTO;
@@ -25,7 +24,7 @@ public class FeedDAO {
 
 	// 피드 추가
 	public long createFeed(FeedDTO feed) throws SQLException {
-		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) " 
+		String sql = "INSERT INTO Feed (feedId, photo,userId, content) FROM DUAL" 
 			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
@@ -54,7 +53,7 @@ public class FeedDAO {
 	// 반응 추가
 	public int createReact(ReactDTO react) throws SQLException {
 		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUE(?, ?, ?)";
-		Object[] param = new Object[] {react.getFeedId(), react.getUserId()};
+		Object[] param = new Object[] {react.getFeedId(), react.getUserId(), react.getType()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
@@ -112,8 +111,9 @@ public class FeedDAO {
 
 	// 피드 삭제 (+댓글도 삭제되도록 추가 수정 해봄)
 	public int removeFeed(long feedId) throws SQLException {
-		String sql = "DELETE FROM FEED WHERE feedId = ?"
-				+ "DELETE FROM reply WHERE feedId = ?";
+		String sql = "DELETE FROM FEED WHERE feedId = ?; "
+				+ "DELETE FROM reply WHERE feedId = ?; "
+				+ "DELETE FROM react WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
 
 		try {				
@@ -130,45 +130,45 @@ public class FeedDAO {
 		return 0;
 	}
 
-	// 반응 삭제
-	public int removeReact(long feedId, long userId) throws SQLException {
-		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	} 
-
-	// 댓글 삭제
-	public int removeReply(long replyId) throws SQLException {
-		String sql = "DELETE FROM REPLY WHERE replyId = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	}
-
-	
+//	// 반응 삭제
+//	public int removeReact(long feedId, long userId) throws SQLException {
+//		String sql = "DELETE FROM REACT WHERE feedid = ? AND userId = ?";
+//		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
+//
+//		try {				
+//			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+//			return result;
+//		} catch (Exception ex) {
+//			jdbcUtil.rollback();
+//			ex.printStackTrace();
+//		}
+//		finally {
+//			jdbcUtil.commit();
+//			jdbcUtil.close();	// resource 반환
+//		}		
+//		return 0;
+//	} 
+//
+//	// 댓글 삭제
+//	public int removeReply(long replyId) throws SQLException {
+//		String sql = "DELETE FROM REPLY WHERE replyId = ?";
+//		jdbcUtil.setSqlAndParameters(sql, new Object[] {replyId});
+//
+//		try {				
+//			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+//			return result;
+//		} catch (Exception ex) {
+//			jdbcUtil.rollback();
+//			ex.printStackTrace();
+//		}
+//		finally {
+//			jdbcUtil.commit();
+//			jdbcUtil.close();	// resource 반환
+//		}		
+//		return 0;
+//	}
+//
+//	
 	/* 피드 음식 삭제
 	public int removeFood(long foodId) throws SQLException {
 		String sql = "DELETE FROM FOOD WHERE foodId = ?";
@@ -249,8 +249,7 @@ public class FeedDAO {
 	// 페이지를 이용해 최신 100개의 피드(일단 교수님거 복붙)
 	public List<FeedDTO> homeFeedList(int currentPage, int countPerPage) throws SQLException {
         String sql = "SELECT feedId, userId, publishDate, content, photo " 
-        		   + "FROM FEED "
-        		   + "ORDER BY publishDate DESC" 
+        		   + "FROM (SELECT * FROM feed ORDER BY publishDate DESC) feed"
         		   + "WHERE ROWNUM < 101";
 		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
 				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
@@ -318,7 +317,7 @@ public class FeedDAO {
 	
 	// 마이페이지 : 그동안 받은 up 개수
 	public int countPositiveReactbyUser(long userId) throws SQLException {
-		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?)";
+		String sql = "SELECT COUNT(*) as result FROM REACT WHERE feedId IN (SELECT feedId FROM FEED WHERE userId = ?) AND type = 'P'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 		
 		try {
@@ -354,7 +353,7 @@ public class FeedDAO {
 		}
 		return 0;
 		
-	}
+	} 
 	
 	// 마이페이지&추천 페이지 : 당일 사용자 피드 출력
 		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
@@ -592,4 +591,5 @@ public class FeedDAO {
 		return null;
 	}
 }
+
 
