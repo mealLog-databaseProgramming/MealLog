@@ -44,7 +44,7 @@ public class CreateReplyController implements Controller{
 		//userId 
 		//content 
 		// feedId
-		
+		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		System.out.println("reply 관련 : " + userId);
 		
