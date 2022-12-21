@@ -63,9 +63,16 @@
 	 , confirm_password = document.querySelector("input[name='confirm_password']");
 	
 	function validatePassword(){
-	 if(password.value != confirm_password.value) {
+	 if (password.search(/\s/) != -1){
+		 password.setCustomValidity("비밀번호는 공백 없이 입력해주세요.");
+	 }
+	 else if (password === password.toUpperCase()) {
+		 password.setCustomValidity("영문 소문자를 혼합하여 입력해주세요.");
+	 }
+	 else if (password.value != confirm_password.value) {
 	   confirm_password.setCustomValidity("비밀번호가 일치하지않습니다.");
-	 } else {
+	 } 
+	 else {
 	   confirm_password.setCustomValidity('');
 	 }
 	}
