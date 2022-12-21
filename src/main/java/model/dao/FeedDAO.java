@@ -24,7 +24,7 @@ public class FeedDAO {
 
 	// 피드 추가
 	public long createFeed(FeedDTO feed) throws SQLException {
-		String sql = "INSERT INTO Feed (feedId, photo,userId, content) FROM DUAL" 
+		String sql = "INSERT INTO Feed (feedId, photo, publishDate, userId, content) FROM DUAL" 
 			+ "VALUES (SEQUENCE_FEEDID.nextval, ?, TO_DATE(SYSDATE, 'yy-MM-dd hh24:mi:ss'), ?, ?)";
 //		String nextFeedId = "select SEQUENCE_FEEDID.nextval from dual";
 		String getFeedId = "select SEQUENCE_FEEDID.currval from dual";
