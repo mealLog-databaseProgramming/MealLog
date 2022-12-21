@@ -6,7 +6,7 @@
 
 # ![logo](src/main/webapp/resources/favicon/favicon-32x32.png) 식단 공유 플랫폼 - Meal:Log
 
-### 🔗 [Website link](https://meallog.cafe24.com:8080)
+### 🔗 [Website link](http://meallog.cafe24.com:8080)
 
 <br>
 
