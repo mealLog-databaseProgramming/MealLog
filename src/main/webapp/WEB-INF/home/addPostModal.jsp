@@ -20,7 +20,7 @@
 <body>
 <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
-				<form id="feed_create" action="/newfeed" class="feed" method="post" enctype="multipart/form-data">
+				<form id="feed_create"  action="/newfeed" method="post" onsubmit="return formSubmit();" class="feed" enctype="multipart/form-data">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -60,7 +60,7 @@
 										사진 추가
 									</label>
 									<!-- file -->
-									<input type="file" accept=".jpg, .png, .jpeg" name="file" id="file" onchange="javascript:document.getElementById('fileName').value = this.value">
+									<input type="file" accept=".jpg, .png, .jpeg" name="file" id="file">
 									<input type="text" id="fileName"  name="fileName" readonly>
 									
 									<!-- hidden data -->

@@ -241,15 +241,10 @@ svg .bi-chat-dots {
 }
 
 .modal-content-wrap textarea{
-	width: 100%;
+	width: 90%;
 	border: 2px solid #3B5C0A;
 	
 	margin-bottom: 20px;
-}
-
-.modal-body .modalFoodContainer .food:hover {
-	/*background-color: #3B5C0A;
-	color: white;*/
 }
 
 .modal-body .modalFoodContainer .food img:hover {

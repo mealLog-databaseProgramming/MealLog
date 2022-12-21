@@ -360,7 +360,7 @@ public class FeedDAO {
 		public List<FeedDTO> findFeedListToday(long userId) throws SQLException {
 	        String sql = "SELECT feedId, photo, publishDate, userId, content " 
 	     		   + "FROM FEED "
-	     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE - 1, 'YYYYMMDD'))" 
+	     		   + "WHERE userId = ? AND (publishDate >= TO_CHAR(SYSDATE, 'YYYYMMDD'))" 
 	     		   + "ORDER BY publishDate DESC";
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
 						

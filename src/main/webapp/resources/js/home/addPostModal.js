@@ -1,4 +1,6 @@
 const foodContainer = document.querySelector('.modalFoodContainer');
+const fileName = document.getElementById('fileName');
+const foodList = document.querySelector('#foodList');
 
 function deleteFood(){
 	console.log(event.target.parentNode)
@@ -23,12 +25,34 @@ function displayFoodList(){
 
 function setFoods() {
 	var list = new Array();
-	$("input[name=food]").each(function(index, item) {
+	$("input[name=selectFood]").each(function(index, item) {
 		list.push($(item).val());
 	});
 	$("#foodList").val(list);
-	const foodList = document.querySelector('#foodList');
 	console.log(foodList);
+}
+
+file.onchange = () => {
+	let path = event.target.value;
+	console.log(path);
+	const splitPath = path.split("\\");
+	
+	fileName.value = splitPath[splitPath.length - 1];
+	console.log(splitPath);
+};
+
+function formSubmit() {
+	var fileName = document.getElementById( 'fileName' ).value;
+	var foodList = document.getElementsByClassName('selectFood');
+	    
+    if (fileName == "") {
+    	alert('사진을 추가해주세요.');
+    	return false;
+    }
+    if (foodList.length <= 0) {
+		alert('음식을 1개 이상 추가해주세요.');
+		return false;
+	}
 }
 
 displayFoodList();
