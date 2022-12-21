@@ -50,13 +50,13 @@ public class TempClubController implements Controller {
 		
 		UserManager userManager = UserManager.getInstance();
 		
-		clubList.add(new ClubDTO(//test
+		/**clubList.add(new ClubDTO(//test
 					3,
 					"작심 3달22",
 					"식단 초보",
 					"식단 초보입니다.\n3개월동안 식단 봐주면서 건강해지실 분들 찾아요.",
 					10, 8
-				));
+				));**/
 	
 		//clubList = manager.findClubList();//왜 null이지
 			
