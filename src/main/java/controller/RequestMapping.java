@@ -38,7 +38,7 @@ public class RequestMapping {
     	mappings.put("/kakao_login", new KakaoLoginController());
     	mappings.put("/kakao_signup", new KakaoSyncController());
     	
-    	mappings.put("/grouptest", new ClubController());
+    	mappings.put("/grouptest", new ClubTestController());
     }
 
     public Controller findController(String uri) {

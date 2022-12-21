@@ -23,6 +23,12 @@ public class ReplyDTO {
 		this.userId = userId;
 	}
 
+	public ReplyDTO(long userId, String content, long feedId) {
+		this.userId = userId;
+		this.content = content;
+		this.feedId = feedId;
+	}
+
 	public long getReplyId() {
 		return replyId;
 	}

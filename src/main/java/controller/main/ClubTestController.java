@@ -41,7 +41,7 @@ public class ClubTestController implements Controller {
 			
 			String hashtag = "식단, 단기, 다이어트";
 			hashtags.put(i, hashtag);
-			
+			System.out.println(hashtags.values());
 			List<UserDTO> member = new ArrayList<>();
 			member.add(user1); member.add(user2);
 			members.put(i, member);

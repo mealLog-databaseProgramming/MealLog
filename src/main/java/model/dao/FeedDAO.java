@@ -32,7 +32,7 @@ public class FeedDAO {
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
-			System.out.println("test");
+//			System.out.println("test");
 			int result = jdbcUtil.executeUpdate();
 			System.out.println(result);
 			jdbcUtil.setSqlAndParameters(getFeedId, null);
@@ -92,7 +92,7 @@ public class FeedDAO {
 	}
 
 	// 댓글 추가
-	public int createComment(ReplyDTO reply) throws SQLException {
+	public long createComment(ReplyDTO reply) throws SQLException {
 		String sql = "INSERT INTO Reply(replyId, content, getPublishDate, feedId, userId )" 
 		+ "VALUE(SEQUENCE_REPLYID.nextval, ?, ?, ?, ?)";
 		Object[] param = new Object[] {reply.getContent(), reply.getPublishDate(), reply.getFeedId(), reply.getUserId()};
@@ -100,7 +100,13 @@ public class FeedDAO {
 
 		try {
 			int result = jdbcUtil.executeUpdate();
-			return result;
+			ResultSet rs = jdbcUtil.executeQuery();
+			rs.next();
+			
+			long replyId = rs.getLong("replyId");
+			System.out.println("리턴되는 댓글 아이디" + replyId);
+			
+			return replyId;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();

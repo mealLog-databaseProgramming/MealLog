@@ -29,7 +29,7 @@ public class ReplyManager {
 		return replyMan;
 	}
 
-	public int create(ReplyDTO reply) throws SQLException {
+	public long create(ReplyDTO reply) throws SQLException {
 		return FeedDAO.createComment(reply);
 	}
 
