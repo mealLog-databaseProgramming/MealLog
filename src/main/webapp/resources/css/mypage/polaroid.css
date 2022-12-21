@@ -30,13 +30,18 @@
 	width: 210px; height: 215px;
 	background: rgba(0, 0, 0, 0.03);
 }
-.polaroid .front .top img {
-	width: 180px; height: 180px;
-	margin: 15px;
-	margin-top: 25px;
-	
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0px 5px 2px rgba(0, 0, 0, 0.25);
+.polaroid .front .photo {
+	width: 180px;
+    height: 180px;
+    margin: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 0px 5px rgb(0 0 0 / 15%);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(0px, 15px);
+    background: rgba(0,0,0,0.05);
 }
 
 .polaroid .front .date{
@@ -70,7 +75,7 @@
 
 .polaroid .back .top {
 	width: 210px;
-	height: 140px;
+	height: 200px;
 	
 	background: #1D1717;
 	box-shadow: inset 0px 5px 2px rgba(0, 0, 0, 0.25);
@@ -82,9 +87,14 @@
 	line-height: 30px;
 	font-size: 15px;
 	
-	padding-top: 40px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-
+.polaroid .back .top li{
+	list-style: none;
+}
 .polaroid .back {
 	transform: rotateY(180deg);
 }
