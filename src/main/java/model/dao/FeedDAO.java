@@ -203,7 +203,7 @@ public class FeedDAO {
 				feed = new FeedDTO(
 						feedId,
 						rs.getString("photo"),
-						rs.getDate("publishDate"),
+						rs.getTimestamp("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 			}
@@ -231,7 +231,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(	
 						rs.getLong("feedId"),
 						rs.getString("photo"),
-						rs.getDate("publishDate"),
+						rs.getTimestamp("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 				feedList.add(feed);	
@@ -262,7 +262,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(		
 						rs.getLong("feedId"),
 						rs.getString("photo"),
-						rs.getDate("publishDate"),
+						rs.getTimestamp("publishDate"),
 						rs.getLong("userId"),
 						rs.getString("content"));
 					feedList.add(feed);
@@ -371,7 +371,7 @@ public class FeedDAO {
 					FeedDTO feed = new FeedDTO(	
 							rs.getLong("feedId"),
 							rs.getString("photo"),
-							rs.getDate("publishDate"),
+							rs.getTimestamp("publishDate"),
 							userId,
 							rs.getString("content"));
 					feedList.add(feed);	
@@ -522,7 +522,7 @@ public class FeedDAO {
 				FeedDTO feed = new FeedDTO(		
 					rs.getLong("feedId"),
 					rs.getString("photo"),
-					rs.getDate("publishDate"),
+					rs.getTimestamp("publishDate"),
 					rs.getLong("userId"),
 					rs.getString("content"));
 				feedList.add(feed);
@@ -548,7 +548,7 @@ public class FeedDAO {
 				ReplyDTO reply = new ReplyDTO(	
 					rs.getLong("replyId"),		
 					rs.getString("content"),
-					rs.getDate("publishDate"),
+					rs.getTimestamp("publishDate"),
 					feedId,
 					rs.getLong("userId"));	
 				replyList.add(reply);				
