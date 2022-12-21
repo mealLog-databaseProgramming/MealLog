@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.dto.UserDTO;
+import model.service.PasswordSecureHashGenerator;
 import model.service.UserManager;
 import model.service.exception.ExistingUserException;
 
@@ -39,7 +40,7 @@ public class KakaoSyncController implements Controller {
 				
 				UserDTO user = new UserDTO();
 				user.setLoginId(loginId);
-				user.setPassword(password);
+				user.setPassword(PasswordSecureHashGenerator.encrypt(password));
 				user.setEmailAddress(emailAddress);
 				
 				user.setUname(name);
