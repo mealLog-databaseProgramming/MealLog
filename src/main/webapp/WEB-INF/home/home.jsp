@@ -86,7 +86,6 @@
 					</div>
 					<div class="deleteBtn">
 					<%
-						request.setAttribute("feedId", feed.getFeedId());
 						if (currUserId == feed.getUserId()) {%>
 							<form action="/removeFeed">
 								<input type="hidden" value="<%=feed.getFeedId()%>">

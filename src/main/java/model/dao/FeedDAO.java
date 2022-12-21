@@ -112,8 +112,8 @@ public class FeedDAO {
 
 	// 피드 삭제 (+댓글도 삭제되도록 추가 수정 해봄)
 	public int removeFeed(long feedId) throws SQLException {
-		String sql = "DELETE FROM FEED WHERE feedId = ?"
-				+ "DELETE FROM reply WHERE feedId = ?"
+		String sql = "DELETE FROM FEED WHERE feedId = ?; "
+				+ "DELETE FROM reply WHERE feedId = ?; "
 				+ "DELETE FROM react WHERE feedId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
 
