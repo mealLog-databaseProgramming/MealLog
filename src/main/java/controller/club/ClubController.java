@@ -76,15 +76,23 @@ public class ClubController implements Controller {
 				String hashtag = String.join(", ", hashtagList);
 				hashtags.put(clubId, hashtag);
 				//System.out.println("2: " + hashtag);
+				
 			/**클럽아이디 + 유저리스트**/
 				List<UserDTO> memberList = new ArrayList<UserDTO>();
 				List<Long> memberIdList = manager.findMembersByClubId(clubId);//그룹원 id리스트 받아옴
-
+				
+				long leaderId = clubList.get(i).getLeader();
+				memberList.add(userManager.findUser(leaderId));//리더
+				
 				for (int j = 0; j < memberIdList.size(); j++) {
-					System.out.println("cName:" + clubId + " member:" + memberIdList.get(j));
 					UserDTO user = userManager.findUser(memberIdList.get(j));
 					memberList.add(user);
 				}
+				
+				/**리더 입력 확인용 출력 코드
+				 * for (int j = 0; j < memberList.size(); j++) {
+					System.out.println("cName:" + clubId + " member:" + memberList.get(j).getUserId());
+				}**/
 				members.put(clubId, memberList);
 		}
 		
