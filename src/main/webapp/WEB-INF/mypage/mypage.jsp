@@ -25,7 +25,9 @@
 		</div>
 	</c:if>
 	<div id='feeds' class="polra">
-		<c:forEach begin="1" end="40" varStatus="loop">
+		<c:forEach var="feed" items="${feedList}">
+			<c:set var="feedId" value="${feed.getFeedId()}" scope="request"/>
+			<c:set var="photo" value="${feed.getPhoto()}" scope="request"/>
 			<jsp:include page="polaroid.jsp"/>
 		</c:forEach>
 	</div>
