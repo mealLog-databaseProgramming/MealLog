@@ -4,7 +4,7 @@ body.setAttribute('onLoad', 'init_mypage()');
 
 function init_mypage() {
 	init();
-	profile_edit();
+	clickEventInit();
 	weightStat_update_modal();
 	
 	const profileImg = document.querySelector(".mypage .profile .img .profileImg");
@@ -20,21 +20,30 @@ function init_mypage() {
     else feedImg.style.width = "180px";
 }
 
-function profile_edit() {
+function clickEventInit() {
 	var profile = document.querySelector('.mypage #profile');
 	var profile_edit = document.querySelector('#profile_edit');
 	var weight_update = document.querySelector('.stat .edit');
-	console.log(profile);
+
 	profile.style.display = "flex";
 	profile_edit.style.display = "none";
-	weight_update.style.display = "block";
+	
+	var weight_update = document.querySelector('.stat .edit');
+	
+	var modal = document.querySelector('#modal');
+	function modalViewEvent() {
+		modal.style.display = "block";
+		body.style.overflowY = "hidden";
+	}
+	weight_update.addEventListener('click', modalViewEvent);
 	
 	var profile_editButton = document.querySelector('#profile .edit');
 	profile_editButton.onclick = () => {
 		profile.style.display = "none";
 		
 		profile_edit.style.display = "flex";
-		weight_update.style.display = "none";
+		weight_update.style.opacity = "0";
+		weight_update.removeEventListener('click', modalViewEvent);
 	};
 	
 	var profile_cancelButton = document.querySelector('#profile_edit .cancel');

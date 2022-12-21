@@ -1,14 +1,5 @@
 
-function weightStat_update_modal() {
-	var weight_update = document.querySelector('.stat .edit');
-	
-	var modal = document.querySelector('#modal');
-	weight_update.onclick = () => {
-		modal.style.display = "block";
-		body.style.overflowY = "hidden";
-		body.scrollY = 0;
-	}
-	
+function weightStat_update_modal() {	
 	var cancel = document.querySelector('#modal .cancel');
 	cancel.onclick = () => {
 		var answer = confirm("여기서 취소하면 수정 사항은 적용되지 않습니다. 취소하시겠습니까?");
