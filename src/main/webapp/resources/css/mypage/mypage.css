@@ -58,11 +58,8 @@ html {
 }
 .mypage .polra {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	
-	width: 900px;
-	height: 3000px;
-	
-	zoom: 120%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 900px;
+    zoom: 120%;
 }

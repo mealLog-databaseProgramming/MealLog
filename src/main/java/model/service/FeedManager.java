@@ -40,6 +40,9 @@ public class FeedManager {
 		 
 		return feedList;
 	}
+	public List<FeedDTO> readByUserId(long userId) throws SQLException {
+		return feedDAO.findFeedListbyUser(userId);
+	}
 	
 	/* 마이페이지 */
 	public int countPositiveReactbyUser(long userId) throws SQLException {
@@ -53,7 +56,7 @@ public class FeedManager {
 	public float[] findSumFoodList(long userId) throws SQLException {
 		return feedDAO.findSumFoodList(userId);
 	}
-	
+
 	/* 리액트 */
 	public int createReact(ReactDTO react) throws SQLException {
 		return feedDAO.createReact(react);
@@ -63,4 +66,10 @@ public class FeedManager {
 //		return feedDAO.removeReact(feedId, userId);
 //	}
 
+	public int countPositiveReact(long feedId) throws SQLException {
+		return feedDAO.countPositiveReact(feedId);
+	}
+	public int countNegativeReact(long feedId) throws SQLException {
+		return feedDAO.countNegativeReact(feedId);
+	}
 }
