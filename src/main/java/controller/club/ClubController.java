@@ -36,7 +36,7 @@ public class ClubController implements Controller {
 		
 		ClubManager manager = ClubManager.getInstance();
 		List<ClubDTO> clubList = manager.findClubList();
-		List<HashtagDTO> hashtagList;
+		List<String> hashtagList;
 		
 		ClubDTO club;
 		HashtagDTO hashtag;
@@ -50,7 +50,7 @@ public class ClubController implements Controller {
 		
 		//클럽정보 + 해시태그 정보 매핑해서 setAttribute하기
 		for (int i = 0; i < clubList.size(); i++) {
-			hashtagList = manager.HashtagList(clubList.get(i).getClubId());
+			hashtagList = manager.findHashtagbyClubId(clubList.get(i).getClubId());
 
 			Map data = new HashMap();
 			data.put("clubList", clubList.get(i));

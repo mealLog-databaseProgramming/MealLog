@@ -40,8 +40,6 @@ public class Temp2ClubController implements Controller {
 		ClubManager manager = ClubManager.getInstance();
 		List<ClubDTO> clubList = new ArrayList<ClubDTO>();
 		List<String> hashtagList = new ArrayList<String>();
-		//List<BelongDTO> memberList = new ArrayList<BelongDTO>();
-		//정보 연결하려면 belong이 아니라 userDTO여야할듯..
 		List<Long> memberIdList = new ArrayList<Long>();
 		
 		
@@ -58,7 +56,7 @@ public class Temp2ClubController implements Controller {
 					10, 8
 				));**/
 	
-		//clubList = manager.findClubList();
+		clubList = manager.findClubList();
 			
 		/**클럽 정보**/
 		for (int i = 0; i < clubList.size(); i++) {		
@@ -81,8 +79,8 @@ public class Temp2ClubController implements Controller {
 				hashtagList.add("식사");//test
 				hashtagList.add("배아파");//test
 				
-				Map hashtahData = new HashMap();
-				hashtahData.put(clubId, hashtagList);
+				Map hashtahData = new HashMap<Long, List<HashtagDTO>>();
+				hashtahData.put(clubId, hashtagList.toString());
 				hashtags.add(hashtahData);
 			
 			/**클럽아이디 + 유저리스트**/
@@ -95,7 +93,7 @@ public class Temp2ClubController implements Controller {
 					UserDTO user = userManager.findUser(memberIdList.get(j));
 					memberList.add(user);
 				}
-				Map memberData = new HashMap();
+				Map memberData = new HashMap<Long, List<UserDTO>>();
 				memberData.put(clubId, memberList);
 				members.add(memberData);
 		}
@@ -104,7 +102,7 @@ public class Temp2ClubController implements Controller {
 		request.setAttribute("joinedClubList", joinedClubList);
 		request.setAttribute("clubList", otherClubList);
 		request.setAttribute("hashTags", hashtags);
-		request.setAttribute("members", members);
+		//request.setAttribute("members", members);
 		request.setAttribute("page", "group/groupList.jsp");
 		return "/index.jsp";
 	}
