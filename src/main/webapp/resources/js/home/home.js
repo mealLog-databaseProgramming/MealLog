@@ -45,11 +45,6 @@ function reactDown(){
 	$thumbs_down_fill.style.display = "inline";
 }
 
-//댓글 업로드 함수 테스트
-function commentUpload(){
-	alert('upload comment');
-}
-
 function addFood() {
 	var inputFood = prompt("임시, 음식 이름 입력");
 	const foodElement = `<div class="food" onclick="deleteFood()">${inputFood}</div>`
@@ -91,4 +86,26 @@ $(document).ready(function() {
         while ($comment_modal_body.hasChildNodes()) 	// 부모노드가 자식이 있는지 여부를 알아낸다
 		  $comment_modal_body.removeChild($comment_modal_body.firstChild);
     })
+});
+
+$(".likeimg").on("click", function () {
+	$.ajax({
+      url: '/reactController',
+      type: 'POST',
+      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      success: function (data) {
+          if (data == 1) {
+              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+              location.reload();
+          } else {
+              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
+              location.reload();
+          }
+      }, error: function () {
+          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+          console.log('오타 찾으세요')
+      }
+
+  });
+
 });

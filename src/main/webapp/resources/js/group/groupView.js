@@ -12,11 +12,9 @@ function groupView_init() {
 	
 	hashtags = document.querySelectorAll('#joinedGroupView #hashtag');
 	hashtags.forEach((input) => {
-//		var values = input.value.split(', ', 3);
-//		input.value = values;
-		
 		var tagify = new Tagify(input);
 	 	tagify.setReadonly(true);
+		console.log(input.value);
 	});
 	
 	hashtags = document.querySelectorAll('.myGroup_edit #hashtag');
@@ -48,12 +46,12 @@ function group_edit(e, clubId, memberDatas) {
 			templates : {
 				tag : function(tagData){
 		            try{
-		                return `<tag title='${tagData.value}' spellcheck="false">
+		                return `<tag title='${tagData.name}' spellcheck="false">
 			                        <x title='remove tag' class='tagify__tag__removeBtn'></x>
 									<div class="profile">
 			                            <img src='${tagData.profile}' onerror="this.style.visibility='hidden'">
 									</div>
-			                        <span class='tagify__tag-text'>${tagData.value}</span>
+			                        <span class='tagify__tag-text'>${tagData.name}</span>
 			                    </tag>`;
 		            }
 		            catch(err){}
@@ -71,6 +69,8 @@ function group_edit(e, clubId, memberDatas) {
 		}
 	);
 	tagify.addTags(memberDatas);
+	
+	console.log(tagify.value);
 	
 	var profiles = document.querySelectorAll(".myGroup_edit .groupMember tag .profile img");
 	profiles.forEach((img) => {

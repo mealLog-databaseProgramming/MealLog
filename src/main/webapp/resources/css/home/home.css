@@ -201,6 +201,10 @@ svg .bi-chat-dots {
   padding-left: 10px;
 }
 
+#replyBtnLabel {
+	cursor: pointer;
+}
+
 .commentModalBtn {
 	float: right;
 	color: #939393;

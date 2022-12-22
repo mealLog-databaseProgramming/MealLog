@@ -68,20 +68,9 @@ body::-webkit-scrollbar-track {
 .Header .title span {
 	color: #6BA32D;	
 }
-.Header .title iconify-icon {
-	font-size: 50px;
-	z-index: 2;
+.Header .title img {
+	margin: 10px;
 }
-.Header .title .yolk{
-	width: 18px; height:18px;
-	
-	background: #FFC700;
-	border-radius: 50%;
-	
-	position: absolute;
-	transform: translate(17px, 0.7px);
-}
-
 
 .Header .greet {
 	margin-right: 5vw;
