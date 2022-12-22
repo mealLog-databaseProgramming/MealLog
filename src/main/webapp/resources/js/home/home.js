@@ -57,6 +57,8 @@ function addFood() {
 }
  
 function displayReply(e){
+	
+	
 	var list = e.querySelectorAll('.replyAll');
 	
 	for (i = 0; i < list.length; i++) {
@@ -86,7 +88,7 @@ function displayReply(e){
  
 $(document).ready(function() {
     $('#commentModal').on('show.bs.modal', function (event) {
-        var content = $(event.relatedTarget);
-        console.log(content);
+        while ($comment_modal_body.hasChildNodes()) 	// 부모노드가 자식이 있는지 여부를 알아낸다
+		  $comment_modal_body.removeChild($comment_modal_body.firstChild);
     })
 });

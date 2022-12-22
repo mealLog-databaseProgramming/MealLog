@@ -82,17 +82,17 @@
 				<div class="infoContainer">
 					<div class="info_line">
 						<span class="writer"><%=uname %></span>
-						<div class="time"><%=feed.getPublishDate() %></div>
+						<span class="time"><%=feed.getPublishDate() %></span>
 					</div>
-					<div class="deleteBtn">
+				</div>
+				<div class="btnContainer">
 					<%
 						if (currUserId == feed.getUserId()) {%>
 							<form action="/removeFeed">
 								<input type="hidden" value="<%=feed.getFeedId()%>">
-								<input type="submit" value="삭제">
+								<input type="submit" class="deletePostBtn" value="삭제">
 							</form>
 					<% }%>
-					</div>
 				</div>
 				<div class="contentWrap">
 					<div class="leftContainer">

@@ -57,7 +57,12 @@
 	color: rgba(0,0,0,.75);
 }
 
-.deleteBtn {
+.btnContainer {
+	width: 100%;
+	float: right;
+}
+
+.deletePostBtn {
 	float: right;
 }
 
