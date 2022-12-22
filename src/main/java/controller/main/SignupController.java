@@ -1,16 +1,13 @@
 package controller.main;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import model.dao.*;
 import model.dto.*;
 import model.service.*;
 import model.service.exception.ExistingUserException;
+import util.PasswordSecureHashGenerator;
 
 public class SignupController implements Controller {
 

@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.dto.UserDTO;
-import model.service.PasswordSecureHashGenerator;
 import model.service.UserManager;
 import model.service.exception.ExistingUserException;
+import util.PasswordSecureHashGenerator;
 
 public class KakaoSyncController implements Controller {
 
