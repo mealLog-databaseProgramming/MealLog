@@ -13,6 +13,7 @@
 </head>
 
 <body onload='init()'>
+	<jsp:include page="loading.jsp"/>
 	<jsp:include page="header.jsp"/>
 	<div class='Nav'>
 		<ul>
@@ -25,7 +26,6 @@
 	<c:if test="${page ne null}">
 		<jsp:include page="${page}" />
 	</c:if>
-	
 </body>
 </html>
 
