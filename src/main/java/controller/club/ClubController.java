@@ -44,14 +44,27 @@ public class ClubController implements Controller {
 		ClubDTO club;
 		UserManager userManager = UserManager.getInstance();
 	
-		clubList = manager.findClubList();
-		String searchHname = request.getParameter(null);
+		
+		
+		/**검색시도**/
+		String searchHname = request.getParameter("tag");
+		System.out.println("tag: "+ searchHname);
 		if(searchHname != null) {//검색이면
+			//hname으로 clubList 찾기
 			
+			List<Long> clubIdList = manager.findClubByHashtag(searchHname);
+			System.out.println("clubIdList.size(): "+ clubIdList.size());
+			for (int j = 0; j < clubIdList.size(); j++) {//클럽 아이디로 클럽 리스트 반환
+				club = manager.findClub(clubIdList.get(j));
+				//System.out.println("clubIdList.size(): "+ clubIdList.size());
+				clubList.add(club);//측정 해시태그 가진 리스트 받아오기
+			}
+			//manager.searchClubList()
+		} 
+		else {//검색 아니면
+			clubList = manager.findClubList();//전체 리스트 받아오기
 		}
-		else {
-			//검색 아니면
-		}
+		
 		/**클럽 정보**/
 		for (int i = 0; i < clubList.size(); i++) {		
 			long clubId = clubList.get(i).getClubId();

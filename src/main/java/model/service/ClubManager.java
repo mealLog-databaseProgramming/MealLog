@@ -73,9 +73,9 @@ public class ClubManager {
 	}
 	
 
-	public List<HashtagDTO> findClubByHashtag(String tag) throws SQLException {
+	public List<Long> findClubByHashtag(String hashtag) throws SQLException {
 		
-		return clubDAO.findClubByHashtag(tag);
+		return clubDAO.findClubByHashtag(hashtag);
 	}
 
 //	public List<ClubDTO> SearchClubList(List<HashtagDTO> tagList) throws SQLException {
@@ -112,6 +112,11 @@ public class ClubManager {
 	public int removeBelong(long clubId) throws SQLException {
 		// TODO Auto-generated method stub
 		 return clubDAO.removeHashtag(clubId);
+	}
+
+	public ClubDTO findClub(Long clubId) throws SQLException {
+		// TODO Auto-generated method stub
+		return clubDAO.findClub(clubId);
 	}
 
 
