@@ -102,7 +102,7 @@ $(".bi-hand-thumbs-up").on("click", function () {
 	$.ajax({
       url: '/react',
       type: 'POST',
-      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {
           if (data == 1) {
               $("#likeimg").attr("src", "/resources/img/좋아요후.png");
@@ -134,7 +134,7 @@ $(".bi-hand-thumbs-up-fill").on("click", function () {
 	/*$.ajax({
       url: '/react',
       type: 'POST',
-      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {
           if (data == 1) {
               $("#likeimg").attr("src", "/resources/img/좋아요후.png");
@@ -166,7 +166,7 @@ $(".bi-hand-thumbs-down").on("click", function () {
 	/*$.ajax({
       url: '/react',
       type: 'POST',
-      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {
           if (data == 1) {
               $("#likeimg").attr("src", "/resources/img/좋아요후.png");
@@ -198,7 +198,7 @@ $(".bi-hand-thumbs-down-fill").on("click", function () {
 	/*$.ajax({
       url: '/react',
       type: 'POST',
-      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {
           if (data == 1) {
               $("#likeimg").attr("src", "/resources/img/좋아요후.png");

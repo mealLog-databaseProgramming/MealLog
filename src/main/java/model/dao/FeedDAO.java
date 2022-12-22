@@ -611,7 +611,7 @@ public class FeedDAO {
 		return null;
 	}
 	
-	boolean isUserReactUp(long userId, long feedId) throws SQLException {
+	int isUserReactUp(long userId, long feedId) throws SQLException {
         String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'P'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
 		boolean rslt = false; 
@@ -622,15 +622,15 @@ public class FeedDAO {
 				int count = rs.getInt("count");
 				if (count > 0)
 					rslt = true;
-				return rslt;
+				return 1;
 			}
-			return rslt;
+			return 0;
 		} catch (Exception ex) { 
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// resource 반환
 		}
-		return rslt;
+		return 0;
 	}
 	
 	boolean isUserReactDown(long userId, long feedId) throws SQLException {
