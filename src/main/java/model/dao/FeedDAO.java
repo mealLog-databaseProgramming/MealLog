@@ -611,20 +611,20 @@ public class FeedDAO {
 		return null;
 	}
 	
-	int isUserReactUp(long userId, long feedId) throws SQLException {
+	public int isUserReactUp(long userId, long feedId) throws SQLException {
         String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'P'";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
-		boolean rslt = false; 
+		int rslt = 0; 
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			while (rs.next()) {
 				int count = rs.getInt("count");
-				if (count > 0)
-					rslt = true;
-				return 1;
+				if (count > 0)//눌렀으면 1
+					rslt = 1;
+				return rslt;//0?
 			}
-			return 0;
+			return rslt;
 		} catch (Exception ex) { 
 			ex.printStackTrace();
 		} finally {
@@ -633,7 +633,7 @@ public class FeedDAO {
 		return 0;
 	}
 	
-	boolean isUserReactDown(long userId, long feedId) throws SQLException {
+	public boolean isUserReactDown(long userId, long feedId) throws SQLException {
         String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'N'"; 
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
 		boolean rslt = false; 

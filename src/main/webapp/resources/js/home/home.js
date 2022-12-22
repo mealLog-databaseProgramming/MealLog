@@ -99,7 +99,7 @@ $(".bi-hand-thumbs-up").on("click", function () {
 	var userId = infoList[0];
 	var feedId = infoList[1];
 	console.log(userId, feedId);
-	$.ajax({
+	/*$.ajax({
       url: '/react',
       type: 'POST',
       data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
@@ -116,7 +116,7 @@ $(".bi-hand-thumbs-up").on("click", function () {
           console.log('오타 찾으세요')
       }
 
-  });
+  });*/
 
 });
 

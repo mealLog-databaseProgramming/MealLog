@@ -51,8 +51,10 @@ public class test {
 //		UserDTO user = userManager.findUser(20);
 //		System.out.println(user.getUname());
 		
-		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", 20, "아무말");
-		feed.createFeed(feedDTO);
+//		FeedDTO feedDTO = new FeedDTO("resources/img/salad.jpg", 20, "아무말");
+//		feed.createFeed(feedDTO);
+		
+		System.out.println(feed.isUserReactUp(20, 153));
 	}
 		
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
