@@ -67,7 +67,7 @@ public class ClubController implements Controller {
 				hashtagList = manager.findHashtagbyClubId(clubId);
 				
 				String hashtag = String.join(", ", hashtagList);
-				System.out.println("string:" + hashtagList);
+				//System.out.println("string:" + hashtagList);
 				hashtags.put(clubId, hashtag);
 				
 			/**클럽아이디 + 유저리스트**/
