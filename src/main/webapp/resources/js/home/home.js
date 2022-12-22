@@ -45,11 +45,6 @@ function reactDown(){
 	$thumbs_down_fill.style.display = "inline";
 }
 
-//댓글 업로드 함수 테스트
-function commentUpload(){
-	alert('upload comment');
-}
-
 function addFood() {
 	var inputFood = prompt("임시, 음식 이름 입력");
 	const foodElement = `<div class="food" onclick="deleteFood()">${inputFood}</div>`
