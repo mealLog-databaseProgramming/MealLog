@@ -26,14 +26,14 @@ public class ReactController implements Controller {
 		
 	//	Ajax에서 값 받아오기
 		
-		if (/*반응 없을 때*/) {
-		//  create React
-			man.create(react);
-		}
-		else {
-		// 	cancle React
-			man.remove(react);
-		}
+//		if (/*반응 없을 때*/) {
+//		//  create React
+//			man.create(react);
+//		}
+//		else {
+//		// 	cancle React
+//			man.remove(react);
+//		}
 		 	
 		// redirect 하지 말고 ajax로..?
 		return "";
