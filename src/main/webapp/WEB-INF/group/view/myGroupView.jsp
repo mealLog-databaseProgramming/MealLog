@@ -3,7 +3,7 @@
 
 <c:set var="memberDatas" value="[ "/>
 <c:forEach var="user" items="${members.get(Long.valueOf(clubData.getClubId()))}">
-	<c:set var="memberDatas" value="${memberDatas} { value:${user.getUserId()}, name: '${user.getUname()}', profile: '/resources/profile/${user.getProfile()}' },"/>
+	<c:set var="memberDatas" value="${memberDatas} { value: ${user.getUserId()}, name: '${user.getUname()}', profile: '/resources/profile/${user.getProfile()}' },"/>
 </c:forEach>
 <c:set var="memberDatas" value="${memberDatas} ]"/>
 
@@ -38,8 +38,7 @@
 		</div>
 	</div>
 	
-	<form id="joinedGroupView" class="myGroup_edit" style="display: none;"
-		action="/groupUpdate" method="post">
+	<form id="joinedGroupView" class="myGroup_edit" style="display: none;" action="/groupUpdate" method="post">
 		<input type="hidden" name="clubId" value="${clubData.getClubId()}">
 		<input type="submit" value="적용"></input>
 		<input type="button" value="취소" onclick="location.href=''"></input>
