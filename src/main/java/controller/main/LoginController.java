@@ -17,7 +17,10 @@ public class LoginController implements Controller {
 		
 		if (loginId != null) {
 			try {
+				// if(password.equals(password.toUpperCase())) throw new Exception("유효하지 않은 비밀번호입니다.");
+				
 				UserManager userManager = UserManager.getInstance();
+				// password = PasswordSecureHashGenerator.encrypt(password);
 				UserSessionUtils.login(userManager.login(loginId, password), request.getSession());
 				
 				return "redirect:/";
@@ -28,5 +31,4 @@ public class LoginController implements Controller {
 		request.setAttribute("page", "login.jsp");
 		return "/main.jsp";
 	}
-
 }

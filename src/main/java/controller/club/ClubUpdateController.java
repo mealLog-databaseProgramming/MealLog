@@ -21,6 +21,9 @@ public class ClubUpdateController implements Controller {
 		
 		ClubManager clubManager = ClubManager.getInstance();
 		ClubDTO club = new ClubDTO(clubId, cname, goal, info, max_member, leader);
+		
+		String hashtag = (String) request.getAttribute("hashtag");
+		
 		try {
 			clubManager.update(club);
 			

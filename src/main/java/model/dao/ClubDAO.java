@@ -20,20 +20,36 @@ public class ClubDAO {
  	}
 
 	/* 그룹 레코드 생성 */
-	public int createClub(ClubDTO club) throws SQLException {
+	public long createClub(ClubDTO club) throws SQLException {
 		String sql = "INSERT INTO CLUB (clubId, cname, goal, info, max_member, leader) " 
-			+ "VALUE(SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?, ?)";
+			+ "VALUES (SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?) ";
+		
+		String getClubId = "select SEQUENCE_CLUBID.currval from dual";
+		
 		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), club.getLeader()};
 		jdbcUtil.setSqlAndParameters(sql, param);
-
+		
 		try {
-			int result = jdbcUtil.executeUpdate();
-			return result;
+			System.out.println("try start ");
+
+			int result = jdbcUtil.executeUpdate();//원인
+			System.out.println("result: " + result);
+			//그룹 아이디 생성 확인용
+			jdbcUtil.setSqlAndParameters(getClubId, null);
+			ResultSet rs = jdbcUtil.executeQuery();
+			rs.next();
+			
+			long clubId = rs.getLong("CURRVAL");
+			System.out.println("리턴되는 아이디" + clubId);
+			return clubId;
+			
 		} catch (Exception ex) {
+			System.out.println("Exception!");
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
+			System.out.println("commit!");
 			jdbcUtil.close();
 		}
 		return 0;
@@ -42,8 +58,8 @@ public class ClubDAO {
 	/* 그룹 가입 */
 	public int joinClub(BelongDTO belong) throws SQLException {
 		String sql = "INSERT INTO BELONG (userId, clubId, joinDate) " 
-			+ "VALUE(?, ?, ?)";
-		Object[] param = new Object[] {belong.getClubId(), belong.getUserId(), belong.getJoinDate()};
+			+ "VALUES(?, ?, ?) ";
+		Object[] param = new Object[] {belong.getUserId(), belong.getClubId(), belong.getJoinDate()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
@@ -84,9 +100,10 @@ public class ClubDAO {
 	
 	/* 그룹 멤버 삭제 */
 	public int removeClubMember(long userId, long clubId) throws SQLException {
-		String sql = "DELETE FROM BELONG WHERE userId = ?, clubId =?";
+		String sql = "DELETE FROM BELONG WHERE userId = ? and clubId =?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, clubId});
-		try {				
+		try {			
+			System.out.println("delete");
 			int result = jdbcUtil.executeUpdate();	// delete 문 실행
 			return result;
 		} catch (Exception ex) {

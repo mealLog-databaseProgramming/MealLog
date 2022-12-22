@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.UserSessionUtils;
 import model.dto.BelongDTO;
 import model.service.ClubManager;
 
@@ -17,8 +18,9 @@ public class JoinClubController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			
-			long joinId = Long.parseLong(request.getParameter("userId"));
+			long joinId = UserSessionUtils.getLoginUserId(request.getSession());
 			long clubId = Long.parseLong(request.getParameter("clubId"));
+			System.out.println("joinId " + joinId + "clubId "+ clubId);
 			
 			String Date = format1.format(time);
 			java.sql.Date joinDate= java.sql.Date.valueOf(Date);

@@ -13,9 +13,8 @@ public class DeleteClubController implements Controller {
 		long clubId = (long) request.getAttribute("clubId");
 		ClubManager manager = ClubManager.getInstance();
 				
-		if(request.getParameter("isLeader") != null) {
-			manager.remove(clubId);
-		}
+		manager.remove(clubId);
+		
 		return "redirect:/group";
 	}
 }
