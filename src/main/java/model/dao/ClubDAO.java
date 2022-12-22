@@ -389,7 +389,7 @@ public class ClubDAO {
 	
 	/* hashtag 삭제 */
 	public int removeHashtag(long clubId) throws SQLException {
-		String sql = "DELETE FROM CLUB WHERE clubId = ?";
+		String sql = "DELETE FROM HASHTAG WHERE clubId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
 
 		try {				
