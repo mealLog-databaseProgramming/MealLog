@@ -42,12 +42,16 @@ public class ClubController implements Controller {
 		List<String> hashtagList = new ArrayList<String>();
 	
 		ClubDTO club;
-		//HashtagDTO hashtag;
-		
 		UserManager userManager = UserManager.getInstance();
 	
 		clubList = manager.findClubList();
-		
+		String searchHname = request.getParameter(null);
+		if(searchHname != null) {//검색이면
+			
+		}
+		else {
+			//검색 아니면
+		}
 		/**클럽 정보**/
 		for (int i = 0; i < clubList.size(); i++) {		
 			long clubId = clubList.get(i).getClubId();
