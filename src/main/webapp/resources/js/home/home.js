@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 $(".likeimg").on("click", function () {
 	$.ajax({
-      url: '/reactController',
+      url: '/react',
       type: 'POST',
       data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {

@@ -18,6 +18,7 @@ public class RequestMapping {
     	mappings.put("/newreply", new CreateReplyController());
     	mappings.put("/newfeed", new CreateFeedController());
     	mappings.put("/removefeed", new RemoveFeedController());
+    	mappings.put("/react", new ReactController());
     	
     	mappings.put("/recomm", new RecommController());
 

@@ -634,7 +634,7 @@ public class FeedDAO {
 	}
 	
 	boolean isUserReactDown(long userId, long feedId) throws SQLException {
-        String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'N'";
+        String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'N'"; 
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
 		boolean rslt = false; 
 		
