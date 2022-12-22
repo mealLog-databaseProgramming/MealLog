@@ -26,20 +26,7 @@
 <% 
 	long currUserId = (long)request.getAttribute("currUserId");
 
-	List<Map> data = (List<Map>)request.getAttribute("list");
-	
-	//데이터 접근 샘플
-	FeedDTO feedTemp = (FeedDTO)data.get(1).get("feed");
-	List<FoodDTO> foodTemp = (List<FoodDTO>)data.get(4).get("food");
-	List<ReplyDTO> replyTemp = (List<ReplyDTO>)data.get(4).get("reply");
-	
-	//System.out.println(feedTemp.getContent());
-	//System.out.println(foodTemp.get(0).getFname());
-	//System.out.println(replyTemp.get(0).getContent());
-	
-	//feedTemp.getContent()
-	//foodTemp.get(0).getFname()
-	//replyTemp.get(0).getContent()
+ 	List<Map> data = (List<Map>)request.getAttribute("list");
 %> 
 
 	<div class="topDiv">
