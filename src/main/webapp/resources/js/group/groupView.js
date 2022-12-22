@@ -8,6 +8,13 @@ function groupView_init() {
 		
 		var tagify = new Tagify(input);
 	 	tagify.setReadonly(true);
+	
+		tagify.on('click', (e) => {
+			console.log(e);
+			location.href = `/group?tag=${e.detail.data.value}`;
+			var popup = document.querySelector('#groupInfo');
+			popup.parentNode.removeChild(popup);
+		});
 	});
 	
 	hashtags = document.querySelectorAll('#joinedGroupView #hashtag');
@@ -15,6 +22,11 @@ function groupView_init() {
 		var tagify = new Tagify(input);
 	 	tagify.setReadonly(true);
 		console.log(input.value);
+		
+		tagify.on('click', (e) => {
+			console.log(e);
+			location.href = `/group?tag=${e.detail.data.value}`;
+		});
 	});
 	
 	hashtags = document.querySelectorAll('.myGroup_edit #hashtag');
