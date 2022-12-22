@@ -7,6 +7,8 @@
 # ![logo](src/main/webapp/resources/favicon/favicon-32x32.png) 식단 공유 플랫폼 - Meal:Log
 
 ### 🔗 [Website link](http://meallog.cafe24.com:8080)
+- 접속이 안될 때가 있습니다.
+- 캐시 삭제 & 재부팅을 하고 다시 시도해주세요.
 
 <br>
 
