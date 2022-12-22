@@ -3,7 +3,7 @@
 
 <c:set var="memberDatas" value="[ "/>
 <c:forEach var="user" items="${members.get(Long.valueOf(clubData.getClubId()))}">
-	<c:set var="memberDatas" value="${memberDatas} { value: '${user.getUname()}', profile: '/resources/profile/${user.getProfile()}' },"/>
+	<c:set var="memberDatas" value="${memberDatas} { value:${user.getUserId()}, name: '${user.getUname()}', profile: '/resources/profile/${user.getProfile()}' },"/>
 </c:forEach>
 <c:set var="memberDatas" value="${memberDatas} ]"/>
 
