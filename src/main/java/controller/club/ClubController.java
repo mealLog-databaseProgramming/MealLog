@@ -40,12 +40,6 @@ public class ClubController implements Controller {
 		ClubManager manager = ClubManager.getInstance();
 		List<ClubDTO> clubList = new ArrayList<ClubDTO>();
 		List<String> hashtagList = new ArrayList<String>();
-		
-		ClubDTO clubtest = new ClubDTO(1, "test", "goal", "info", 10, 9);
-		
-		System.out.println(clubtest.getCname());
-		long clubIdtest = manager.create(clubtest);
-		System.out.println("clubId: " + clubIdtest);
 	
 		ClubDTO club;
 		//HashtagDTO hashtag;
@@ -54,14 +48,14 @@ public class ClubController implements Controller {
 	
 		clubList = manager.findClubList();
 			
+		ClubDTO clubtest = new ClubDTO(1, "tt", "ee", "yy", 10, 9);
+		System.out.println("clubUpdate " + clubtest);
+		manager.update(clubtest);
+		
 		/**클럽 정보**/
 		for (int i = 0; i < clubList.size(); i++) {		
 			long clubId = clubList.get(i).getClubId();
-			//long clubId = 1;
-			//long userId = 10;
-			//System.out.println("\ncName:" + clubId + " userId:" + userId + " leader: " + clubList.get(i).getLeader());
-			//System.out.println(userId.equals(clubId));
-			//System.out.print(userId == clubList.get(i).getLeader());
+			
 			if(userId == clubList.get(i).getLeader()) { //리더이면
 				//System.out.println(" 리더입니다");
 				myClubList.add(clubList.get(i));}

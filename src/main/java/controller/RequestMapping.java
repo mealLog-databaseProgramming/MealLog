@@ -24,7 +24,7 @@ public class RequestMapping {
     	mappings.put("/group", new ClubController());//
     	mappings.put("/groupUpdate", new ClubUpdateController());
     	mappings.put("/newGroup", new CreateClubController());
-    	mappings.put("/deleteGroup", new DeleteClubController());
+    	mappings.put("/deleteGroup", new DeleteClubController());//그냥 멤버 삭제로 구현
     	mappings.put("/joingroup", new JoinClubController());//
     	mappings.put("/leaveGroup", new leaveClubController());//
 

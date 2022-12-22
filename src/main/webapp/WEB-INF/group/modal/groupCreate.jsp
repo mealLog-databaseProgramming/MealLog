@@ -27,7 +27,7 @@
 			</div>
 			<div class="hashtagInput">
 				<h3>해시태그</h3>
-				<input id="hashtag" placeholder="엔터로 태그를 입력하세요"></input>
+				<input id="hashtag" name="hname" placeholder="엔터로 태그를 입력하세요"></input>
 			</div>
 		</div>
 		<div class="groupInputs-right">

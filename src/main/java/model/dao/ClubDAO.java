@@ -30,26 +30,24 @@ public class ClubDAO {
 		jdbcUtil.setSqlAndParameters(sql, param);
 		
 		try {
-			System.out.println("try start ");
-
 			int result = jdbcUtil.executeUpdate();//원인
-			System.out.println("result: " + result);
+			//System.out.println("result: " + result);
 			//그룹 아이디 생성 확인용
 			jdbcUtil.setSqlAndParameters(getClubId, null);
 			ResultSet rs = jdbcUtil.executeQuery();
 			rs.next();
 			
 			long clubId = rs.getLong("CURRVAL");
-			System.out.println("리턴되는 아이디" + clubId);
+			//System.out.println("리턴되는 아이디: " + clubId);
 			return clubId;
 			
 		} catch (Exception ex) {
-			System.out.println("Exception!");
+			//System.out.println("Exception!");
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
-			System.out.println("commit!");
+			//System.out.println("commit!");
 			jdbcUtil.close();
 		}
 		return 0;
@@ -161,6 +159,7 @@ public class ClubDAO {
 		}
 		return false;
 	}
+	
 	/**리더여부확인
 	public boolean isLeader(long userId, long clubId) {
 		String sql = "SELECT leader "
@@ -284,11 +283,11 @@ public class ClubDAO {
 
 	//그룹 정보 수정
 	public int updateClub(ClubDTO club) throws SQLException {
-		String sql = "UPDATE club " +
-					"SET cname = ?, goal = ?, info = ?" +
+		String sql ="UPDATE club " +
+					"SET cname = ?, goal = ?, info = ? " +
 					"WHERE clubId = ?";
 
-		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getLeader()};
+		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getClubId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {

@@ -93,6 +93,11 @@ public class ClubManager {
 		return clubDAO.createHashtag(hashtagList);
 	}
 
+	public int removeClubMember(long userId, long clubId) throws SQLException {
+		// TODO Auto-generated method stub
+		return clubDAO.removeClubMember(userId, clubId);
+	}
+
 
 
 	
