@@ -16,6 +16,10 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="resources/css/recomm/recomm.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+	<style> @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap'); </style>
 </head>
 <body>
 <div class="Content">
@@ -85,7 +89,11 @@
 		  <div class="card">
 		    <!-- 앞면 -->
 		    <div class="front">
-		    	<img src="/resources/feed/<%=feed.getPhoto()%>" class="card-img"  alt="...">
+		    	<div class="top">
+		    		<div class="photo">
+		    			<img src="/resources/feed/<%=feed.getPhoto()%>" class="card-img"  alt="...">
+			  		</div>
+			  	</div>
 			  	<div class="date">
 			    	<%=feed.getPublishDate()%>
 			  	</div>

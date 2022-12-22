@@ -43,12 +43,7 @@
 			proteinPer = Math.round(protein / (float)total * 100);
 			fatPer = Math.round(fat / (float)total * 100);
 		}
-	%>     
-    <%=kcalPer %>
-    <%=carbPer %>  
-    <%=proteinPer %>  
-    <%=fatPer %> 
-    <%=total %>                  
+	%>                     
 	<div class="graph">
 	  <!-- 비율에 따라 width 값 조정 -->
 	  <div class="bar carb" style="width:<%=carbPer %>%;">

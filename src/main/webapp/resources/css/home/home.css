@@ -79,7 +79,7 @@
 
 .time {
 	float: right;
-	vertical-align: center;
+	vertical-align: baseline;
 	font-size: 24px;
 }
 

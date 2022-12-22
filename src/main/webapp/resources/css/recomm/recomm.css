@@ -50,20 +50,6 @@
 		width: 100%;
 		justify-content: start;
 	}
-	
-	/*.recommCard .item.front {
-        position: absolute;
-        transform: rotateY(0deg);
-    }
-
-    .recommCard:hover .item.front {
-        transform: rotateY(180deg);
-    }
-
-    .recommCard .item.back {
-
-        transform: rotateY(-180deg);
-    }*/
     
     /*style*/
     .card .back {
@@ -93,9 +79,35 @@
    		color: #FFFFFF;
 	}
 	
+	.card .front .top {
+		width: 210px; height: 215px;
+		background: rgba(0, 0, 0, 0.03);
+	}
+	
+	.card .front .photo {
+		width: 180px;
+	    height: 180px;
+	    margin: 15px;
+	    border: 1px solid rgba(0, 0, 0, 0.2);
+	    box-shadow: inset 0px 0px 5px rgb(0 0 0 / 15%);
+	    overflow: hidden;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    transform: translate(0px, 15px);
+	    background: rgba(0,0,0,0.05);
+	}
+	
+	.card .front .date {
+		font-family: 'Caveat', cursive;
+		
+		float:right;
+		margin-right: 10px;
+		vertical-align: bottom;
+	}
+	
 	.card {
 	  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
-	  /*overflow:hidden;*/
 	  width: 210px;
 	  height: 280px;
 	  text-align: center;
@@ -132,29 +144,12 @@
 	}
 	
 	.card-img {
-		/*width: 13rem;
-		height: 9rem;*/
 		width: 190px;
 		height: 190px;
 		object-fit:cover;
 		margin: 17px 0px 10px 0px;
 		vertical-align: middle;
 	}
-	
-	/*.card-text {
-		margin: 0px 21px 10px 21px;
-		font-family: 'Jua';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 20px;
-		line-height: 25px;
-		text-align: left;
-	}
-	
-	.kcal {
-		font-family: 'Jua';
-		font-size: 16px;
-	}*/
 	
 	.graphComment {
 		font-family: 'Jua';
@@ -166,74 +161,7 @@
 		
 		margin-left: 50px;
 	}
-    
-    /*.recommContainer > span {
-	    font-family: 'Jua';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 24px;
-		font-weight: bold;
-		line-height: 30px;
-		
-		margin-left: 15px;
-	}
-    
-	.recommCard {
-        perspective: 300px;
-        margin-top: 8px;
-    }
-
-    .recommCard .item {
-        width: 230px;
-        height: 310px;
-        border: 1px solid #828282;
-        font-size: 35px;
-        backface-visibility: hidden;
-        transition: 1s;
-        border-radius: 50px;
-        
-        background: #A7E074;
-        border: 1px solid #A7E074;
-        
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .recommCard .item.front {
-        position: absolute;
-        transform: rotateY(0deg);
-    }
-
-    .recommCard:hover .item.front {
-        transform: rotateY(180deg);
-    }
-
-    .recommCard .item.back {
-
-        transform: rotateY(-180deg);
-    }
-    
-    .item.back .title {
-        font-family: 'Jua';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 24px;
-		line-height: 30px;
-		
-		margin-bottom: 33px;
-    }
-    .item.back .content {
-    	font-family: 'Jua';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 20px;
-    }
-
-    .recommCard:hover .item.back {
-        transform: rotateY(0deg);
-    }*/
+	
     .recommContainer > span {
 	    font-family: 'Jua';
 		font-style: normal;
@@ -261,8 +189,8 @@
         transition: .8s;
         border-radius: 50px;
         
-        background: #A7E074;
-        border: 1px solid #A7E074;
+        background: #81B44F;
+        border: 1px solid #81B44F;
         
         display: flex;
         justify-content: space-around;
