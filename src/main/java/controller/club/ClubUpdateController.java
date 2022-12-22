@@ -26,6 +26,9 @@ public class ClubUpdateController implements Controller {
 
 		//String hashtag = request.getParameter("hashtag");
 		
+		//String members = request.getParameter("member");
+		//System.out.println("this club members : " + members);
+		
 		try {
 			System.out.println("try start");
 			clubManager.update(club);
