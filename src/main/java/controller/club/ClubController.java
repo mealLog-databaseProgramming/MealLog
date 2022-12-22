@@ -81,15 +81,12 @@ public class ClubController implements Controller {
 					UserDTO user = userManager.findUser(memberIdList.get(j));
 					memberList.add(user);
 				}
-				
-				/**리더 입력 확인용 출력 코드
-				 * for (int j = 0; j < memberList.size(); j++) {
-					System.out.println("cName:" + clubId + " member:" + memberList.get(j).getUserId());
-				}**/
+
 				members.put(clubId, memberList);
 		}
 		
 		request.setAttribute("hashtags", hashtags);
+		
 		request.setAttribute("members", members);
 		request.setAttribute("myClubList", myClubList);
 		request.setAttribute("joinedClubList", joinedClubList);
