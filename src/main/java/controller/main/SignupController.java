@@ -30,7 +30,7 @@ public class SignupController implements Controller {
 				UserDTO user = new UserDTO();
 				user.setLoginId(loginId);
 				user.setPassword(password);
-				// user.setPassword(PasswordSecureHashGenerator.encrypt(password));
+				user.setPassword(PasswordSecureHashGenerator.encrypt(password));
 				user.setEmailAddress(emailAddress);
 				
 				user.setUname(name);
