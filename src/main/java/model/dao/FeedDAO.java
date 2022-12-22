@@ -674,6 +674,25 @@ public class FeedDAO {
 		}
 		return rslt;
 	}
+	
+	public int countReply(long feedId) throws SQLException {
+		String sql = "SELECT COUNT(*) as count FROM reply WHERE feedId = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId});
+		int count = 0;
+		
+		try {
+			ResultSet rs= jdbcUtil.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(("count"));
+				return count;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return 0;
+	}
 }
 
 

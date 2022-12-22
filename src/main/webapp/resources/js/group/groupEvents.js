@@ -9,3 +9,7 @@ function init_group() {
 	
 	init();
 }
+
+function search(e) {
+	location.href = `/group?tag=${e.value}`;
+}

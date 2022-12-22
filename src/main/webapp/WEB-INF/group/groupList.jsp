@@ -13,8 +13,11 @@
 
 <div class='Content'>
 	<div class="groupHeader">
-		<input type="text" placeholder="원하는 그룹을 찾아보세요" class="groupSearch">
-		<iconify-icon class="searchIcon" icon="mingcute:search-line"></iconify-icon>
+		<input type="text" placeholder="원하는 그룹을 찾아보세요" class="groupSearch" value="${param.tag}"
+			onkeyup="if(window.event.keyCode==13){search(this)}">
+		<div onclick="search(this.parentNode.querySelector('input'))">
+			<iconify-icon class="searchIcon" icon="mingcute:search-line"></iconify-icon>
+		</div>
 		<div id="newGroup_button">새그룹 만들기</div>
 	</div>
 	<span class="line"></span>

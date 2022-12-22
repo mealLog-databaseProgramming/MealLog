@@ -33,7 +33,7 @@ public class ClubUpdateController implements Controller {
 		ClubDTO club = new ClubDTO(clubId, cname, goal, info);
 		//hashtag
 		String inputHashtagList = request.getParameter("hname") ;//사용자가 입력한 해시태그값(string)의 리스트
-		//clubManager.removeHashtag(clubId);
+		clubManager.removeHashtag(clubId);
 		List<String> hlist = TagifyParser.parseStrings(inputHashtagList);
 		for (int i = 0; i < hlist.size(); i++) {
 			HashtagDTO hashtag = new HashtagDTO(clubId, hlist.get(i));
@@ -45,12 +45,19 @@ public class ClubUpdateController implements Controller {
 		UserManager userManager = UserManager.getInstance();
 		/**클럽아이디 + 유저리스트**/		
 		//List<UserDTO> memberList = new ArrayList<UserDTO>();
-		List<Long> memberIdList = clubManager.findMembersByClubId(clubId);//그룹원 id리스트 받아옴-DB저장된애
-		
-		List<Long> updateMemberIdList = TagifyParser.parseIds(request.getParameter("member"));
-		memberIdList.removeAll(updateMemberIdList);
-		for (int j = 0; j < memberIdList.size(); j++) {
-			clubManager.removeClubMember(memberIdList.get(j), clubId);
+		List<Long> oldMemberIdList = clubManager.findMembersByClubId(clubId);//그룹원 id리스트 받아옴-DB저장된애
+		for (int j = 0; j < oldMemberIdList.size(); j++) {
+			System.out.println("memberIdList " + oldMemberIdList.get(j));
+		}
+		List<Long> neweMemberIdList = TagifyParser.parseIds(request.getParameter("member"));
+		for (int j = 0; j < neweMemberIdList.size(); j++) {
+			System.out.println("updateMemberIdList " + neweMemberIdList.get(j));
+		}
+		oldMemberIdList.removeAll(neweMemberIdList);
+		System.out.println("removeAll " + oldMemberIdList.toString());
+
+		for (int j = 0; j < oldMemberIdList.size(); j++) {
+			clubManager.removeClubMember(oldMemberIdList.get(j), clubId);
 		}
 		
 		try {

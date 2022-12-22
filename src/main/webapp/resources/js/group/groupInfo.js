@@ -19,6 +19,8 @@ function groupInfo_init() {
 }
 
 function groupInfo_set(e) {	
+	console.log(e.target);
+	console.log(e.currentTarget);
 	var clubIdInput = document.querySelector('#groupInfo input[name="clubId"]');
 	clubIdInput.setAttribute('value', e.querySelector("#clubId").value);
 	
