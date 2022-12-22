@@ -8,8 +8,8 @@ const stat = new Chart(chart, {
 			axis: 'y',
             label: '하루 섭취량',
             data: [kcalPer, nutriPer[0], nutriPer[1], nutriPer[2]],
-            backgroundColor: '#A7E074',
-            borderColor: '#A7E074',
+            backgroundColor: '#81B44F',
+            borderColor: '#81B44F',
             borderWidth: 0,
 		   
 		    borderSkipped: false,

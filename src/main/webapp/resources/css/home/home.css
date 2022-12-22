@@ -38,6 +38,9 @@
 .posting {
 	margin-left: 15px;
 	width: 100%;
+	
+	display:flex;
+	flex-direction: column;
 }
 
 .info_line {
@@ -60,14 +63,23 @@
 .btnContainer {
 	width: 100%;
 	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .deletePostBtn {
 	float: right;
+	
+	color: white;
+	background-color: rgba(59, 92, 10);;
+	border: 1px solid rgba(59, 92, 10);;
+	padding: 5px 10px;
+	border-radius:10px;
 }
 
 .time {
 	float: right;
+	vertical-align: baseline;
 	font-size: 24px;
 }
 
@@ -118,7 +130,7 @@
 	display: flex;
 	flex-direction: row;
 	
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
