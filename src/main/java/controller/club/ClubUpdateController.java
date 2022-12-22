@@ -31,7 +31,7 @@ public class ClubUpdateController implements Controller {
 		
 		try {
 			System.out.println("try start");
-			clubManager.update(club);
+			//clubManager.update(club);
 			
 		} catch(Exception e) {
 			request.setAttribute("message", e.getMessage());

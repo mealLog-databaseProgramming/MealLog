@@ -143,7 +143,7 @@ public class ClubDAO {
 
 	//그룹 이름 중복인지 검사
 	public boolean existClub(String cname) throws SQLException {
-        String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE cname = ?";              
+        String sql = "SELECT count(*) as count FROM club WHERE cname = ? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {cname});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
@@ -284,14 +284,16 @@ public class ClubDAO {
 	//그룹 정보 수정
 	public int updateClub(ClubDTO club) throws SQLException {
 		String sql ="UPDATE club " +
-					"SET cname = ?, goal = ?, info = ? " +
+					"SET cname = ?, goal = ?, info = ? max_number = ? " +
 					"WHERE clubId = ?";
 
-		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getClubId()};
+		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), 
+				club.getClubId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate();
+			//System.out.println("")
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
