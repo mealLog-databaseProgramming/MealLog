@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.UserSessionUtils;
 import model.service.*;
+import util.PasswordSecureHashGenerator;
 
 public class LoginController implements Controller {
 
