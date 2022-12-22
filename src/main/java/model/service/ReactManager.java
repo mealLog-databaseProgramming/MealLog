@@ -23,14 +23,14 @@ public class ReactManager {
 		return reactMan;
 	}
 
-	public int create(ReactDTO reply) throws SQLException {
-		return feedDAO.createReact(reply);
+	public int create(ReactDTO react) throws SQLException {
+		return feedDAO.createReact(react);
 	}
 	
-//	public int remove(ReactDTO react) throws SQLException {
-//		
-//		return feedDAO.removeReact(react.getFeedId(), react.getUserId());
-//	}
+	public int remove(ReactDTO react) throws SQLException {
+		
+		return feedDAO.cancleReact(react.getFeedId(), react.getUserId());
+	}
 	
 //	public List<ReactDTO> display(long feedId) throws SQLException {
 //		return FeedDAO.replyList(feedId);
