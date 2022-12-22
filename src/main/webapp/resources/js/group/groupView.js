@@ -60,7 +60,7 @@ function group_edit(e, clubId, memberDatas) {
 			 hooks: {
 	       		beforeRemoveTag : function( tags ) {
 		            return new Promise((resolve, reject) => {
-		                confirm(tags[0].data.value + "님을 그룹에서 탈퇴시킵니다.")
+		                confirm(tags[0].data.name + "님을 그룹에서 탈퇴시킵니다.")
 		                    ? resolve()
 		                    : reject()
 		            })
