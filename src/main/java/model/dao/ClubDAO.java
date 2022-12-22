@@ -73,17 +73,32 @@ public class ClubDAO {
 		return 0;
 	}
 
+	public int removeClubAll(long clubId) throws SQLException {
+		int result = 0;
+		
+		// 해시태그 삭제
+		result += removeHashtag(clubId);
+		
+		// 그룹에 속한 멤버들 삭제
+		result += removeBelong(clubId);
+		
+		// 그룹 정보 삭제
+		result += removeClub(clubId);
+		
+		return result;
+	}
+	
+	
 	/* 그룹 삭제 */
 	public int removeClub(long clubId) throws SQLException {
-		String sql = "DELETE FROM CLUB INNER JOIN BELONG INNER JOIN HASHTAG "
-				+ "WHERE CLUB.clubID = BELONG.clubId "
-				+ "AND BELONG.clubId = HASHTAG.clubId ";
+		String sql = "DELETE FROM CLUB WHERE clubId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
-		//club 테이블에서는 행 하나 삭제하는 건데
-		//hashtag랑 belong은 clubId를 가진 행전체를 삭제해야함
-		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			
+			// 작동되는 지 확인
+			System.out.println("클럽 삭제 : " + result);
+			
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -95,6 +110,29 @@ public class ClubDAO {
 		}		
 		return 0;
 	}
+	
+	public int removeBelong(long clubId) throws SQLException {
+		String sql = "DELETE FROM belong WHERE clubId = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			
+			// 작동되는 지 확인
+			System.out.println("클럽 가입된 회원 전부 삭제 : " + result);
+			
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+	
 	
 	/* 그룹 멤버 삭제 */
 	public int removeClubMember(long userId, long clubId) throws SQLException {
@@ -349,12 +387,16 @@ public class ClubDAO {
 	}
 	
 	/* hashtag 삭제 */
-	public int removeHashtag(String clubId, String hname) throws SQLException {
-		String sql = "DELETE FROM CLUB WHERE clubId = ? AND hname = ?";
+	public int removeHashtag(long clubId) throws SQLException {
+		String sql = "DELETE FROM CLUB WHERE clubId = ?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});
 
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			
+			// 작동되는 지 확인
+			System.out.println("클럽 관련 해시태그 삭제 : " + result);
+			
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
