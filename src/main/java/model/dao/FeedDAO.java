@@ -202,7 +202,7 @@ public class FeedDAO {
 
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-//			System.out.println("음식 삭제" + result);
+//			System.out.println("음식 삭제" + result); 
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
