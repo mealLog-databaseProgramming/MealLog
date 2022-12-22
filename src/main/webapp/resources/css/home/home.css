@@ -144,7 +144,9 @@
 }
 
 .photo img {
-	width: 100%;
+	width: 450px;
+	height: 450px;
+	object-fit: cover;
 }
 
 .photo {
@@ -199,6 +201,10 @@ svg .bi-chat-dots {
   outline: none;
   border-bottom: 1px solid rgba(0,0,0,.75);
   padding-left: 10px;
+}
+
+#replyBtnLabel {
+	cursor: pointer;
 }
 
 .commentModalBtn {

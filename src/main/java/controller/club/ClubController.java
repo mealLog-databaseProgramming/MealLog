@@ -47,21 +47,15 @@ public class ClubController implements Controller {
 		UserManager userManager = UserManager.getInstance();
 	
 		clubList = manager.findClubList();
-			
-		ClubDTO clubtest = new ClubDTO(1, "tt", "ee", "yy", 10, 9);
-		System.out.println("clubUpdate " + clubtest);
-		manager.update(clubtest);
 		
 		/**클럽 정보**/
 		for (int i = 0; i < clubList.size(); i++) {		
 			long clubId = clubList.get(i).getClubId();
 			
 			if(userId == clubList.get(i).getLeader()) { //리더이면
-				//System.out.println(" 리더입니다");
 				myClubList.add(clubList.get(i));}
 			else {
 				if(manager.isMember(userId, clubList.get(i).getClubId())) {//그룹원이면
-					//System.out.println(" 그룹원입니다");
 						joinedClubList.add(clubList.get(i));
 				}
 				else //그룹원이 아니면
@@ -71,10 +65,10 @@ public class ClubController implements Controller {
 			/**클럽아이디 + 해시태그**/
 				List<HashtagDTO> hashTagList = new ArrayList<HashtagDTO>();
 				hashtagList = manager.findHashtagbyClubId(clubId);
-
+				
 				String hashtag = String.join(", ", hashtagList);
+				System.out.println("string:" + hashtagList);
 				hashtags.put(clubId, hashtag);
-				//System.out.println("2: " + hashtag);
 				
 			/**클럽아이디 + 유저리스트**/
 				List<UserDTO> memberList = new ArrayList<UserDTO>();

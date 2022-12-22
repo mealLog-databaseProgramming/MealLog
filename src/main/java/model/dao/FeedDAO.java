@@ -610,6 +610,50 @@ public class FeedDAO {
 		}
 		return null;
 	}
+	
+	boolean isUserReactUp(long userId, long feedId) throws SQLException {
+        String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'P'";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
+		boolean rslt = false; 
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next()) {
+				int count = rs.getInt("count");
+				if (count > 0)
+					rslt = true;
+				return rslt;
+			}
+			return rslt;
+		} catch (Exception ex) { 
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return rslt;
+	}
+	
+	boolean isUserReactDown(long userId, long feedId) throws SQLException {
+        String sql = "SELECT COUNT(*) as count FROM REACT WHERE userId = ? AND feedId = ? AND type = 'N'"; 
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, feedId});	// JDBCUtil에 query문과 매개 변수 설정
+		boolean rslt = false; 
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			while (rs.next()) {
+				int count = rs.getInt("count");
+				if (count > 0)
+					rslt = true;
+				return rslt;
+			}
+			return rslt;
+		} catch (Exception ex) { 
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return rslt;
+	}
 }
 
 
