@@ -103,6 +103,10 @@
 					<div class="rightContainer">
 						<div class="react">
 							<div class="content"><%=feed.getContent() %></div>
+						</div>
+						<hr>
+						<div class="commentCountContainer">
+							<div class="commentCount">댓글 <%=feedDAO.countReply(feed.getFeedId()) %>개</div>
 							<div class="updownContainer">
 								<!-- if user가 이 게시글에 좋아요 안눌렀다면  -->
 								<%if (feedDAO.isUserReactUp(currUserId, feed.getFeedId()) == 0) {%>
@@ -150,8 +154,6 @@
 								<span class="downNumber"><%=downCount %></span>
 							</div>
 						</div>
-						<hr>
-						<div class="commentCount">댓글 <%=feedDAO.countReply(feed.getFeedId()) %>개</div>
 						<div class="commentList">
 						
 							<%

@@ -90,6 +90,12 @@
 	justify-content: space-between;
 }
 
+.commentCountContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .content {
 	font-size: 24px;
 	color: rgba(0,0,0,.75);
