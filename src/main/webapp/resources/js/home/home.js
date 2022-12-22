@@ -8,11 +8,20 @@ const $modal_body_childs = $modal_body.childNodes;
 const $modal_foodContainer = $modal_body_childs[5];
 const $comment_modal_body = document.querySelector('.commentModalBody');
 
+const $upNumber = document.querySelectorAll('.upNumber');
+const $downNumber = document.querySelectorAll('.downNumber');
+
 //좋아요 버튼
 for(let i = 0; i< thumbs_up.length; i++) {
 	thumbs_up[i].addEventListener('click', function(e){
 		thumbs_up[i].style.display="none";
 		thumbs_up_fill[i].style.display="inline";
+		console.log($upNumber[i].textContent);
+		
+		console.log(parseInt($upNumber[i].textContent) + 1);
+		var upNum = parseInt($upNumber[i].textContent) + 1;
+		$upNumber[i].innerText = "";
+		$upNumber[i].innerText = upNum;
 	});
 }
 
@@ -21,6 +30,10 @@ for(let i = 0; i< thumbs_down.length; i++) {
 	thumbs_down[i].addEventListener('click', function(e){
 		thumbs_down[i].style.display="none";
 		thumbs_down_fill[i].style.display="inline";
+		
+		var downNum = parseInt($downNumber[i].textContent) + 1;
+		$downNumber[i].innerText = "";
+		$downNumber[i].innerText = downNum;
 	});
 }
 
@@ -29,6 +42,11 @@ for(let i = 0; i< thumbs_up_fill.length; i++) {
 	thumbs_up_fill[i].addEventListener('click', function(e){
 		thumbs_up_fill[i].style.display="none";
 		thumbs_up[i].style.display="inline";
+		console.log($upNumber[i].textContent);
+		
+		var upNum = parseInt($upNumber[i].textContent) - 1;
+		$upNumber[i].innerText = "";
+		$upNumber[i].innerText = upNum;
 	});
 }
 
@@ -37,6 +55,10 @@ for(let i = 0; i< thumbs_down_fill.length; i++) {
 	thumbs_down_fill[i].addEventListener('click', function(e){
 		thumbs_down_fill[i].style.display="none";
 		thumbs_down[i].style.display="inline";
+		
+		var downNum = parseInt($downNumber[i].textContent) - 1;
+		$downNumber[i].innerText = "";
+		$downNumber[i].innerText = downNum;
 	});
 }
 
@@ -88,130 +110,3 @@ $(document).ready(function() {
     })
 });
 
-$(".bi-hand-thumbs-up").on("click", function () {
-	console.log("좋아요 추가");
-	var info = $(this).attr('value');
-	
-	var infoList = info.split("/");
-	
-	var react = 1	//좋아요
-	var addDrop = 1	//추가
-	var userId = infoList[0];
-	var feedId = infoList[1];
-	console.log(userId, feedId);
-	/*$.ajax({
-      url: '/react',
-      type: 'POST',
-      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
-      success: function (data) {
-          if (data == 1) {
-              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-              location.reload();
-          } else {
-              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
-              location.reload();
-          }
-      }, error: function () {
-          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-          console.log('오타 찾으세요')
-      }
-
-  });*/
-
-});
-
-$(".bi-hand-thumbs-up-fill").on("click", function () {
-	console.log("좋아요 제거");
-	var info = $(this).attr('value');
-	
-	var infoList = info.split("/");
-	
-	var react = 1	//좋아요
-	var addDrop = 0	//제거
-	var userId = infoList[0];
-	var feedId = infoList[1];
-	console.log(userId, feedId);
-	/*$.ajax({
-      url: '/react',
-      type: 'POST',
-      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
-      success: function (data) {
-          if (data == 1) {
-              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-              location.reload();
-          } else {
-              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
-              location.reload();
-          }
-      }, error: function () {
-          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-          console.log('오타 찾으세요')
-      }
-
-  });*/
-
-});
-
-$(".bi-hand-thumbs-down").on("click", function () {
-	console.log("싫어요 추가");
-	var info = $(this).attr('value');
-	
-	var infoList = info.split("/");
-	
-	var react = 0	//싫어요
-	var addDrop = 1	//추가
-	var userId = infoList[0];
-	var feedId = infoList[1];
-	console.log(userId, feedId);
-	/*$.ajax({
-      url: '/react',
-      type: 'POST',
-      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
-      success: function (data) {
-          if (data == 1) {
-              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-              location.reload();
-          } else {
-              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
-              location.reload();
-          }
-      }, error: function () {
-          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-          console.log('오타 찾으세요')
-      }
-
-  });*/
-
-});
-
-$(".bi-hand-thumbs-down-fill").on("click", function () {
-	console.log("싫어요 제거");
-	var info = $(this).attr('value');
-	
-	var infoList = info.split("/");
-	
-	var react = 0	//싫어요
-	var addDrop = 0	//제거
-	var userId = infoList[0];
-	var feedId = infoList[1];
-	console.log(userId, feedId);
-	/*$.ajax({
-      url: '/react',
-      type: 'POST',
-      data: { 'react': react, 'addDrop': addDrop, 'userId': userId, 'feedId': feedId },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
-      success: function (data) {
-          if (data == 1) {
-              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-              location.reload();
-          } else {
-              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
-              location.reload();
-          }
-      }, error: function () {
-          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
-          console.log('오타 찾으세요')
-      }
-
-  });*/
-
-});
