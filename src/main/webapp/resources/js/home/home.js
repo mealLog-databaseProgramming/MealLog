@@ -88,7 +88,17 @@ $(document).ready(function() {
     })
 });
 
-$(".likeimg").on("click", function () {
+$(".bi-hand-thumbs-up").on("click", function () {
+	console.log("좋아요 추가");
+	var info = $(this).attr('value');
+	
+	var infoList = info.split("/");
+	
+	var react = 1	//좋아요
+	var addDrop = 1	//추가
+	var userId = infoList[0];
+	var feedId = infoList[1];
+	console.log(userId, feedId);
 	$.ajax({
       url: '/react',
       type: 'POST',
@@ -107,5 +117,101 @@ $(".likeimg").on("click", function () {
       }
 
   });
+
+});
+
+$(".bi-hand-thumbs-up-fill").on("click", function () {
+	console.log("좋아요 제거");
+	var info = $(this).attr('value');
+	
+	var infoList = info.split("/");
+	
+	var react = 1	//좋아요
+	var addDrop = 0	//제거
+	var userId = infoList[0];
+	var feedId = infoList[1];
+	console.log(userId, feedId);
+	/*$.ajax({
+      url: '/react',
+      type: 'POST',
+      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      success: function (data) {
+          if (data == 1) {
+              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+              location.reload();
+          } else {
+              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
+              location.reload();
+          }
+      }, error: function () {
+          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+          console.log('오타 찾으세요')
+      }
+
+  });*/
+
+});
+
+$(".bi-hand-thumbs-down").on("click", function () {
+	console.log("싫어요 추가");
+	var info = $(this).attr('value');
+	
+	var infoList = info.split("/");
+	
+	var react = 0	//싫어요
+	var addDrop = 1	//추가
+	var userId = infoList[0];
+	var feedId = infoList[1];
+	console.log(userId, feedId);
+	/*$.ajax({
+      url: '/react',
+      type: 'POST',
+      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      success: function (data) {
+          if (data == 1) {
+              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+              location.reload();
+          } else {
+              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
+              location.reload();
+          }
+      }, error: function () {
+          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+          console.log('오타 찾으세요')
+      }
+
+  });*/
+
+});
+
+$(".bi-hand-thumbs-down-fill").on("click", function () {
+	console.log("싫어요 제거");
+	var info = $(this).attr('value');
+	
+	var infoList = info.split("/");
+	
+	var react = 0	//싫어요
+	var addDrop = 0	//제거
+	var userId = infoList[0];
+	var feedId = infoList[1];
+	console.log(userId, feedId);
+	/*$.ajax({
+      url: '/react',
+      type: 'POST',
+      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      success: function (data) {
+          if (data == 1) {
+              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+              location.reload();
+          } else {
+              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
+              location.reload();
+          }
+      }, error: function () {
+          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+          console.log('오타 찾으세요')
+      }
+
+  });*/
 
 });
