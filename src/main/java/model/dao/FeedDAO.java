@@ -106,8 +106,6 @@ public class FeedDAO {
 
 		try {
 			int result = jdbcUtil.executeUpdate();
-			System.out.println(result);
-			
 			return (long)result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -242,7 +240,7 @@ public class FeedDAO {
         String sql = "SELECT feedId, photo, publishDate, userId, content " 
      		   + "FROM FEED "
      		   + "WHERE ROWNUM < 101" 
-     		   + "ORDER BY publishDate DESC";
+     		   + "ORDER BY feedId DESC";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
 		try {
