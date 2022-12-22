@@ -64,7 +64,7 @@
 		<div>
 			<div class="groupMember">
 				<label>그룹원 명단</label>
-				<input id="memberList_${clubData.getClubId()}"></input>	
+				<input id="memberList_${clubData.getClubId()}" name="member"></input>	
 			</div>
 		</div>
 	</form>
