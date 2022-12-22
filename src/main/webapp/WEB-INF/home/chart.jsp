@@ -46,22 +46,22 @@
 	%>                     
 	<div class="graph">
 	  <!-- 비율에 따라 width 값 조정 -->
-	  <div class="bar carb" style="width:<%=carbPer %>%;">
+	  <div class="bar carb" style="width:<%=carbPer %>%;" data-toggle="tooltip" data-placement="top" title="<%=carbPer%>%, <%=carb%>g">
 	    <dl class="desc">
 	      <dt>탄수화물</dt>
 	    </dl>
 	  </div>
-	  <div class="bar protein" style="width:<%=proteinPer %>%">
+	  <div class="bar protein" style="width:<%=proteinPer %>%" data-toggle="tooltip" data-placement="top" title="<%=proteinPer%>%, <%=protein%>g">
 	    <dl class="desc">
 	      <dt>단백질</dt>
 	    </dl>
 	  </div>
-	  <div class="bar fat" style="width:<%=fatPer %>%">
+	  <div class="bar fat" style="width:<%=fatPer %>%" data-toggle="tooltip" data-placement="top" title="<%=fatPer%>%, <%=fat%>g">
 	    <dl class="desc">
 	      <dt>지방</dt>
 	    </dl>
 	  </div>
-	  <div class="bar kcal" style="width:<%=kcalPer %>%">
+	  <div class="bar kcal" style="width:<%=kcalPer %>%" data-toggle="tooltip" data-placement="top" title="<%=kcalPer%>%, <%=kcal%>kcal">
 	    <dl class="desc">
 	      <dt>kcal</dt>
 	    </dl>
