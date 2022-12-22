@@ -22,8 +22,7 @@
 </script>
 <div class='Header'>
 	<div class='title' onclick="location.href='/'">
-		<div class='yolk'></div>
-		<iconify-icon icon="fluent:food-egg-24-regular"></iconify-icon>
+		<img src="/resources/favicon/android-icon-48x48.png">
 		Meal:<span>Log</span>
 	</div>
 	<div class='greet'>
