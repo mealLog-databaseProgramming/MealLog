@@ -41,6 +41,11 @@ public class ClubController implements Controller {
 		List<ClubDTO> clubList = new ArrayList<ClubDTO>();
 		List<String> hashtagList = new ArrayList<String>();
 		
+		ClubDTO clubtest = new ClubDTO(1, "test", "goal", "info", 10, 9);
+		
+		System.out.println(clubtest.getCname());
+		long clubIdtest = manager.create(clubtest);
+		System.out.println("clubId: " + clubIdtest);
 	
 		ClubDTO club;
 		//HashtagDTO hashtag;

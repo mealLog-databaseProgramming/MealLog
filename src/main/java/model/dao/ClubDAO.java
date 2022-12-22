@@ -22,16 +22,19 @@ public class ClubDAO {
 	/* 그룹 레코드 생성 */
 	public long createClub(ClubDTO club) throws SQLException {
 		String sql = "INSERT INTO CLUB (clubId, cname, goal, info, max_member, leader) " 
-			+ "VALUES(SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?, ?) ";
+			+ "VALUES (SEQUENCE_CLUBID.nextval, ?, ?, ?, ?, ?) ";
 		
 		String getClubId = "select SEQUENCE_CLUBID.currval from dual";
+		
 		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), club.getLeader()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 		
 		try {
-			int result = jdbcUtil.executeUpdate();
-			System.out.println(getClubId);
-			
+			System.out.println("try start ");
+
+			int result = jdbcUtil.executeUpdate();//원인
+			System.out.println("result: " + result);
+			//그룹 아이디 생성 확인용
 			jdbcUtil.setSqlAndParameters(getClubId, null);
 			ResultSet rs = jdbcUtil.executeQuery();
 			rs.next();
@@ -41,10 +44,12 @@ public class ClubDAO {
 			return clubId;
 			
 		} catch (Exception ex) {
+			System.out.println("Exception!");
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
+			System.out.println("commit!");
 			jdbcUtil.close();
 		}
 		return 0;
