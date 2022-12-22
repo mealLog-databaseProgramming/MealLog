@@ -103,6 +103,17 @@ public class ClubManager {
 		return clubDAO.removeClubAll(clubId);
 	}
 
+	public int removeHashtag(long clubId) throws SQLException {
+		// TODO Auto-generated method stub
+		return clubDAO.removeHashtag(clubId);
+		
+	}
+
+	public int removeBelong(long clubId) throws SQLException {
+		// TODO Auto-generated method stub
+		 return clubDAO.removeHashtag(clubId);
+	}
+
 
 
 	

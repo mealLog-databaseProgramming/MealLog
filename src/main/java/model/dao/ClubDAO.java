@@ -279,45 +279,6 @@ public class ClubDAO {
         
 		return clubList;
 	}
-	
-	//삭제
-	//특정 userId인 group 정보를 검색하여 List에 저장 및 반환 
-		public List<ClubDTO> SearchClubList(List<HashtagDTO> tagList2) throws SQLException {
-	        String sql = "SELECT clubId, cname, goal, info, max_member, leader, tagId, clubId, hname "
-	        		+ "FROM group "
-	        		+ "JOIN hashtag ON group.clubId = hashtag.clubId ";
-	        //jdbcUtil.setSqlAndParameters(sql, new Object[] {UseTagList.get(1)});//UserId를 의미
-			jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
-						
-			try {
-				ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-				List<ClubDTO> clubList = new ArrayList<ClubDTO>();	
-				List<HashtagDTO> tagList = new ArrayList<HashtagDTO>();	
-				while (rs.next()) {
-					ClubDTO club = new ClubDTO(		
-						rs.getLong("clubId"),
-						rs.getString("cname"),
-						rs.getString("goal"),
-						rs.getString("info"),
-						rs.getInt("max_member"),
-						rs.getInt("leader"));
-					clubList.add(club);		
-					
-					HashtagDTO tag = new HashtagDTO(
-							rs.getLong("clubId"),
-							rs.getString("hname"));
-					tagList.add(tag);
-				}		
-				return ListReturn(clubList, tagList);					
-				
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				jdbcUtil.close();		// resource 반환
-			}
-			return null;
-		}
-	
 
 	//그룹 정보 수정
 	public int updateClub(ClubDTO club) throws SQLException {
@@ -333,8 +294,10 @@ public class ClubDAO {
 			System.out.println("ss");
 			return result;
 		} catch (Exception e) {
+			jdbcUtil.rollback();
 			e.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return 0;
@@ -409,6 +372,8 @@ public class ClubDAO {
 		}		
 		return 0;
 	}
+	
+	
 	
 	/* 해시태그에 해당하는 그룹 아이디 리스트*/
 	public List<HashtagDTO> findClubByHashtag(String hname) throws SQLException {

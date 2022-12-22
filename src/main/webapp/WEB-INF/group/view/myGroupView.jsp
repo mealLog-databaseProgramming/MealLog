@@ -58,7 +58,7 @@
 			</div>
 			<div>
 				<label>해시태그</label>
-				<input id="hashtag" value="${hashtags.get(Long.valueOf(clubData.getClubId()))}"></input>
+				<input id="hashtag" name="hname" value="${hashtags.get(Long.valueOf(clubData.getClubId()))}"></input>
 			</div>
 		</div>
 		<div>

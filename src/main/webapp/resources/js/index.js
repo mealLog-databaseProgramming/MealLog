@@ -29,6 +29,11 @@ function init() {
     else img.style.width = "100%";
 
 	document.querySelector("#loading").style.display = "none";
+	
+	window.onbeforeunload = (event) => {
+		event.preventDefault();
+		document.querySelector("#loading").style.display = "flex";
+	};
 }
 
 function lis_select(i) {
