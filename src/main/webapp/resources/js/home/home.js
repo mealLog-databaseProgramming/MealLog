@@ -95,11 +95,11 @@ $(".bi-hand-thumbs-up").on("click", function () {
 	var infoList = info.split("/");
 	
 	var react = 1	//좋아요
-	var react = 1	//추가
+	var addDrop = 1	//추가
 	var userId = infoList[0];
 	var feedId = infoList[1];
 	console.log(userId, feedId);
-	/*$.ajax({
+	$.ajax({
       url: '/react',
       type: 'POST',
       data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
@@ -116,7 +116,7 @@ $(".bi-hand-thumbs-up").on("click", function () {
           console.log('오타 찾으세요')
       }
 
-  });*/
+  });
 
 });
 
@@ -127,7 +127,7 @@ $(".bi-hand-thumbs-up-fill").on("click", function () {
 	var infoList = info.split("/");
 	
 	var react = 1	//좋아요
-	var react = 0	//제거
+	var addDrop = 0	//제거
 	var userId = infoList[0];
 	var feedId = infoList[1];
 	console.log(userId, feedId);
@@ -159,7 +159,7 @@ $(".bi-hand-thumbs-down").on("click", function () {
 	var infoList = info.split("/");
 	
 	var react = 0	//싫어요
-	var react = 1	//추가
+	var addDrop = 1	//추가
 	var userId = infoList[0];
 	var feedId = infoList[1];
 	console.log(userId, feedId);
@@ -191,7 +191,7 @@ $(".bi-hand-thumbs-down-fill").on("click", function () {
 	var infoList = info.split("/");
 	
 	var react = 0	//싫어요
-	var react = 0	//제거
+	var addDrop = 0	//제거
 	var userId = infoList[0];
 	var feedId = infoList[1];
 	console.log(userId, feedId);
