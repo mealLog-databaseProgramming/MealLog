@@ -178,7 +178,34 @@ public class ClubDAO {
 		}
 		return null;
 	}
+//////////////////////////////////
+	//특정 group 찾기
+		public List<ClubDTO> searchClubList(long clubId) throws SQLException {
+	        String sql = "SELECT clubId, cname, goal, info, max_member, leader FROM club WHERE clubId = ?";              
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {clubId});	// JDBCUtil에 query문과 매개 변수 설정
 
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				List<ClubDTO> clubList = new ArrayList<ClubDTO>();	
+				while (rs.next()) {						
+					ClubDTO club = new ClubDTO(
+						rs.getLong("clubId"),
+						rs.getString("cname"),
+						rs.getString("goal"),
+						rs.getString("info"),
+						rs.getInt("max_member"),
+						rs.getInt("leader"));
+					clubList.add(club);
+				}
+				return clubList;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+		
 	//그룹 이름 중복인지 검사
 	public boolean existClub(String cname) throws SQLException {
         String sql = "SELECT count(*) as count FROM club WHERE cname = ? ";              
@@ -373,21 +400,16 @@ public class ClubDAO {
 		return 0;
 	}
 	
-	
-	
 	/* 해시태그에 해당하는 그룹 아이디 리스트*/
-	public List<HashtagDTO> findClubByHashtag(String hname) throws SQLException {
+	public List<Long> findClubByHashtag(String hname) throws SQLException {
         String sql = "SELECT clubId FROM hashtag WHERE hname = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {hname});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();				
-			List<HashtagDTO> hashtagList = new ArrayList<HashtagDTO>();	
+			List<Long> hashtagList = new ArrayList<Long>();	
 			while (rs.next()) {
-				HashtagDTO hashtag = new HashtagDTO(	
-					rs.getLong("clubId"),		
-					rs.getString("hname"));
-				hashtagList.add(hashtag);				
+				hashtagList.add(rs.getLong("clubId"));				
 			}		
 			return hashtagList;					
 			
