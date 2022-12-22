@@ -8,6 +8,14 @@ function init_group() {
 	groupView_init();
 	
 	init();
+	
+	window.onkeydown = (event) => {
+		key = event.keyCode;
+
+		if(key == 116) {
+			location.href = location.pathname;
+		}
+	};
 }
 
 function search(e) {
