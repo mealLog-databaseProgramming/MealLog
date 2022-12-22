@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="resources/css/group/modal/groupInfo.css"/>
 
 <div id="groupInfo">
-<form action="/joingroup" method="post" onsubmit="return false">
+<form action="/joingroup" method="post">
 	<input type="hidden" name="clubId"></input>
 	<div class="title">
 		<iconify-icon icon="mdi:account-group"></iconify-icon>

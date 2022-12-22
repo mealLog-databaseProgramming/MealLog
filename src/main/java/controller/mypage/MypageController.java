@@ -77,7 +77,7 @@ public class MypageController implements Controller {
 			long feedId = feed.getFeedId();
 			foods.put(feedId, foodManager.findFoodList(feedId));
 			
-			String date = new SimpleDateFormat("yy-MM-dd a hh:mm", new Locale("en", "US")).format(feed.getPublishDate());
+			String date = new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(feed.getPublishDate());
 			publishDates.put(feedId, date.toLowerCase());
 			positiveReacts.put(feedId, feedManager.countPositiveReact(feedId));
 			negativeReacts.put(feedId, feedManager.countNegativeReact(feedId));

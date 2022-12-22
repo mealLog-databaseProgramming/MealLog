@@ -13,7 +13,7 @@
 		<div class="groupInputs-left">
 			<div class="nameInput">
 				<h3>그룹 이름</h3>
-				<input type="text" name="cname" placeholder="그룹 이름을 입력하세요"></input>
+				<input type="text" name="cname" placeholder="그룹 이름을 입력하세요" maxlength='20'></input>
 			</div>
 			<div class="memberInput">
 				<iconify-icon icon="mingcute:group-line"></iconify-icon>
