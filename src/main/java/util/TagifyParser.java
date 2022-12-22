@@ -30,24 +30,13 @@ public class TagifyParser {
 		return list;
 	}
 	public static List<Long> parseIds(String string) {
-		JSONParser parser = new JSONParser();
-		JSONArray arr = null;
-		
-		try {
-			arr = (JSONArray)parser.parse(string);
-
-		} catch(ParseException e) {
-			System.out.println("변환 실패");
-			return null;
-		}
+		List<String> strings = TagifyParser.parseStrings(string);
 		
 		List<Long> list = new ArrayList<Long>();
 		
-		for(Object obj: arr) {
-			JSONObject tag = (JSONObject) obj;
-			list.add((Long) tag.get("value"));
+		for(String s: strings) {
+			list.add(Long.valueOf(s));
 		}
-		
 		return list;
 	}
 }
