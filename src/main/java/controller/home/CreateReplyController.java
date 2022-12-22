@@ -33,17 +33,17 @@ import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.fileupload.servlet.*;
 
 public class CreateReplyController implements Controller{
-
-	ReplyManager replyManager = new ReplyManager();
-	FeedManager feedManager = new FeedManager();
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ReplyManager replyManager = new ReplyManager();
+		FeedManager feedManager = new FeedManager();
 		
 		// 넘겨야 하는 정보
-		//userId 
-		//content 
+		// userId 
+		// content 
 		// feedId
+		
 		if(!UserSessionUtils.hasLogined(request.getSession())) return "redirect:/login"; // 로그인된 상태가 아니면 login으로
 		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		System.out.println("reply 관련 : " + userId);

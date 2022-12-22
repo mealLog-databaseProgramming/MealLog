@@ -31,7 +31,7 @@ public class FeedManager {
 
 	public int remove(long feedId) throws SQLException {
 		
-		return feedDAO.removeFeed(feedId);
+		return feedDAO.removeFeedList(feedId);
 	}		
 
 	public List<FeedDTO> read() throws SQLException {
