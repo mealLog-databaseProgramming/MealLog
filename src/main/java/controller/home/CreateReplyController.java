@@ -48,12 +48,10 @@ public class CreateReplyController implements Controller{
 		long userId = UserSessionUtils.getLoginUserId(request.getSession());
 		System.out.println("reply 관련 : " + userId);
 		
-		String content = request.getParameter("content");
+		String content = request.getParameter("r_content");
 		long feedId = Long.parseLong(request.getParameter("feedId"));
-		System.out.println(userId);
-		System.out.println(content);
-		
-		ReplyDTO reply = new ReplyDTO(userId, content, feedId);
+
+		ReplyDTO reply = new ReplyDTO(content, feedId, userId);
 		 
 		long replyId = replyManager.create(reply);
 		

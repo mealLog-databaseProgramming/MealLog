@@ -60,7 +60,7 @@ public class FeedDAO {
 	
 	// 반응 추가
 	public int createReact(ReactDTO react) throws SQLException {
-		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUE(?, ?, ?)";
+		String sql = "INSERT INTO REACT(feedId, userId, type) " + "VALUES(?, ?, ?)";
 		Object[] param = new Object[] {react.getFeedId(), react.getUserId(), react.getType()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
@@ -99,20 +99,16 @@ public class FeedDAO {
 
 	// 댓글 추가
 	public long createComment(ReplyDTO reply) throws SQLException {
-		String sql = "INSERT INTO Reply(replyId, content, getPublishDate, feedId, userId )" 
-		+ "VALUE(SEQUENCE_REPLYID.nextval, ?, ?, ?, ?)";
-		Object[] param = new Object[] {reply.getContent(), reply.getPublishDate(), reply.getFeedId(), reply.getUserId()};
+		String sql = "INSERT INTO Reply(replyId, content, publishDate, feedId, userId) " 
+		+ "VALUES(SEQUENCE_REPLYID.nextval, ?, SYSDATE, ?, ?)";
+		Object[] param = new Object[] {reply.getContent(), reply.getFeedId(), reply.getUserId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate();
-			ResultSet rs = jdbcUtil.executeQuery();
-			rs.next();
+			System.out.println(result);
 			
-			long replyId = rs.getLong("replyId");
-			System.out.println("리턴되는 댓글 아이디" + replyId);
-			
-			return replyId;
+			return (long)result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
