@@ -45,11 +45,6 @@ function reactDown(){
 	$thumbs_down_fill.style.display = "inline";
 }
 
-//댓글 업로드 함수 테스트
-function commentUpload(){
-	alert('upload comment');
-}
-
 function addFood() {
 	var inputFood = prompt("임시, 음식 이름 입력");
 	const foodElement = `<div class="food" onclick="deleteFood()">${inputFood}</div>`
@@ -95,7 +90,7 @@ $(document).ready(function() {
 
 $(".likeimg").on("click", function () {
 	$.ajax({
-      url: '/reactController',
+      url: '/react',
       type: 'POST',
       data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
       success: function (data) {

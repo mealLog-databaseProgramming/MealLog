@@ -325,16 +325,18 @@ public class ClubDAO {
 	
 	/* hashtag 추가 */
 	public int createHashtag(List<HashtagDTO> hashtagList) throws SQLException {
-		for(int i=0; i<5; i++) {
-			String sql = "INSERT INTO HASHTAG (tagId, clubId, hname) " 
-				+ "VALUE(?, ?)";
-			Object[] param = new Object[] {hashtagList.get(i).getClubId()+hashtagList.get(i).getHname(),
-					hashtagList.get(i).getClubId(), hashtagList.get(i).getHname()};
-			jdbcUtil.setSqlAndParameters(sql, param);
-		}
-
+		int result = 0;
+		String sql = "INSERT INTO HASHTAG (clubId, hname) " 
+				+ "VALUES(?, ?)";
+			
 		try {
-			int result = jdbcUtil.executeUpdate();
+			for(int i=0; i<hashtagList.size(); i++) {
+				//System.out.println(hashtagList.get(i).getClubId() +" "+ hashtagList.get(i).getHname());
+				Object[] param = new Object[] {hashtagList.get(i).getClubId(), hashtagList.get(i).getHname()};
+				jdbcUtil.setSqlAndParameters(sql, param);
+				result += jdbcUtil.executeUpdate();
+			}
+			
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -398,6 +400,7 @@ public class ClubDAO {
 			ResultSet rs = jdbcUtil.executeQuery();				
 			List<String> hashtagList = new ArrayList<String>();	
 			while (rs.next()) {
+				//System.out.println(rs.getString("hname"));
 				hashtagList.add(rs.getString("hname"));				
 			}		
 			return hashtagList;					
