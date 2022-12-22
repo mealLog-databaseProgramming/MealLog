@@ -328,7 +328,7 @@ public class ClubDAO {
 		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), 
 				club.getClubId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
-
+		System.out.println("club.getCname(): " + club.getCname());
 		try {
 			int result = jdbcUtil.executeUpdate();
 			//System.out.println("")
