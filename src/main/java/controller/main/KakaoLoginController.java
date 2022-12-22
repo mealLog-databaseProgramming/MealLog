@@ -20,7 +20,7 @@ public class KakaoLoginController implements Controller {
 		if(id != null) {
 			try {
 				UserManager userManager = UserManager.getInstance();
-				if(userManager.existingLoginId(id)) {
+				if(userManager.existingLoginId(email)) {
 					UserSessionUtils.login(userManager.login(email, PasswordSecureHashGenerator.encrypt(id)), request.getSession());
 					return "redirect:/";
 				}
