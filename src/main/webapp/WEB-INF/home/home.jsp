@@ -83,8 +83,6 @@
 					<div class="info_line">
 						<span class="writer"><%=uname %></span>
 						<span class="time"><%=feed.getPublishDate() %></span>
-						<!-- 피드별 댓글 수 출력 -->
-						<%=feedDAO.countReply(feed.getFeedId()) %>
 					</div>
 				</div>
 				<div class="btnContainer">
@@ -153,6 +151,7 @@
 							</div>
 						</div>
 						<hr>
+						<div class="commentCount">댓글 <%=feedDAO.countReply(feed.getFeedId()) %>개</div>
 						<div class="commentList">
 						
 							<%

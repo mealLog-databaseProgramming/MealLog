@@ -171,6 +171,10 @@ svg .bi-chat-dots {
 	margin-bottom: 15px;
 }
 
+.commentCount {
+	height: 20;
+}
+
 .commentList {
 	height: 250;
 	margin-top: 40px;
