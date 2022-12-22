@@ -88,8 +88,18 @@ $(document).ready(function() {
     })
 });
 
-$(".likeimg").on("click", function () {
-	$.ajax({
+$(".bi-hand-thumbs-up").on("click", function () {
+	console.log("thumbs clidk");
+	var info = $(this).attr('value');
+	
+	var infoList = info.split("/");
+	
+	var react = 1	//좋아요
+	var react = 1	//추가
+	var userId = infoList[0];
+	var feedId = infoList[1];
+	console.log(userId, feedId);
+	/*$.ajax({
       url: '/react',
       type: 'POST',
       data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
@@ -106,6 +116,6 @@ $(".likeimg").on("click", function () {
           console.log('오타 찾으세요')
       }
 
-  });
+  });*/
 
 });
