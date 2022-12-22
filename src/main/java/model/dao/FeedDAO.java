@@ -168,6 +168,26 @@ public class FeedDAO {
 		return 0;
 	} 
 
+	// 반응 취소
+	public int cancleReact(long feedId, long userId) throws SQLException {
+		String sql = "DELETE FROM REACT WHERE feedid = ?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {feedId, userId});
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+//			System.out.println("반응 삭제" + result);
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	} 
+	
 	// 댓글 삭제
 	public int removeReply(long feedId) throws SQLException {
 		String sql = "DELETE FROM REPLY WHERE feedId = ?";
