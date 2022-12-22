@@ -10,9 +10,14 @@
 }
 
 .myGroup_edit input[type="submit"] {
-	right: 200px !important;
+	right: 285px !important;
 	background: #6BA32D !important;
 	color: #FFFFFF !important;
+}
+.myGroup_edit input[value="삭제"] {
+	right: 200px !important;
+	background: rgba(0, 0, 0, .5) !important;
+    color: white !important;
 }
 .myGroup_edit input[type="text"],
  .myGroup_edit textarea {

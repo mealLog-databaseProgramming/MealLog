@@ -78,3 +78,9 @@ function group_edit(e, clubId, memberDatas) {
         else img.style.width = "45px";
 	});
 }
+
+function group_delete(e) {
+	var form = e.parentNode;
+	form.setAttribute('action', '/deleteGroup');
+	form.submit();
+}

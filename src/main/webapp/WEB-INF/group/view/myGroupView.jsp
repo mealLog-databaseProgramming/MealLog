@@ -41,6 +41,7 @@
 	<form id="joinedGroupView" class="myGroup_edit" style="display: none;" action="/groupUpdate" method="post">
 		<input type="hidden" name="clubId" value="${clubData.getClubId()}">
 		<input type="submit" value="적용"></input>
+		<input type="button" value="삭제" onclick="group_delete(this)"></input>
 		<input type="button" value="취소" onclick="location.href=''"></input>
 		<div>
 			<div class="title">
