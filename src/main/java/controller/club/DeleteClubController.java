@@ -14,9 +14,8 @@ public class DeleteClubController implements Controller {
 		long clubId = Long.parseLong(request.getParameter("clubId"));
 		ClubManager manager = ClubManager.getInstance();
 				
-		long userId = UserSessionUtils.getLoginUserId(request.getSession());
-		System.out.println(clubId + " " + userId);
-		manager.removeClubMember(userId, clubId);
+		System.out.println(clubId);
+		manager.removeClubAll(clubId);
 		
 		return "redirect:/group";
 	}

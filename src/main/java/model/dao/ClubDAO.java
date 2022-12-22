@@ -322,16 +322,15 @@ public class ClubDAO {
 	//그룹 정보 수정
 	public int updateClub(ClubDTO club) throws SQLException {
 		String sql ="UPDATE club " +
-					"SET cname = ?, goal = ?, info = ? max_number = ? " +
-					"WHERE clubId = ?";
-
-		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(), club.getMax_member(), 
+					"SET cname = ?, goal = ?, info = ? " +
+					"WHERE clubId = ? ";
+		Object[] param = new Object[] {club.getCname(), club.getGoal(), club.getInfo(),
 				club.getClubId()};
 		jdbcUtil.setSqlAndParameters(sql, param);
 		System.out.println("club.getCname(): " + club.getCname());
 		try {
 			int result = jdbcUtil.executeUpdate();
-			//System.out.println("")
+			System.out.println("ss");
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

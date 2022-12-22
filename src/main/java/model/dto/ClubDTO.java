@@ -28,6 +28,14 @@ public class ClubDTO {
 		this.max_member = max_member;
 		this.leader = leader;	}
 
+	public ClubDTO(long clubId, String cname, String goal, String info) {
+		this.clubId = clubId;
+		this.cname = cname;
+		this.goal = goal;
+		this.info = info;
+
+	}
+
 	public long getClubId() {
 		return clubId;
 	}

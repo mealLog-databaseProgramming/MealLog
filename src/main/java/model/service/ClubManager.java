@@ -98,6 +98,11 @@ public class ClubManager {
 		return clubDAO.removeClubMember(userId, clubId);
 	}
 
+	public int removeClubAll(long clubId) throws SQLException {
+		// TODO Auto-generated method stub
+		return clubDAO.removeClubAll(clubId);
+	}
+
 
 
 	
