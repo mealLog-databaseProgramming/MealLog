@@ -92,3 +92,25 @@ $(document).ready(function() {
 		  $comment_modal_body.removeChild($comment_modal_body.firstChild);
     })
 });
+
+$(".likeimg").on("click", function () {
+	$.ajax({
+      url: '/reactController',
+      type: 'POST',
+      data: { 'b_number': b_number, 'm_id': m_id },	//반응식별자, 추가인지 삭제인지, 유저아이디, 피드아이디
+      success: function (data) {
+          if (data == 1) {
+              $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+              location.reload();
+          } else {
+              $("#likeimg").attr("src", "/resources/img/좋아요전.png");
+              location.reload();
+          }
+      }, error: function () {
+          $("#likeimg").attr("src", "/resources/img/좋아요후.png");
+          console.log('오타 찾으세요')
+      }
+
+  });
+
+});

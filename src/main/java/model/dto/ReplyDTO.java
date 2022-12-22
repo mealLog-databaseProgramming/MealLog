@@ -23,7 +23,7 @@ public class ReplyDTO {
 		this.userId = userId;
 	}
 
-	public ReplyDTO(long userId, String content, long feedId) {
+	public ReplyDTO(String content, long feedId, long userId) {
 		this.userId = userId;
 		this.content = content;
 		this.feedId = feedId;
